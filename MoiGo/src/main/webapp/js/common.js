@@ -5,8 +5,9 @@ function logout(){
 	location.href = 'logout';
 }
 //window.onload=function(){
-//	var LF = document.getElementById("loginFail");
+//	LF = document.getElementById("loginFail").value;
 //	if (LF==1) {
-//		alert('아이디나 비밀번호를 확인해 주세요.');
+//		alert('아이디나 비밀번호를 확인해 주세요.'+LF);
 //	}
+//	LF = 0;
 //}

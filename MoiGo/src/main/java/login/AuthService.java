@@ -10,13 +10,13 @@ public class AuthService {
 	public void setDaoUser(DaoUser daoUser) {
 		this.daoUser = daoUser;
 	}
-	public AuthInfo authenticate(String userID, String userPw){
+
+	public AuthInfo authenticate(String userID, String userPw) {
 		User user = daoUser.selectById(userID);
-		if (user == null) 
+		if (user == null)
 			throw new IdPasswordNotMatchingException();
-		if (!user.matchPassword(userPw)) {
+		if (!user.matchPassword(userPw))
 			throw new IdPasswordNotMatchingException();
-		}
 		return new AuthInfo(user.getUserID(), user.getUserNick(), user.getUserName());
 	}
 }

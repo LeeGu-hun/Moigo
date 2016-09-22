@@ -39,12 +39,12 @@ public class controllerLogin {
 	public String form2(LoginCommand loginCommand, Errors errors, HttpSession session, HttpServletRequest request){
 		new LoginCommandValidator().validate(loginCommand, errors);
 		if (errors.hasErrors()) {
-			return "main";
+			return "dirMem/login";
 		}
 		AuthInfo authInfo = authService.authenticate(
 				loginCommand.getUserID(), loginCommand.getUserPw());
 		session.setAttribute("authInfo", authInfo);
 		System.out.println(authInfo.getUserID()+authInfo.getUserName()+authInfo.getUserNick());
-		return "main";
+		return "redirect:/";
 	}
 }

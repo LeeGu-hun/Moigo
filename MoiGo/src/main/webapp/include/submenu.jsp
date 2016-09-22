@@ -10,6 +10,7 @@
 					type="submit" value="로그인" />
 			</form>
 		</div>
+		<input type="hidden" id="loginFail" name="loginFail" value="${loginFail }" />
 	서브메뉴
 	</c:if>
 	<c:if test="${!empty authInfo }">
