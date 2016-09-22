@@ -4,4 +4,6 @@
 	joinform 페이지
 	
 	commit & merge Test
+	
+	merge Test2
 </div>
