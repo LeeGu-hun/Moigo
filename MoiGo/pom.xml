@@ -43,10 +43,15 @@
 			<artifactId>c3p0</artifactId>
 			<version>0.9.2.1</version>
 		</dependency>
+		<repository>
+			<id>oracle</id>
+			<name>ORACLE JDBC Repository</name>
+			<url>http://maven.jahia.org/maven2</url>
+		</repository>
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
-			<version>11.2.0.3</version>
+			<version>11.1.0.7.0</version>
 		</dependency>
 		<!-- AspectJ -->
 		<dependency>
