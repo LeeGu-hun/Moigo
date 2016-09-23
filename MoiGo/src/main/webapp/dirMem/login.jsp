@@ -6,6 +6,7 @@
 <title>MoiGo</title>
 </head>
 <body>
-
+	<%@include file="/include/header.jsp" %>
+	<%@include file="/include/submenu.jsp" %>
 </body>
 </html>

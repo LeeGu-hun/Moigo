@@ -5,14 +5,16 @@
 		logo
 	</div>
 	<div id="menu">
-		<div id="usermenu"></div>
+		<div id="usermenu">
+		</div>
 		<table id="menuTab">
 			<tr>
-				<td>Home</td>
+				<td><a href="<c:url value='/' />">메인</a></td>
 				<td>알림</td>
 				<td>채팅</td>
-				<td>카테고리</td>
+				<td><a href="<c:url value='/groupsearch' />">카테고리</a></td>
 				<td>장터</td>
+			</tr>
 		</table>
 	</div>
 </div>

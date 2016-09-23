@@ -25,10 +25,12 @@
 	background-color: #DDDDDD;
 }
 #usermenu{
+	display: inline-block;
 	width:100%;
 	height:50%;
 }
 #menuTab{
+	display: inline-table;
 	width: 100%;
 	height: 50%;
 	text-align: center;

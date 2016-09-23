@@ -17,6 +17,10 @@
 		<div id="loginBox">
 			${authInfo.userNick }님 환영합니다.
 			<input type="button" onclick="logout();" value="로그아웃" />
+			<input type="button" onclick="" value="정보수정" />
+			<c:if test="${authInfo.userID=='admin' }">
+				<input type="button" value="관리자페이지" />
+			</c:if>
 		</div>
 	</c:if>
 </div>

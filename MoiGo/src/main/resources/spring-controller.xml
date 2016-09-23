@@ -8,6 +8,8 @@
 	<bean class="controller.controllerLogin" >
 		<property name="authService" ref="authService" />
 	</bean>
+	<bean class="controller.controllerGroup" >
+	</bean>
 	
 </beans>
 	
