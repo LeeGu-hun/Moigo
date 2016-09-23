@@ -24,6 +24,18 @@
 	height: 100%;
 	background-color: #DDDDDD;
 }
+#usermenu{
+	width:100%;
+	height:50%;
+}
+#menuTab{
+	width: 100%;
+	height: 50%;
+	text-align: center;
+}
+#menuTab td{
+	width: 20%;
+}
 /* ~ header */
 /* submenu ~ */
 #submenu{

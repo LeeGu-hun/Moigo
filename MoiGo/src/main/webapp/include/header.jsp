@@ -5,6 +5,14 @@
 		logo
 	</div>
 	<div id="menu">
-		메뉴
+		<div id="usermenu"></div>
+		<table id="menuTab">
+			<tr>
+				<td>Home</td>
+				<td>알림</td>
+				<td>채팅</td>
+				<td>카테고리</td>
+				<td>장터</td>
+		</table>
 	</div>
 </div>

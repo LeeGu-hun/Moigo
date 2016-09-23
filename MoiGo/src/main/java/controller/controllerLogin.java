@@ -20,7 +20,7 @@ public class controllerLogin {
 	public void setAuthService(AuthService authService) {
 		this.authService = authService;
 	}
-	@RequestMapping("/")
+	@RequestMapping("/") /* 시작화면 */
 	public String main(){
 		return "main";
 	}
