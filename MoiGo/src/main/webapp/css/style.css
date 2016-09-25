@@ -10,33 +10,31 @@
 #header{
 	display: inline-block;
 	width: 100%;
-	height: 200px;
+	height: 100px;
 }
 #logo{
 	float: left;
-	width: 15%;
+	width: 5%;
 	height: 100%;
 	background-color: #EEEEEE;
 }
-#menu{
+#search{
 	float: left;
-	width: 85%;
-	height: 100%;
-	background-color: #DDDDDD;
-}
-#usermenu{
-	display: inline-block;
-	width:100%;
-	height:50%;
-}
-#menuTab{
-	display: inline-table;
-	width: 100%;
-	height: 50%;
-	text-align: center;
-}
-#menuTab td{
 	width: 20%;
+	height: 100%;
+	background: #DDDDDD;
+}
+#menus{
+	float: left;
+	width: 50%;
+	height: 100%;
+	background-color: #CCCCCC;
+}
+#loginBox{
+	float: left;
+	width: 25%;
+	height: 100%;
+	background: #BBBBBB;
 }
 /* ~ header */
 /* submenu ~ */
@@ -51,9 +49,19 @@
 /* content ~ */
 #content{
 	float: left;
-	width: 85%;
+	width: 100%;
 	height: auto;
-	min-height: 750px;
-	background-color: #BBBBBB;
+	min-height: 850px;
+	background-color: aqua;
 }
 /* ~ content */
+
+#loginBox2{
+	position: absolute;
+	top: 100px;
+	right: 0px;
+	width: 200px;
+	height: 100px;
+	background-color: #AAAAAA;
+	display: none;
+}

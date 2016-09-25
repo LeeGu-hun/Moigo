@@ -10,8 +10,6 @@
 </head>
 <body>
 	<%@include file="/include/header.jsp" %>
-	<div id="content">
-		login
-	</div>
+	loginFail
 </body>
 </html>

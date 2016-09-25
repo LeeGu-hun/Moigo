@@ -30,16 +30,20 @@ public class controllerLogin {
 		session.invalidate();
 		return "redirect:/";
 	}
+	@RequestMapping("/loginPage")
+	public String login(){
+		return "dirMem/login";
+	}
 	
 	@RequestMapping("/register")
 	public String register(){
-		return "dirMem/join";
+		return "dirMem/register";
 	}
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String form2(LoginCommand loginCommand, Errors errors, HttpSession session, HttpServletRequest request){
 		new LoginCommandValidator().validate(loginCommand, errors);
 		if (errors.hasErrors()) {
-			return "dirMem/login";
+			return "dirMem/loginFail";
 		}
 		AuthInfo authInfo = authService.authenticate(
 				loginCommand.getUserID(), loginCommand.getUserPw());
