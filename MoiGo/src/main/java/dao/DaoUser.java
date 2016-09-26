@@ -22,13 +22,12 @@ public class DaoUser {
 		List<User> results = jdbcTemplate.query(
 				"select * from userinfo where userID = ?", 
 				new RowMapper<User>() {
-			public User mapRow(ResultSet rs, int rowNum) 
-					throws SQLException {
+			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 				User user = new User(
-						rs.getString("userName"), rs.getString("userNick"),
-						rs.getString("userPw"), rs.getString("userGender"),
-						rs.getString("userAddr"), rs.getString("userPhone"),
-						rs.getTimestamp("userRegdate"), rs.getInt("userAge"));
+					rs.getString("userName"), rs.getString("userNick"),
+					rs.getString("userPw"), rs.getString("userGender"),
+					rs.getString("userAddr"), rs.getString("userPhone"),
+					rs.getTimestamp("userRegdate"), rs.getInt("userAge"));
 				user.setUserID(rs.getString("userID"));
 				return user;
 			}

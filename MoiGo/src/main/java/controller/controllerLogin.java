@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -8,6 +10,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import dao.DaoGroup;
+import group.Group;
 import login.AuthInfo;
 import login.AuthService;
 import login.LoginCommand;
@@ -16,12 +20,18 @@ import login.LoginCommandValidator;
 @Controller
 public class controllerLogin {
 	private AuthService authService;
+	private DaoGroup daoGroup;
 	
 	public void setAuthService(AuthService authService) {
 		this.authService = authService;
 	}
+	public void setDaoGroup(DaoGroup daoGroup) {
+		this.daoGroup = daoGroup;
+	}
 	@RequestMapping("/") /* 시작화면 */
-	public String main(){
+	public String main(HttpServletRequest request){
+		List<Group> grpAll = daoGroup.getAll();
+		request.setAttribute("grpAll", grpAll);
 		return "main";
 	}
 	

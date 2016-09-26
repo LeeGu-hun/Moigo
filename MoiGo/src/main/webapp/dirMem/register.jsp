@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+<script src="//code.jquery.com/jquery-1.12.2.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/common.js" ></script>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/style.css" />
@@ -11,6 +12,7 @@
 </head>
 <body>
 	<%@ include file="/include/header.jsp"%>
+	<%@ include file="/include/loginBox2.jsp" %>
 	<div id="content">
 		regiform 페이지
 	</div>

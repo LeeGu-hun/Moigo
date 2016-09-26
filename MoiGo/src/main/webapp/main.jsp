@@ -12,14 +12,20 @@
 </head>
 <body>
 	<%@include file="/include/header.jsp"%>
-	<div id="content">메인</div>
-	<div id="loginBox2">
-		<form action="login" method="post">
-			loginBox <br>
-			ID<input type="text" id="userID" name="userID" /> <br> 
-			PW<input type="password" id="userPw" name="userPw" />
-			<input type="submit" value="로그인" />
-		</form>
+	<%@include file="/include/loginBox2.jsp" %>
+	<div id="content">
+		<c:if test="${empty authInfo }">
+			<c:forEach var="allGrp" items="${grpAll }">
+				<div class="groups">
+					${allGrp.grpName } <br>
+					${allGrp.grpLeader } <br>
+					${allGrp.grpOpen } <br>
+					${allGrp.grpCate } <br>
+					${allGrp.grpNum } <br>
+					${allGrp.grpRegDate } <br><br>
+				</div>
+			</c:forEach>
+		</c:if>
 	</div>
 </body>
 </html>
