@@ -14,9 +14,9 @@
 	<%@include file="/include/header.jsp"%>
 	<%@include file="/include/loginBox2.jsp" %>
 	<div id="content">
-		<c:if test="${empty authInfo }">
+		<c:if test="${!empty authInfo }">
 			<c:forEach var="allGrp" items="${grpAll }">
-				<div class="groups">
+				<div class="mainGroups">
 					${allGrp.grpName } <br>
 					${allGrp.grpLeader } <br>
 					${allGrp.grpOpen } <br>
@@ -25,6 +25,9 @@
 					${allGrp.grpRegDate } <br><br>
 				</div>
 			</c:forEach>
+		</c:if>
+		<c:if test="${empty authInfo }">
+			비로그인
 		</c:if>
 	</div>
 </body>

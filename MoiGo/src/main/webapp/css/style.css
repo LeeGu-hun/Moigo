@@ -52,10 +52,10 @@
 	width: 100%;
 	height: auto;
 	min-height: 850px;
+	min-width: 1000px;
 	background-color: skyblue;
 }
 /* ~ content */
-
 #loginBox2{
 	position: absolute;
 	top: 100px;
@@ -64,4 +64,13 @@
 	height: 100px;
 	background-color: #AAAAAA;
 	display: none;
+}
+.mainGroups{
+	float: left;
+	width: 31%;
+	height: 20%;
+	margin: 1%;
+	min-height: 125px;
+	min-width: 250px;
+	background-color: white;
 }

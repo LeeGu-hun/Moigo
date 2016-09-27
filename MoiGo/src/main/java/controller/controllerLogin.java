@@ -30,26 +30,25 @@ public class controllerLogin {
 	}
 	@RequestMapping("/") /* 시작화면 */
 	public String main(HttpServletRequest request){
-		List<Group> grpAll = daoGroup.getAll();
+		List<Group> grpAll = daoGroup.getAllOpen();
 		request.setAttribute("grpAll", grpAll);
 		return "main";
 	}
 	
-	@RequestMapping("/logout")
+	@RequestMapping("/logout") /* 로그아웃 */
 	public String form(HttpSession session){
 		session.invalidate();
 		return "redirect:/";
 	}
-	@RequestMapping("/loginPage")
+	@RequestMapping("/loginPage") /* ? */
 	public String login(){
 		return "dirMem/login";
 	}
-	
-	@RequestMapping("/register")
+	@RequestMapping("/register") /* 회원가입 */
 	public String register(){
 		return "dirMem/register";
 	}
-	@RequestMapping(value="/login", method=RequestMethod.POST)
+	@RequestMapping(value="/login", method=RequestMethod.POST) /* 로그인 */
 	public String form2(LoginCommand loginCommand, Errors errors, HttpSession session, HttpServletRequest request){
 		new LoginCommandValidator().validate(loginCommand, errors);
 		if (errors.hasErrors()) {
@@ -58,7 +57,6 @@ public class controllerLogin {
 		AuthInfo authInfo = authService.authenticate(
 				loginCommand.getUserID(), loginCommand.getUserPw());
 		session.setAttribute("authInfo", authInfo);
-		System.out.println(authInfo.getUserID()+authInfo.getUserName()+authInfo.getUserNick());
 		return "redirect:/";
 	}
 }

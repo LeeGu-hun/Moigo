@@ -7,13 +7,12 @@ public class Group {
 	int grpNum;
 	Date grpRegDate;
 	
-	public Group(String grpName, String grpLeader, String grpOpen, String grpCate, int grpNum, Date grpRegDate) {
+	public Group(String grpName, String grpLeader, String grpOpen, String grpCate, Date grpRegDate) {
 		super();
 		this.grpName = grpName;
 		this.grpLeader = grpLeader;
 		this.grpOpen = grpOpen;
 		this.grpCate = grpCate;
-		this.grpNum = grpNum;
 		this.grpRegDate = grpRegDate;
 	}
 

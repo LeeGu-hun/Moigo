@@ -8,9 +8,13 @@
 			<input type="text" id="srchTxt" name="srchTxt" /> 
 			<input type="button" id="srch" name="srch" value="검색" />
 		</div>
-		<div id="menus">menus</div>
+		<div id="menus">
+			<div class="">
+			
+			</div>
+		</div>
 		<div id="loginBox">
-			login 
+			login
 			<input type="button" id="register" name="register" onclick="goRegister();" value="회원가입" />
 			<input type="button" id="login" name="login" onclick="showLogin();" value="로그인" />
 		</div>
@@ -22,7 +26,9 @@
 				<input type="text" id="srchTxt" name="srchTxt" /> 
 				<input type="button" id="srch" name="srch" value="검색" />
 			</div>
-			<div id="menus">menus</div>
+			<div id="menus">
+				menus
+			</div>
 			<div id="loginBox">
 				${authInfo.userName }님 반갑습니다.
 				<input type="button" onclick="logout();" value="로그아웃" />
