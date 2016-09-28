@@ -32,12 +32,11 @@ public class controllerUser {
 	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String handleStep1(RegisterCommand rr, Errors errors, Model model, HttpSession session) {
+	public String handleStep1(RegisterCommand registerCommand, Errors errors, Model model, HttpSession session) {
 		System.out.println("11111111111111111111111111111111111111111111111111111111");
-		System.out.println(rr.getId());
+		System.out.println(registerCommand.getId());
 		System.out.println("22222222222222222222222222222222222222222222222222222222");
-		new RegisterCommandValidator().validate(rr, errors);
-		System.out.println(rr);
+		new RegisterCommandValidator().validate(registerCommand, errors);
 		if(errors.hasErrors())
 			return "main";
 		try {
