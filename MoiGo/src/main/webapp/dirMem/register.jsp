@@ -38,10 +38,10 @@
 	<%@ include file="/include/loginBox2.jsp" %>
 	<div id="content">
 		<form action="join" method="post"> 
-			아이디 <input type="text" id="userId" name="userId" style="ime-mode:inactive;"/><br>
-			비밀번호 <input type="password" id="userPw" name="userPw" /><br>
-			비밀번호 확인 <input type="password" id="confirmUserPw" name="confirmUserPw" /><br>
-			이름 <input type="text" id="userName" name="userName" onKeyPress="hangul()" style="ime-mode:active;" /><br>
+			아이디 <input type="text" id="id" name="id" style="ime-mode:inactive;"/><br>
+			비밀번호 <input type="password" id="password" name="password" /><br>
+			비밀번호 확인 <input type="password" id="confirmPassword" name="confirmPassword" /><br>
+			이름 <input type="text" id="name" name="name" onKeyPress="hangul()" style="ime-mode:active;" /><br>
 			닉네임 <input type="text" id="nickName" name="nickName" /><br>
 			나이 <input type="text" id="age" name="age" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /><br>
 			<input type="radio" id="gender" name="gender" value="남">남
