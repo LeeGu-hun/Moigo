@@ -15,13 +15,18 @@ public class UserRegisterService {
 	}
 	public UserRegisterService(){}
 	
-	@Transactional
-	public void regist(RegisterCommand req) {
-		User user = daoUser.selectById(req.getId());
+	public void regist(RegisterCommand registerCommand) {
+		System.out.println("1번");
+		User user = daoUser.selectById(registerCommand.getId());
+		System.out.println("2번");
 		if (user != null) {
-			throw new AlreadyExistingUserException("dup email " + req.getId());
+			System.out.println("3번");
+			throw new AlreadyExistingUserException("dup id " + registerCommand.getId());
 		}
-		User newUser = new User(req.getName(), req.getNickName(), req.getPassword(), req.getGender(), req.getAddress(), req.getPhoneNumber(), new Date(), req.getAge());
+		System.out.println("5번");
+		User newUser = new User(registerCommand.getName(), registerCommand.getNickName(), registerCommand.getPassword(), registerCommand.getGender(), registerCommand.getAddress(), registerCommand.getPhoneNumber(), new Date(), registerCommand.getAge());
+		System.out.println("6번");
 		daoUser.insert(newUser);
+		System.out.println("7번");
 	}
 }

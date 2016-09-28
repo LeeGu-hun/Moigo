@@ -18,16 +18,16 @@ public class RegisterCommandValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		RegisterCommand rc = (RegisterCommand) target;
 		if (rc.getId() == null) {
-			errors.rejectValue("userId", "required");
+			errors.rejectValue("id", "required");
 		} 
-		ValidationUtils.rejectIfEmpty(errors, "userPw", "required");
-		ValidationUtils.rejectIfEmpty(errors, "confirmUserPw", "required");
+		ValidationUtils.rejectIfEmpty(errors, "password", "required");
+		ValidationUtils.rejectIfEmpty(errors, "confirmPassword", "required");
 		if (!rc.getPassword().isEmpty()) {
 			if (!rc.isPasswordEqualToConfirmPassword()) {
-				errors.rejectValue("confirmUserPw", "nomatch");
+				errors.rejectValue("confirmPassword", "nomatch");
 			}
 		}
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "age", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "gender", "required");

@@ -11,6 +11,12 @@
 	</bean>
 	<bean class="controller.controllerGroup" >
 	</bean>
+	<bean class="controller.controllerUser" >
+		<property name="daoUser" ref="daoUser" />
+		<property name="authService" ref="authService" />
+		<property name="userRegisterService" ref="userRegSvc" />
+		<property name="changePasswordService" ref="changePwdSvc" />
+	</bean>
 	
 </beans>
 	

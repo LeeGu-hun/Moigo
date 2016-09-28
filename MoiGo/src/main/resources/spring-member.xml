@@ -31,5 +31,11 @@
 	<bean id="authService" class="login.AuthService">
 		<property name="daoUser" ref="daoUser" />
 	</bean>
+	<bean id="userRegSvc" class="user.UserRegisterService">
+		<constructor-arg ref="daoUser"/>
+	</bean>
+	<bean id="changePwdSvc" class="user.ChangePasswordService">
+		<constructor-arg ref="daoUser"/>
+	</bean>
 </beans>
 	
