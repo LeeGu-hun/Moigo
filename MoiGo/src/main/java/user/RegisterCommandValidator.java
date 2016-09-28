@@ -7,22 +7,22 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-public class RegisterRequestValidator implements Validator {
+public class RegisterCommandValidator implements Validator {
 	private static final String idRegExp = "^[_A-Za-z0-9-\\+]";
 	private Pattern pattern;
 
-	public RegisterRequestValidator() {
+	public RegisterCommandValidator() {
 		pattern = Pattern.compile(idRegExp);
 	}
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return RegisterRequest.class.isAssignableFrom(clazz);
+		return RegisterCommand.class.isAssignableFrom(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		RegisterRequest regReq = (RegisterRequest) target;
+		RegisterCommand regReq = (RegisterCommand) target;
 		if (regReq.getId() == null || regReq.getId().trim().isEmpty()) {
 			errors.rejectValue("userId", "required");
 		} else {

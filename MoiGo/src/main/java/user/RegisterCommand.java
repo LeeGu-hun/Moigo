@@ -1,6 +1,6 @@
 package user;
 
-public class RegisterRequest {
+public class RegisterCommand {
 	private String id;
 	private String password;
 	private String confirmPassword;

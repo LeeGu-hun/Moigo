@@ -16,7 +16,7 @@ public class UserRegisterService {
 	public UserRegisterService(){}
 	
 	@Transactional
-	public void regist(RegisterRequest req) {
+	public void regist(RegisterCommand req) {
 		User user = daoUser.selectById(req.getId());
 		if (user != null) {
 			throw new AlreadyExistingUserException("dup email " + req.getId());

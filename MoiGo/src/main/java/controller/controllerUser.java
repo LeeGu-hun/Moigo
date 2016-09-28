@@ -12,8 +12,8 @@ import dao.DaoUser;
 import exception.AlreadyExistingUserException;
 import login.AuthService;
 import user.ChangePasswordService;
-import user.RegisterRequest;
-import user.RegisterRequestValidator;
+import user.RegisterCommand;
+import user.RegisterCommandValidator;
 import user.UserRegisterService;
 
 @Controller
@@ -32,11 +32,11 @@ public class controllerUser {
 	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String handleStep1(RegisterRequest rr, Errors errors, Model model, HttpSession session) {
+	public String handleStep1(RegisterCommand rr, Errors errors, Model model, HttpSession session) {
 		System.out.println("11111111111111111111111111111111111111111111111111111111");
 		System.out.println(rr.getId());
 		System.out.println("22222222222222222222222222222222222222222222222222222222");
-		new RegisterRequestValidator().validate(rr, errors);
+		new RegisterCommandValidator().validate(rr, errors);
 		System.out.println(rr);
 		if(errors.hasErrors())
 			return "main";
