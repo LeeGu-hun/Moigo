@@ -9,8 +9,12 @@
 			<input type="button" id="srch" name="srch" value="검색" />
 		</div>
 		<div id="menus">
-			<div class="">
-			
+			<div class="menus">
+				<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/myAccount.png"></a>
+				<img src="<%=request.getContextPath()%>/images/event.png">
+				<img src="<%=request.getContextPath()%>/images/chat.png">
+				<img src="<%=request.getContextPath()%>/images/group.png">
+				<img src="<%=request.getContextPath()%>/images/market.png">
 			</div>
 		</div>
 		<div id="loginBox">

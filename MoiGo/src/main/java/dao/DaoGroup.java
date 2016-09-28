@@ -29,6 +29,30 @@ public class DaoGroup {
 			});
 		return results;
 	}
+	
+	public List<Group> getJoinGrp(String userID){
+		List<Group> results = jdbcTemplate.query(
+			"select * from groupjoin grpj, groupInfo grpi where grpj.grpname = grpi.grpname and userID =?", new RowMapper<Group>() {
+				public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"), rs.getString("grpCate"), rs.getTimestamp("grpRegDate"));
+					group.setGrpNum(groupCount(rs.getString("grpName")));
+					return group;
+				}
+			}, userID);
+		return results;
+	}
+	
+//	public List<String> getJoinGrpName(String userID){
+//		List<String> results = jdbcTemplate.query(
+//			"select * from groupInfo where userID=?", new RowMapper<String>() {
+//				public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+//					String grpName = rs.getString("grpName");
+//					return grpName;
+//				}
+//			}, userID);
+//		return results;
+//	}
+	
 	public int groupCount(String grpName){
 		Integer count = jdbcTemplate.queryForObject("select count(*) from groupjoin where grpName=?", Integer.class, grpName);
 		return count;

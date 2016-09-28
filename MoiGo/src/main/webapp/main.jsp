@@ -15,14 +15,14 @@
 	<%@include file="/include/loginBox2.jsp" %>
 	<div id="content">
 		<c:if test="${!empty authInfo }">
-			<c:forEach var="allGrp" items="${grpAll }">
+			<c:forEach var="jGrp" items="${joinGrp }">
 				<div class="mainGroups">
-					${allGrp.grpName } <br>
-					${allGrp.grpLeader } <br>
-					${allGrp.grpOpen } <br>
-					${allGrp.grpCate } <br>
-					${allGrp.grpNum } <br>
-					${allGrp.grpRegDate } <br><br>
+					그룹명 : ${jGrp.grpName } <br>
+					그룹장 : ${jGrp.grpLeader } <br>
+					공개여부 : ${jGrp.grpOpen } <br>
+					카테고리 : ${jGrp.grpCate } <br>
+					그룹인원 : ${jGrp.grpNum } <br>
+					개설일자 : ${jGrp.grpRegDate } <br><br>
 				</div>
 			</c:forEach>
 		</c:if>

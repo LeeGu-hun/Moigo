@@ -30,6 +30,9 @@
 	height: 100%;
 	background-color: #CCCCCC;
 }
+.menus{
+	margin: 30px;
+}
 #loginBox{
 	float: left;
 	width: 25%;
