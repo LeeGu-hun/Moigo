@@ -23,10 +23,18 @@
 		else
 			event.target.value = event.target.value.replace(/[^0-9]/g, "");
 	}
-	function hangul() {
+	function Hangul() {
 		if((event.keyCode < 12592) || (event.keyCode > 12687))
 		event.returnValue = false;
 	}
+    function NotHangul(obj)
+    {
+        //좌우 방향키, 백스페이스, 딜리트, 탭키에 대한 예외
+        if(event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39
+        || event.keyCode == 46 ) return;
+        //obj.value = obj.value.replace(/[\a-zㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
+        obj.value = obj.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
+    }
 </script>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/style.css" />
@@ -38,10 +46,10 @@
 	<%@ include file="/include/loginBox2.jsp" %>
 	<div id="content">
 		<form action="join" method="post"> 
-			아이디 <input type="text" id="id" name="id" style="ime-mode:inactive;"/><br>
+			아이디 <input type="text" id="id" name="id" onkeydown="NotHangul(this);"/><br>
 			비밀번호 <input type="password" id="password" name="password" /><br>
 			비밀번호 확인 <input type="password" id="confirmPassword" name="confirmPassword" /><br>
-			이름 <input type="text" id="name" name="name" onKeyPress="hangul()" style="ime-mode:active;" /><br>
+			이름 <input type="text" id="name" name="name" onKeyPress="Hangul()" style="ime-mode:active;" /><br>
 			닉네임 <input type="text" id="nickName" name="nickName" /><br>
 			나이 <input type="text" id="age" name="age" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /><br>
 			<input type="radio" id="gender" name="gender" value="남">남
