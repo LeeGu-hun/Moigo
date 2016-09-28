@@ -1,5 +1,8 @@
 package dao;
 
+import java.security.Timestamp;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -7,6 +10,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 
 import user.User;
@@ -22,18 +26,45 @@ public class DaoUser {
 		List<User> results = jdbcTemplate.query(
 				"select * from userinfo where userID = ?", 
 				new RowMapper<User>() {
-			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+			public User mapRow(ResultSet rs, int rowNum) 
+					throws SQLException {
 				User user = new User(
-					rs.getString("userName"), rs.getString("userNick"),
-					rs.getString("userPw"), rs.getString("userGender"),
-					rs.getString("userAddr"), rs.getString("userPhone"),
-					rs.getTimestamp("userRegdate"), rs.getInt("userAge"));
+						rs.getString("userName"), rs.getString("userNick"),
+						rs.getString("userPw"), rs.getString("userGender"),
+						rs.getString("userAddr"), rs.getString("userPhone"),
+						rs.getTimestamp("userRegdate"), rs.getInt("userAge"));
 				user.setUserID(rs.getString("userID"));
 				return user;
 			}
 		}, userID);
 
 		return results.isEmpty() ? null : results.get(0);
+	}
+	
+	public void insert(final User user) {
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement pstmt = con.prepareStatement(
+						"insert into USERINFO (userid, username, usernick, userpw, userregdate, userage, usergender, useraddr, userphone) " 
+						+ "values (?, ?, ?, ?, sysdate, ?, ?, ?, ?)");
+				pstmt.setString(1, user.getUserID());
+				pstmt.setString(2, user.getUserName());
+				pstmt.setString(3, user.getUserNick());
+				pstmt.setString(4, user.getUserPw());
+				pstmt.setInt(5, user.getUserAge());
+				pstmt.setString(6, user.getUserGender());
+				pstmt.setString(7, user.getUserAddr());
+				pstmt.setString(8, user.getUserPhone());
+				return pstmt;
+			}
+		});
+	}
+	
+	public void update(User user) {
+		jdbcTemplate.update("update USERINFO set username = ?, usernick = ?, userpw = ?, userage = ?, usergender = ?, useraddr = ?, userphone = ? "
+				+ "where userid = ?", 
+				user.getUserName(), user.getUserNick(), user.getUserPw(), user.getUserAge(), 
+				user.getUserGender(), user.getUserAddr(), user.getUserPhone(), user.getUserID());
 	}
 /*
 	public Member selectByEmail(String email) {
@@ -49,7 +80,6 @@ public class DaoUser {
 				return member;
 			}
 		}, email);
-
 		return results.isEmpty() ? null : results.get(0);
 	}
 	public List<Member> selectByRegdate(Date from, Date to) {
@@ -68,32 +98,12 @@ public class DaoUser {
 		}, from, to);
 		return results;
 	}
-
-	public void insert(final Member member) {
-		KeyHolder keyHolder = new GeneratedKeyHolder();
-		jdbcTemplate.update(new PreparedStatementCreator() {
-			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement pstmt = con.prepareStatement(
-						"insert into MEMBER (EMAIL, PASSWORD, NAME, REGDATE) " + "values (?, ?, ?, ?)",
-						new String[] { "ID" });
-				pstmt.setString(1, member.getEmail());
-				pstmt.setString(2, member.getPassword());
-				pstmt.setString(3, member.getName());
-				pstmt.setTimestamp(4, new Timestamp(member.getRegisterDate().getTime()));
-				return pstmt;
-			}
-		}, keyHolder);
-		Number keyValue = keyHolder.getKey();
-		member.setId(keyValue.longValue());
-	}
-
 	public void update(Member member) {
 		jdbcTemplate.update("update MEMBER set NAME = ?, PASSWORD = ? "
 				+ "where EMAIL = ?", 
 				member.getName(),
 				member.getPassword(), member.getEmail());
 	}
-
 	public List<Member> selectAll() {
 		System.out.print("----- selectAll ");
 		int total = count();
@@ -108,7 +118,6 @@ public class DaoUser {
 		});
 		return results;
 	}
-
 	public int count() {
 		Integer count = jdbcTemplate.queryForObject("select count(*) from MEMBER", Integer.class);
 		return count;

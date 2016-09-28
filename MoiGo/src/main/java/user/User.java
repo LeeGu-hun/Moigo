@@ -23,6 +23,20 @@ public class User {
 		this.userAge = userAge;
 	}
 	
+	public User(String userID, String userName, String userNick, String userPw, String userGender, String userAddr,
+			String userPhone, Date userRegdate, int userAge) {
+		super();
+		this.userID = userID;
+		this.userName = userName;
+		this.userNick = userNick;
+		this.userPw = userPw;
+		this.userGender = userGender;
+		this.userAddr = userAddr;
+		this.userPhone = userPhone;
+		this.userRegdate = userRegdate;
+		this.userAge = userAge;
+	}
+	
 	public String getUserID() {
 		return userID;
 	}
