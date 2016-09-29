@@ -24,7 +24,7 @@ public class UserRegisterService {
 			throw new AlreadyExistingUserException("dup id " + registerCommand.getId());
 		}
 		System.out.println("5번");
-		User newUser = new User(registerCommand.getName(), registerCommand.getNickName(), registerCommand.getPassword(), registerCommand.getGender(), registerCommand.getAddress(), registerCommand.getPhoneNumber(), new Date(), registerCommand.getAge());
+		User newUser = new User(registerCommand.getId(), registerCommand.getName(), registerCommand.getNickName(), registerCommand.getPassword(), registerCommand.getGender(), registerCommand.getAddress(), registerCommand.getPhoneNumber(), new Date(), registerCommand.getAge());
 		System.out.println("6번");
 		daoUser.insert(newUser);
 		System.out.println("7번");
