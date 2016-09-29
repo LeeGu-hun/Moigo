@@ -53,10 +53,44 @@
 #content{
 	float: left;
 	width: 100%;
-	height: auto;
+	height: calc(100% - 100px);
 	min-height: 850px;
 	min-width: 1000px;
 	background-color: skyblue;
+}
+.mainGroups{
+	float: left;
+	width: 31%;
+	height: 20%;
+	margin: 1%;
+	min-height: 125px;
+	min-width: 250px;
+	background-color: white;
+}
+#demoGrp{
+	float: left;
+	display: inline-block;
+	width: 70%;
+	height: 100%;
+}
+#recomGrp{
+	display: inline-block;
+	width: 100%;
+	height: 60%;
+	background-color: #555555;
+}
+#newGrp{
+	display: inline-block;
+	width: 100%;
+	height: 40%;
+	background-color: white;
+}
+#demoMkt{
+	float: left;
+	display: inline-block;
+	width: 30%;
+	height: 100%;
+	background-color: yellow;
 }
 /* ~ content */
 #loginBox2{
@@ -67,13 +101,4 @@
 	height: 100px;
 	background-color: #AAAAAA;
 	display: none;
-}
-.mainGroups{
-	float: left;
-	width: 31%;
-	height: 20%;
-	margin: 1%;
-	min-height: 125px;
-	min-width: 250px;
-	background-color: white;
 }

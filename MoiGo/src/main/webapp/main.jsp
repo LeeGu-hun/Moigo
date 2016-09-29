@@ -27,7 +27,27 @@
 			</c:forEach>
 		</c:if>
 		<c:if test="${empty authInfo }">
-			비로그인
+			<div id="demoGrp">
+				<div id="recomGrp">
+					추천그룹<br>
+					<c:forEach var="rGrp" items="${recomGrp }">
+						그룹명 : <a href="<c:url value='/group/${rGrp.grpName }' />">${rGrp.grpName }</a><br>
+						그룹장 : ${rGrp.grpLeader } <br>
+						카테고리 : ${rGrp.grpCate } <br>
+					</c:forEach>
+				</div>
+				<div id="newGrp">
+				신규그룹<br>
+					<c:forEach var="nGrp" items="${newGrp }">
+						그룹명 : ${nGrp.grpName } <br>
+						그룹장 : ${nGrp.grpLeader } <br>
+						카테고리 : ${nGrp.grpCate } <br>
+					</c:forEach>
+				</div>
+			</div>
+			<div id="demoMkt">
+				추천마켓
+			</div>
 		</c:if>
 	</div>
 </body>

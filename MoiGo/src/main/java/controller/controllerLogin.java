@@ -34,6 +34,11 @@ public class controllerLogin {
 			AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 			List<Group> joinGrp = daoGroup.getJoinGrp(authInfo.getUserID());
 			request.setAttribute("joinGrp", joinGrp);
+		} else {
+			List<Group> recomGrp = daoGroup.getAllOpen();
+			List<Group> newGrp = daoGroup.getNewGrp();
+			request.setAttribute("recomGrp", recomGrp);
+			request.setAttribute("newGrp", newGrp);
 		}
 		return "main";
 	}
@@ -46,10 +51,6 @@ public class controllerLogin {
 	@RequestMapping("/loginPage") /* ? */
 	public String login(){
 		return "dirMem/login";
-	}
-	@RequestMapping("/register") /* 회원가입 */
-	public String register(){
-		return "dirMem/register";
 	}
 	@RequestMapping(value="/login", method=RequestMethod.POST) /* 로그인 */
 	public String form2(LoginCommand loginCommand, Errors errors, HttpSession session, HttpServletRequest request){
