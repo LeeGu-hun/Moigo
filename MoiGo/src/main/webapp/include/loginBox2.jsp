@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div id="loginBox2">
-	<form action="login" method="post">
+	<form action="/moigo/login" method="post">
 		loginBox <br>
 		ID<input type="text" id="userID" name="userID" /> <br> 
 		PW<input type="password" id="userPw" name="userPw" />

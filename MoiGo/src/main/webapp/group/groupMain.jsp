@@ -11,10 +11,10 @@
 <title>Moigo</title>
 </head>
 <body>
-	<%@include file="/include/header.jsp" %>
+	<%@include file="/include/header.jsp"%>
 	<%@include file="/include/loginBox2.jsp" %>
 	<div id="content">
-		검색
+		<c:out value="${grpInfo.grpName }" />
 	</div>
 </body>
 </html>

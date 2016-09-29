@@ -39,7 +39,7 @@ public class controllerUser {
 		this.authService = authService;
 	}
 	
-	@RequestMapping("/register") /* 회원가입 */
+	@RequestMapping(value = "/register") /* 회원가입 */
 	public String register(){
 		return "dirMem/register";
 	}
@@ -48,12 +48,12 @@ public class controllerUser {
 	public String handleStep1(RegisterCommand registerCommand, Errors errors, Model model, HttpSession session) {
 		new RegisterCommandValidator().validate(registerCommand, errors);
 		if(errors.hasErrors())
-			return "main";
+			return "redirect:/";
 		try {
 			userRegisterService.regist(registerCommand);
-			return "main";
+			return "redirect:/";
 		} catch (AlreadyExistingUserException ex) {
-			return "main";
+			return "redirect:/";
 		}
 	}
 }

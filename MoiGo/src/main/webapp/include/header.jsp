@@ -2,7 +2,9 @@
 	pageEncoding="UTF-8"%>
 <div id="header">
 	<c:if test="${empty authInfo }">
-		<div id="logo">logo</div>
+		<div id="logo">
+			<a href="<c:url value='/' />">logo</a>
+		</div>
 		<div id="search">
 			search 
 			<input type="text" id="srchTxt" name="srchTxt" /> 
@@ -13,7 +15,7 @@
 				<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/myAccount.png"></a>
 				<img src="<%=request.getContextPath()%>/images/event.png">
 				<img src="<%=request.getContextPath()%>/images/chat.png">
-				<img src="<%=request.getContextPath()%>/images/group.png">
+				<a href="<c:url value='/group' />"><img src="<%=request.getContextPath()%>/images/group.png"></a>
 				<img src="<%=request.getContextPath()%>/images/market.png">
 			</div>
 		</div>
@@ -24,14 +26,22 @@
 		</div>
 	</c:if>
 	<c:if test="${!empty authInfo }">
-		<div id="logo">logo</div>
+		<div id="logo">
+			<a href="<c:url value='/' />">logo</a>
+		</div>
 			<div id="search">
 				search 
 				<input type="text" id="srchTxt" name="srchTxt" /> 
 				<input type="button" id="srch" name="srch" value="검색" />
 			</div>
 			<div id="menus">
-				menus
+				<div class="menus">
+					<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/myAccount.png"></a>
+					<img src="<%=request.getContextPath()%>/images/event.png">
+					<img src="<%=request.getContextPath()%>/images/chat.png">
+					<a href="<c:url value='/group' />"><img src="<%=request.getContextPath()%>/images/group.png"></a>
+					<img src="<%=request.getContextPath()%>/images/market.png">
+				</div>
 			</div>
 			<div id="loginBox">
 				${authInfo.userName }님 반갑습니다.

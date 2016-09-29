@@ -10,6 +10,7 @@
 		<property name="daoGroup" ref="daoGroup" />		
 	</bean>
 	<bean class="controller.controllerGroup" >
+		<property name="daoGroup" ref="daoGroup" />
 	</bean>
 	<bean class="controller.controllerUser" >
 		<property name="daoUser" ref="daoUser" />

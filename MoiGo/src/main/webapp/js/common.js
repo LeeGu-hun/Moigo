@@ -1,12 +1,9 @@
 function goRegister() {
-	location.href = 'register';
+	location.href = '/moigo/register';
 }
 function logout(){
-	location.href = 'logout';
+	location.href = '/moigo/logout';
 }
 function showLogin(){
 	$('#loginBox2').toggle();
-}
-function login(){
-	location.href = 'login';
 }

@@ -17,7 +17,7 @@
 		<c:if test="${!empty authInfo }">
 			<c:forEach var="jGrp" items="${joinGrp }">
 				<div class="mainGroups">
-					그룹명 : ${jGrp.grpName } <br>
+					그룹명 : <a href="<c:url value='/group/${jGrp.grpName }' />">${jGrp.grpName }</a> <br>
 					그룹장 : ${jGrp.grpLeader } <br>
 					공개여부 : ${jGrp.grpOpen } <br>
 					카테고리 : ${jGrp.grpCate } <br>
@@ -39,7 +39,7 @@
 				<div id="newGrp">
 				신규그룹<br>
 					<c:forEach var="nGrp" items="${newGrp }">
-						그룹명 : ${nGrp.grpName } <br>
+						그룹명 : <a href="<c:url value='/group/${nGrp.grpName }' />">${nGrp.grpName }</a> <br>
 						그룹장 : ${nGrp.grpLeader } <br>
 						카테고리 : ${nGrp.grpCate } <br>
 					</c:forEach>
