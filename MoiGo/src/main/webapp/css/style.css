@@ -14,30 +14,69 @@
 }
 #logo{
 	float: left;
-	width: 5%;
+	width: 15%;
 	height: 100%;
-	background-color: #EEEEEE;
+	background-color: #2b2b2b;
+	font-family: 'Baloo Da';
+	font-size: 50px;
+	text-align: center;
+}
+#logo a {
+	text-decoration: none;
+	color: white;
+}
+#M {
+	font-size: 60px;
+	color: #9b0000;
 }
 #search{
 	float: left;
 	width: 20%;
 	height: 100%;
-	background: #DDDDDD;
+	color: white;
+	background: #2b2b2b;
+	font-family: Comfortaa;
+	line-height: 100px;
+	
 }
 #menus{
 	float: left;
-	width: 50%;
+	width: 45%;
 	height: 100%;
-	background-color: #CCCCCC;
+	background-color: #2b2b2b;
 }
 .menus{
 	margin: 30px;
+	padding-right: 30px;
 }
 #loginBox{
 	float: left;
-	width: 25%;
+	width: 20%;
 	height: 100%;
-	background: #BBBBBB;
+	background: #2b2b2b;
+	color: white;
+	font-family: Comfortaa;
+	text-align: center;
+	line-height: 100px;
+}
+.btn-style{
+	border : solid 1px #e6e6e6;
+	border-radius : 3px;
+	moz-border-radius : 3px;
+	-webkit-box-shadow : 0px 0px 2px rgba(0,0,0,1.0);
+	-moz-box-shadow : 0px 0px 2px rgba(0,0,0,1.0);
+	box-shadow : 0px 0px 2px rgba(0,0,0,1.0);
+	font-size : 20px;
+	color : #9b0000;
+	padding : 1px 17px;
+	background : #ffffff;
+	background : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(22%,#f1f1f1), color-stop(100%,#f6f6f6));
+	background : -moz-linear-gradient(top, #ffffff 0%, #f1f1f1 22%, #f6f6f6 100%);
+	background : -webkit-linear-gradient(top, #ffffff 0%, #f1f1f1 22%, #f6f6f6 100%);
+	background : -o-linear-gradient(top, #ffffff 0%, #f1f1f1 22%, #f6f6f6 100%);
+	background : -ms-linear-gradient(top, #ffffff 0%, #f1f1f1 22%, #f6f6f6 100%);
+	background : linear-gradient(top, #ffffff 0%, #f1f1f1 22%, #f6f6f6 100%);
+	filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 );
 }
 /* ~ header */
 /* submenu ~ */

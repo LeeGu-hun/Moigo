@@ -1,0 +1,79 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: #9b0000;
+	font-family: 
+}
+
+select{
+	font-size: 15px;
+	width: 200px;
+	font-family: 
+}
+
+#naver{
+	color: #9b0000;
+	background-color: white;
+}
+
+#daum{
+	color: #9b0000;
+	background-color: white;
+}
+
+#nate{
+	color: #9b0000;
+	background-color: white;
+}
+
+#google{
+	color: #9b0000;
+	background-color: white;
+}
+
+#my_reg_form{
+	background-color: #353535; 
+	width: 605px;
+	padding: 20px;
+	color: white;
+}
+
+#my_reg_form #mytable{
+	background-color: #ffffff;
+	padding: 20px;
+	border: 0px;
+	width: 600px;
+	color: black;
+}
+
+#my_reg_form #mytable #left{
+	text-align: right;
+}
+
+#my_reg_form #watching, #my_reg_form #reading, #my_reg_form #playing, #my_reg_form #traveling{
+	text-align: center;
+}
+
+#my_reg_form #user_id{
+	width: 360px;	
+}
+
+#my_reg_form #confirmPassword{
+	width: 360px;	
+}
+
+#my_reg_form #password{
+	width: 360px;	
+}
+
+#my_reg_form #name{
+	width: 360px;	
+}
+
+#my_reg_form #comment{
+	overflow: hidden;
+}
+
+#my_reg_form #register, #my_reg_form #clear{
+	width: 360px;	
+}

@@ -4,8 +4,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
+<link href="https://fonts.googleapis.com/css?family=Baloo+Da" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 <script src="//code.jquery.com/jquery-1.12.2.min.js"></script>
-<script src="<%=request.getContextPath()%>/js/common.js" ></script>
+<script src="<%=request.getContextPath()%>/js/common.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/style.css" />
 <script>
 	function onlyNumber(event){
 		event = event || window.event;
