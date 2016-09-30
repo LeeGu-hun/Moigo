@@ -42,9 +42,13 @@
 			<div id="menus">
 				<div class="menus">
 					<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/myAccount.png"></a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
 					<img src="<%=request.getContextPath()%>/images/event.png">
+					&nbsp;&nbsp;&nbsp;&nbsp;
 					<img src="<%=request.getContextPath()%>/images/chat.png">
+					&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="<c:url value='/group' />"><img src="<%=request.getContextPath()%>/images/group.png"></a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
 					<img src="<%=request.getContextPath()%>/images/market.png">
 				</div>
 			</div>
