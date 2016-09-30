@@ -24,7 +24,8 @@
 					공개여부 : ${jGrp.grpOpen } <br>
 					카테고리 : ${jGrp.grpCate } <br>
 					그룹인원 : ${jGrp.grpNum } <br>
-					개설일자 : ${jGrp.grpRegDate } <br><br>
+					개설일자 : ${jGrp.grpRegDate } <br>
+					그룹소개 : ${jGrp.grpIntro }<br><br>
 				</div>
 			</c:forEach>
 		</c:if>
@@ -36,6 +37,7 @@
 						그룹명 : <a href="<c:url value='/group/${rGrp.grpName }' />">${rGrp.grpName }</a><br>
 						그룹장 : ${rGrp.grpLeader } <br>
 						카테고리 : ${rGrp.grpCate } <br>
+						그룹소개 : ${rGrp.grpIntro }<br><br>
 					</c:forEach>
 				</div>
 				<div id="newGrp">
@@ -44,6 +46,7 @@
 						그룹명 : <a href="<c:url value='/group/${nGrp.grpName }' />">${nGrp.grpName }</a> <br>
 						그룹장 : ${nGrp.grpLeader } <br>
 						카테고리 : ${nGrp.grpCate } <br>
+						그룹소개 : ${nGrp.grpIntro }<br><br>
 					</c:forEach>
 				</div>
 			</div>

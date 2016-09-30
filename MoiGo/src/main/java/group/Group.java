@@ -3,17 +3,26 @@ package group;
 import java.util.Date;
 
 public class Group {
-	String grpName, grpLeader, grpOpen, grpCate; 
+	String grpName, grpLeader, grpOpen, grpCate, grpIntro; 
 	int grpNum;
 	Date grpRegDate;
 	
-	public Group(String grpName, String grpLeader, String grpOpen, String grpCate, Date grpRegDate) {
+	public Group(String grpName, String grpLeader, String grpOpen, String grpCate, String grpIntro, Date grpRegDate) {
 		super();
 		this.grpName = grpName;
 		this.grpLeader = grpLeader;
 		this.grpOpen = grpOpen;
 		this.grpCate = grpCate;
 		this.grpRegDate = grpRegDate;
+		this.grpIntro = grpIntro;
+	}
+
+	public String getGrpIntro() {
+		return grpIntro;
+	}
+
+	public void setGrpIntro(String grpIntro) {
+		this.grpIntro = grpIntro;
 	}
 
 	public String getGrpName() {

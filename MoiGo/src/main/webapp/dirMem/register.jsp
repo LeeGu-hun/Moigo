@@ -49,18 +49,86 @@
 	<%@ include file="/include/header.jsp"%>
 	<%@ include file="/include/loginBox2.jsp" %>
 	<div id="content">
-		<form action="join" method="post"> 
-			아이디 <input type="text" id="id" name="id" onkeydown="NotHangul(this);"/><br>
-			비밀번호 <input type="password" id="password" name="password" /><br>
-			비밀번호 확인 <input type="password" id="confirmPassword" name="confirmPassword" /><br>
-			이름 <input type="text" id="name" name="name" onKeyPress="Hangul()" style="ime-mode:active;" /><br>
-			닉네임 <input type="text" id="nickName" name="nickName" /><br>
-			나이 <input type="text" id="age" name="age" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /><br>
-			<input type="radio" id="gender" name="gender" value="남">남
-			<input type="radio" id="gender" name="gender" value="여">여<br>
-			주소 <input type="text" id="address" name="address" style="ime-mode:active;" /><br>
-			휴대전화번호 <input type="text" id="phoneNumber" name="phoneNumber" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /><br>
-			<input type="submit" value="가입하기" />			
+	
+		<form action="join" method="post" id="my_reg_form"> 
+		<br>
+		<center><h2>Registration Form</h2></center>
+		
+		<table id="mytable">
+		<fieldset>
+		<legend>회 원 가 입</legend>
+		<tr>
+		<td id="left"> User Id <font color="red"><b>*<b></font></td>
+		<td><input type="text" id="user_id" name="user_id" onkeydown="NotHangul(this);"/></td>
+		</tr>
+		
+		<tr>
+		<td id="left"> E-Mail <font color="red"><b>*<b></font></td>
+		<td><input type="text" id="email" name="email" onkeydown="NotHangul(this);"/>@
+		<select name=email_address">
+		<option id="naver" value="naver.com"> naver.com</option>
+		<option id="daum" value="daum.net"> daum.net</option>
+		<option id="nate" value="nate.com"> nate.com</option>
+		<option id="google" value="google.co.kr"> google.co.kr</option>
+		</select>
+		</tr>
+		
+		<tr>
+		<td id="left"> Password <font color="red"><b>*<b></font></td>
+		<td><input type="password" id="password" name="password" /></td>
+		</tr>
+		<tr>
+		<td id="left"> confirmPassword <font color="red"><b>*<b></font></td>
+		<td><input type="password" id="confirmPassword" name="confirmPassword" /></td>
+		<tr><td colspan="2"><hr width="100%" /></td></tr>
+		</tr>
+		
+		<tr>
+		<td id="left"> Name <font color="red"><b>*<b></font></td>
+		<td><input type="text" id="name" name="name" onKeyPress="Hangul()" style="ime-mode:active;" /></td>
+		</tr>
+		
+		<tr>
+		<td id="left"> NinkName <font color="red"><b>*<b></font></td>
+		<td><input type="text" id="name" name="name" onKeyPress="Hangul()" style="ime-mode:active;" /></td>
+		</tr>
+		
+		
+		<tr>
+		<td id="left"> NinkName <font color="red"><b>*<b></font></td>
+		<td><input type="text" id="nickName" name="nickName" /></td>
+		</tr>
+		
+		<tr>
+		<td id="left"> Age <font color="red"><b>*<b></font></td>
+		<td><input type="text" id="age" name="age" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /></td>
+		</tr>
+		
+		<tr>
+		<td id="left"> Gender <font color="red"><b>*<b></font></td>
+		<td>
+		<input type="radio" id="gender" name="gender" value="남">Male
+		<input type="radio" id="gender" name="gender" value="여">Female</td>
+		</tr>
+		<tr><td colspan="2"><hr width="100%" /></td></tr>
+		
+		<tr>
+		<td id="left" valign="top"> Gender <font color="red"><b>*<b></font></td>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		남
+		여<br>
+		주소 <input type="text" id="address" name="address" style="ime-mode:active;" /><br>
+		휴대전화번호 <input type="text" id="phoneNumber" name="phoneNumber" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /><br>
+		<input type="submit" value="가입하기" />	
+		</fieldset>		
 	</form>
 	</div>
 </body>

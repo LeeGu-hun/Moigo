@@ -22,7 +22,7 @@ public class DaoGroup {
 		List<Group> results = jdbcTemplate.query(
 			"select * from groupInfo where grpOpen='Y'", new RowMapper<Group>() {
 				public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
-					Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"), rs.getString("grpCate"), rs.getTimestamp("grpRegDate"));
+					Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"), rs.getString("grpCate"), rs.getString("grpIntro"), rs.getTimestamp("grpRegDate"));
 					group.setGrpNum(groupCount(rs.getString("grpName")));
 					return group;
 				}
@@ -34,7 +34,7 @@ public class DaoGroup {
 		List<Group> results = jdbcTemplate.query(
 			"select * from groupInfo", new RowMapper<Group>() {
 				public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
-					Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"), rs.getString("grpCate"), rs.getTimestamp("grpRegDate"));
+					Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"), rs.getString("grpCate"), rs.getString("grpIntro"), rs.getTimestamp("grpRegDate"));
 					group.setGrpNum(groupCount(rs.getString("grpName")));
 					return group;
 				}
@@ -46,7 +46,7 @@ public class DaoGroup {
 		Group results = jdbcTemplate.queryForObject(
 			"select * from groupInfo where grpName = ?", new RowMapper<Group>() {
 				public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
-					Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"), rs.getString("grpCate"), rs.getTimestamp("grpRegDate"));
+					Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"), rs.getString("grpCate"), rs.getString("grpIntro"), rs.getTimestamp("grpRegDate"));
 					group.setGrpNum(groupCount(rs.getString("grpName")));
 					return group;
 				}
@@ -58,7 +58,7 @@ public class DaoGroup {
 		List<Group> results = jdbcTemplate.query(
 			"select * from groupInfo where grpOpen='Y' and grpregdate>=sysdate-7", new RowMapper<Group>() {
 				public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
-					Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"), rs.getString("grpCate"), rs.getTimestamp("grpRegDate"));
+					Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"), rs.getString("grpCate"), rs.getString("grpIntro"), rs.getTimestamp("grpRegDate"));
 					group.setGrpNum(groupCount(rs.getString("grpName")));
 					return group;
 				}
@@ -69,7 +69,7 @@ public class DaoGroup {
 		List<Group> results = jdbcTemplate.query(
 			"select * from groupjoin grpj, groupInfo grpi where grpj.grpname = grpi.grpname and userID =?", new RowMapper<Group>() {
 				public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
-					Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"), rs.getString("grpCate"), rs.getTimestamp("grpRegDate"));
+					Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"), rs.getString("grpCate"), rs.getString("grpIntro"), rs.getTimestamp("grpRegDate"));
 					group.setGrpNum(groupCount(rs.getString("grpName")));
 					return group;
 				}
