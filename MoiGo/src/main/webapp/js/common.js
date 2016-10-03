@@ -7,3 +7,6 @@ function logout(){
 function showLogin(){
 	$('#loginBox2').toggle();
 }
+function addGroup() {
+	location.href = 'addgroup';
+}

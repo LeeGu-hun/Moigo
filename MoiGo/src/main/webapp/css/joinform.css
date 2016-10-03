@@ -1,15 +1,31 @@
 @CHARSET "UTF-8";
 
 body {
-	background-color: #9b0000;
-	font-family: 
+	background-color: white;
+
 }
 
 select{
 	font-size: 15px;
-	width: 200px;
-	font-family: 
+	width: 200px; 
 }
+
+~회원가입폼 글자 스타일~
+
+#reg2 {
+	color: #c0c0c0;
+	font-family: 'Nanum Gothic', serif;
+	font-weight: bold;
+}
+
+#reg2 {
+	color: #c0c0c0;
+	font-family: 'Nanum Pen Script', serif;
+	
+	font-size: 35px;
+}
+
+~회원가입폼 글자 스타일~
 
 #naver{
 	color: #9b0000;
@@ -32,8 +48,10 @@ select{
 }
 
 #my_reg_form{
+	margin-top: 10px;
 	background-color: #353535; 
 	width: 605px;
+	height: auto;
 	padding: 20px;
 	color: white;
 }
@@ -44,30 +62,43 @@ select{
 	border: 0px;
 	width: 600px;
 	color: black;
+	table-layout: fixed;
 }
 
 #my_reg_form #mytable #left{
 	text-align: right;
+	width: 90px;	
 }
 
-#my_reg_form #watching, #my_reg_form #reading, #my_reg_form #playing, #my_reg_form #traveling{
-	text-align: center;
-}
 
-#my_reg_form #user_id{
-	width: 360px;	
+#my_reg_form #id{
+	width: 150px;	
 }
 
 #my_reg_form #confirmPassword{
-	width: 360px;	
+	width: 150px;	
 }
 
 #my_reg_form #password{
-	width: 360px;	
+	width: 150px;		
 }
 
+#my_reg_form #password{
+	width: 150px;		
+}
+
+#my_reg_form #age{
+	width: 60px;		
+}
+
+
+
 #my_reg_form #name{
-	width: 360px;	
+	width: 90px;		
+}
+
+#my_reg_form #nickName{
+	width: 90px;		
 }
 
 #my_reg_form #comment{

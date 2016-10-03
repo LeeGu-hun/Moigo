@@ -17,6 +17,7 @@
 	<%@include file="/include/loginBox2.jsp" %>
 	<div id="content">
 		<c:if test="${!empty authInfo }">
+			<input type="button" onclick="addGroup();" value="모임개설" /> <br>
 			<c:forEach var="jGrp" items="${joinGrp }">
 				<div class="mainGroups">
 					그룹명 : <a href="<c:url value='/group/${jGrp.grpName }' />">${jGrp.grpName }</a> <br>

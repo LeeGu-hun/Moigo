@@ -6,10 +6,12 @@
 <head>
 <link href="https://fonts.googleapis.com/css?family=Baloo+Da" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+<link href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" rel="stylesheet">
+<link href="http://fonts.googleapis.com/earlyaccess/nanumpenscript.css" rel="stylesheet">
 <script src="//code.jquery.com/jquery-1.12.2.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/common.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/style.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/joinform.css" />
 <script>
 	function onlyNumber(event){
 		event = event || window.event;
@@ -40,31 +42,43 @@
         obj.value = obj.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
     }
 </script>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Moigo</title>
 </head>
 <body>
-	<%@ include file="/include/header.jsp"%>
-	<%@ include file="/include/loginBox2.jsp" %>
+<%@ include file="/include/header.jsp"%>
+<%@ include file="/include/loginBox2.jsp" %>
+<center>
 	<div id="content">
 	
 		<form action="join" method="post" id="my_reg_form"> 
 		<br>
-		<center><h2>Registration Form</h2></center>
-		
 		<table id="mytable">
 		<fieldset>
-		<legend>회 원 가 입</legend>
+		<legend><h1 id="reg1">회 원 가 입</h1></legend>
+		<span id="reg2">Moigo에 오신것을 환영합니다. <br>
+		어떤 모임에 흥미가 있으신가요?</span>
+		</fieldset>		
 		<tr>
-		<td id="left"> User Id <font color="red"><b>*<b></font></td>
-		<td><input type="text" id="user_id" name="user_id" onkeydown="NotHangul(this);"/></td>
+		<td id="left" >아이디 <font color="red"><b>*</b></font></td>
+		<td><input type="text" id="id" name="id" onkeydown="NotHangul(this);"/></td>
+		</tr>
+		
+		
+		
+		<tr>
+		<td id="left" >비밀번호 <font color="red"><b>*</b></font></td>
+		<td><input type="password"  id="password" name="password" /></td>
+		</tr>
+		<tr>
+		<td id="left"> 비밀번호<br>확인 <font color="red"><b>*</b></font></td>
+		<td><input type="password"  id="confirmPassword" name="confirmPassword" /></td>
+		<tr><td colspan="2"><hr width="100%" /></td></tr>
 		</tr>
 		
 		<tr>
-		<td id="left"> E-Mail <font color="red"><b>*<b></font></td>
-		<td><input type="text" id="email" name="email" onkeydown="NotHangul(this);"/>@
+		<td id="left"> E-Mail <font color="red"><b>*</b></font></td>
+		<td><input type="text"  id="email" name="email" onkeydown="NotHangul(this);"/>@
 		<select name=email_address">
 		<option id="naver" value="naver.com"> naver.com</option>
 		<option id="daum" value="daum.net"> daum.net</option>
@@ -74,62 +88,94 @@
 		</tr>
 		
 		<tr>
-		<td id="left"> Password <font color="red"><b>*<b></font></td>
-		<td><input type="password" id="password" name="password" /></td>
-		</tr>
-		<tr>
-		<td id="left"> confirmPassword <font color="red"><b>*<b></font></td>
-		<td><input type="password" id="confirmPassword" name="confirmPassword" /></td>
-		<tr><td colspan="2"><hr width="100%" /></td></tr>
+		<td id="left"> 이름 <font color="red"><b>*</b></font></td>
+		<td><input type="text"  id="name" name="name" onKeyPress="Hangul()" style="ime-mode:active;" /></td>
 		</tr>
 		
 		<tr>
-		<td id="left"> Name <font color="red"><b>*<b></font></td>
-		<td><input type="text" id="name" name="name" onKeyPress="Hangul()" style="ime-mode:active;" /></td>
-		</tr>
-		
-		<tr>
-		<td id="left"> NinkName <font color="red"><b>*<b></font></td>
-		<td><input type="text" id="name" name="name" onKeyPress="Hangul()" style="ime-mode:active;" /></td>
+		<td id="left"> 닉네임 <font color="red"><b>*</b></font></td>
+		<td><input type="text" id="nickName" name="nickName" onKeyPress="Hangul()" style="ime-mode:active;" /></td>
 		</tr>
 		
 		
 		<tr>
-		<td id="left"> NinkName <font color="red"><b>*<b></font></td>
-		<td><input type="text" id="nickName" name="nickName" /></td>
+		<td id="left"> 나이 <font color="red"><b>*</b></font></td>
+		<td><input type="text"  id="age" name="age" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /></td>
 		</tr>
 		
 		<tr>
-		<td id="left"> Age <font color="red"><b>*<b></font></td>
-		<td><input type="text" id="age" name="age" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /></td>
-		</tr>
-		
-		<tr>
-		<td id="left"> Gender <font color="red"><b>*<b></font></td>
+		<td id="left"> 성별 <font color="red"><b>*</b></font></td>
 		<td>
 		<input type="radio" id="gender" name="gender" value="남">Male
 		<input type="radio" id="gender" name="gender" value="여">Female</td>
 		</tr>
 		<tr><td colspan="2"><hr width="100%" /></td></tr>
 		
+		
 		<tr>
-		<td id="left" valign="top"> Gender <font color="red"><b>*<b></font></td>
+		<td id="left"> 주소 <font color="red"><b>*</b></font></td>
+		
+		<td><input type="text" class="regForm" id="address" name="address" style="ime-mode:active;" /><br>
+		</td>
+		</tr>
 		
 		
+		<tr>
+		<td id="left"> 휴대폰번호 <font color="red"><b>*</b></font></td>
+		
+		<td><input type="text" id="phoneNumber" name="phoneNumber" 
+		onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /></td><br>
+		</tr>
 		
 		
+		<tr>
+		<td id="left" valign="top"> Hobby<font color="red"><b>*</b></font> </td>
+		<td id="right">
+		<table width="100%">
+		<tr>
+		<td>
+		<input type="checkbox" name="Like" value="반려동물"/> 반려동물 
+		</td>
+		<td>
+		<input type="checkbox" name="Like" value="맛집"/> 맛집 
+		</td>
+		<td>
+		<input type="checkbox" name="Like" value="운동"/> 운동 
+		</td>
+		<td>
+		<input type="checkbox" name="Like" value="영화"/> 영화 
+		</td>
+		<td>
+		<input type="checkbox" name="Like" value="여행"/> 여행 
+		</td>
+		</tr>
+		</table>
+		<tr><td colspan="2"><hr width="100%" /></td></tr>
+		<tr>
+			<td valign="top" id="left">자기소개<font color="red"><b>*<b></font>
+			</td>
+			
+			<td><form method="post" action="moigo">
+			<textarea id="comment" name="comment" rows="10" cols="50"></textarea>
+			<br><br>
+			<input type="submit" id="register" value="Register"/>
+			<input type="reset" id="clear" value="Clear" />
+			<tr><td colspan="2"><hr width="100%" /></td></tr>
+			
+			<tr>
+			<td colspan="2" align="center">
+			<font color="red"><b>*</b></font>
+			<font align="center" color="#808080">
+			(Required) - Please fill up</font>
+			</td>
+			</tr>
+			</form>
+		</table>
+	
+		<!-- <input type="submit" value="가입하기" />	 -->
 		
-		
-		
-		
-		
-		남
-		여<br>
-		주소 <input type="text" id="address" name="address" style="ime-mode:active;" /><br>
-		휴대전화번호 <input type="text" id="phoneNumber" name="phoneNumber" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /><br>
-		<input type="submit" value="가입하기" />	
-		</fieldset>		
 	</form>
+		
 	</div>
 </body>
 </html>
