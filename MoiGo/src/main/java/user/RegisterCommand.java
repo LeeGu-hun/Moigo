@@ -6,10 +6,10 @@ public class RegisterCommand {
 	private String confirmPassword;
 	private String name;
 	private String nickName;
-	private int age;
+	private String birthDate;
 	private String gender;
 	private String address;
-	private String phoneNumber;
+	private String phoneNumber, phoneNumber1, phoneNumber2, phoneNumber3;
 	
 	public String getId() {
 		return id;
@@ -44,11 +44,11 @@ public class RegisterCommand {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-	public int getAge() {
-		return age;
+	public String getBirthDate() {
+		return birthDate;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
 	}
 	public String getGender() {
 		return gender;
@@ -63,9 +63,27 @@ public class RegisterCommand {
 		this.address = address;
 	}
 	public String getPhoneNumber() {
-		return phoneNumber;
+		return phoneNumber1 + "-" + phoneNumber2 + "-" + phoneNumber3;
 	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPhoneNumber(String phoneNumber1, String phoneNumber2, String phoneNumber3) {
+		this.phoneNumber = phoneNumber1 + "-" + phoneNumber2 + "-" + phoneNumber3;
+	}
+	public String getPhoneNumber1() {
+		return phoneNumber1;
+	}
+	public void setPhoneNumber1(String phoneNumber1) {
+		this.phoneNumber1 = phoneNumber1;
+	}
+	public String getPhoneNumber2() {
+		return phoneNumber2;
+	}
+	public void setPhoneNumber2(String phoneNumber2) {
+		this.phoneNumber2 = phoneNumber2;
+	}
+	public String getPhoneNumber3() {
+		return phoneNumber3;
+	}
+	public void setPhoneNumber3(String phoneNumber3) {
+		this.phoneNumber3 = phoneNumber3;
 	}
 }

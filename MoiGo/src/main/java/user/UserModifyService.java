@@ -19,10 +19,10 @@ public class UserModifyService {
 	public UserModifyService(){}
 	
 	public void modify(ModifyCommand modifyCommand) {
-		System.out.println("모디파이 들어옴");
+		System.out.println("modify 메서드 진입");
 		User modifyInfo = new User(modifyCommand.getModiId(), modifyCommand.getModiName(), modifyCommand.getModiNickName(), modifyCommand.getModiPass(), 
-				modifyCommand.getModiGender(), modifyCommand.getModiAddress(), modifyCommand.getModiPhoneNum(), modifyCommand.getModiAge());
-		System.out.println("modifyInfo 정보 담음");
+				modifyCommand.getModiGender(), modifyCommand.getModiAddress(), modifyCommand.getModiPhoneNum(), modifyCommand.getModiBirth());
 		daoUser.update(modifyInfo);
+		System.out.println("수정완료");
 	}
 }

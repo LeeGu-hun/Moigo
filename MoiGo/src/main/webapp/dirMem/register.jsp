@@ -12,8 +12,46 @@
 <script src="<%=request.getContextPath()%>/js/common.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/joinform.css" />
+<!-- jQuery UI CSS파일 --> 
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<!-- jQuery 기본 js파일 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<!-- jQuery UI 라이브러리 js파일 -->
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
 <script>
-	function onlyNumber(event){
+$(function() {
+		$("#birthDate").datepicker(
+			{
+				dateFormat : 'yy-mm-dd',
+				prevText : '이전 달',
+				nextText : '다음 달',
+				monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+						'9월', '10월', '11월', '12월' ],
+				monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월',
+						'8월', '9월', '10월', '11월', '12월' ],
+				dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+				dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+				dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+				showMonthAfterYear : true,
+				yearSuffix : '년'
+			});
+		getDate();
+	});
+	function getDate() {
+		var newDate = new Date();
+		var yyyy = newDate.getFullYear();
+		var mm = newDate.getMonth() + 1;
+		if (mm < 10) {
+			mm = "0" + mm;
+		}
+		var dd = newDate.getDate();
+		if (dd < 10) {
+			dd = "0" + dd;
+		}
+		var toDay = yyyy + "-" + mm + "-" + dd;
+		document.getElementById("birthDate").value = toDay;
+	} 	
+ 	function onlyNumber(event){
 		event = event || window.event;
 		var keyID = (event.which) ? event.which : event.keyCode;
 		if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
@@ -28,7 +66,7 @@
 			return;
 		else
 			event.target.value = event.target.value.replace(/[^0-9]/g, "");
-	}
+	} 
 	function Hangul() {
 		if((event.keyCode < 12592) || (event.keyCode > 12687))
 		event.returnValue = false;
@@ -64,8 +102,6 @@
 		<td><input type="text" id="id" name="id" onkeydown="NotHangul(this);"/></td>
 		</tr>
 		
-		
-		
 		<tr>
 		<td id="left" >비밀번호 <font color="red"><b>*</b></font></td>
 		<td><input type="password"  id="password" name="password" /></td>
@@ -99,8 +135,8 @@
 		
 		
 		<tr>
-		<td id="left"> 나이 <font color="red"><b>*</b></font></td>
-		<td><input type="text"  id="age" name="age" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /></td>
+		<td id="left"> 생년월일 <font color="red"><b>*</b></font></td>
+		<td><input type="text"  id="birthDate" name="birthDate" /></td>
 		</tr>
 		
 		<tr>
@@ -123,8 +159,20 @@
 		<tr>
 		<td id="left"> 휴대폰번호 <font color="red"><b>*</b></font></td>
 		
-		<td><input type="text" id="phoneNumber" name="phoneNumber" 
-		onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /></td><br>
+		<td>
+			 <select id="phoneNumber1" name="phoneNumber1" style="width:70;">
+			 	<option value="010">010</option>
+			    <option value="011">011</option>
+			    <option value="016">016</option>
+			    <option value="017">017</option>
+			    <option value="018">018</option>
+			    <option value="019">019</option>
+		   	</select>
+			<input type="text" id="phoneNumber2" name="phoneNumber2" 
+				onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" size="5" maxlength="4" /> -
+			<input type="text" id="phoneNumber3" name="phoneNumber3" 
+				onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" size="5" maxlength="4" />	 	
+		</td><br>
 		</tr>
 		
 		

@@ -16,17 +16,16 @@ public class UserRegisterService {
 	public UserRegisterService(){}
 	
 	public void regist(RegisterCommand registerCommand) {
-		System.out.println("1번");
+		System.out.println("regist 메서드진입");
 		User user = daoUser.selectById(registerCommand.getId());
-		System.out.println("2번");
 		if (user != null) {
-			System.out.println("3번");
+			System.out.println("중복된 계정");
 			throw new AlreadyExistingUserException("dup id " + registerCommand.getId());
 		}
-		System.out.println("5번");
-		User newUser = new User(registerCommand.getId(), registerCommand.getName(), registerCommand.getNickName(), registerCommand.getPassword(), registerCommand.getGender(), registerCommand.getAddress(), registerCommand.getPhoneNumber(), registerCommand.getAge());
-		System.out.println("6번");
+		User newUser = new User(registerCommand.getId(), registerCommand.getName(), registerCommand.getNickName(), 
+				registerCommand.getPassword(), registerCommand.getGender(), registerCommand.getAddress(), 
+				registerCommand.getPhoneNumber(), registerCommand.getBirthDate());
 		daoUser.insert(newUser);
-		System.out.println("7번");
+		System.out.println("가입완료");
 	}
 }

@@ -32,7 +32,7 @@ public class DaoUser {
 						rs.getString("userName"), rs.getString("userNick"),
 						rs.getString("userPw"), rs.getString("userGender"),
 						rs.getString("userAddr"), rs.getString("userPhone"),
-						rs.getTimestamp("userRegdate"), rs.getInt("userAge"));
+						rs.getTimestamp("userRegdate"), rs.getString("userBirth"));
 				user.setUserID(rs.getString("userID"));
 				return user;
 			}
@@ -45,26 +45,26 @@ public class DaoUser {
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement pstmt = con.prepareStatement(
-						"insert into USERINFO (userid, username, usernick, userpw, userregdate, userage, usergender, useraddr, userphone) " 
+						"insert into USERINFO (userid, username, usernick, userpw, userregdate, usergender, useraddr, userphone, userbirth) " 
 						+ "values (?, ?, ?, ?, sysdate, ?, ?, ?, ?)");
 				pstmt.setString(1, user.getUserID());
 				pstmt.setString(2, user.getUserName());
 				pstmt.setString(3, user.getUserNick());
 				pstmt.setString(4, user.getUserPw());
-				pstmt.setInt(5, user.getUserAge());
-				pstmt.setString(6, user.getUserGender());
-				pstmt.setString(7, user.getUserAddr());
-				pstmt.setString(8, user.getUserPhone());
+				pstmt.setString(5, user.getUserGender());
+				pstmt.setString(6, user.getUserAddr());
+				pstmt.setString(7, user.getUserPhone());
+				pstmt.setString(8, user.getUserBirth());
 				return pstmt;
 			}
 		});
 	}
 	
 	public void update(User user) {
-		jdbcTemplate.update("update USERINFO set username = ?, usernick = ?, userpw = ?, userage = ?, usergender = ?, useraddr = ?, userphone = ? "
+		jdbcTemplate.update("update USERINFO set username = ?, usernick = ?, userpw = ?, usergender = ?, useraddr = ?, userphone = ?, userbirth= ? "
 				+ "where userid = ?", 
-				user.getUserName(), user.getUserNick(), user.getUserPw(), user.getUserAge(), 
-				user.getUserGender(), user.getUserAddr(), user.getUserPhone(), user.getUserID());
+				user.getUserName(), user.getUserNick(), user.getUserPw(), user.getUserGender(), 
+				user.getUserAddr(), user.getUserPhone(), user.getUserID(), user.getUserBirth());
 	}
 /*
 	public Member selectByEmail(String email) {

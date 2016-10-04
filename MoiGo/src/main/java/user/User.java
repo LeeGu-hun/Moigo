@@ -6,12 +6,12 @@ import exception.IdPasswordNotMatchingException;
 
 public class User {
 	
-	private String userID, userName, userNick, userPw, userGender, userAddr, userPhone;
+	private String userID, userName, userNick, userPw, userGender, userAddr, userPhone, userBirth;
 	private Date userRegdate;
-	private int userAge;
+
 	
 	public User(String userName, String userNick, String userPw, String userGender, String userAddr,
-			String userPhone, Date userRegdate, int userAge) {
+			String userPhone, Date userRegdate, String userAge) {
 		super();
 		this.userName = userName;
 		this.userNick = userNick;
@@ -20,11 +20,11 @@ public class User {
 		this.userAddr = userAddr;
 		this.userPhone = userPhone;
 		this.userRegdate = userRegdate;
-		this.userAge = userAge;
+		this.userBirth = userBirth;
 	}
 	
 	public User(String userID, String userName, String userNick, String userPw, String userGender, String userAddr,
-			String userPhone, int userAge) {
+			String userPhone, String userBirth) {
 		super();
 		this.userID = userID;
 		this.userName = userName;
@@ -33,7 +33,7 @@ public class User {
 		this.userGender = userGender;
 		this.userAddr = userAddr;
 		this.userPhone = userPhone;
-		this.userAge = userAge;
+		this.userBirth = userBirth;
 	}
 	
 	public String getUserID() {
@@ -84,13 +84,13 @@ public class User {
 	public void setUserRegdate(Date userRegdate) {
 		this.userRegdate = userRegdate;
 	}
-	public int getUserAge() {
-		return userAge;
+	public String getUserBirth() {
+		return userBirth;
 	}
-	public void setUserAge(int userAge) {
-		this.userAge = userAge;
+
+	public void setUserBirth(String userBirth) {
+		this.userBirth = userBirth;
 	}
-	
 	public void changePassword(String oldPassword, String newPassword) {
 		if (!userPw.equals(oldPassword))
 			throw new IdPasswordNotMatchingException();

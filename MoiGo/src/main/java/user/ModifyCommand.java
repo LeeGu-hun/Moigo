@@ -7,7 +7,7 @@ public class ModifyCommand {
 	private String modiConfirmPass;
 	private String modiName;
 	private String modiNickName;
-	private int modiAge;
+	private String modiBirth;
 	private String modiGender;
 	private String modiAddress;
 	private String modiPhoneNum;
@@ -42,11 +42,11 @@ public class ModifyCommand {
 	public void setModiNickName(String modiNickName) {
 		this.modiNickName = modiNickName;
 	}
-	public int getModiAge() {
-		return modiAge;
+	public String getModiBirth() {
+		return modiBirth;
 	}
-	public void setModiAge(int modiAge) {
-		this.modiAge = modiAge;
+	public void setModiBirth(String modiBirth) {
+		this.modiBirth = modiBirth;
 	}
 	public String getModiGender() {
 		return modiGender;

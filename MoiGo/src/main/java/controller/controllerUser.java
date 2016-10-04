@@ -54,18 +54,21 @@ public class controllerUser {
 	
 	@RequestMapping(value = "/join", method = RequestMethod.POST) /* 회원가입 */
 	public String join(RegisterCommand registerCommand, Errors errors, HttpSession session) {
+		System.out.println("날짜는 : " + registerCommand.getBirthDate());
 		new RegisterCommandValidator().validate(registerCommand, errors);
 		if(errors.hasErrors())
 			return "main";
 		try {
+			System.out.println("try문 진입");
 			userRegisterService.regist(registerCommand);
 			return "main";
 		} catch (AlreadyExistingUserException ex) {
-			return "main";
+			System.out.println("catch문 진입");
+			return "dirMem/registerFail";
 		}
 	}
 	
-	@RequestMapping("/modifyForm")
+	@RequestMapping("/modifyForm") /* 회원정보수정 */
 	public String modifyForm(){
 		return "dirMem/modify";
 	}
@@ -73,13 +76,12 @@ public class controllerUser {
 	@RequestMapping("/modify") /* 회원정보수정 */
 	public String modify(ModifyCommand modifyCommand, HttpSession session){
 		System.out.println(modifyCommand.getModiId());
-		System.out.println("어디로?");
 		try {
-			System.out.println("트라이 들어옴");
+			System.out.println("try문 진입");
 			userModifyService.modify(modifyCommand);
-			System.out.println("왜???");
 			return "main";
 		} catch (Exception e) {
+			System.out.println("catch문 진입");
 			return "dirMem/modifyFail";
 		}
 	}

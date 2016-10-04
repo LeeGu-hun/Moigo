@@ -29,7 +29,7 @@ public class RegisterCommandValidator implements Validator {
 		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "age", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "birthDate", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "gender", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phoneNumber", "required");
