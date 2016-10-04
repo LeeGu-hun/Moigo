@@ -34,11 +34,25 @@
 	<c:if test="${!empty authInfo }">
 		<div id="content">
 			<c:if test="${joined }">
-			true test
-		</c:if>
+				<div id="brdTotal">
+					<div id="grpCalendar">
+					abc1
+						<div id="grpInfo">
+						</div>
+						<div id="Calender">
+						</div>
+					</div>
+					<div id="board">
+						abc2
+					</div>
+					<div id="grpProduct">
+						abc3
+					</div>
+				</div>
+			</c:if>
 			<c:if test="${!joined }">
-			false test
-		</c:if>
+				false test
+			</c:if>
 		</div>
 	</c:if>
 </body>

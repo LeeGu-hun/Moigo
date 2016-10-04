@@ -147,3 +147,25 @@
 .newGrp{
 	float: left;
 }
+#brdTotal{
+	margin-left: calc(50% - 575px);
+	margin-right: calc(50% - 575px);
+}
+#grpCalendar{
+	float: left;
+	width: 250px;
+	height: 100%;
+	background-color: #eeeeee;
+}
+#board{
+	float: left;
+	width: 650px;
+	height: 100%;
+	background-color: #dddddd;
+}
+#grpProduct{
+	float: left;
+	width: 250px;
+	height: 100%;
+	background-color: #eeeeee;
+}
