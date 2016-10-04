@@ -29,17 +29,11 @@ public class controllerLogin {
 		this.daoGroup = daoGroup;
 	}
 	@RequestMapping("/") /* 시작화면 */
-	public String main(HttpServletRequest request, HttpSession session){
-		if(session.getAttribute("authInfo")!=null){
-			AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
-			List<Group> joinGrp = daoGroup.getJoinGrp(authInfo.getUserNick());
-			request.setAttribute("joinGrp", joinGrp);
-		} else {
-			List<Group> recomGrp = daoGroup.getAllOpen();
-			List<Group> newGrp = daoGroup.getNewGrp();
-			request.setAttribute("recomGrp", recomGrp);
-			request.setAttribute("newGrp", newGrp);
-		}
+	public String main(HttpServletRequest request){
+		List<Group> recomGrp = daoGroup.getAllOpen();
+		List<Group> newGrp = daoGroup.getNewGrp();
+		request.setAttribute("recomGrp", recomGrp);
+		request.setAttribute("newGrp", newGrp);
 		return "main";
 	}
 	
@@ -48,10 +42,7 @@ public class controllerLogin {
 		session.invalidate();
 		return "redirect:/";
 	}
-	@RequestMapping("/loginPage") /* ? */
-	public String login(){
-		return "dirMem/login";
-	}
+
 	@RequestMapping(value="/login", method=RequestMethod.POST) /* 로그인 */
 	public String form2(LoginCommand loginCommand, Errors errors, HttpSession session, HttpServletRequest request){
 		new LoginCommandValidator().validate(loginCommand, errors);

@@ -47,6 +47,11 @@ public class controllerUser {
 		this.authService = authService;
 	}
 
+	@RequestMapping(value = "/register") /* 회원가입 */
+	public String register(){
+		return "dirMem/register";
+	}
+	
 	@RequestMapping(value = "/join", method = RequestMethod.POST) /* 회원가입 */
 	public String join(RegisterCommand registerCommand, Errors errors, HttpSession session) {
 		new RegisterCommandValidator().validate(registerCommand, errors);

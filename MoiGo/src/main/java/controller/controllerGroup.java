@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -24,8 +25,13 @@ public class controllerGroup {
 	}
 	
 	@RequestMapping("/group")
-	public String groupSearch(){
-		return "group/groupSearch";
+	public String groupSearch(HttpSession session, HttpServletRequest request){
+		if(session.getAttribute("authInfo")!=null){
+			AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
+			List<Group> joinGrp = daoGroup.getJoinGrp(authInfo.getUserNick());
+			request.setAttribute("joinGrp", joinGrp);
+		}
+		return "group/myGroup";
 	}
 	@RequestMapping("/group/{grpName}")
 	public String groupEach(@PathVariable String grpName, Model model, HttpSession session){

@@ -13,48 +13,36 @@
 <title>Moigo</title>
 </head>
 <body>
-	<%@include file="/include/header.jsp"%>
-	<%@include file="/include/loginBox2.jsp" %>
-	<div id="content">
-		<c:if test="${!empty authInfo }">
-			<input type="button" onclick="addGroup();" value="모임개설" /> <br>
-			<c:forEach var="jGrp" items="${joinGrp }">
-				<div class="mainGroups">
-					그룹명 : <a href="<c:url value='/group/${jGrp.grpName }' />">${jGrp.grpName }</a> <br>
-					그룹장 : ${jGrp.grpLeader } <br>
-					공개여부 : ${jGrp.grpOpen } <br>
-					카테고리 : ${jGrp.grpCate } <br>
-					그룹인원 : ${jGrp.grpNum } <br>
-					개설일자 : ${jGrp.grpRegDate } <br>
-					그룹소개 : ${jGrp.grpIntro }<br><br>
+<%@include file="/include/header.jsp"%>
+<%@include file="/include/loginBox2.jsp" %>
+<div id="content">
+	<div id="demoGrp">
+		<div id="recomGrp">
+			추천그룹<br>
+			<c:forEach var="rGrp" items="${recomGrp }">
+				<div class="recomGrp">
+					그룹명 : <a href="<c:url value='/group/${rGrp.grpName }' />">${rGrp.grpName }</a><br>
+					그룹장 : ${rGrp.grpLeader } <br>
+					카테고리 : ${rGrp.grpCate } <br>
+					그룹소개 : ${rGrp.grpIntro }<br>
 				</div>
 			</c:forEach>
-		</c:if>
-		<c:if test="${empty authInfo }">
-			<div id="demoGrp">
-				<div id="recomGrp">
-					추천그룹<br>
-					<c:forEach var="rGrp" items="${recomGrp }">
-						그룹명 : <a href="<c:url value='/group/${rGrp.grpName }' />">${rGrp.grpName }</a><br>
-						그룹장 : ${rGrp.grpLeader } <br>
-						카테고리 : ${rGrp.grpCate } <br>
-						그룹소개 : ${rGrp.grpIntro }<br><br>
-					</c:forEach>
+		</div>
+		<div id="newGrp">
+		신규그룹<br>
+			<c:forEach var="nGrp" items="${newGrp }">
+				<div class="newGrp">
+					그룹명 : <a href="<c:url value='/group/${nGrp.grpName }' />">${nGrp.grpName }</a> <br>
+					그룹장 : ${nGrp.grpLeader } <br>
+					카테고리 : ${nGrp.grpCate } <br>
+					그룹소개 : ${nGrp.grpIntro }<br>
 				</div>
-				<div id="newGrp">
-				신규그룹<br>
-					<c:forEach var="nGrp" items="${newGrp }">
-						그룹명 : <a href="<c:url value='/group/${nGrp.grpName }' />">${nGrp.grpName }</a> <br>
-						그룹장 : ${nGrp.grpLeader } <br>
-						카테고리 : ${nGrp.grpCate } <br>
-						그룹소개 : ${nGrp.grpIntro }<br><br>
-					</c:forEach>
-				</div>
-			</div>
-			<div id="demoMkt">
-				추천마켓
-			</div>
-		</c:if>
+			</c:forEach>
+		</div>
 	</div>
+	<div id="demoMkt">
+		추천마켓
+	</div>
+</div>
 </body>
 </html>

@@ -11,19 +11,19 @@
 		</div>
 		<div id="menus">
 			<div class="menus">
-				<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/myAccount.png"></a>
+				<a href="<c:url value='/group' />"><img src="<%=request.getContextPath()%>/images/myAccount.png"></a>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<img src="<%=request.getContextPath()%>/images/event.png">
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<img src="<%=request.getContextPath()%>/images/chat.png">
 				&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="<c:url value='/group' />"><img src="<%=request.getContextPath()%>/images/group.png"></a>
+				<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/group.png"></a>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<img src="<%=request.getContextPath()%>/images/market.png">
 			</div>
 		</div>
 		<div id="loginBox">
-			&nbsp;▶&nbsp;&nbsp;&nbsp;&nbsp;login
+			&nbsp;▶&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;
 			<input type="button" id="register" name="register" onclick="goRegister();" value="Join" class="btn-style" />
 			&nbsp;<input type="button" id="login" name="login" onclick="showLogin();" value="Login" class="btn-style" />
@@ -39,13 +39,13 @@
 			</div>
 			<div id="menus">
 				<div class="menus">
-					<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/myAccount.png"></a>
+					<a href="<c:url value='/group' />"><img src="<%=request.getContextPath()%>/images/myAccount.png"></a>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<img src="<%=request.getContextPath()%>/images/event.png">
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<img src="<%=request.getContextPath()%>/images/chat.png">
 					&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="<c:url value='/group' />"><img src="<%=request.getContextPath()%>/images/group.png"></a>
+					<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/group.png"></a>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<img src="<%=request.getContextPath()%>/images/market.png">
 				</div>
