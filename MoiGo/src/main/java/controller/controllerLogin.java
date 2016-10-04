@@ -32,7 +32,7 @@ public class controllerLogin {
 	public String main(HttpServletRequest request, HttpSession session){
 		if(session.getAttribute("authInfo")!=null){
 			AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
-			List<Group> joinGrp = daoGroup.getJoinGrp(authInfo.getUserID());
+			List<Group> joinGrp = daoGroup.getJoinGrp(authInfo.getUserNick());
 			request.setAttribute("joinGrp", joinGrp);
 		} else {
 			List<Group> recomGrp = daoGroup.getAllOpen();

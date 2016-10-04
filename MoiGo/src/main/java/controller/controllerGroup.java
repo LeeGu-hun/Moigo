@@ -32,7 +32,7 @@ public class controllerGroup {
 		Group grpInfo = daoGroup.getGroup(grpName);
 		if((AuthInfo)session.getAttribute("authInfo")!=null){
 			AuthInfo user = (AuthInfo)session.getAttribute("authInfo");
-			boolean Joined = daoGroup.getJoinedGroup(grpName, user.getUserID());
+			boolean Joined = daoGroup.getJoinedGroup(grpName, user.getUserNick());
 			model.addAttribute("joined", Joined);
 		}
 		model.addAttribute("grpInfo", grpInfo);
@@ -46,19 +46,20 @@ public class controllerGroup {
 		return "group/groupAdd";
 	}
 	@RequestMapping("/add")
-	public String add(GroupAddCommand groupAddCommand) {
-		
+	public String add(GroupAddCommand groupAddCommand, HttpSession session) {
+		AuthInfo userInfo = (AuthInfo)session.getAttribute("authInfo");
 		GroupAddCommand Edit = groupAddCommand;
 		String editCate = daoGroup.getCateName(groupAddCommand.getCate());
 		Edit.setCate(editCate);
 		
-		System.out.println("¸ðÀÓ¸í:"+Edit.getGrpName());
-		System.out.println("¸®´õ:"+Edit.getGrpLeader());
-		System.out.println("¿ÀÇÂ:"+Edit.getGrpOpen());
-		System.out.println("Ä«Å×:"+Edit.getCate());
-		System.out.println("¼Ò°³:"+Edit.getGrpIntro());
+		System.out.println("ê·¸ë£¹ëª…:"+Edit.getGrpName());
+		System.out.println("ê·¸ë£¹ìž¥:"+Edit.getGrpLeader());
+		System.out.println("ê³µê°œì—¬ë¶€:"+Edit.getGrpOpen());
+		System.out.println("ì¹´í…Œê³ ë¦¬:"+Edit.getCate());
+		System.out.println("ì†Œê°œ:"+Edit.getGrpIntro());
 	
 		daoGroup.addGroup(Edit);
+		daoGroup.joinGroup(userInfo.getUserNick(), Edit.getGrpName());
 		
 		return "redirect:/main";
 	}
@@ -107,11 +108,11 @@ public class controllerGroup {
 		String editCate = daoGroup.getCateName(groupAddCommand.getCate());
 		Edit.setCate(editCate);
 		
-		System.out.println("¸ðÀÓ¸í:"+Edit.getGrpName());
-		System.out.println("¸®´õ:"+Edit.getGrpLeader());
-		System.out.println("¿ÀÇÂ:"+Edit.getGrpOpen());
-		System.out.println("Ä«Å×:"+Edit.getCate());
-		System.out.println("¼Ò°³:"+Edit.getGrpIntro());
+		System.out.println("ï¿½ï¿½ï¿½Ó¸ï¿½:"+Edit.getGrpName());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½:"+Edit.getGrpLeader());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½:"+Edit.getGrpOpen());
+		System.out.println("Ä«ï¿½ï¿½:"+Edit.getCate());
+		System.out.println("ï¿½Ò°ï¿½:"+Edit.getGrpIntro());
 	
 		daoGroup.addGroup(Edit);
 		

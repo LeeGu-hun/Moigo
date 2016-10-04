@@ -85,9 +85,9 @@ public class DaoGroup {
 		return results;
 	}
 
-	public List<Group> getJoinGrp(String userID) { // 특정 ID가 가입한 그룹만 가져오기
+	public List<Group> getJoinGrp(String userNick) { // 특정 닉네임이 가입한 그룹만 가져오기
 		List<Group> results = jdbcTemplate.query(
-				"select * from groupjoin grpj, groupInfo grpi where grpj.grpname = grpi.grpname and userID =?",
+				"select * from groupjoin grpj, groupInfo grpi where grpj.grpname = grpi.grpname and userNick =?",
 				new RowMapper<Group>() {
 					public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"),
@@ -96,7 +96,7 @@ public class DaoGroup {
 						group.setGrpNum(groupUserCount(rs.getString("grpName")));
 						return group;
 					}
-				}, userID);
+				}, userNick);
 		return results;
 	}
 
@@ -109,7 +109,7 @@ public class DaoGroup {
 				pstmt.setString(2, groupAddCommand.getGrpLeader());
 				pstmt.setString(3, groupAddCommand.getGrpOpen());
 				pstmt.setString(4, groupAddCommand.getCate());
-				pstmt.setString(6, groupAddCommand.getGrpIntro());
+				pstmt.setString(5, groupAddCommand.getGrpIntro());
 
 				return pstmt;
 			}
@@ -125,11 +125,21 @@ public class DaoGroup {
 	public List getGrpBoard(String grpName) {
 		return null;
 	}
-
-	public boolean getJoinedGroup(String grpName, String userID) { // 가입한 그룹인지
-																	// 판별
-		int grpJoined = jdbcTemplate.queryForObject("select count(*) from groupJoin where grpName = ? and userID = ?",
-				Integer.class, grpName, userID);
+	
+	public void joinGroup(final String userNick, final String grpName){
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement pstmt = con.prepareStatement("insert into groupjoin values(?, ?, sysdate)");
+				pstmt.setString(1, userNick);
+				pstmt.setString(2, grpName);
+				return pstmt;
+			}
+		});
+	}
+	
+	public boolean getJoinedGroup(String grpName, String userNick) { // 가입한 그룹인지 판별
+		int grpJoined = jdbcTemplate.queryForObject("select count(*) from groupJoin where grpName = ? and userNick = ?",
+				Integer.class, grpName, userNick);
 		if (grpJoined == 0)
 			return false;
 		else

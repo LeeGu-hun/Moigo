@@ -53,7 +53,7 @@
 				</div>
 			</div>
 			<div id="loginBox">
-				${authInfo.userName }님 반갑습니다.
+				${authInfo.userNick }님 반갑습니다.
 				<input type="button" class="btn-style" onclick="logout();" value="로그아웃" />
 				<input type="button" class="btn-style" onclick="" value="정보수정" />
 				<c:if test="${authInfo.userID=='admin' }">
