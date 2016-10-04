@@ -91,8 +91,6 @@ select{
 	width: 60px;		
 }
 
-
-
 #my_reg_form #name{
 	width: 90px;		
 }
@@ -108,3 +106,24 @@ select{
 #my_reg_form #register, #my_reg_form #clear{
 	width: 360px;	
 }
+#my_reg_form #register, #my_reg_form #clear{
+  	width: 360px;	
+ }
+ 
+ 
+ /* 그룹추가폼 */
+ 
+ #groupAdd_form #groupTable{
+ 	background-color: #c0c0c0;
+ 	padding: 20px;
+ 	border: 0px;
+ 	width: 600px;
+ 	color: black;
+ 	table-layout: fixed;
+ }
+ 
+ 
+ #groupAdd_form #groupTable #tdleft{
+ 	text-align: left;
+ 	width: 90px;	
+ }
