@@ -10,3 +10,6 @@ function showLogin(){
 function addGroup() {
 	location.href = 'addgroup';
 }
+function goModify() {
+	location.href= 'modifyForm';
+}

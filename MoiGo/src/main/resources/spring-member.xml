@@ -14,7 +14,7 @@
 		destroy-method="close">
 		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="jdbcUrl"
-			value="jdbc:oracle:thin:@localhost:1521:xe" /> <!-- 192.168.0.171 -->
+			value="jdbc:oracle:thin:@192.168.0.171:1521:xe" /> <!-- 192.168.0.171 -->
 		<property name="user" value="db7" />
 		<property name="password" value="1234" />
 	</bean>		

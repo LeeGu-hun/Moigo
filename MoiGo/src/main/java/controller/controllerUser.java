@@ -10,16 +10,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import dao.DaoUser;
 import exception.AlreadyExistingUserException;
+import login.AuthInfo;
 import login.AuthService;
 import user.ChangePasswordService;
+import user.ModifyCommand;
 import user.RegisterCommand;
 import user.RegisterCommandValidator;
+import user.UserModifyService;
 import user.UserRegisterService;
 
 @Controller
 public class controllerUser {
 	private DaoUser daoUser;
 	private UserRegisterService userRegisterService;
+	private UserModifyService userModifyService;
 	private ChangePasswordService changePasswordService;
 	private AuthService authService;
 	
@@ -31,6 +35,10 @@ public class controllerUser {
 		this.userRegisterService = userRegisterService;
 	}
 	
+	public void setUserModifyService(UserModifyService userModifyService) {
+		this.userModifyService = userModifyService;
+	}
+
 	public void setChangePasswordService (ChangePasswordService changePasswordService) {
 		this.changePasswordService = changePasswordService;
 	}
@@ -38,22 +46,37 @@ public class controllerUser {
 	public void setAuthService(AuthService authService) {
 		this.authService = authService;
 	}
-	
-	@RequestMapping(value = "/register") /* 회원가입 */
-	public String register(){
-		return "dirMem/register";
-	}
-	
-	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String handleStep1(RegisterCommand registerCommand, Errors errors, Model model, HttpSession session) {
+
+	@RequestMapping(value = "/join", method = RequestMethod.POST) /* 회원가입 */
+	public String join(RegisterCommand registerCommand, Errors errors, HttpSession session) {
 		new RegisterCommandValidator().validate(registerCommand, errors);
 		if(errors.hasErrors())
-			return "redirect:/";
+			return "main";
 		try {
 			userRegisterService.regist(registerCommand);
-			return "redirect:/";
+			return "main";
 		} catch (AlreadyExistingUserException ex) {
-			return "redirect:/";
+			return "main";
 		}
 	}
+	
+	@RequestMapping("/modifyForm")
+	public String modifyForm(){
+		return "dirMem/modify";
+	}
+	
+	@RequestMapping("/modify") /* 회원정보수정 */
+	public String modify(ModifyCommand modifyCommand, HttpSession session){
+		System.out.println(modifyCommand.getModiId());
+		System.out.println("어디로?");
+		try {
+			System.out.println("트라이 들어옴");
+			userModifyService.modify(modifyCommand);
+			System.out.println("왜???");
+			return "main";
+		} catch (Exception e) {
+			return "dirMem/modifyFail";
+		}
+	}
+	
 }

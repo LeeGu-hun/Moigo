@@ -24,7 +24,7 @@ public class User {
 	}
 	
 	public User(String userID, String userName, String userNick, String userPw, String userGender, String userAddr,
-			String userPhone, Date userRegdate, int userAge) {
+			String userPhone, int userAge) {
 		super();
 		this.userID = userID;
 		this.userName = userName;
@@ -33,7 +33,6 @@ public class User {
 		this.userGender = userGender;
 		this.userAddr = userAddr;
 		this.userPhone = userPhone;
-		this.userRegdate = userRegdate;
 		this.userAge = userAge;
 	}
 	

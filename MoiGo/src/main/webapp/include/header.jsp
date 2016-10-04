@@ -55,7 +55,7 @@
 			<div id="loginBox">
 				${authInfo.userNick }님 반갑습니다.
 				<input type="button" class="btn-style" onclick="logout();" value="로그아웃" />
-				<input type="button" class="btn-style" onclick="" value="정보수정" />
+				<input type="button" class="btn-style" onclick="goModify();" value="정보수정" />
 				<c:if test="${authInfo.userID=='admin' }">
 					<input type="button" class="btn-style" value="관리자페이지" />
 				</c:if>
