@@ -6,7 +6,6 @@
 			<a href="<c:url value='/' />">Moi<span id="M">Go</span>!</a>
 		</div>
 		<div id="search">
-			search 
 			<input type="text" id="srchTxt" class="btn-style" name="srchTxt" size="10" value="Search Here" onfocus="this.value=''"/>
 			<input type="button" class="btn-style" id="srch" name="srch" value="검색" />
 		</div>
@@ -35,7 +34,6 @@
 			<a href="<c:url value='/' />">Moi<span id="M">Go</span>!</a>
 		</div>
 			<div id="search">
-				search 
 				<input type="text" id="srchTxt" class="btn-style" name="srchTxt" size="10" value="Search Here" onfocus="this.value=''"/>
 				<input type="button" class="btn-style" id="srch" name="srch" value="검색" />
 			</div>

@@ -61,7 +61,7 @@ public class controllerGroup {
 		daoGroup.addGroup(Edit);
 		daoGroup.joinGroup(userInfo.getUserNick(), Edit.getGrpName());
 		
-		return "redirect:/main";
+		return "redirect:/";
 	}
 }
 
