@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import dao.DaoGroup;
+import exception.IdPasswordNotMatchingException;
 import group.Group;
 import login.AuthInfo;
 import login.AuthService;
@@ -49,9 +50,13 @@ public class controllerLogin {
 		if (errors.hasErrors()) {
 			return "dirMem/loginFail";
 		}
-		AuthInfo authInfo = authService.authenticate(
+		try{
+			AuthInfo authInfo = authService.authenticate(
 				loginCommand.getUserID(), loginCommand.getUserPw());
-		session.setAttribute("authInfo", authInfo);
-		return "redirect:/";
+			session.setAttribute("authInfo", authInfo);
+			return "redirect:/";
+		} catch(IdPasswordNotMatchingException e) {
+			return "dirMem/loginFail";
+		}
 	}
 }

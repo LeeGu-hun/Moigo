@@ -57,14 +57,14 @@ public class controllerUser {
 		System.out.println("날짜는 : " + registerCommand.getBirthDate());
 		new RegisterCommandValidator().validate(registerCommand, errors);
 		if(errors.hasErrors())
-			return "main";
+			return "dirMem/registerFail";
 		try {
 			System.out.println("try문 진입");
 			userRegisterService.regist(registerCommand);
-			return "main";
+			return "redirect:/";
 		} catch (AlreadyExistingUserException ex) {
 			System.out.println("catch문 진입");
-			return "dirMem/registerFail";
+			return "dirMem/register";
 		}
 	}
 	
