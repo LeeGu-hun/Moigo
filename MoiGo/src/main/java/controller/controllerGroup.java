@@ -57,18 +57,20 @@ public class controllerGroup {
 		GroupAddCommand Edit = groupAddCommand;
 		String editCate = daoGroup.getCateName(groupAddCommand.getCate());
 		Edit.setCate(editCate);
-		
-		System.out.println("그룹명:"+Edit.getGrpName());
-		System.out.println("그룹장:"+Edit.getGrpLeader());
-		System.out.println("공개여부:"+Edit.getGrpOpen());
-		System.out.println("카테고리:"+Edit.getCate());
-		System.out.println("소개:"+Edit.getGrpIntro());
 	
 		daoGroup.addGroup(Edit);
 		daoGroup.joinGroup(userInfo.getUserNick(), Edit.getGrpName());
 		
 		return "redirect:/";
 	}
+	@RequestMapping("/group/{grpName}/joingroup")
+	 	public String joinGroup(@PathVariable String grpName, HttpSession session) {
+	 		System.out.println(grpName);
+	 		AuthInfo userInfo = (AuthInfo) session.getAttribute("authInfo");
+	 		daoGroup.joinGroup(userInfo.getUserNick(), grpName);
+	 		System.out.println(userInfo.getUserNick());
+	 		return "redirect:/";
+		}
 }
 
 /*

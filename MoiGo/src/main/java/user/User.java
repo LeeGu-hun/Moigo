@@ -11,7 +11,7 @@ public class User {
 
 	
 	public User(String userName, String userNick, String userPw, String userGender, String userAddr,
-			String userPhone, Date userRegdate, String userAge) {
+			String userPhone, Date userRegdate, String userBirth) {
 		super();
 		this.userName = userName;
 		this.userNick = userNick;

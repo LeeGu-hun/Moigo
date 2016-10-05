@@ -113,6 +113,15 @@ select{
  
  /* 그룹추가폼 */
  
+ #groupAdd_form{
+	margin-top: 10px;
+	background-color: #ffffff; 
+	width: 605px;
+	height: auto;
+	padding: 20px;
+	color: fafafa;
+}
+ 
  #groupAdd_form #groupTable{
  	background-color: #c0c0c0;
  	padding: 20px;
@@ -122,8 +131,27 @@ select{
  	table-layout: fixed;
  }
  
+ #grpOpen {
+ 	text-align: center;
+ }
  
  #groupAdd_form #groupTable #tdleft{
  	text-align: left;
- 	width: 90px;	
+ 	width: 120px;	
+ }
+ 
+ #groupAdd_form #groupTable #tdbottom{
+ 	text-align: center;
+ }
+ 
+ #tdopen {
+ 	text-align: left;
+ }
+ 
+ #btnbottom {
+ 	width: 130px;
+ }
+
+ #grpIntro {
+ width: 
  }

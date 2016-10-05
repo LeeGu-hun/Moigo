@@ -16,7 +16,7 @@
 	float: left;
 	width: 15%;
 	height: 100%;
-	background-color: #2b2b2b;
+	background-color: #bfd9ff;
 	font-family: 'Baloo Da';
 	font-size: 60px;
 	text-align: center;
@@ -34,7 +34,7 @@
 	width: 20%;
 	height: 100%;
 	color: white;
-	background: #2b2b2b;
+	background: #bfd9ff;
 	font-family: Comfortaa;
 	line-height: 100px;
 	
@@ -43,7 +43,7 @@
 	float: left;
 	width: 35%;
 	height: 100%;
-	background-color: #2b2b2b;
+	background-color: #bfd9ff;
 }
 .menus{
 	margin: 30px;
@@ -53,7 +53,7 @@
 	float: left;
 	width: 30%;
 	height: 100%;
-	background: #2b2b2b;
+	background: #bfd9ff;
 	color: white;
 	font-family: Comfortaa;
 	text-align: center;
@@ -95,7 +95,7 @@
 	height: calc(100% - 100px);
 	min-height: 850px;
 	min-width: 1000px;
-	background-color: #ffffff;
+	background-color: #fafafa;
 }
 .mainGroups{
 	float: left;
@@ -146,26 +146,4 @@
 }
 .newGrp{
 	float: left;
-}
-#brdTotal{
-	margin-left: calc(50% - 575px);
-	margin-right: calc(50% - 575px);
-}
-#grpCalendar{
-	float: left;
-	width: 250px;
-	height: 100%;
-	background-color: #eeeeee;
-}
-#board{
-	float: left;
-	width: 650px;
-	height: 100%;
-	background-color: #dddddd;
-}
-#grpProduct{
-	float: left;
-	width: 250px;
-	height: 100%;
-	background-color: #eeeeee;
 }

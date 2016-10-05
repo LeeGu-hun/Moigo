@@ -52,6 +52,10 @@
 			</c:if>
 			<c:if test="${!joined }">
 				false test
+				<form id="grpJoin" action="/moigo/group/${grpName }/joingroup" method="post">
+				<input type="hidden" id="grpName" name="grpName" value="${grpName }">
+				<input type="submit" onclick="joinGroup(); return false;" value="모임 가입하기"/>
+			</form>
 			</c:if>
 		</div>
 	</c:if>

@@ -13,3 +13,12 @@ function addGroup() {
 function goModify() {
 	location.href= 'modifyForm';
 }
+function joinGroup() {
+	if(confirm('가입하시겠습니까?')) {
+		document.write("네");
+		document.grpJoin.submit();
+	} else {
+		document.write("아니오");
+		location.href='';
+	}
+}
