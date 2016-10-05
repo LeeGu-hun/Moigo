@@ -19,15 +19,15 @@
 	<%@include file="/include/loginBox2.jsp"%>
 	<c:if test="${empty authInfo }">
 		<div id="content">
-			<c:out value="${grpInfo.grpName }" />
+			그룹명 : <c:out value="${grpInfo.grpName }" />
 			<br>
-			<c:out value="${grpInfo.grpLeader }" />
+			그룹장 : <c:out value="${grpInfo.grpLeader }" />
 			<br>
-			<c:out value="${grpInfo.grpCate }" />
+			카테고리 : <c:out value="${grpInfo.grpCate }" />
 			<br>
-			<c:out value="${grpInfo.grpRegDate }" />
+			개설일자 : <c:out value="${grpInfo.grpRegDate }" />
 			<br>
-			<c:out value="${grpInfo.grpIntro }" />
+			그룹소개 : <c:out value="${grpInfo.grpIntro }" />
 			<br> Please Login First
 		</div>
 	</c:if>
@@ -36,26 +36,35 @@
 			<c:if test="${joined }">
 				<div id="brdTotal">
 					<div id="grpCalendar">
-					abc1
-						<div id="grpInfo">
-						</div>
-						<div id="Calender">
-						</div>
+						abc1
+						<div id="grpInfo"></div>
+						<div id="Calender"></div>
 					</div>
-					<div id="board">
-						abc2
-					</div>
-					<div id="grpProduct">
-						abc3
-					</div>
+					<div id="board">abc2</div>
+					<div id="grpProduct">abc3</div>
 				</div>
 			</c:if>
 			<c:if test="${!joined }">
-				false test
-				<form id="grpJoin" action="/moigo/group/${grpName }/joingroup" method="post">
-				<input type="hidden" id="grpName" name="grpName" value="${grpName }">
-				<input type="submit" onclick="joinGroup(); return false;" value="모임 가입하기"/>
-			</form>
+
+				<div>
+					그룹명 :
+					<c:out value="${grpInfo.grpName }" />
+					<br> 그룹장 :
+					<c:out value="${grpInfo.grpLeader }" />
+					<br> 카테고리 :
+					<c:out value="${grpInfo.grpCate }" />
+					<br> 개설일자 :
+					<c:out value="${grpInfo.grpRegDate }" />
+					<br>
+					그룹 소개 : <c:out value="${grpInfo.grpIntro }" />
+				</div>
+
+				<form id="grpJoin" action="/moigo/group/${grpName }/joingroup"
+					method="post">
+					<input type="hidden" id="grpName" name="grpName"
+						value="${grpName }"> <input type="submit"
+						onclick="joinGroup(); return false;" value="모임 가입하기" />
+				</form>
 			</c:if>
 		</div>
 	</c:if>

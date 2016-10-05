@@ -22,3 +22,7 @@ function joinGroup() {
 		location.href='';
 	}
 }
+
+function modifyGroup() {
+	location.href = '/moigo/modifyGroup';
+}
