@@ -43,7 +43,21 @@
 						</div>
 					</div>
 					<div id="board">
-						abc2
+ 						<c:forEach var="geulInfo" items="geulInfo"> 
+						<div id="geul">					
+							<div id="info">
+								<div id="writer">
+									글쓴이 : ${geulInfo.getBrdWriter() }
+								</div><p>
+								<div id="writedDte">
+								 	작성일 :
+								</div>
+							</div><br>
+							<div id="naeyong">
+								내용 : ${geulInfo.getBrdContent() }
+							</div>
+						</div>
+ 						</c:forEach>
 					</div>
 					<div id="grpProduct">
 						abc3

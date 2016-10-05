@@ -99,7 +99,7 @@ $(function() {
 		</fieldset>		
 		<tr>
 		<td id="left" >아이디 <font color="red"><b>*</b></font></td>
-		<td><input type="text" id="id" name="id" onkeydown="NotHangul(this);"/></td>
+		<td><input type="text" id="id" name="id" /></td>
 		</tr>
 		
 		<tr>
@@ -114,7 +114,7 @@ $(function() {
 		
 		<tr>
 		<td id="left"> E-Mail <font color="red"><b>*</b></font></td>
-		<td><input type="text"  id="email" name="email" onkeydown="NotHangul(this);"/>@
+		<td><input type="text"  id="email" name="email" />@
 		<select name=email_address">
 		<option id="naver" value="naver.com"> naver.com</option>
 		<option id="daum" value="daum.net"> daum.net</option>
@@ -125,12 +125,12 @@ $(function() {
 		
 		<tr>
 		<td id="left"> 이름 <font color="red"><b>*</b></font></td>
-		<td><input type="text"  id="name" name="name" onKeyPress="Hangul()" style="ime-mode:active;" /></td>
+		<td><input type="text"  id="name" name="name" style="ime-mode:active;" /></td>
 		</tr>
 		
 		<tr>
 		<td id="left"> 닉네임 <font color="red"><b>*</b></font></td>
-		<td><input type="text" id="nickName" name="nickName" onKeyPress="Hangul()" style="ime-mode:active;" /></td>
+		<td><input type="text" id="nickName" name="nickName" style="ime-mode:active;" /></td>
 		</tr>
 		
 		

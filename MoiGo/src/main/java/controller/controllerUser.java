@@ -71,10 +71,8 @@ public class controllerUser {
 	
 	@RequestMapping("/modifyForm") /* 회원정보수정 */
 	public String modifyForm(HttpSession session, Model model){
-		String userID = ((AuthInfo)session.getAttribute("authInfo")).getUserID();
-		System.out.println("유저아이디"+userID);
+		String userID = ((AuthInfo) session.getAttribute("authInfo")).getUserID();
 		User userInfo = (User)daoUser.selectById(userID);
-		System.out.println(userInfo.getUserPhone() + userInfo.getUserAddr());
 		model.addAttribute("userInfo", userInfo);
 		return "dirMem/modify";
 	}

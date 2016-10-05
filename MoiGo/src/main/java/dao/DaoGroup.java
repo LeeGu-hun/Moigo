@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.RowMapper;
 import group.Group;
 import group.GroupAddCommand;
 import group.GroupCate;
+import group.GrpBoard;
 
 public class DaoGroup {
 	private JdbcTemplate jdbcTemplate;
@@ -151,4 +152,17 @@ public class DaoGroup {
 				grpName);
 		return count;
 	}
+	
+	public List<GrpBoard> getGrpGeul(String grpName) { // 그룹명으로 게시글가져오기
+		List<GrpBoard> grpGeul = jdbcTemplate.query("select * from groupBoard where grpName = ?",
+				new RowMapper<GrpBoard>() {
+					public GrpBoard mapRow(ResultSet rs, int a) throws SQLException {
+						GrpBoard groupBoard = new GrpBoard(rs.getString("brdWriter"),
+								rs.getString("brdTitle"), rs.getString("brdContent"), rs.getInt("brdSeq"), rs.getTimestamp("brdRegDate"));
+						return groupBoard;
+					}
+				}, grpName);
+		return grpGeul;
+	}
+
 }

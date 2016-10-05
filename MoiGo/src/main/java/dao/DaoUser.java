@@ -41,7 +41,7 @@ public class DaoUser {
 		return results.isEmpty() ? null : results.get(0);
 	}
 	
-	public void insert(final User user) {
+	public void insert(final User user) { // 회원가입
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement pstmt = con.prepareStatement(
@@ -60,7 +60,7 @@ public class DaoUser {
 		});
 	}
 	
-	public void update(User user) {
+	public void update(User user) { // 회원정보수정
 		jdbcTemplate.update("update USERINFO set username = ?, usernick = ?, userpw = ?, usergender = ?, useraddr = ?, userphone = ?, userbirth= ? "
 				+ "where userid = ?", 
 				user.getUserName(), user.getUserNick(), user.getUserPw(), user.getUserGender(), 

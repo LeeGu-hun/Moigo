@@ -14,6 +14,7 @@ import dao.DaoGroup;
 import group.Group;
 import group.GroupAddCommand;
 import group.GroupCate;
+import group.GrpBoard;
 import login.AuthInfo;
 
 @Controller
@@ -34,12 +35,19 @@ public class controllerGroup {
 		return "group/myGroup";
 	}
 	@RequestMapping("/group/{grpName}")
-	public String groupEach(@PathVariable String grpName, Model model, HttpSession session){
+	public String groupEach(@PathVariable String grpName, Model model, HttpSession session, HttpServletRequest request){
 		Group grpInfo = daoGroup.getGroup(grpName);
 		if((AuthInfo)session.getAttribute("authInfo")!=null){
 			AuthInfo user = (AuthInfo)session.getAttribute("authInfo");
 			boolean Joined = daoGroup.getJoinedGroup(grpName, user.getUserNick());
 			model.addAttribute("joined", Joined);
+			List<GrpBoard> geulInfo = daoGroup.getGrpGeul(grpName);
+			System.out.println(((GrpBoard) geulInfo).getBrdSeq());
+			System.out.println(((GrpBoard) geulInfo).getBrdWriter());
+			System.out.println(((GrpBoard) geulInfo).getBrdTitle());
+			System.out.println(((GrpBoard) geulInfo).getBrdContent());
+			System.out.println(((GrpBoard) geulInfo).getBrdRegDate());
+			request.setAttribute("geulInfo", geulInfo);
 		}
 		model.addAttribute("grpInfo", grpInfo);
 		return "group/groupMain";
