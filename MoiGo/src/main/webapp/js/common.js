@@ -11,7 +11,7 @@ function addGroup() {
 	location.href = 'addgroup';
 }
 function goModify() {
-	location.href= 'modifyForm';
+	location.href= '/moigo/modifyForm';
 }
 function joinGroup() {
 	if(confirm('가입하시겠습니까?')) {
