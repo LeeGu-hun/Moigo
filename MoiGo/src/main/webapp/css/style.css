@@ -131,6 +131,34 @@
 	height: 100%;
 	background-color: yellow;
 }
+.recomGrp{
+	float: left;
+}
+.newGrp{
+	float: left;
+}
+#brdTotal{
+	margin-left: calc(50% - 575px);
+	margin-right: calc(50% - 575px);
+}
+#grpCalendar{
+	float: left;
+	width: 250px;
+	height: 100%;
+	background-color: #dddddd;
+}
+#board{
+	float: left;
+	width: 650px;
+	height: 100%;
+	background-color: #cccccc;
+}
+#grpProduct{
+	float: left;
+	width: 250px;
+	height: 100%;
+	background-color: #bbbbbb;
+}
 /* ~ content */
 #loginBox2{
 	position: absolute;
@@ -140,10 +168,4 @@
 	height: 100px;
 	background-color: #AAAAAA;
 	display: none;
-}
-.recomGrp{
-	float: left;
-}
-.newGrp{
-	float: left;
 }
