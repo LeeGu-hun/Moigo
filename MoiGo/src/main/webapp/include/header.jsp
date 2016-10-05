@@ -19,7 +19,7 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/group.png"></a>
 				&nbsp;&nbsp;&nbsp;&nbsp;
-				<img src="<%=request.getContextPath()%>/images/market.png">
+				<a href="<c:url value='/market' />"><img src="<%=request.getContextPath()%>/images/market.png"></a>
 			</div>
 		</div>
 		<div id="loginBox">
@@ -47,7 +47,7 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/group.png"></a>
 					&nbsp;&nbsp;&nbsp;&nbsp;
-					<img src="<%=request.getContextPath()%>/images/market.png">
+					<a href="<c:url value='/market' />"><img src="<%=request.getContextPath()%>/images/market.png"></a>
 				</div>
 			</div>
 			<div id="loginBox">
