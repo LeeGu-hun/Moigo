@@ -11,9 +11,15 @@
 	href="<%=request.getContextPath()%>/css/style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>MoiGo</title>
+<!-- jQuery UI CSS파일 --> 
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<!-- jQuery 기본 js파일 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<!-- jQuery UI 라이브러리 js파일 -->
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
 <script>
 $(function() {
-		$("#birthDate").datepicker(
+		$("#modiBirth").datepicker(
 			{
 				dateFormat : 'yy-mm-dd',
 				prevText : '이전 달',
@@ -42,7 +48,7 @@ $(function() {
 			dd = "0" + dd;
 		}
 		var toDay = yyyy + "-" + mm + "-" + dd;
-		document.getElementById("birthDate").value = toDay;
+		document.getElementById("modiBirth").value = toDay;
 	} 	
  	function onlyNumber(event){
 		event = event || window.event;
@@ -78,16 +84,13 @@ $(function() {
 	<%@include file="/include/header.jsp" %>
 	<div id="content">
 		<form action="modify" method="post">
-			아이디 <input type="text" id="modiId" name="modiId" value="${authInfo.userID}" disabled="disabled"/><br>
-			<input type="hidden" id="modiId" name="modiId" value="${authInfo.userID}" />
+			아이디 <input type="text" id="modiId" name="modiId" value="${authInfo.userID }" disabled="disabled"/><br>
+			<input type="hidden" id="modiId" name="modiId" value="${authInfo.userID }" />
 			변경할 비밀번호 <input type="password" id="modiPass" name="modiPass" /><br>
 			변경할 비밀번호 확인 <input type="password" id="modiConfirmPass" name="modiConfirmPass" /><br>
-			이름 <input type="text" id="modiName" name="modiName" value="${authInfo.userName}" /><br>
-			닉네임 <input type="text" id="modiNickName" name="modiNickName" value="${authInfo.userNick}" /><br>
-			나이 <input type="text" id="modiAge" name="modiAge" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /><br>
-<%-- 			성별 : ${ } --%>
-			<input type="radio" id="modiGender" name="modiGender" value="남">남
-			<input type="radio" id="modiGender" name="modiGender" value="여">여<br>
+			이름 <input type="text" id="modiName" name="modiName" value="${authInfo.userName }" /><br>
+			닉네임 <input type="text" id="modiNickName" name="modiNickName" value="${authInfo.userNick }" /><br>
+			생년월일 <input type="text" id="modiBirth" name="modiBirth" value="${userInfo.getUserBirth() }" /><br>
 			주소 <input type="text" id="modiAddress" name="modiAddress" style="ime-mode:active;" value="${userInfo.getUserAddr() }"/><br>
 			휴대전화번호 <input type="text" id="modiPhoneNum" name="modiPhoneNum" value="${userInfo.getUserPhone() }" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /><br>
 			<input type="submit" value="수정하기" />
