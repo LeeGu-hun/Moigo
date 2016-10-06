@@ -116,7 +116,7 @@ public class DaoGroup {
 		});
 	}
 	
-	public String getCateName(String cateID){
+	public String getCateName(String cateID){ /* 카테고리 불러오기 */
 		String cate = jdbcTemplate.queryForObject("select cateName from cate where cateId=?", String.class,
 				cateID);
 		return cate;
@@ -126,7 +126,7 @@ public class DaoGroup {
 		return null;
 	}
 	
-	public void joinGroup(final String userNick, final String grpName){
+	public void joinGroup(final String userNick, final String grpName){ /* 그룹가입 */
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement pstmt = con.prepareStatement("insert into groupjoin values(?, ?, sysdate)");

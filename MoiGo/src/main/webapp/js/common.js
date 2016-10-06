@@ -23,6 +23,3 @@ function joinGroup() {
 	}
 }
 
-function modifyGroup() {
-	location.href = '/moigo/modifyGroup';
-}

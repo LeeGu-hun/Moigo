@@ -26,7 +26,12 @@
 					그룹명 : <a href="<c:url value='/group/${jGrp.grpName }' />">${jGrp.grpName }</a>
 					<c:if test="${authInfo.userNick==jGrp.grpLeader  }">
 						
-						<input type="button" onclick="modifyGroup();" value="수정하기"/>
+						<form name = "modifyForm" method = "post" action = "modifyGroupInfo" >
+						<input type="hidden" id="grpCate" name="grpCate" value="${jGrp.grpCate }"/>
+						<input type="hidden" id="grpName" name="grpName" value="${jGrp.grpName }"/>
+						<input type="hidden" id="grpIntro" name="grpIntro" value="${jGrp.grpIntro }"/>
+						<input type="submit" value="수정하기"/>
+						</form>
 						
 						
 					</c:if>
