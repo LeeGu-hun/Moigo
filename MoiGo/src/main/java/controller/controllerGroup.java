@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -57,7 +58,8 @@ public class controllerGroup {
 		GroupAddCommand Edit = groupAddCommand;
 		String editCate = daoGroup.getCateName(groupAddCommand.getCate());
 		Edit.setCate(editCate);
-	
+		
+
 		daoGroup.addGroup(Edit);
 		daoGroup.joinGroup(userInfo.getUserNick(), Edit.getGrpName());
 		
@@ -69,8 +71,16 @@ public class controllerGroup {
 	 		AuthInfo userInfo = (AuthInfo) session.getAttribute("authInfo");
 	 		daoGroup.joinGroup(userInfo.getUserNick(), grpName);
 	 		System.out.println(userInfo.getUserNick());
-	 		return "redirect:/";
+	 		
+
+	 		return "redirect:/group";
 		}
+	
+	@RequestMapping("/modifyGroup")
+	public String modifyGroup() {
+		return "group/modifyGroup";
+	}
+
 }
 
 /*

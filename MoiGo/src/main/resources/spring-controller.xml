@@ -7,10 +7,12 @@
 		
 	<bean class="controller.controllerLogin" >
 		<property name="authService" ref="authService" />
-		<property name="daoGroup" ref="daoGroup" />		
+		<property name="daoGroup" ref="daoGroup" />
+			
 	</bean>
 	<bean class="controller.controllerGroup" >
 		<property name="daoGroup" ref="daoGroup" />
+		
 	</bean>
 	<bean class="controller.controllerUser" >
 		<property name="daoUser" ref="daoUser" />

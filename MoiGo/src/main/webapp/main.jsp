@@ -21,7 +21,9 @@
 			추천그룹<br>
 			<c:forEach var="rGrp" items="${recomGrp }">
 				<div class="recomGrp">
-					그룹명 : <a href="<c:url value='/group/${rGrp.grpName }' />">${rGrp.grpName }</a><br>
+					그룹명 : <a href="<c:url value='/group/${rGrp.grpName }' />">${rGrp.grpName }</a>
+
+					<br>
 					그룹장 : ${rGrp.grpLeader } <br>
 					카테고리 : ${rGrp.grpCate } <br>
 					그룹소개 : ${rGrp.grpIntro }<br>
