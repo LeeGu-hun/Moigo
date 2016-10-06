@@ -153,16 +153,17 @@ public class DaoGroup {
 		return count;
 	}
 	
-	public List<GrpBoard> getGrpGeul(String grpName) { // 그룹명으로 게시글가져오기
-		List<GrpBoard> grpGeul = jdbcTemplate.query("select * from groupBoard where grpName = ?",
+	public List<GrpBoard> getGrpGeul(String grpName) { // 그룹명으로 게시글정보 가져오기
+		List<GrpBoard> grpGeul = jdbcTemplate.query("select * from groupBoard where grpName = ? " +"order by brdRegDate desc",
 				new RowMapper<GrpBoard>() {
-					public GrpBoard mapRow(ResultSet rs, int a) throws SQLException {
+					public GrpBoard mapRow(ResultSet rs, int rowNum) throws SQLException {
 						GrpBoard groupBoard = new GrpBoard(rs.getString("brdWriter"),
-								rs.getString("brdTitle"), rs.getString("brdContent"), rs.getInt("brdSeq"), rs.getTimestamp("brdRegDate"));
+								rs.getString("brdTitle"), rs.getString("brdContent"), rs.getTimestamp("brdRegDate"));
+						groupBoard.setBrdSeq(rs.getInt("brdSeq"));
 						return groupBoard;
 					}
 				}, grpName);
 		return grpGeul;
 	}
-
+	
 }

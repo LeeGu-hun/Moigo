@@ -147,6 +147,20 @@
 	height: 100%;
 	background-color: #dddddd;
 }
+#grpInfo{
+	width: 230px;
+	height: 150px;	
+}
+#btnWrite{
+	float: right;
+}
+#btnOut{
+	float: right;
+}
+#writeBoard{
+	width: 800px;
+	height: 420px;
+}
 #board{
 	float: left;
 	width: 650px;

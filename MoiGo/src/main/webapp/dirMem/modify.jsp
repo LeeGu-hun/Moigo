@@ -84,12 +84,12 @@ $(function() {
 	<%@include file="/include/header.jsp" %>
 	<div id="content">
 		<form action="modify" method="post">
-			아이디 <input type="text" id="modiId" name="modiId" value="${authInfo.userID }" disabled="disabled"/><br>
+			아이디 <input type="text" id="modiId" name="modiId" value="${authInfo.userID }" disabled="disabled" /><br>
 			<input type="hidden" id="modiId" name="modiId" value="${authInfo.userID }" />
 			변경할 비밀번호 <input type="password" id="modiPass" name="modiPass" /><br>
 			변경할 비밀번호 확인 <input type="password" id="modiConfirmPass" name="modiConfirmPass" /><br>
 			이름 <input type="text" id="modiName" name="modiName" value="${authInfo.userName }" /><br>
-			닉네임 <input type="text" id="modiNickName" name="modiNickName" value="${authInfo.userNick }" /><br>
+			닉네임 <input type="text" id="modiNickName" name="modiNickName" value="${authInfo.userNick }" disabled="disabled" /><br>
 			생년월일 <input type="text" id="modiBirth" name="modiBirth" value="${userInfo.getUserBirth() }" /><br>
 			주소 <input type="text" id="modiAddress" name="modiAddress" style="ime-mode:active;" value="${userInfo.getUserAddr() }"/><br>
 			휴대전화번호 <input type="text" id="modiPhoneNum" name="modiPhoneNum" value="${userInfo.getUserPhone() }" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /><br>

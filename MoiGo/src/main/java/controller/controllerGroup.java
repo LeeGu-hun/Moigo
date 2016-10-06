@@ -42,12 +42,8 @@ public class controllerGroup {
 			boolean Joined = daoGroup.getJoinedGroup(grpName, user.getUserNick());
 			model.addAttribute("joined", Joined);
 			List<GrpBoard> geulInfo = daoGroup.getGrpGeul(grpName);
-			System.out.println(((GrpBoard) geulInfo).getBrdSeq());
-			System.out.println(((GrpBoard) geulInfo).getBrdWriter());
-			System.out.println(((GrpBoard) geulInfo).getBrdTitle());
-			System.out.println(((GrpBoard) geulInfo).getBrdContent());
-			System.out.println(((GrpBoard) geulInfo).getBrdRegDate());
-			request.setAttribute("geulInfo", geulInfo);
+			model.addAttribute("geulInfo", geulInfo);
+			model.addAttribute("grpInfo", grpInfo);
 		}
 		model.addAttribute("grpInfo", grpInfo);
 		return "group/groupMain";
@@ -72,13 +68,21 @@ public class controllerGroup {
 		return "redirect:/";
 	}
 	@RequestMapping("/group/{grpName}/joingroup")
-	 	public String joinGroup(@PathVariable String grpName, HttpSession session) {
-	 		System.out.println(grpName);
-	 		AuthInfo userInfo = (AuthInfo) session.getAttribute("authInfo");
-	 		daoGroup.joinGroup(userInfo.getUserNick(), grpName);
-	 		System.out.println(userInfo.getUserNick());
-	 		return "redirect:/";
-		}
+	 public String joinGroup(@PathVariable String grpName, HttpSession session) {
+	 	System.out.println(grpName);
+	 	AuthInfo userInfo = (AuthInfo) session.getAttribute("authInfo");
+	 	daoGroup.joinGroup(userInfo.getUserNick(), grpName);
+	 	System.out.println(userInfo.getUserNick());
+	 	return "redirect:/";
+	}
+	@RequestMapping("/group/{grpName}/groupwrite")
+	 public String groupWrite(@PathVariable String grpName, HttpSession session) {
+	 	System.out.println(grpName);
+	 	AuthInfo userInfo = (AuthInfo) session.getAttribute("authInfo");
+	 	daoGroup.joinGroup(userInfo.getUserNick(), grpName);
+	 	System.out.println(userInfo.getUserNick());
+	 	return "redirect:/";
+	}
 }
 
 /*

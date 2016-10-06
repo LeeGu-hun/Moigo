@@ -7,12 +7,11 @@ public class GrpBoard {
 	int brdSeq;
 	Date brdRegDate;
 	
-	public GrpBoard(String brdWriter, String brdTitle, String brdContent, int brdSeq, Date brdRegDate) {
+	public GrpBoard(String brdWriter, String brdTitle, String brdContent, Date brdRegDate) {
 		super();
 		this.brdWriter = brdWriter;
 		this.brdTitle = brdTitle;
 		this.brdContent = brdContent;
-		this.brdSeq = brdSeq;
 		this.brdRegDate = brdRegDate;
 	}
 	
