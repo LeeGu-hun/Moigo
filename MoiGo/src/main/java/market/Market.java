@@ -3,11 +3,10 @@ package market;
 import java.util.Date;
 
 public class Market {
-	int mktCode;
-	String mktSeller, mktPrName, mktPrice, mktContent, grpName;
+	String mktCode, mktSeller, mktPrName, mktPrice, mktContent, grpName;
 	Date mktRegDate;
 	
-	public Market(int mktCode, String mktSeller, String mktPrName, String mktPrice, String mktContent, String grpName,
+	public Market(String mktCode, String mktSeller, String mktPrName, String mktPrice, String mktContent, String grpName,
 			Date mktRegDate) {
 		this.mktCode = mktCode;
 		this.mktSeller = mktSeller;
@@ -18,10 +17,10 @@ public class Market {
 		this.mktRegDate = mktRegDate;
 	}
 	
-	public int getMktCode() {
+	public String getMktCode() {
 		return mktCode;
 	}
-	public void setMktCode(int mktCode) {
+	public void setMktCode(String mktCode) {
 		this.mktCode = mktCode;
 	}
 	public String getMktSeller() {
@@ -60,6 +59,4 @@ public class Market {
 	public void setMktRegDate(Date mktRegDate) {
 		this.mktRegDate = mktRegDate;
 	}
-	
-	
 }

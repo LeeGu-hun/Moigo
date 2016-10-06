@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import dao.DaoMarket;
+import group.GroupCate;
 import login.AuthInfo;
 import market.Market;
 
@@ -24,6 +25,8 @@ public class controllerMarket {
 	public String market(HttpSession session, Model model){
 		AuthInfo user = (AuthInfo)session.getAttribute("authInfo");
 		List<Market> allProducts = daoMarket.getAllProduct();
+		List<GroupCate> cates = daoMarket.getCate();
+		model.addAttribute("cates", cates);
 		model.addAttribute("allProducts", allProducts);
 		return "market/marketMain";
 	}

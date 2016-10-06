@@ -17,10 +17,13 @@
 <%@include file="/include/loginBox2.jsp" %>
 <div id="content">
 	<div id="mktcate">
-		카테고리임둥
+		카테고리임둥<br><br>
+		<c:forEach var="cate" items="${cates }">
+			${cate.CATENAME }<br>
+		</c:forEach>
 	</div>
 	<div id="product">
-		마켓임둥
+		마켓임둥<br><br>
 		<c:forEach var="prd" items="${allProducts }">
 			<div class="products">
 				판매번호 : ${prd.mktCode } <br>
