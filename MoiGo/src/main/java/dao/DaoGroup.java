@@ -154,7 +154,7 @@ public class DaoGroup {
 	}
 	
 	public List<GrpBoard> getGrpGeul(String grpName) { // 그룹명으로 게시글정보 가져오기
-		List<GrpBoard> grpGeul = jdbcTemplate.query("select * from groupBoard where grpName = ? " +"order by brdRegDate desc",
+		List<GrpBoard> grpGeul = jdbcTemplate.query("select * from groupBoard where grpName = ? " +" order by brdRegDate desc",
 				new RowMapper<GrpBoard>() {
 					public GrpBoard mapRow(ResultSet rs, int rowNum) throws SQLException {
 						GrpBoard groupBoard = new GrpBoard(rs.getString("brdWriter"),

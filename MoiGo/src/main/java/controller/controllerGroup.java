@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,7 @@ import dao.DaoGroup;
 import group.Group;
 import group.GroupAddCommand;
 import group.GroupCate;
+import group.GroupWriteCommand;
 import group.GrpBoard;
 import login.AuthInfo;
 
@@ -76,12 +79,11 @@ public class controllerGroup {
 	 	return "redirect:/";
 	}
 	@RequestMapping("/group/{grpName}/groupwrite")
-	 public String groupWrite(@PathVariable String grpName, HttpSession session) {
-	 	System.out.println(grpName);
-	 	AuthInfo userInfo = (AuthInfo) session.getAttribute("authInfo");
-	 	daoGroup.joinGroup(userInfo.getUserNick(), grpName);
-	 	System.out.println(userInfo.getUserNick());
-	 	return "redirect:/";
+	 public String groupWrite(@PathVariable String grpName, GroupWriteCommand groupWriteCommand, HttpSession session) throws UnsupportedEncodingException {
+	 	System.out.println("들어오긴합니까?");
+	 	String url = URLEncoder.encode(grpName, "UTF-8");
+		System.out.println(grpName);
+	 	return "redirect:/group/"+url;
 	}
 }
 

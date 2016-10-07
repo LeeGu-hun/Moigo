@@ -12,19 +12,29 @@
 </script>
 <style>
 	#mask {  
-	  position: absolute;  
-	  z-index: 9000;  
-	  background-color: #000;  
-	  display: none;  
-	  left: 0;
-	  top: 0;
+	  	position: absolute;  
+	  	z-index: 9000;  
+	  	background-color: #000;  
+	  	display: none;  
+	  	left: 0;
+	  	top: 0;
 	}
 	.window{
-	  display: none;
-	  position: absolute;  
-	  left: 550px;
-	  top: 200px;
-	  z-index: 10000;
+	  	display: none;
+	  	position: absolute;  
+	  	left: 550px;
+	  	top: 200px;
+		z-index: 10000;
+	}
+	.divClose{
+		float: right;
+		padding-top: 10px;
+		padding-right: 10px;	
+	}
+	.close{
+		text-decoration:none;
+		color: green;
+		font-weight: bold;
 	}
 </style>
 <script src="https://code.jquery.com/jquery-latest.js"></script> 
@@ -53,7 +63,7 @@
 		});
 
 		// 닫기 버튼을 눌렀을 때
-		$('.window .close').click(function (e) {  
+		$('.divClose .close').click(function (e) {  
 		    //링크 기본동작은 작동하지 않도록 한다.
 		    e.preventDefault();  
 		    $('#mask, .window').hide();  
@@ -111,8 +121,8 @@
 				<div class="window"> <!-- writeBoard -->
 					
 					<div id="writeBoard" style="background: white;">
-						<form action="" method="post"> 
-							<input type="button" id="btnOut" href="#" class="close" value="X" /><br>
+						<div class="divClose"><a href="#" class="close" >Close</a></div><br>
+						<form action="${grpInfo.grpName }/groupwrite" method="post"> 
 							<div style="padding-left: 20px;"><input type="text" id="writeTitle" placeholder="Title" /></div><br>
 							<div style="padding-left: 20px;"><textarea cols="105" rows="20" id="writeContent" placeholder="Content"></textarea></div><br>
 							<div style="padding-right: 30px; "><input type="submit" style="float: right; " value="게시하기"/></div>
