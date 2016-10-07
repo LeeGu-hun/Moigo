@@ -124,6 +124,7 @@
 								<div id="writer">글쓴이 : ${geulInfo.getBrdWriter() }</div><p>
 								<div id="writedDte">작성일 : ${geulInfo.getBrdRegDate() }</div>
 							</div><br>
+							<div id="geulTitle">제목 : ${geulInfo.getBrdTitle() }</div>
 							<div id="naeyong">내용 : ${geulInfo.getBrdContent() }</div>
 						</div>
  					</c:forEach>

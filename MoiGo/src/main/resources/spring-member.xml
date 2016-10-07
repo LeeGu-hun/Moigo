@@ -40,5 +40,8 @@
 	<bean id="changePwdSvc" class="user.ChangePasswordService">
 		<constructor-arg ref="daoUser"/>
 	</bean>
+	<bean id="userModify" class="user.UserModifyService">
+		<constructor-arg ref="daoUser"/>
+	</bean>
 </beans>
 	

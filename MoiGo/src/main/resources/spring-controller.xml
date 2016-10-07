@@ -17,6 +17,7 @@
 	<bean class="controller.controllerUser" >
 		<property name="daoUser" ref="daoUser" />
 		<property name="authService" ref="authService" />
+		<property name="userModifyService" ref="userModify" />
 		<property name="userRegisterService" ref="userRegSvc" />
 		<property name="changePasswordService" ref="changePwdSvc" />
 	</bean>

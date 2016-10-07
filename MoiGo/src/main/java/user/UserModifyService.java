@@ -16,7 +16,6 @@ public class UserModifyService {
 	public UserModifyService(DaoUser daoUser) {
 		this.daoUser = daoUser;
 	}
-	public UserModifyService(){}
 	
 	public void modify(ModifyCommand modifyCommand) {
 		System.out.println("modify 메서드 진입");

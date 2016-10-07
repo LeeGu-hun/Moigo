@@ -83,7 +83,7 @@ public class controllerUser {
 		try {
 			System.out.println("try문 진입");
 			userModifyService.modify(modifyCommand);
-			return "main";
+			return "redirect:/";
 		} catch (Exception e) {
 			System.out.println("catch문 진입");
 			return "dirMem/modifyFail";

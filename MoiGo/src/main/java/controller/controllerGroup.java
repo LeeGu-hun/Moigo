@@ -46,12 +46,15 @@ public class controllerGroup {
 	}
 
 	@RequestMapping("/group/{grpName}") /* 해당 그룹 페이지(가입여부/가입버튼 등) */
-	public String groupEach(@PathVariable String grpName, Model model, HttpSession session) {
+	public String groupEach(@PathVariable String grpName, Model model, HttpSession session, HttpServletRequest request) {
 		Group grpInfo = daoGroup.getGroup(grpName);
-		if ((AuthInfo) session.getAttribute("authInfo") != null) {
-			AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
+		if ((AuthInfo) session.getAttribute("authInfo")!=null) {
+			AuthInfo user = (AuthInfo)session.getAttribute("authInfo");
 			boolean Joined = daoGroup.getJoinedGroup(grpName, user.getUserNick());
 			model.addAttribute("joined", Joined);
+			List<GrpBoard> geulInfo = daoGroup.getGrpGeul(grpName);
+			model.addAttribute("geulInfo", geulInfo);
+			model.addAttribute("grpInfo", grpInfo);
 		}
 		model.addAttribute("grpInfo", grpInfo);
 		return "group/groupMain";

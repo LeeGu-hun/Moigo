@@ -1,6 +1,5 @@
 package dao;
 
-import java.security.Timestamp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -61,9 +60,9 @@ public class DaoUser {
 	}
 	
 	public void update(User user) { // 회원정보수정
-		jdbcTemplate.update("update USERINFO set username = ?, usernick = ?, userpw = ?, usergender = ?, useraddr = ?, userphone = ?, userbirth= ? "
+		jdbcTemplate.update("update USERINFO set username = ?, userpw = ?, useraddr = ?, userphone = ?, userbirth= ? "
 				+ "where userid = ?", 
-				user.getUserName(), user.getUserNick(), user.getUserPw(), user.getUserGender(), 
-				user.getUserAddr(), user.getUserPhone(), user.getUserID(), user.getUserBirth());
+				user.getUserName(), user.getUserPw(), user.getUserAddr(),
+				user.getUserPhone(), user.getUserBirth(), user.getUserID());
 	}
 }

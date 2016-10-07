@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <div id="header">
 	<div id="logo">
-		<a href="<c:url value='/' />">Moi<span id="M">Go</span>!</a>
+		<a href="<c:url value='/' />"><span id="M">M</span>oi<span id="G">Go</span>!</a>
 	</div>
 	<div id="search">
 		<form action="/moigo/search" method="post">
@@ -11,18 +11,22 @@
 		</form>
 	</div>
 	<div id="menus">
-		<div class="menus">
-			<a href="<c:url value='/group' />"><img src="<%=request.getContextPath()%>/images/myAccount.png"></a>
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<img src="<%=request.getContextPath()%>/images/event.png">
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<img src="<%=request.getContextPath()%>/images/chat.png">
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/group.png"></a>
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="<c:url value='/market' />"><img src="<%=request.getContextPath()%>/images/market.png"></a>
+			<div class="menus">	
+				<a href="<c:url value='/group' />"><img src="<%=request.getContextPath()%>/images/myAccount.png" style="display:block">나의그룹</a>				
+			</div>
+			<div class="menus">
+				<img src="<%=request.getContextPath()%>/images/event.png" style="display:block"">나의일정				
+			</div>				
+			<div class="menus">
+				<img src="<%=request.getContextPath()%>/images/chat.png" style="display:block">채팅
+			</div>				
+			<div class="menus">
+				<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/group.png" style="display:block">추천그룹</a>										
+			</div>
+			<div class="menus">
+				<a href="<c:url value='/market' />"><img src="<%=request.getContextPath()%>/images/market.png" style="display:block">마켓</a>
+			</div>
 		</div>
-	</div>
 	<div id="loginBox">
 		<c:if test="${empty authInfo }">
 			&nbsp;▶&nbsp;&nbsp;&nbsp;&nbsp;
