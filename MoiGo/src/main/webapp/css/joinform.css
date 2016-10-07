@@ -104,11 +104,9 @@ select{
 }
 
 #my_reg_form #register, #my_reg_form #clear{
-	width: 360px;	
+	width: 110px;	
 }
-#my_reg_form #register, #my_reg_form #clear{
-  	width: 360px;	
- }
+
  
  
  /* 그룹추가폼 */
@@ -152,6 +150,82 @@ select{
  	width: 130px;
  }
 
- #grpIntro {
- width: 
- }
+/* ~~~~~~~~~~ */
+
+
+/* 회원수정폼 */
+
+#form_modify{
+text-align:center;
+border: 1px solid #ccc;
+width: 600px;
+padding: 0px 50px 15px;
+margin-top:20px;
+box-shadow: 0 0 3px;
+border-radius: 1px;
+float:center;
+height: 600px;
+}
+
+
+#form_modify #modi_table{
+	background-color: #ffffff;
+	margin-top:10px;
+	padding: 20px;
+	border: 0px;
+	width: 600px;
+	height: 400px;
+	color: black;
+	
+}
+
+#mdleft{
+	text-align: left;
+ 	width: 120px;
+}
+
+
+#form_modify #modiId{
+	width: 150px;
+}
+
+#form_modify #modiPass{
+	width: 150px;
+}
+
+#form_modify #modiConfirmPass{
+	width: 150px;
+}
+
+#form_modify #modiName {
+	width: 150px;
+}
+#form_modify #modiNickName {
+	width: 150px;
+}
+#form_modify #modiAge {
+	width: 150px;
+}
+#form_modify #modiGender {
+	width: 80px;
+
+}
+
+#form_modify #modiAddress {
+	width: 150px;
+}
+
+#form_modify #modiPhoneNum{
+	width: 150px;
+}
+
+
+#grpIntro{
+	padding: 30px;
+}
+
+
+#grpName, #grpLeader {
+	padding: 3px;
+}
+

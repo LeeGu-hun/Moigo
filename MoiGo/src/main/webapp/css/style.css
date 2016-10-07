@@ -16,7 +16,7 @@
 	float: left;
 	width: 15%;
 	height: 100%;
-	background-color: #bfd9ff;
+	background-color: #B5E3D8;
 	font-family: 'Baloo Da';
 	font-size: 60px;
 	text-align: center;
@@ -26,58 +26,77 @@
 	color: white;
 }
 #M {
+	font-size: 60px;f
+	color: #B49173;
+}
+
+#G {
 	font-size: 60px;
-	color: #9b0000;
+	color: #776d61;
 }
 #search{
 	float: left;
 	width: 20%;
 	height: 100%;
 	color: white;
-	background: #bfd9ff;
+	background: #B5E3D8;
 	font-family: Comfortaa;
 	line-height: 100px;
 	
 }
+
+#search #srch, #srchTxt{
+	height: 41px;
+}
+
+
 #menus{
 	float: left;
 	width: 35%;
 	height: 100%;
-	background-color: #bfd9ff;
+	background-color: #B5E3D8;
+	
 }
 .menus{
-	margin: 30px;
+	margin-top:30px;
+	margin-left: 30px;
+	float: left;
 	padding-right: 30px;
+	text-align: center;
+	
+	
+	
 }
 #loginBox{
 	float: left;
 	width: 30%;
 	height: 100%;
-	background: #bfd9ff;
+	background: #B5E3D8;
 	color: white;
 	font-family: Comfortaa;
 	text-align: center;
 	line-height: 100px;
 }
 .btn-style{
-	border : solid 1px #e6e6e6;
-	border-radius : 3px;
-	moz-border-radius : 3px;
-	-webkit-box-shadow : 0px 0px 2px rgba(0,0,0,1.0);
-	-moz-box-shadow : 0px 0px 2px rgba(0,0,0,1.0);
-	box-shadow : 0px 0px 2px rgba(0,0,0,1.0);
-	font-size : 20px;
-	color : #9b0000;
-	padding : 1px 17px;
-	background : #ffffff;
-	background : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(22%,#f1f1f1), color-stop(100%,#f6f6f6));
-	background : -moz-linear-gradient(top, #ffffff 0%, #f1f1f1 22%, #f6f6f6 100%);
-	background : -webkit-linear-gradient(top, #ffffff 0%, #f1f1f1 22%, #f6f6f6 100%);
-	background : -o-linear-gradient(top, #ffffff 0%, #f1f1f1 22%, #f6f6f6 100%);
-	background : -ms-linear-gradient(top, #ffffff 0%, #f1f1f1 22%, #f6f6f6 100%);
-	background : linear-gradient(top, #ffffff 0%, #f1f1f1 22%, #f6f6f6 100%);
-	filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 );
+	-moz-box-shadow:inset 0px 1px 0px 0px #b5e3d8;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #b5e3d8;
+	box-shadow:inset 0px 1px 0px 0px #b5e3d8;
+	background-color:#776d61;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #b5e3d8;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:7px 24px;
+	text-decoration:none;
+	text-shadow:0px 2px 4px #996765;
 }
+<<<<<<< HEAD
 #loginBox2{
 	position: absolute;
 	top: 100px;
@@ -87,6 +106,19 @@
 	background-color: #AAAAAA;
 	display: none;
 }
+=======
+.btn-style:hover {
+	background-color:#ad9d90;
+}
+.btn-style:active {
+	position:relative;
+	top:1px;
+}
+
+	
+	
+
+>>>>>>> refs/remotes/origin/CSS
 /* ~ header */
 /* submenu ~ */
 #submenu{
@@ -104,17 +136,39 @@
 	height: calc(100% - 100px);
 	min-height: 850px;
 	min-width: 1000px;
-	background-color: #fafafa;
+	background-color: #fffdf4;
+        
 }
 .mainGroups{
 	float: left;
-	width: 31%;
-	height: 20%;
+	width: 20%;
+	height: 30%;
 	margin: 1%;
-	min-height: 125px;
-	min-width: 250px;
+	min-height: 240x;
+	min-width: 240px;
 	background-color: white;
+	border: 1px solid #ccc;
+	box-shadow: 0 0 1px;
+	font-family: 'kopub batang';
+	line-height: 1.5em;
+	font-size: 20px;
 }
+
+#main11 {
+	float: top;
+	background-color: #B5E3D8;
+	height: 45px;
+}
+
+
+#groupName{
+	color: black;
+	font-size: 25px;
+	font-family: 'Hanna', serif;
+	font-weight: center;
+	line-height: 40px;
+}
+
 #demoGrp{
 	float: left;
 	display: inline-block;
