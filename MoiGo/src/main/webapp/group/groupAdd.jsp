@@ -16,6 +16,7 @@
 	href="<%=request.getContextPath()%>/css/joinform.css" />
 <meta http-equiv="Content-Type" content="text/html; " charset=UTF-8">
 <title>Moigo</title>
+
 </head>
 <body>
 <%@include file="/include/header.jsp"%>
@@ -26,7 +27,6 @@
 		<!-- 추가, 수정 페이지 -->
 		<!-- 추가 -->
 		<form action="<%=request.getContextPath()%>/add" method="post" id="groupAdd_form">
-	
 			<%-- 	<p>
 				<img id="UploadedImg" width="85" height="111"
 				src="<%=request.getContextPath()%>/images/basic.png"> <br> 
@@ -55,9 +55,10 @@
 			
 			<p>
 			<tr>
+			<input type="hidden" id="grpNameChk" value="N"/>
 				<td id="tdleft"><label> 모임명 <font color="red"><b>*</b></font> : </td>
 				<td><input type="text" id="grpName" name="grpName" /></td>
-				<td><input type="button" id="grpNameConfirm" value="중복확인" /></td>	<br>
+				<td><input type="button" id="chkGrpName" value="중복확인" /></td>	<br>
 				</label>
 			</p>
 			<br>
