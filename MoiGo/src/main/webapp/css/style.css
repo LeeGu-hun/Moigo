@@ -255,6 +255,7 @@
 	height: 100%;
 	background-color: #aaaaaa;
 }
+
 #product{
 	float: left;
 	width: calc(100% - 300px);
