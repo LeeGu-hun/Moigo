@@ -71,6 +71,20 @@ public class DaoGroup {
 		});
 		return results;
 	}
+	
+	public List<Group> srchGroup(String srchTxt){ //검색하기
+		List<Group> results = jdbcTemplate.query("select * from groupInfo where grpName like '%" + srchTxt + "%' or grpCate like '%" + srchTxt + "%' "
+				+ "or grpLeader like '%" + srchTxt + "%' or grpIntro like '%" + srchTxt + "%'", new RowMapper<Group>() {
+			public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"),
+						rs.getString("grpOpen"), rs.getString("grpCate"), rs.getString("grpIntro"),
+						rs.getTimestamp("grpRegDate"));
+				group.setGrpNum(groupUserCount(rs.getString("grpName")));
+				return group;
+			}
+		});
+		return results;
+	}
 
 	public List<Group> getNewGrp() { // 개설된지 1주일 안의 그룹만 가져오기(신규그룹)
 		List<Group> results = jdbcTemplate.query("select * from groupInfo where grpOpen='Y' and grpregdate>=sysdate-7",

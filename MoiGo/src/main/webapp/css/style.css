@@ -78,6 +78,15 @@
 	background : linear-gradient(top, #ffffff 0%, #f1f1f1 22%, #f6f6f6 100%);
 	filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 );
 }
+#loginBox2{
+	position: absolute;
+	top: 100px;
+	right: 0px;
+	width: 200px;
+	height: 100px;
+	background-color: #AAAAAA;
+	display: none;
+}
 /* ~ header */
 /* submenu ~ */
 #submenu{
@@ -191,12 +200,29 @@
 }
 
 /* ~ content */
-#loginBox2{
-	position: absolute;
-	top: 100px;
-	right: 0px;
-	width: 200px;
-	height: 100px;
-	background-color: #AAAAAA;
-	display: none;
+/* market~ */
+#mktCate{
+	float: left;
+	width: 300px;
+	height: 100%;
+	background-color: #aaaaaa;
 }
+#product{
+	float: left;
+	width: calc(100% - 300px);
+	height: 100%;
+	background-color: #999999;
+}
+/* ~market */
+/* search~ */
+#resultGroup{
+	float: left;
+	width: 50%;
+	height: auto;
+}
+#resultMarket{
+	float: left;
+	width: 50%;
+	height: auto;
+}
+/* ~search */

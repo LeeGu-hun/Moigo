@@ -20,6 +20,12 @@
 		<property name="userRegisterService" ref="userRegSvc" />
 		<property name="changePasswordService" ref="changePwdSvc" />
 	</bean>
-	
+	<bean class="controller.controllerMarket">
+		<property name="daoMarket" ref="daoMarket" /> 
+	</bean>
+	<bean class="controller.controllerSearch">
+		<property name="daoGroup" ref="daoGroup" />
+		<property name="daoMarket" ref="daoMarket" />
+	</bean>
 </beans>
 	

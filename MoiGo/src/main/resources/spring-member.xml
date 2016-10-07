@@ -28,6 +28,9 @@
 	<bean id="daoGroup" class="dao.DaoGroup">
 		<constructor-arg ref="dataSource" />
 	</bean>
+	<bean id="daoMarket" class="dao.DaoMarket">
+		<constructor-arg ref="dataSource" />
+	</bean>
 	<bean id="authService" class="login.AuthService">
 		<property name="daoUser" ref="daoUser" />
 	</bean>
