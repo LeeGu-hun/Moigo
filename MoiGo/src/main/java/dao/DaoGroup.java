@@ -89,7 +89,7 @@ public class DaoGroup {
 	}
 
 	public List<Group> getNewGrp() { // 개설된지 1주일 안의 그룹만 가져오기(신규그룹)
-		List<Group> results = jdbcTemplate.query("select * from groupInfo where grpOpen='Y' and grpregdate>=sysdate-7",
+		List<Group> results = jdbcTemplate.query("select * from groupInfo where grpOpen='Y' and grpregdate>=sysdate-7 order by grpregdate desc",
 				new RowMapper<Group>() {
 					public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"),
@@ -104,7 +104,7 @@ public class DaoGroup {
 
 	public List<Group> getJoinGrp(String userNick) { // 특정 닉네임이 가입한 그룹만 가져오기
 		List<Group> results = jdbcTemplate.query(
-				"select * from groupjoin grpj, groupInfo grpi where grpj.grpname = grpi.grpname and userNick =?",
+				"select * from groupjoin grpj, groupInfo grpi where grpj.grpname = grpi.grpname and userNick =? order by grpregdate desc",
 				new RowMapper<Group>() {
 					public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"),
@@ -196,7 +196,7 @@ public class DaoGroup {
 		return grpGeul;
 	}
 	
-	public void writeGroupBoard(final GroupWriteCommand groupWriteCommand, final String groupName) { // 그룹추가
+	public void writeGroupBoard(final GroupWriteCommand groupWriteCommand, final String groupName) { // 그룹 게시글 추가
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement pstmt = con.prepareStatement("insert into GROUPBOARD values(seq_board.nextval, ?, ?, ?, sysdate, ?)");

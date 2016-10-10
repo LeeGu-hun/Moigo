@@ -32,6 +32,7 @@
 							<input type="hidden" id="grpCate" name="grpCate" value="${jGrp.grpCate }"/>
 							<input type="hidden" id="grpName" name="grpName" value="${jGrp.grpName }"/>
 							<input type="hidden" id="grpIntro" name="grpIntro" value="${jGrp.grpIntro }"/>
+							<input type="hidden" id="grpOpen" name="grpOpen" value="${jGrp.grpOpen }"/>
 							<input type="submit" value="수정하기"/>
 							</form>
 						</c:if>

@@ -95,6 +95,9 @@ public class controllerGroup {
 		String editCate = daoGroup.getCateName(groupAddCommand.getCate());
 		Edit.setCate(editCate);
 		
+	
+		
+		
 		daoGroup.addGroup(Edit);
 		daoGroup.joinGroup(userInfo.getUserNick(), Edit.getGrpName());
 
@@ -113,15 +116,15 @@ public class controllerGroup {
 
 	@RequestMapping("/modifyGroupInfo") /* 그룹정보수정으로 가는 컨트롤러 */
 	public String modifyGroupInfo(GroupModifyCommand groupModifyCommand, Model model) {
-		model.addAttribute("grpCate", groupModifyCommand);
+		model.addAttribute("groupModifyCommand", groupModifyCommand);
 		return "group/modifyGroup";
 	}
 
 	@RequestMapping("/modifyGroup") /* 그룹정보수정 */
-	public String modifyGroup(HttpSession session, Model model) {
-		// 수정해서 값 보내기~
-
-		return "group/modifyGroup";
+	public String modifyGroup(GroupModifyCommand groupModifyCommand) {
+		daoGroup.modifyGroup(groupModifyCommand);
+		
+		return "redirect:/group";
 	}
 	
 	@RequestMapping("/group/{grpName}/groupwrite") // 그룹게시판 글등록
