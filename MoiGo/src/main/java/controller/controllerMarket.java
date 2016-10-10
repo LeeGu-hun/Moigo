@@ -35,12 +35,14 @@ public class controllerMarket {
 	@RequestMapping(value="/market")
 	public String market(HttpSession session, Model model) {
 		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
+		if (user!=null) {
+			List<Group> groupName = daoGroup.getJoinGrp(user.getUserNick());
+			model.addAttribute("groupName", groupName);			
+		}
 		List<Market> allProducts = daoMarket.getAllProduct();
 		List<GroupCate> cates = daoMarket.getCate();
-		List<Group> groupName = daoGroup.getJoinGrp(user.getUserNick());
 		model.addAttribute("cates", cates);
 		model.addAttribute("allProducts", allProducts);
-		model.addAttribute("groupName", groupName);
 		return "market/marketMain";
 	}
 	

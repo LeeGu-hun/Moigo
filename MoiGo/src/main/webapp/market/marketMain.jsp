@@ -96,7 +96,13 @@
 		</c:forEach>
 	</div>
 	<div id="product">
-		<input type="button" id="btnAddProduct" herf="#" class="openMask" value="글쓰기" />
+		<c:if test="${!empty authInfo }">
+			<div id="addMrkBtn">
+				<center>
+					<a href="#" class="openMask" style="font-size: 60px; font-weight: bold; text-align: center; line-height: 70px;">＋</a>
+				</center>
+			</div>
+		</c:if>
 		<div id="mask"></div> <!-- 화면 불투명에 쓸 div -->
 		<div class="window"> <!-- writeBoard -->
 			<div id="writeBoard" style="background: white;">
