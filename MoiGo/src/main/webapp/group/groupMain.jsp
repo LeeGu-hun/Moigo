@@ -42,32 +42,26 @@
 		// 화면의 높이와 너비를 구하기
 		var maskHeight = $(document).height();  
 		var maskWidth = $(window).width();  
-
 		// 마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
 		$('#mask').css({'width':maskWidth,'height':maskHeight});  
-
 		// 70% 불투명
 //		$('#mask').fadeIn(1000);      
 		$('#mask').fadeTo("fast",0.7);    
-
 		// 글쓰기 div 띄우기
 		$('.window').show();
 	}
-
 	$(document).ready(function(){
 		// 어두운 화면 띄우기
 		$('.openMask').click(function(e){
 			e.preventDefault();
 			wrapWindowByMask();
 		});
-
 		// 닫기 버튼을 눌렀을 때
 		$('.divClose .close').click(function (e) {  
 		    //링크 기본동작은 작동하지 않도록 한다.
 		    e.preventDefault();  
 		    $('#mask, .window').hide();  
 		});       
-
  		// 어두운 화면 클릭시 글쓰기창 닫기
 //		$('#mask').click(function () {  
 //		    $(this).hide();  
@@ -121,6 +115,7 @@
 						<c:forEach var="geulInfo" items="${geulInfo }"> 
 						<div id="geul">					
 							<div id="info">
+								<input type="hidden" id="wGrpName" name="wGrpName" value="${grpInfo.grpName }" />
 								<div id="writer">글쓴이 : ${geulInfo.getBrdWriter() }</div><p>
 								<div id="writedDte">작성일 : ${geulInfo.getBrdRegDate() }</div>
 							</div><br>
@@ -136,8 +131,9 @@
 					<div id="writeBoard" style="background: white;">
 						<div class="divClose"><a href="#" class="close" >Close</a></div><br>
 						<form action="${grpInfo.grpName }/groupwrite" method="post"> 
-							<div style="padding-left: 20px;"><input type="text" id="writeTitle" placeholder="Title" /></div><br>
-							<div style="padding-left: 20px;"><textarea cols="105" rows="20" id="writeContent" placeholder="Content"></textarea></div><br>
+							<input type="hidden" id="writer" name="writer" value="${authInfo.userID }" />
+							<div style="padding-left: 20px;"><input type="text" id="writeTitle" name="writeTitle" placeholder="Title" /></div><br>
+							<div style="padding-left: 20px;"><textarea cols="105" rows="20" id="writeContent" name="writeContent" placeholder="Content"></textarea></div><br>
 							<div style="padding-right: 30px; "><input type="submit" style="float: right; " value="게시하기"/></div>
 						</form>
 					</div>			

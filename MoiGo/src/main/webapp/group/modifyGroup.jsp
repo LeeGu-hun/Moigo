@@ -43,8 +43,10 @@
 			<p>
 			<tr>
 				<td id="tdleft"><label> 모임명 : </td>
-				<td><input type="text" id="grpName" 
-				name="grpName" value="${groupModifyCommand.grpName}" disabled="disabled"/></td>
+				<td><input type="text" id="grpName" name="grpName" 
+				value="${groupModifyCommand.grpName}" disabled="disabled"/></td>
+				<td><input type="hidden" id="grpName" name="grpName"
+					value="${groupModifyCommand.grpName}" /></td>
 				</label>
 				</p>
 			
@@ -67,8 +69,7 @@
 				<td id="tdleft"><label> 모임장 : </td>
 				<td><input type="text" disabled="disabled"
 					value="${authInfo.userNick }" /></td>
-				<td><input type="hidden" id="grpLeader" name="grpLeader"
-					value="${authInfo.userNick }" /></td>
+				
 				<br>
 				</label>
 			</tr>
@@ -76,10 +77,18 @@
 
 			<p>
 			<td id="tdleft"><label> 모임 공개 여부 :
+			<c:choose>
+			<c:when test="${groupModifyCommand.grpOpen=='Y'}">
 					<td id="tdopen"><input type="radio" id="grpOpen"
-						name="grpOpen" value="Y" />공개 <input type="radio" id="grpOpen"
+						name="grpOpen" value="Y" checked="checked"/>공개 <input type="radio" id="grpOpen"
 						name="grpOpen" value="N" />비공개</td>
-
+						</c:when>
+						<c:when test="${groupModifyCommand.grpOpen=='N'}">
+						<td id="tdopen"><input type="radio" id="grpOpen"
+						name="grpOpen" value="Y" />공개 <input type="radio" id="grpOpen"
+						name="grpOpen" value="N" checked="checked"/>비공개</td>
+						</c:when>
+			</c:choose>
 			</label></td>
 			</tr>
 			</p>

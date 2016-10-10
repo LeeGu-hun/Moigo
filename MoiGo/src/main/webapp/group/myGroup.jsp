@@ -17,7 +17,7 @@
 <body>
 	<%@include file="/include/header.jsp"%>
 	<%@include file="/include/loginBox2.jsp"%>
-	<div id="content">
+	<div id="content">		
 		<c:if test="${!empty authInfo }">
 			<input type="button" onclick="addGroup();" value="모임개설" />
 			<br>
@@ -35,6 +35,9 @@
 							<input type="submit" value="수정하기"/>
 							</form>
 						</c:if>
+					</div>
+					<div>
+						<img src="<%=request.getContextPath() %>/file/${jGrp.grpThumbnail}" style="width: 100px; height: 100px;">				
 						<br> 그룹장 : ${jGrp.grpLeader } <br> 공개여부 : ${jGrp.grpOpen }
 						<br> 카테고리 : ${jGrp.grpCate } <br> 그룹인원 : ${jGrp.grpNum }
 						<br> 개설일자 : ${jGrp.grpRegDate } <br> 그룹소개 :

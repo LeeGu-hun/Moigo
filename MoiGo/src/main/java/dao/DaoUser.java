@@ -60,9 +60,9 @@ public class DaoUser {
 	}
 	
 	public void update(User user) { // 회원정보수정
-		jdbcTemplate.update("update USERINFO set username = ?, userpw = ?, useraddr = ?, userphone = ?, userbirth= ? "
+		jdbcTemplate.update("update USERINFO set username = ?, userpw = ?, useraddr = ?, userphone = ? "
 				+ "where userid = ?", 
 				user.getUserName(), user.getUserPw(), user.getUserAddr(),
-				user.getUserPhone(), user.getUserBirth(), user.getUserID());
+				user.getUserPhone(), user.getUserID());
 	}
 }

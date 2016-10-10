@@ -2,12 +2,12 @@ package group;
 
 import java.util.Date;
 
-public class GrpBoard {
+public class GroupBoard {
 	String brdWriter, brdTitle, brdContent;
 	int brdSeq;
 	Date brdRegDate;
 	
-	public GrpBoard(String brdWriter, String brdTitle, String brdContent, Date brdRegDate) {
+	public GroupBoard(String brdWriter, String brdTitle, String brdContent, Date brdRegDate) {
 		super();
 		this.brdWriter = brdWriter;
 		this.brdTitle = brdTitle;

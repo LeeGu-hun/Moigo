@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,13 +18,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import dao.DaoGroup;
 import group.Group;
 import group.GroupAddCommand;
 import group.GroupCate;
 import group.GroupModifyCommand;
 import group.GroupWriteCommand;
-import group.GrpBoard;
+import group.GroupBoard;
 import login.AuthInfo;
 
 @Controller
@@ -52,7 +56,7 @@ public class controllerGroup {
 			AuthInfo user = (AuthInfo)session.getAttribute("authInfo");
 			boolean Joined = daoGroup.getJoinedGroup(grpName, user.getUserNick());
 			model.addAttribute("joined", Joined);
-			List<GrpBoard> geulInfo = daoGroup.getGrpGeul(grpName);
+			List<GroupBoard> geulInfo = daoGroup.getGrpGeul(grpName);
 			model.addAttribute("geulInfo", geulInfo);
 			model.addAttribute("grpInfo", grpInfo);
 		}
@@ -68,25 +72,35 @@ public class controllerGroup {
 	}
 
 	@RequestMapping("/add") /* 그룹개설 */
-	public String add(GroupAddCommand groupAddCommand, HttpSession session) {
+	public String add(GroupAddCommand groupAddCommand, HttpSession session, HttpServletRequest request) {
+		String upload = "file";
+		ServletContext sc = request.getServletContext();
+		String uploadPath = sc.getRealPath("/") + upload;
+		System.out.println(uploadPath);
+		int size = 10 * 1024 * 1024;
+		try {
+			MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "UTF-8",
+				new DefaultFileRenamePolicy());
+			groupAddCommand.setCate(multi.getParameter("cate"));
+			groupAddCommand.setGrpIntro(multi.getParameter("grpIntro"));
+			groupAddCommand.setGrpLeader(multi.getParameter("grpLeader"));
+			groupAddCommand.setGrpName(multi.getParameter("grpName"));
+			groupAddCommand.setGrpOpen(multi.getParameter("grpOpen"));
+			groupAddCommand.setGrpThumbnail(multi.getFilesystemName((String)multi.getFileNames().nextElement()));			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		AuthInfo userInfo = (AuthInfo) session.getAttribute("authInfo");
 		GroupAddCommand Edit = groupAddCommand;
 		String editCate = daoGroup.getCateName(groupAddCommand.getCate());
 		Edit.setCate(editCate);
-
+		
 		daoGroup.addGroup(Edit);
 		daoGroup.joinGroup(userInfo.getUserNick(), Edit.getGrpName());
 
 		return "redirect:/";
 	}
 
-	@RequestMapping("/group/{grpName}/groupwrite")
-	public String groupWrite(@PathVariable String grpName, GroupWriteCommand groupWriteCommand, HttpSession session) throws UnsupportedEncodingException {
-		System.out.println("들어오긴합니까?");
-		String url = URLEncoder.encode(grpName, "UTF-8");
-		System.out.println(grpName);
-		return "redirect:/group/"+url;
-	}
 	@RequestMapping("/group/{grpName}/joingroup") /* 그룹가입 */
 	public String joinGroup(@PathVariable String grpName, HttpSession session) {
 		System.out.println(grpName);
@@ -109,5 +123,16 @@ public class controllerGroup {
 
 		return "group/modifyGroup";
 	}
-
+	
+	@RequestMapping("/group/{grpName}/groupwrite") // 그룹게시판 글등록
+	public String groupWrite(@PathVariable String grpName, GroupWriteCommand groupWriteCommand, HttpSession session) throws UnsupportedEncodingException {
+		String url = URLEncoder.encode(grpName, "UTF-8");
+		System.out.println("그룹명 : " + grpName);
+		System.out.println("내용" + groupWriteCommand.getWriteContent());
+		System.out.println("작성자" + groupWriteCommand.getWriter());
+		System.out.println("제목" + groupWriteCommand.getWriteTitle());
+		daoGroup.writeGroupBoard(groupWriteCommand, grpName);
+		return "redirect:/group/"+url;
+	}
+	
 }

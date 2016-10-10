@@ -4,6 +4,14 @@ public class GroupModifyCommand {
 	private String grpCate;
 	private String grpName;
 	private String grpIntro;
+	private String grpOpen;
+	
+	public String getGrpOpen() {
+		return grpOpen;
+	}
+	public void setGrpOpen(String grpOpen) {
+		this.grpOpen = grpOpen;
+	}
 	public String getGrpCate() {
 		return grpCate;
 	}

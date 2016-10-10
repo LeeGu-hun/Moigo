@@ -6,9 +6,15 @@ public class GroupAddCommand {
 	private String grpIntro;
 	private String grpLeader;
 	private String grpOpen;
-	
+	private String grpThumbnail;
 	
 
+	public String getGrpThumbnail() {
+		return grpThumbnail;
+	}
+	public void setGrpThumbnail(String grpThumbnail) {
+		this.grpThumbnail = grpThumbnail;
+	}
 	public String getCate() {
 		return cate;
 	}

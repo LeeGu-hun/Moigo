@@ -1,12 +1,24 @@
 package group;
 
 public class GroupWriteCommand {
-	String writeTitle, writeContent;
+	String writeTitle, writeContent, writer;
 
-	public GroupWriteCommand(String writeTitle, String writeContent) {
-		super();
+	public GroupWriteCommand(String writeTitle, String writeContent, String writer) {
 		this.writeTitle = writeTitle;
 		this.writeContent = writeContent;
+		this.writer = writer;
+	}
+
+	public GroupWriteCommand() {
+	
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 
 	public String getWriteTitle() {

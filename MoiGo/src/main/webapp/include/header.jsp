@@ -12,19 +12,19 @@
 	</div>
 	<div id="menus">
 			<div class="menus">	
-				<a href="<c:url value='/group' />"><img src="<%=request.getContextPath()%>/images/myAccount.png" style="display:block">나의그룹</a>				
+				<a href="<c:url value='/group' />"><img src="<%=request.getContextPath()%>/images/myAccount.png" style="display:block"></a>나의그룹				
 			</div>
 			<div class="menus">
-				<img src="<%=request.getContextPath()%>/images/event.png" style="display:block"">나의일정				
+				<img src="<%=request.getContextPath()%>/images/event.png" style="display:block">나의일정				
 			</div>				
 			<div class="menus">
 				<img src="<%=request.getContextPath()%>/images/chat.png" style="display:block">채팅
 			</div>				
 			<div class="menus">
-				<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/group.png" style="display:block">추천그룹</a>										
+				<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/group.png" style="display:block"></a>추천그룹										
 			</div>
 			<div class="menus">
-				<a href="<c:url value='/market' />"><img src="<%=request.getContextPath()%>/images/market.png" style="display:block">마켓</a>
+				<a href="<c:url value='/market' />"><img src="<%=request.getContextPath()%>/images/market.png" style="display:block"></a>마켓
 			</div>
 		</div>
 	<div id="loginBox">

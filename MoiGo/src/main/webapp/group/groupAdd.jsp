@@ -16,7 +16,6 @@
 	href="<%=request.getContextPath()%>/css/joinform.css" />
 <meta http-equiv="Content-Type" content="text/html; " charset=UTF-8">
 <title>Moigo</title>
-
 </head>
 <body>
 <%@include file="/include/header.jsp"%>
@@ -26,7 +25,7 @@
 	<c:if test="${!empty authInfo }">
 		<!-- 추가, 수정 페이지 -->
 		<!-- 추가 -->
-		<form action="<%=request.getContextPath()%>/add" method="post" id="groupAdd_form">
+		<form action="<%=request.getContextPath()%>/add" method="post" id="groupAdd_form" enctype="multipart/form-data">
 			<%-- 	<p>
 				<img id="UploadedImg" width="85" height="111"
 				src="<%=request.getContextPath()%>/images/basic.png"> <br> 
@@ -50,9 +49,7 @@
 				</label>
 				</tr>
 			</p>
-			<br>
-			
-			
+			<br>		
 			<p>
 			<tr>
 			<input type="hidden" id="grpNameChk" value="N"/>
@@ -91,7 +88,11 @@
 			</td>
 			</tr>
 			</p>
-			
+			<tr>
+				<td>	
+					모임이미지 : <input type="file" id="grpThumbnail" name="grpThumbnail">
+				</td>
+			</tr>
 			<tr>
 			<td id="tdbottom" colspan="3">
 				<input type="submit" id="btnbottom" value="모임개설" />
