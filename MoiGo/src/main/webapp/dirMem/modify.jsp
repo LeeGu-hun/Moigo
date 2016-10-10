@@ -10,46 +10,8 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MoiGo</title>
-<!-- jQuery UI CSS파일 --> 
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
-<!-- jQuery 기본 js파일 -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-<!-- jQuery UI 라이브러리 js파일 -->
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+<title>MoiGo</title>  
 <script>
-$(function() {
-		$("#modiBirth").datepicker(
-			{
-				dateFormat : 'yy-mm-dd',
-				prevText : '이전 달',
-				nextText : '다음 달',
-				monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-						'9월', '10월', '11월', '12월' ],
-				monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월',
-						'8월', '9월', '10월', '11월', '12월' ],
-				dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
-				dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
-				dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
-				showMonthAfterYear : true,
-				yearSuffix : '년'
-			});
-		getDate();
-	});
-	function getDate() {
-		var newDate = new Date();
-		var yyyy = newDate.getFullYear();
-		var mm = newDate.getMonth() + 1;
-		if (mm < 10) {
-			mm = "0" + mm;
-		}
-		var dd = newDate.getDate();
-		if (dd < 10) {
-			dd = "0" + dd;
-		}
-		var toDay = yyyy + "-" + mm + "-" + dd;
-		document.getElementById("modiBirth").value = toDay;
-	} 	
  	function onlyNumber(event){
 		event = event || window.event;
 		var keyID = (event.which) ? event.which : event.keyCode;
@@ -91,7 +53,7 @@ $(function() {
 			이름 <input type="text" id="modiName" name="modiName" value="${authInfo.userName }" /><br>
 			닉네임 <input type="text" id="modiNickName" name="modiNickName" value="${authInfo.userNick }" disabled="disabled" /><br>
 			<input type="hidden" id="modiNickName" name="modiNickName" value="${authInfo.userNick }" />
-			생년월일 <input type="text" id="modiBirth" name="modiBirth" value="${userInfo.getUserBirth() }" /><br>
+			생년월일 <input type="text" id="modiBirth" name="modiBirth" value="${userInfo.getUserBirth() }" disabled="disabled" /><br>
 			주소 <input type="text" id="modiAddress" name="modiAddress" style="ime-mode:active;" value="${userInfo.getUserAddr() }"/><br>
 			휴대전화번호 <input type="text" id="modiPhoneNum" name="modiPhoneNum" value="${userInfo.getUserPhone() }" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /><br>
 			<input type="submit" value="수정하기" />

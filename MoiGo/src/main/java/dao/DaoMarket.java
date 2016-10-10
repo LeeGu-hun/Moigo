@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 
+import group.Group;
 import group.GroupCate;
 import market.Market;
 import market.MarketAddProductCommand;
@@ -24,7 +25,7 @@ public class DaoMarket {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public List<Market> getAllProduct(){ //모든 제품 가져오기
+	public List<Market> getAllProduct(){
 		List<Market> results = jdbcTemplate.query("select * from market order by MKTREGDATE desc", new RowMapper<Market>() {
 			public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Market market = new Market(rs.getString("mktCode"), rs.getString("mktSeller"), rs.getString("mktPrName"), rs.getString("mktPrice"), 
@@ -35,7 +36,7 @@ public class DaoMarket {
 		return results;
 	}
 	
-	public Market getProduct(String prdName){ //이름으로 제품가져오기
+	public Market getProduct(String prdName){
 		Market result = jdbcTemplate.queryForObject("select * from market where grpName = ?",
 				new RowMapper<Market>() {
 					public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -56,6 +57,7 @@ public class DaoMarket {
 		});
 		return results;
 	}
+	
 	public List<Market> srchMarket(String srchTxt){ //검색하기
 		List<Market> results = jdbcTemplate.query("select * from market where mktSeller like '%" + srchTxt + "%' or mktPrName like '%" + srchTxt + "%' "
 				+ "or mktContent like '%" + srchTxt + "%' or grpName like '%" + srchTxt + "%'", new RowMapper<Market>() {
@@ -69,37 +71,23 @@ public class DaoMarket {
 		return results;
 	}
 	
-	public void addProduct(final MarketAddProductCommand marketAddProductCommand) {
+	
+	
+	public void addProduct(final MarketAddProductCommand marketAddProductCommand) {  // 상품등록                   아직 만들다 말았음
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement pstmt = con.prepareStatement(
 						"insert into MARKET (mktcode, mktseller, mktprname, mktprice, mktcontent, mktregdate, grpname) " 
-						+ "values (seq_market.nextval, ?, ?, ?, ?, syadate, ? )");
-				pstmt.setString(1, marketAddProductCommand.getProductName());
-				pstmt.setString(2, marketAddProductCommand.getProductContent());
+						+ "values (seq_market.nextval, ?, ?, ?, ?, sysdate, ? )");
+				pstmt.setString(1, marketAddProductCommand.getMktSeller());
+				pstmt.setString(2, marketAddProductCommand.getProductName());
 				pstmt.setString(3, marketAddProductCommand.getProductPrice());
+				pstmt.setString(4, marketAddProductCommand.getProductContent());
+				pstmt.setString(5, marketAddProductCommand.getGrpName());
 				
 				return pstmt;
 			}
 		});
 	}
-
-	public void insert(final User user) { // 회원가입
-		jdbcTemplate.update(new PreparedStatementCreator() {
-			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement pstmt = con.prepareStatement(
-						"insert into USERINFO (userid, username, usernick, userpw, userregdate, usergender, useraddr, userphone, userbirth) " 
-						+ "values (?, ?, ?, ?, sysdate, ?, ?, ?, ?)");
-				pstmt.setString(1, user.getUserID());
-				pstmt.setString(2, user.getUserName());
-				pstmt.setString(3, user.getUserNick());
-				pstmt.setString(4, user.getUserPw());
-				pstmt.setString(5, user.getUserGender());
-				pstmt.setString(6, user.getUserAddr());
-				pstmt.setString(7, user.getUserPhone());
-				pstmt.setString(8, user.getUserBirth());
-				return pstmt;
-			}
-		});
-	}
+	
 }

@@ -9,6 +9,79 @@
 <script src="<%=request.getContextPath()%>/js/common.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/style.css" />
+	<style>
+	#mask {  
+	  	position: absolute;  
+	  	z-index: 9000;  
+	  	background-color: #000;  
+	  	display: none;  
+	  	left: 0;
+	  	top: 0;
+	}
+	.window{
+	  	display: none;
+	  	position: absolute;  
+	  	left: 550px;
+	  	top: 200px;
+		z-index: 10000;
+	}
+	.divClose{
+		float: right;
+		padding-top: 10px;
+		padding-right: 10px;	
+	}
+	.close{
+		text-decoration:none;
+		color: green;
+		font-weight: bold;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-latest.js"></script> 
+	<script>
+	function wrapWindowByMask(){
+		// 화면의 높이와 너비를 구하기
+		var maskHeight = $(document).height();  
+		var maskWidth = $(window).width();  
+
+		// 마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
+		$('#mask').css({'width':maskWidth,'height':maskHeight});  
+
+		// 70% 불투명
+//		$('#mask').fadeIn(1000);      
+		$('#mask').fadeTo("fast",0.7);    
+
+		// 글쓰기 div 띄우기
+		$('.window').show();
+	}
+
+	$(document).ready(function(){
+		// 어두운 화면 띄우기
+		$('.openMask').click(function(e){
+			e.preventDefault();
+			wrapWindowByMask();
+		});
+
+		// 닫기 버튼을 눌렀을 때
+		$('.divClose .close').click(function (e) {  
+		    //링크 기본동작은 작동하지 않도록 한다.
+		    e.preventDefault();  
+		    $('#mask, .window').hide();  
+		});       
+
+ 		// 어두운 화면 클릭시 글쓰기창 닫기
+//		$('#mask').click(function () {  
+//		    $(this).hide();  
+//		    $('.window').hide();  
+//		});    
+		
+		// 어두운 화면 클릭시 아무 반응 없음.		
+		$('#mask').one('touchstart', function () {  
+		    $(this).unbind('click');
+		});
+	});
+	
+	</script>
+	
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Moigo</title>
 </head>
@@ -23,6 +96,29 @@
 		</c:forEach>
 	</div>
 	<div id="product">
+		<input type="button" id="btnAddProduct" herf="#" class="openMask" value="글쓰기" />
+		<div id="mask"></div> <!-- 화면 불투명에 쓸 div -->
+		<div class="window"> <!-- writeBoard -->
+			<div id="writeBoard" style="background: white;">
+				<div class="divClose"><a href="#" class="close" >Close</a></div><br>
+				<form action="market/addProduct" method="post">
+					판매자 : ${authInfo.userNick }<br>
+					<input type="hidden" id="mktSeller" name="mktSeller" value="${authInfo.userNick }">
+					상품명 : <input type="text" id="productName" name="productName" /><br>
+					가격 : <input type="text" id="productPrice" name="productPrice" /><br>
+					내용 : <input type="text" id="productContent" name="productContent" /><br>
+					그룹명 : <select id="grpName" name="grpName" style="height: 23px;">
+								<option value="" selected>그룹을 선택하세요</option>
+									<c:forEach var="data" items="${requestScope.groupName}">
+ 										<option value='<c:out value="${data.grpName}" />'>
+									<c:out value="${data.grpName}" />
+								</option>
+									</c:forEach>
+							</select><br>
+					<input type="submit" value="상품 등록하기" />
+				</form>
+			</div>			
+		</div>
 		마켓임둥<br><br>
 		<c:forEach var="prd" items="${allProducts }">
 			<div class="products">
@@ -33,7 +129,7 @@
 				내용 : ${prd.mktContent } <br>
 				그룹명 : ${prd.grpName } <br>
 				등록일 : ${prd.mktRegDate } <br>
-			</div>
+			</div><br>
 		</c:forEach>
 	</div>
 </div>

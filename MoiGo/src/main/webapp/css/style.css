@@ -1,230 +1,319 @@
 @CHARSET "UTF-8";
-
-body {
-	background-color: white;
-
-}
-
-select{
-	font-size: 15px;
-	width: 200px; 
-}
-
-~회원가입폼 글자 스타일~
-
-#reg2 {
-	color: #c0c0c0;
-	font-family: 'Nanum Gothic', serif;
-	font-weight: bold;
-}
-
-#reg2 {
-	color: #c0c0c0;
-	font-family: 'Nanum Pen Script', serif;
+*{
+	padding: 0px;
+	margin: 0px;
+	text-decoration: none;
 	
-	font-size: 35px;
 }
 
-~회원가입폼 글자 스타일~
-
-#naver{
-	color: #9b0000;
-	background-color: white;
+a{
+	color: black;
 }
-
-#daum{
-	color: #9b0000;
-	background-color: white;
+#body{
+	margin: 0px;
 }
-
-#nate{
-	color: #9b0000;
-	background-color: white;
+/* header ~ */
+#header{
+	display: inline-block;
+	width: 100%;
+	height: 100px;
 }
-
-#google{
-	color: #9b0000;
-	background-color: white;
+#logo{
+	float: left;
+	width: 15%;
+	height: 100%;
+	background-color: #B5E3D8;
+	font-family: 'Baloo Da';
+	font-size: 60px;
+	text-align: center;
 }
-
-#my_reg_form{
-	margin-top: 10px;
-	background-color: #353535; 
-	width: 605px;
-	height: auto;
-	padding: 20px;
+#logo a {
+	text-decoration: none;
 	color: white;
 }
-
-#my_reg_form #mytable{
-	background-color: #ffffff;
-	padding: 20px;
-	border: 0px;
-	width: 600px;
-	color: black;
-	table-layout: fixed;
+#M {
+	font-size: 60px;f
+	color: #B49173;
 }
 
-#my_reg_form #mytable #left{
-	text-align: right;
-	width: 90px;	
+#G {
+	font-size: 60px;
+	color: #776d61;
 }
-
-
-#my_reg_form #id{
-	width: 150px;	
-}
-
-#my_reg_form #confirmPassword{
-	width: 150px;	
-}
-
-#my_reg_form #password{
-	width: 150px;		
-}
-
-#my_reg_form #password{
-	width: 150px;		
-}
-
-#my_reg_form #age{
-	width: 60px;		
-}
-
-#my_reg_form #name{
-	width: 90px;		
-}
-
-#my_reg_form #nickName{
-	width: 90px;		
-}
-
-#my_reg_form #comment{
-	overflow: hidden;
-}
-
-#my_reg_form #register, #my_reg_form #clear{
-	width: 110px;	
-}
-
- 
- 
- /* 그룹추가폼 */
- 
- #groupAdd_form{
-	margin-top: 10px;
-	background-color: #ffffff; 
-	width: 605px;
-	height: auto;
-	padding: 20px;
-	color: fafafa;
-}
- 
- #groupAdd_form #groupTable{
- 	background-color: #c0c0c0;
- 	padding: 20px;
- 	border: 0px;
- 	width: 600px;
- 	color: black;
- 	table-layout: fixed;
- }
- 
- #grpOpen {
- 	text-align: center;
- }
- 
- #groupAdd_form #groupTable #tdleft{
- 	text-align: left;
- 	width: 120px;	
- }
- 
- #groupAdd_form #groupTable #tdbottom{
- 	text-align: center;
- }
- 
- #tdopen {
- 	text-align: left;
- }
- 
- #btnbottom {
- 	width: 130px;
- }
-
-/* ~~~~~~~~~~ */
-
-
-/* 회원수정폼 */
-
-#form_modify{
-text-align:center;
-border: 1px solid #ccc;
-width: 600px;
-padding: 0px 50px 15px;
-margin-top:20px;
-box-shadow: 0 0 3px;
-border-radius: 1px;
-float:center;
-height: 600px;
-}
-
-
-#form_modify #modi_table{
-	background-color: #ffffff;
-	margin-top:10px;
-	padding: 20px;
-	border: 0px;
-	width: 600px;
-	height: 400px;
-	color: black;
+#search{
+	float: left;
+	width: 20%;
+	height: 100%;
+	color: white;
+	background: #B5E3D8;
+	font-family: Comfortaa;
+	line-height: 100px;
 	
 }
 
-#mdleft{
-	text-align: left;
- 	width: 120px;
+#search #srch, #srchTxt{
+	height: 41px;
 }
 
 
-#form_modify #modiId{
-	width: 150px;
+#menus{
+	float: left;
+	width: 35%;
+	height: 100%;
+	background-color: #B5E3D8;
+	
 }
-
-#form_modify #modiPass{
-	width: 150px;
+.menus{
+	margin-top:30px;
+	margin-left: 30px;
+	float: left;
+	padding-right: 30px;
+	text-align: center;
+	font-family: 'Jeju Gothic', serif;
+	
+	
+	
 }
-
-#form_modify #modiConfirmPass{
-	width: 150px;
-}
-
-#form_modify #modiName {
-	width: 150px;
-}
-#form_modify #modiNickName {
-	width: 150px;
-}
-#form_modify #modiAge {
-	width: 150px;
-}
-#form_modify #modiGender {
-	width: 80px;
-
-}
-
-#form_modify #modiAddress {
-	width: 150px;
-}
-
-#form_modify #modiPhoneNum{
-	width: 150px;
+#loginBox{
+	float: left;
+	width: 30%;
+	height: 100%;
+	background: #B5E3D8;
+	color: white;
+	font-family: Comfortaa;
+	text-align: center;
+	line-height: 100px;
 }
 
 
-#grpIntro{
-	padding: 30px;
+.btn-style{
+	-moz-box-shadow:inset 0px 1px 0px 0px #b5e3d8;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #b5e3d8;
+	box-shadow:inset 0px 1px 0px 0px #b5e3d8;
+	background-color:#776d61;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #b5e3d8;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:7px 24px;
+	text-decoration:none;
+	text-shadow:0px 2px 4px #996765;
+}
+
+.btn-style1{
+	-moz-box-shadow:inset 0px 1px 0px 0px #b5e3d8;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #b5e3d8;
+	box-shadow:inset 0px 1px 0px 0px #b5e3d8;
+	background-color:#ffffff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #b5e3d8;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:7px 24px;
+	text-decoration:none;
+	
+}
+
+.btn-style:hover {
+	background-color:#ad9d90;
+}
+.btn-style:active {
+	position:relative;
+	top:1px;
+}
+
+#loginBox2{
+	position: absolute;
+	top: 100px;
+	right: 0px;
+	width: 200px;
+	height: 100px;
+	background-color: #AAAAAA;
+	display: none;
+}
+=======
+
+}
+/* ~ header */
+/* submenu ~ */
+#submenu{
+	float: left;
+	width: 15%;
+	height: auto;
+	min-height: 750px;
+	background-color: #CCCCCC;
+}
+/* ~ submenu */
+/* content ~ */
+#content{
+	float: left;
+	width: 100%;
+	height: calc(100% - 100px);
+	min-height: 850px;
+	min-width: 1000px;
+	background-color: #fffdf4;
+        
+}
+.mainGroups{
+	float: left;
+	width: 20%;
+	height: 30%;
+	margin: 1%;
+	min-height: 240x;
+	min-width: 240px;
+	background-color: white;
+	border: 1px solid #ccc;
+	box-shadow: 0 0 1px;
+	font-family: 'kopub batang';
+	line-height: 1.5em;
+	font-size: 20px;
+}
+
+#main11 {
+	float: top;
+	background-color: #B5E3D8;
+	height: 45px;
 }
 
 
-#grpName, #grpLeader {
-	padding: 3px;
+#groupName{
+	color: black;
+	font-size: 22px;
+	font-family: 'Jeju Gothic', serif;
+	font-weight: center;
+	line-height: 40px;
 }
+
+#groupName2{
+	font-family: 'Nanum Pen Script', serif;
+	font-size: 32px;
+}
+
+#groupLd{
+	line-height: 40px;
+}
+
+#demoGrp{
+	float: left;
+	display: inline-block;
+	width: 70%;
+	height: 100%;
+}
+#recomGrp{
+	display: inline-block;
+	width: 100%;
+	height: 60%;
+	background-color: #555555;
+}
+#newGrp{
+	display: inline-block;
+	width: 100%;
+	height: 40%;
+	background-color: white;
+}
+#demoMkt{
+	float: left;
+	display: inline-block;
+	width: 30%;
+	height: 100%;
+	background-color: yellow;
+}
+.recomGrp{
+	float: left;
+}
+.newGrp{
+	float: left;
+}
+#brdTotal{
+	margin-left: calc(50% - 575px);
+	margin-right: calc(50% - 575px);
+}
+#grpCalendar{
+	float: left;
+	width: 250px;
+	height: 100%;
+	background-color: #dddddd;
+}
+#grpInfo{
+	width: 230px;
+	height: 150px;	
+}
+#btnWrite{
+	float: right;
+}
+#btnOut{
+	float: right;
+}
+#writeBoard{
+	width: 800px;
+	height: 420px;
+}
+#board{
+	float: left;
+	width: 650px;
+	height: 100%;
+	background-color: #cccccc;
+}
+#geul{
+	width: 650px;
+	height: 247px;
+}
+#info{
+	
+}
+#writer{
+	
+}
+#writeDate{
+	
+}
+#naeyong{
+	
+}
+#grpProduct{
+	float: left;
+	width: 250px;
+	height: 100%;
+	background-color: #bbbbbb;
+}
+
+/* ~ content */
+/* market~ */
+#mktCate{
+	float: left;
+	width: 300px;
+	height: 100%;
+	background-color: #aaaaaa;
+}
+
+#product{
+	float: left;
+	width: calc(100% - 300px);
+	height: 100%;
+	background-color: #999999;
+}
+/* ~market */
+/* search~ */
+#resultGroup{
+	float: left;
+	width: 50%;
+	height: auto;
+}
+#resultMarket{
+	float: left;
+	width: 50%;
+	height: auto;
+}
+/* ~search */

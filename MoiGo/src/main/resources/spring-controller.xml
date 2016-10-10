@@ -23,7 +23,7 @@
 	</bean>
 	<bean class="controller.controllerMarket">
 		<property name="daoMarket" ref="daoMarket" />
-		<property name="daoUser" ref="daoUser" /> 
+		<property name="daoGroup" ref="daoGroup" />
 	</bean>
 	<bean class="controller.controllerSearch">
 		<property name="daoGroup" ref="daoGroup" />
