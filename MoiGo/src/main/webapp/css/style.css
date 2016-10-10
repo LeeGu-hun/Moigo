@@ -134,6 +134,14 @@ a{
 	top:1px;
 }
 
+.btn-style1:hover {
+	background-color:#ad9d90;
+}
+.btn-style1:active {
+	position:relative;
+	top:1px;
+}
+
 #loginBox2{
 	position: absolute;
 	top: 100px;
@@ -166,10 +174,25 @@ a{
 	background-color: #fffdf4;
         
 }
+
+/* 나의그룹 */
+#addGrpBtn{
+	position: fixed;
+	width: 80px;
+	height: 80px;
+	border-radius: 40px;
+	background-color: #B5E3D8;
+	bottom: 50px;
+	right: 50px;
+	font-size: 60px; 
+	font-weight: bold; 
+	text-align: center; 
+	line-height: 70px;
+}
 .mainGroups{
 	float: left;
-	width: 20%;
-	height: 30%;
+	width: 31%;
+	height: 41%;
 	margin: 1%;
 	min-height: 240x;
 	min-width: 240px;
@@ -178,7 +201,11 @@ a{
 	box-shadow: 0 0 1px;
 	font-family: 'kopub batang';
 	line-height: 1.5em;
-	font-size: 20px;
+	font-size: 17px;
+}
+
+#mainGrp2{
+	text-align: center;
 }
 
 #main11 {
@@ -204,11 +231,16 @@ a{
 #groupLd{
 	line-height: 40px;
 }
-
+#mainCate{
+	float: left;
+	width: 250px;
+	height: 100%;
+	
+}
 #demoGrp{
 	float: left;
 	display: inline-block;
-	width: 70%;
+	width: 650px;
 	height: 100%;
 }
 #recomGrp{
@@ -226,17 +258,19 @@ a{
 #demoMkt{
 	float: left;
 	display: inline-block;
-	width: 30%;
+	width: 250px;
 	height: 100%;
 	background-color: yellow;
 }
 .recomGrp{
 	float: left;
+	border: 1px solid #ccc;
+	box-shadow: 0 0 1px;
 }
 .newGrp{
 	float: left;
 }
-#brdTotal{
+#Total{
 	margin-left: calc(50% - 575px);
 	margin-right: calc(50% - 575px);
 }

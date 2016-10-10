@@ -40,64 +40,62 @@
 					<br>
 					<table id="groupTable">
 						<tr>
-							<td id="tdleft"><label> 카테고리 <font color="red"><b>*</b></font>:
+							<td class="tdleft">
+								카테고리 <font color="red"><b>*</b></font>:
 							</td>
-							<td><select id="cate" name="cate" style="height: 23px;">
+							<td class="tdRight">
+								<select id="cate" name="cate" style="height: 23px;">
 									<option value="" selected>카테고리를 선택하세요</option>
 									<c:forEach var="data" items="${requestScope.CATE}">
 										<option value='<c:out value="${data.CATEID}" />'>
 											<c:out value="${data.CATENAME}" />
 										</option>
-
 									</c:forEach>
-							</select></td>
-							</label>
+								</select>
+							</td>
 						</tr>
-						</p>
-						<br>
-						<p>
 						<tr>
-							<input type="hidden" id="grpNameChk" value="N" />
-							<td id="tdleft"><label> 모임명 <font color="red"><b>*</b></font>
-									: </td>
-							<td><input type="text" id="grpName" name="grpName" /></td>
-							<td><input type="button" id="chkGrpName" value="중복확인" /></td>
-							<br>
-							</label>
-							</p>
-							<br>
+							<td class="tdLeft">
+								<input type="hidden" id="grpNameChk" value="N" />
+								모임명 <font color="red"><b>*</b></font>
+								: 
+							</td>
+							<td class="tdRight">
+								<input type="text" id="grpName" name="grpName" />
+								<input type="button" id="chkGrpName" value="중복확인" />
+							</td>							
 						</tr>
-
-						<p>
-						<td id="tdleft"><label> 모임소개 <font color="red"><b>*</b></font>:
-						</td>
-						<td><textarea cols="30" rows="5" id="grpIntro"
-								name="grpIntro" style="resize: none;"></textarea>(30자이내)</td> 
-						</label>
-						</tr>
-						</p>
-
-						<p>
 						<tr>
-							<td id="tdleft"><label> 모임장 : </td>
-							<td><input type="text" disabled="disabled"
-								value="${authInfo.userNick }" /></td>
-							<td><input type="hidden" id="grpLeader" name="grpLeader"
-								value="${authInfo.userNick }" /></td>
-							<br>
-							</label>
+							<td class="tdLeft">
+								모임소개 <font color="red"><b>*</b></font>:
+							</td>
+							<td>
+								<textarea cols="30" rows="5" id="grpIntro"
+								name="grpIntro" style="resize: none;"></textarea><br>(30자이내)
+							</td> 
 						</tr>
-						</p>
-
-						<p>
-						<td id="tdleft"><label> 모임 공개 여부 :
-								<td id="tdopen"><input type="radio" id="grpOpen"
-									name="grpOpen" value="Y" />공개 <input type="radio" id="grpOpen"
-									name="grpOpen" value="N" />비공개</td>
-
-						</label></td>
+						<tr>
+							<td class="tdLeft">
+								모임장 : 
+							</td>
+							<td>
+								<input type="text" disabled="disabled"
+								value="${authInfo.userNick }" />
+							</td>
+							<td>
+								<input type="hidden" id="grpLeader" name="grpLeader"
+								value="${authInfo.userNick }" />
+							</td>							
 						</tr>
-						</p>
+						<tr>
+							<td class="tdLeft">
+								모임 공개 여부 :
+							</td>
+							<td class="tdRight">
+								<input type="radio" id="grpOpen" name="grpOpen" value="Y" />공개 
+								<input type="radio" id="grpOpen" name="grpOpen" value="N" />비공개
+							</td>
+						</tr>
 						<tr>
 							<td>모임이미지 : <input type="file" id="grpThumbnail"
 								name="grpThumbnail">
@@ -106,7 +104,8 @@
 						<tr>
 							<td id="tdbottom" colspan="3"><input type="submit"
 								id="btnbottom" value="모임개설" /> <input type="button"
-								id="btnbottom" value="취소" onclick="location.href = 'main';" /></td>
+								id="btnbottom" value="취소" onclick="location.href = 'main';" />
+							</td>
 						</tr>
 					</table>
 				</form>

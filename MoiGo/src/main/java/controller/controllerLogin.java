@@ -31,7 +31,7 @@ public class controllerLogin {
 	}
 	@RequestMapping("/") /* 시작화면 */
 	public String main(HttpServletRequest request){
-		List<Group> recomGrp = daoGroup.getAllOpen();
+		List<Group> recomGrp = daoGroup.getRecomGrp();
 		List<Group> newGrp = daoGroup.getNewGrp();
 		request.setAttribute("recomGrp", recomGrp);
 		request.setAttribute("newGrp", newGrp);

@@ -100,7 +100,7 @@
 	<c:if test="${!empty authInfo }">
 		<div id="content">
 			<c:if test="${joined }">
-				<div id="brdTotal">
+				<div id="Total">
 					<div id="grpCalendar">
 						abc1
 						<div id="grpInfo">

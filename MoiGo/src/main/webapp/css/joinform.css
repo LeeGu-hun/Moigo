@@ -132,11 +132,19 @@ select{
  #grpOpen {
  	text-align: center;
  }
+
+#groupTable tr{
+	width: 650px;
+}
  
- #groupAdd_form #groupTable #tdleft{
- 	text-align: left;
- 	width: 120px;	
- }
+.tdLeft{
+	text-align: left;
+	width: 120px;	
+}
+ 
+#groupTable .tdRight{
+ 	width: 300px;	
+}
  
  #groupAdd_form #groupTable #tdbottom{
  	text-align: center;
