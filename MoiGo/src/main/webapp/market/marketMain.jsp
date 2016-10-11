@@ -92,11 +92,7 @@
 	<div id="Total">
 		<div id="mktcate">
 			<c:forEach var="cates" items="${cates }">
-				<div style="float: left; margin: 20px;">
-					<a href="#" onclick="grpResult('${cates.CATENAME}');">
-						<img src="<%=request.getContextPath()%>/images/cate/${cates.CATEID}.jpg"/>	
-					</a>
-				</div>
+				${cates.CATENAME } <br>
 			</c:forEach>
 		</div>
 		<div id="product">

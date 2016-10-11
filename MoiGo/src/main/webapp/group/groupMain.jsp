@@ -124,7 +124,12 @@
  					</c:forEach>
 					</div>
 					<div id="grpProduct">
-						제품
+						<c:forEach var="grpPrds" items="${grpPrd }">
+							<div class="grpProducts">
+								<img src="<%=request.getContextPath() %>/file/${grpPrds.mktThumbNail}" style="width: 100px; height: 100px; ">
+								판매물품 : ${grpPrds.mktPrName }
+							</div>
+						</c:forEach>
 					</div>
 				</div>	
 				<div id="mask"></div> <!-- 화면 불투명에 쓸 div -->

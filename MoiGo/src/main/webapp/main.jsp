@@ -20,8 +20,8 @@
 	<div id="total">
 		<div id="mainCate">
 			<c:forEach var="cates" items="${cate }">
-				<div style="float: left; margin: 20px;">
-					<a href="#" onclick="grpResult('${cates.CATENAME}');">
+				<div style="float: left; margin: 15px;">
+					<a href="<c:url value='/search/${cates.CATENAME }' />" >
 						<img src="<%=request.getContextPath()%>/images/cate/${cates.CATEID}.jpg"/>	
 					</a>
 				</div>

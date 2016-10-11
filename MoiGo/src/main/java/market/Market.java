@@ -3,11 +3,11 @@ package market;
 import java.util.Date;
 
 public class Market {
-	String mktCode, mktSeller, mktPrName, mktPrice, mktContent, grpName;
+	String mktCode, mktSeller, mktPrName, mktPrice, mktContent, grpName, mktThumbNail;
 	Date mktRegDate;
 	
 	public Market(String mktCode, String mktSeller, String mktPrName, String mktPrice, String mktContent, String grpName,
-			Date mktRegDate) {
+			Date mktRegDate, String mktThumbNail) {
 		this.mktCode = mktCode;
 		this.mktSeller = mktSeller;
 		this.mktPrName = mktPrName;
@@ -15,8 +15,17 @@ public class Market {
 		this.mktContent = mktContent;
 		this.grpName = grpName;
 		this.mktRegDate = mktRegDate;
+		this.mktThumbNail = mktThumbNail;
 	}
 	
+	public String getMktThumbNail() {
+		return mktThumbNail;
+	}
+
+	public void setMktThumbNail(String mktThumbNail) {
+		this.mktThumbNail = mktThumbNail;
+	}
+
 	public String getMktCode() {
 		return mktCode;
 	}

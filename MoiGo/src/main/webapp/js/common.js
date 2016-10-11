@@ -25,11 +25,3 @@ function joinGroup() {
 function modifyGroup() {
 	location.href = '';
 }
-function grpResult(cateName){
-	alert(cateName);
-	$.ajax({
-		type : "POST",
-		url : "",
-		data : "resultCate=" + cateName,
-	});
-}

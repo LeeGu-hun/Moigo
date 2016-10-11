@@ -29,19 +29,19 @@ public class DaoMarket {
 		List<Market> results = jdbcTemplate.query("select * from market order by MKTREGDATE desc", new RowMapper<Market>() {
 			public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Market market = new Market(rs.getString("mktCode"), rs.getString("mktSeller"), rs.getString("mktPrName"), rs.getString("mktPrice"), 
-						rs.getString("mktContent"), rs.getString("grpName"), rs.getDate("mktRegDate"));
+						rs.getString("mktContent"), rs.getString("grpName"), rs.getDate("mktRegDate"), rs.getString("mktThumbNail"));
 				return market;
 			}
 		});
 		return results;
 	}
-	
-	public Market getProduct(String prdName){
-		Market result = jdbcTemplate.queryForObject("select * from market where grpName = ?",
+	public List<Market> getProduct(String prdName){ //그룹이 보유한 판매목록 가져오기
+		List<Market> result = jdbcTemplate.query("select * from market where grpName = ?",
 				new RowMapper<Market>() {
 					public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Market market = new Market(rs.getString("mktCode"),rs.getString("mktSeller"), rs.getString("mktPrName"),
-								rs.getString("mktPrice"),rs.getString("mktContent"),rs.getString("grpName"), rs.getDate("mktRegDate"));
+								rs.getString("mktPrice"),rs.getString("mktContent"),rs.getString("grpName"), rs.getDate("mktRegDate"), 
+								rs.getString("mktThumbNail"));
 						return market;
 					}
 				}, prdName);
@@ -64,14 +64,12 @@ public class DaoMarket {
 			public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Market market = new Market(rs.getString("mktCode"), rs.getString("mktSeller"),
 						rs.getString("mktPrName"), rs.getString("mktPrice"), rs.getString("mktContent"),
-						rs.getString("grpName"), rs.getTimestamp("mktRegDate"));
+						rs.getString("grpName"), rs.getTimestamp("mktRegDate"), rs.getString("mktThumbNail"));
 				return market;
 			}
 		});
 		return results;
 	}
-	
-	
 	
 	public void addProduct(final MarketAddProductCommand marketAddProductCommand) {  // 상품등록                   아직 만들다 말았음
 		jdbcTemplate.update(new PreparedStatementCreator() {
