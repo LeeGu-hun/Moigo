@@ -29,10 +29,12 @@
 		</div>
 		<div id="demoGrp">
 			<div id="recomGrp">
-				추천그룹<br>
+				<p><h2>추천그룹</h2></p>
+				<br>
 				<c:forEach var="rGrp" items="${recomGrp }">
 					<div class="recomGrp">
 						<div id="rGrp">
+							<br>
 							그룹명 : <a href="<c:url value='/group/${rGrp.grpName }' />">${rGrp.grpName }</a>	
 							<br>
 							그룹장 : ${rGrp.grpLeader } <br>
@@ -40,25 +42,29 @@
 							그룹소개 : ${rGrp.grpIntro }<br>
 						</div>
 						<div id="rImg">
-							<img src="<%=request.getContextPath() %>/file/${rGrp.grpThumbnail}" style="width: 100px; height: 100px; ">
+							<img src="<%=request.getContextPath() %>/file/${rGrp.grpThumbnail}" style="width: 100px; height: 100px; padding-top: 10px; padding-left: 40px;">
 						</div>
 					</div>
 				</c:forEach>
+					<br><br>
 			</div>
 			<div id="newGrp">
-			신규그룹<br>
+			<p><h2>신규그룹</h2></p><br>
 				<c:forEach var="nGrp" items="${newGrp }">
 					<div class="recomGrp">
+
 						<div id="rGrp">
+								<br>
 								그룹명 : <a href="<c:url value='/group/${nGrp.grpName }' />">${nGrp.grpName }</a>	
 								<br>
 								그룹장 : ${nGrp.grpLeader } <br>
 								카테고리 : ${nGrp.grpCate } <br>
 								그룹소개 : ${nGrp.grpIntro }<br>
-						</div>
+							</div>
 						<div id="rImg">
-							<img src="<%=request.getContextPath() %>/file/${nGrp.grpThumbnail}" style="width: 100px; height: 100px; ">
+							<img src="<%=request.getContextPath() %>/file/${nGrp.grpThumbnail}" style="width: 100px; height: 100px; padding-top: 10px; padding-left: 40px;">
 						</div>
+						<br>
 					</div>
 				</c:forEach>
 			</div>

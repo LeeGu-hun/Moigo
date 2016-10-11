@@ -57,7 +57,14 @@
 				</c:forEach>
 			</c:if>
 			<c:if test="${empty authInfo }">
-				plz Login First
+				<div id="myFirstLogin1">
+					<center>
+					<div id="myFirstLogin2">
+					<div id="myFirstLogin3">
+					</div>					
+					plz Login First
+				</div>
+				</div>
 			</c:if>
 		</div>
 	</div>
