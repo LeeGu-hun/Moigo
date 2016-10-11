@@ -200,7 +200,7 @@ public class DaoGroup {
 				new RowMapper<GroupBoard>() {
 					public GroupBoard mapRow(ResultSet rs, int rowNum) throws SQLException {
 						GroupBoard groupBoard = new GroupBoard(rs.getString("brdWriter"),
-								rs.getString("brdTitle"), rs.getString("brdContent"), rs.getTimestamp("brdRegDate"));
+								rs.getString("brdTitle"), rs.getString("brdContent"), rs.getString("brdThumbnail"), rs.getTimestamp("brdRegDate"));
 						groupBoard.setBrdSeq(rs.getInt("brdSeq"));
 						return groupBoard;
 					}
@@ -211,12 +211,13 @@ public class DaoGroup {
 	public void writeGroupBoard(final GroupWriteCommand groupWriteCommand, final String groupName) { // 그룹 게시글 추가
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement pstmt = con.prepareStatement("insert into GROUPBOARD values(seq_board.nextval, ?, ?, ?, sysdate, ?)");
+				PreparedStatement pstmt = con.prepareStatement("insert into GROUPBOARD values(seq_board.nextval, ?, ?, ?, sysdate, ?, ?)");
 
 				pstmt.setString(1, groupWriteCommand.getWriter());
 				pstmt.setString(2, groupWriteCommand.getWriteTitle());
 				pstmt.setString(3, groupWriteCommand.getWriteContent());
 				pstmt.setString(4, groupName);
+				pstmt.setString(5, groupWriteCommand.getWriteThumbnail());
 
 				return pstmt;
 			}

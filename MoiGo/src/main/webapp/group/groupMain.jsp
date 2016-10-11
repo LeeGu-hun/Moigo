@@ -113,14 +113,25 @@
 					</div>
 					<div id="board">
 						<c:forEach var="geulInfo" items="${geulInfo }"> 
-						<div id="geul">					
-							<div id="info">
+						<div id="geul" style="margin: 0, auto;">
+	 							<c:if test="${authInfo.userID == geulInfo.getBrdWriter() }">
+									<!-- <div style="text-align: right;"><input type="button" onclick="boardDelete();" value="삭제하기" /></div> -->
+									<a href="/group/${grpInfo.grpName }/delete"">삭제</a>
+								</c:if>		
+							<div id="info" style="float: left; width: 450px;">
+								${authInfo.userNick }
 								<input type="hidden" id="wGrpName" name="wGrpName" value="${grpInfo.grpName }" />
-								<div id="writer">글쓴이 : ${geulInfo.getBrdWriter() }</div><p>
-								<div id="writedDte">작성일 : ${geulInfo.getBrdRegDate() }</div>
-							</div><br>
-							<div id="geulTitle">제목 : ${geulInfo.getBrdTitle() }</div>
-							<div id="naeyong">내용 : ${geulInfo.getBrdContent() }</div>
+								글쓴이 : ${geulInfo.getBrdWriter() }<br>
+								작성일 : ${geulInfo.getBrdRegDate() }<br>
+								제목 : ${geulInfo.getBrdTitle() }<br>
+								내용 : ${geulInfo.getBrdContent() }
+							</div>
+							<div style="float: left; width: 200px;">	
+								<c:if test="${empty geulInfo.brdThumbnail }"></c:if>
+								<c:if test="${!empty geulInfo.brdThumbnail }">
+									<img src="<%=request.getContextPath() %>/file/${geulInfo.brdThumbnail}" style="width: 100px; height: 100px; "><br>
+								</c:if>
+							</div>	
 						</div>
  					</c:forEach>
 					</div>
@@ -130,10 +141,11 @@
 				<div class="window"> <!-- writeBoard -->
 					<div id="writeBoard" style="background: white;">
 						<div class="divClose"><a href="#" class="close" >Close</a></div><br>
-						<form action="${grpInfo.grpName }/groupwrite" method="post"> 
+						<form action="${grpInfo.grpName }/groupwrite" method="post" enctype="multipart/form-data"> 
 							<input type="hidden" id="writer" name="writer" value="${authInfo.userID }" />
 							<div style="padding-left: 20px;"><input type="text" id="writeTitle" name="writeTitle" placeholder="Title" /></div><br>
-							<div style="padding-left: 20px;"><textarea cols="105" rows="20" id="writeContent" name="writeContent" placeholder="Content"></textarea></div><br>
+							<div style="padding-left: 20px;"><textarea cols="105" rows="20" id="writeContent" name="writeContent" placeholder="Content" style="resize: none;"></textarea></div><br>
+							<div style="padding-left: 20px;"><input type="file" id="grpThumbnail" name="grpThumbnail" /></div><br>
 							<div style="padding-right: 30px; "><input type="submit" style="float: right; " value="게시하기"/></div>
 						</form>
 					</div>			

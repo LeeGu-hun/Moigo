@@ -1,20 +1,26 @@
 package market;
 
 public class MarketAddProductCommand {
-	String productName, productPrice, productContent, mktSeller, grpName;
+	private String productName;
+	private String productPrice;
+	private String productContent;
+	private String mktSeller;
+	private String grpName;
+	private String productThumbnail;
 	
 	public MarketAddProductCommand() {
 		super();
 	}
 	
 	public MarketAddProductCommand(String productName, String productPrice, String productContent, String mktSeller,
-			String grpName) {
+			String grpName, String productThumbnail) {
 		super();
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productContent = productContent;
 		this.mktSeller = mktSeller;
 		this.grpName = grpName;
+		this.productThumbnail = productThumbnail; 
 	}
 
 	public String getProductName() {
@@ -55,6 +61,14 @@ public class MarketAddProductCommand {
 
 	public void setGrpName(String grpName) {
 		this.grpName = grpName;
+	}
+
+	public String getProductThumbnail() {
+		return productThumbnail;
+	}
+
+	public void setProductThumbnail(String productThumbnail) {
+		this.productThumbnail = productThumbnail;
 	}
 	
 }

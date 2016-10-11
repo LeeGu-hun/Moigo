@@ -25,23 +25,23 @@ public class DaoMarket {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public List<Market> getAllProduct(){
+	public List<Market> getAllProduct(){ // 마켓의 모든 상품 불러오기
 		List<Market> results = jdbcTemplate.query("select * from market order by MKTREGDATE desc", new RowMapper<Market>() {
 			public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Market market = new Market(rs.getString("mktCode"), rs.getString("mktSeller"), rs.getString("mktPrName"), rs.getString("mktPrice"), 
-						rs.getString("mktContent"), rs.getString("grpName"), rs.getDate("mktRegDate"));
+						rs.getString("mktContent"), rs.getString("grpName"), rs.getString("mktThumbnail"), rs.getDate("mktRegDate") );
 				return market;
 			}
 		});
 		return results;
 	}
 	
-	public Market getProduct(String prdName){
-		Market result = jdbcTemplate.queryForObject("select * from market where grpName = ?",
+	public Market getProduct(String prdName){ // 특정 그룹의 판매 상품 불러오기
+		Market result = jdbcTemplate.queryForObject("select * from market where grpName = ? " + " order by MKTREGDATE desc",
 				new RowMapper<Market>() {
 					public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Market market = new Market(rs.getString("mktCode"),rs.getString("mktSeller"), rs.getString("mktPrName"),
-								rs.getString("mktPrice"),rs.getString("mktContent"),rs.getString("grpName"), rs.getDate("mktRegDate"));
+								rs.getString("mktPrice"),rs.getString("mktContent"),rs.getString("grpName"), rs.getString("mktThumbnail"), rs.getDate("mktRegDate"));
 						return market;
 					}
 				}, prdName);
@@ -64,7 +64,7 @@ public class DaoMarket {
 			public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Market market = new Market(rs.getString("mktCode"), rs.getString("mktSeller"),
 						rs.getString("mktPrName"), rs.getString("mktPrice"), rs.getString("mktContent"),
-						rs.getString("grpName"), rs.getTimestamp("mktRegDate"));
+						rs.getString("grpName"), rs.getString("mktThumbnail"), rs.getTimestamp("mktRegDate"));
 				return market;
 			}
 		});
@@ -73,17 +73,18 @@ public class DaoMarket {
 	
 	
 	
-	public void addProduct(final MarketAddProductCommand marketAddProductCommand) {  // 상품등록                   아직 만들다 말았음
+	public void addProduct(final MarketAddProductCommand marketAddProductCommand) {  // 상품등록
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement pstmt = con.prepareStatement(
-						"insert into MARKET (mktcode, mktseller, mktprname, mktprice, mktcontent, mktregdate, grpname) " 
-						+ "values (seq_market.nextval, ?, ?, ?, ?, sysdate, ? )");
+						"insert into MARKET (mktcode, mktseller, mktprname, mktprice, mktcontent, mktregdate, grpname, mktthumbnail) " 
+						+ "values (seq_market.nextval, ?, ?, ?, ?, sysdate, ?, ? )");
 				pstmt.setString(1, marketAddProductCommand.getMktSeller());
 				pstmt.setString(2, marketAddProductCommand.getProductName());
 				pstmt.setString(3, marketAddProductCommand.getProductPrice());
 				pstmt.setString(4, marketAddProductCommand.getProductContent());
 				pstmt.setString(5, marketAddProductCommand.getGrpName());
+				pstmt.setString(6, marketAddProductCommand.getProductThumbnail());
 				
 				return pstmt;
 			}

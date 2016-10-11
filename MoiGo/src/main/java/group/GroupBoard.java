@@ -3,15 +3,16 @@ package group;
 import java.util.Date;
 
 public class GroupBoard {
-	String brdWriter, brdTitle, brdContent;
+	String brdWriter, brdTitle, brdContent, brdThumbnail;
 	int brdSeq;
 	Date brdRegDate;
 	
-	public GroupBoard(String brdWriter, String brdTitle, String brdContent, Date brdRegDate) {
+	public GroupBoard(String brdWriter, String brdTitle, String brdContent, String brdThumbnail, Date brdRegDate) {
 		super();
 		this.brdWriter = brdWriter;
 		this.brdTitle = brdTitle;
 		this.brdContent = brdContent;
+		this.brdThumbnail = brdThumbnail;
 		this.brdRegDate = brdRegDate;
 	}
 	
@@ -32,6 +33,12 @@ public class GroupBoard {
 	}
 	public void setBrdContent(String brdContent) {
 		this.brdContent = brdContent;
+	}
+	public String getBrdThumbnail() {
+		return brdThumbnail;
+	}
+	public void setBrdThumbnail(String brdThumbnail) {
+		this.brdThumbnail = brdThumbnail;
 	}
 	public int getBrdSeq() {
 		return brdSeq;

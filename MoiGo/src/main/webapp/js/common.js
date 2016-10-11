@@ -25,3 +25,6 @@ function joinGroup() {
 function modifyGroup() {
 	location.href = '/moigo/modifyGroup';
 }
+function boardDelete() {
+	location.href= 'delete';
+}

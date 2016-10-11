@@ -1,16 +1,17 @@
 package group;
 
 public class GroupWriteCommand {
-	String writeTitle, writeContent, writer;
+	String writeTitle, writeContent, writer, writeThumbnail;
 
-	public GroupWriteCommand(String writeTitle, String writeContent, String writer) {
+	public GroupWriteCommand() {
+		
+	}
+	
+	public GroupWriteCommand(String writeTitle, String writeContent, String writer, String writeThumbnail) {
 		this.writeTitle = writeTitle;
 		this.writeContent = writeContent;
 		this.writer = writer;
-	}
-
-	public GroupWriteCommand() {
-	
+		this.writeThumbnail = writeThumbnail;
 	}
 
 	public String getWriter() {
@@ -35,6 +36,14 @@ public class GroupWriteCommand {
 
 	public void setWriteContent(String writeContent) {
 		this.writeContent = writeContent;
+	}
+
+	public String getWriteThumbnail() {
+		return writeThumbnail;
+	}
+
+	public void setWriteThumbnail(String writeThumbnail) {
+		this.writeThumbnail = writeThumbnail;
 	}
 	
 }
