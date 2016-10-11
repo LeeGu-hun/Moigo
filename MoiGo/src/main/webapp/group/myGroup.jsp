@@ -47,7 +47,7 @@
 						<div id="mainGrp2">
 							<div style="text-align: center; padding-top: 10px;">
 								<img src="<%=request.getContextPath() %>/file/${jGrp.grpThumbnail}" style="width: 100px; height: 100px; ">
-							</div>				
+							</div>			
 							<br> 그룹장 : ${jGrp.grpLeader } <br> 공개여부 : ${jGrp.grpOpen }
 							<br> 카테고리 : ${jGrp.grpCate } <br> 그룹인원 : ${jGrp.grpNum }
 							<br> 개설일자 : ${jGrp.grpRegDate } <br> 그룹소개 :

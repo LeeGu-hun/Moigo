@@ -57,7 +57,7 @@ public class controllerGroup {
 			boolean Joined = daoGroup.getJoinedGroup(grpName, user.getUserNick());
 			model.addAttribute("joined", Joined);
 			List<GroupBoard> geulInfo = daoGroup.getGrpGeul(grpName);
-			model.addAttribute("geulInfo", geulInfo);
+			request.setAttribute("geulInfo", geulInfo);
 			model.addAttribute("grpInfo", grpInfo);
 		}
 		model.addAttribute("grpInfo", grpInfo);
@@ -128,14 +128,31 @@ public class controllerGroup {
 	}
 	
 	@RequestMapping("/group/{grpName}/groupwrite") // 그룹게시판 글등록
-	public String groupWrite(@PathVariable String grpName, GroupWriteCommand groupWriteCommand, HttpSession session) throws UnsupportedEncodingException {
+	public String groupWrite(@PathVariable String grpName, GroupWriteCommand groupWriteCommand, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
 		String url = URLEncoder.encode(grpName, "UTF-8");
-		System.out.println("그룹명 : " + grpName);
-		System.out.println("내용" + groupWriteCommand.getWriteContent());
-		System.out.println("작성자" + groupWriteCommand.getWriter());
-		System.out.println("제목" + groupWriteCommand.getWriteTitle());
-		daoGroup.writeGroupBoard(groupWriteCommand, grpName);
+		String upload = "file";
+		ServletContext sc = request.getServletContext();
+		String uploadPath = sc.getRealPath("/") + upload;
+		System.out.println(uploadPath);
+		int size = 10 * 1024 * 1024;
+		try {
+			MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "UTF-8",
+					new DefaultFileRenamePolicy());
+			groupWriteCommand.setWriter(multi.getParameter("writer"));
+			groupWriteCommand.setWriteTitle(multi.getParameter("writeTitle"));
+			groupWriteCommand.setWriteContent(multi.getParameter("writeContent"));
+			groupWriteCommand.setWriteThumbnail(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
+			daoGroup.writeGroupBoard(groupWriteCommand, grpName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "redirect:/group/"+url;
 	}
 	
+	@RequestMapping("/group/{grpName}/delete")
+	public String groupBoardDelte(@PathVariable String grpName, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+		String url = URLEncoder.encode(grpName, "UTF-8");
+		System.out.println("삭제 진입 성공");
+		return "redirect:/group/"+url;
+	}
 }
