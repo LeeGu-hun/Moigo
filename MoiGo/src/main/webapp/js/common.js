@@ -19,9 +19,17 @@ function joinGroup() {
 		document.grpJoin.submit();
 	} else {
 		document.write("아니오");
-		location.href='';
+		location.href='/';
 	}
 }
 function modifyGroup() {
-	location.href = '/moigo/modifyGroup';
+	location.href = '';
+}
+function grpResult(cateName){
+	alert(cateName);
+	$.ajax({
+		type : "POST",
+		url : "",
+		data : "resultCate=" + cateName,
+	});
 }

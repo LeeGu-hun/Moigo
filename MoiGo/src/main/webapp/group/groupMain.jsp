@@ -102,7 +102,6 @@
 			<c:if test="${joined }">
 				<div id="Total">
 					<div id="grpCalendar">
-						abc1
 						<div id="grpInfo">
 							<div id="gName">그룹명 : <c:out value="${grpInfo.grpName }" /></div>
 							<div id="gCate">카테고리 : <c:out value="${grpInfo.grpCate }" /></div>
@@ -113,7 +112,7 @@
 					</div>
 					<div id="board">
 						<c:forEach var="geulInfo" items="${geulInfo }"> 
-						<div id="geul">					
+						<div id="geul">					-
 							<div id="info">
 								<input type="hidden" id="wGrpName" name="wGrpName" value="${grpInfo.grpName }" />
 								<div id="writer">글쓴이 : ${geulInfo.getBrdWriter() }</div><p>
@@ -124,7 +123,9 @@
 						</div>
  					</c:forEach>
 					</div>
-					<div id="grpProduct">abc3</div>
+					<div id="grpProduct">
+						제품
+					</div>
 				</div>	
 				<div id="mask"></div> <!-- 화면 불투명에 쓸 div -->
 				<div class="window"> <!-- writeBoard -->

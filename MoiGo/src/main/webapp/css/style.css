@@ -235,40 +235,40 @@ a{
 	float: left;
 	width: 250px;
 	height: 100%;
-	
 }
 #demoGrp{
 	float: left;
 	display: inline-block;
-	width: 650px;
+	width: 900px;
 	height: 100%;
 }
 #recomGrp{
 	display: inline-block;
 	width: 100%;
-	height: 60%;
-	background-color: #555555;
+	height: 50%;
 }
 #newGrp{
 	display: inline-block;
 	width: 100%;
-	height: 40%;
+	height: 50%;
 	background-color: white;
-}
-#demoMkt{
-	float: left;
-	display: inline-block;
-	width: 250px;
-	height: 100%;
-	background-color: yellow;
 }
 .recomGrp{
 	float: left;
+	width: 80%;
+	height: 120px;
 	border: 1px solid #ccc;
 	box-shadow: 0 0 1px;
 }
-.newGrp{
+#rGrp{
 	float: left;
+	width: calc(100% - 150px);
+	height: 100%;
+}
+#rImg{
+	float: left;
+	width: 150px;
+	height: 100%;	
 }
 #Total{
 	margin-left: calc(50% - 575px);
@@ -327,16 +327,14 @@ a{
 /* market~ */
 #mktCate{
 	float: left;
-	width: 300px;
+	width: 250px;
 	height: 100%;
-	background-color: #aaaaaa;
 }
 
 #product{
 	float: left;
-	width: calc(100% - 300px);
+	width: 900px;
 	height: 100%;
-	background-color: #999999;
 }
 /* ~market */
 /* search~ */

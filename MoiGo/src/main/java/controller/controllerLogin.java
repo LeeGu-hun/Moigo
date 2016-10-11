@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import dao.DaoGroup;
 import exception.IdPasswordNotMatchingException;
 import group.Group;
+import group.GroupCate;
 import login.AuthInfo;
 import login.AuthService;
 import login.LoginCommand;
@@ -33,6 +34,8 @@ public class controllerLogin {
 	public String main(HttpServletRequest request){
 		List<Group> recomGrp = daoGroup.getRecomGrp();
 		List<Group> newGrp = daoGroup.getNewGrp();
+		List<GroupCate> cate = daoGroup.groupCate();	
+		request.setAttribute("cate", cate);
 		request.setAttribute("recomGrp", recomGrp);
 		request.setAttribute("newGrp", newGrp);
 		return "main";

@@ -39,7 +39,11 @@ public class DaoGroup {
 	}
 	
 	public List<Group> getRecomGrp() { // 추천그룹
-		List<Group> results = jdbcTemplate.query("select * from groupInfo where grpOpen='Y' and rownum <= 6", new RowMapper<Group>() {
+		List<Group> results = jdbcTemplate.query("select * from (select i.grpname , i.grpLeader, i.grpOpen, i.grpcate, i.grpregdate, "
+				+ "i.grpintro, i.GRPTHUMBNAIL, count(i.grpname) as grpnum from groupinfo i, groupjoin j where i.grpname = j.grpname "
+				+ "and i.grpopen='Y' group by i.grpname , i.grpLeader, i.grpOpen, i.grpcate, i.grpregdate, i.grpintro, i.GRPTHUMBNAIL "
+				+ "order by grpnum desc) where rownum<=3", 
+			new RowMapper<Group>() {
 			public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"),
 						rs.getString("grpCate"), rs.getString("grpIntro"), rs.getTimestamp("grpRegDate"), rs.getString("grpThumbnail"));
@@ -101,7 +105,7 @@ public class DaoGroup {
 	}
 
 	public List<Group> getNewGrp() { // 개설된지 1주일 안의 그룹만 가져오기(신규그룹)
-		List<Group> results = jdbcTemplate.query("select * from groupInfo where grpOpen='Y' and grpregdate>=sysdate-7 and rownum <= 6 order by grpregdate desc",
+		List<Group> results = jdbcTemplate.query("select * from groupInfo where grpOpen='Y' and grpregdate>=sysdate-7 and rownum <= 3 order by grpregdate desc",
 				new RowMapper<Group>() {
 					public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"),
