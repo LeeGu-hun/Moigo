@@ -175,7 +175,7 @@ a{
         
 }
 
-/* 나의그룹 */
+/* myGroup 나의그룹 */
 #addGrpBtn, #addMrkBtn{
 	position: fixed;
 	width: 80px;
@@ -189,6 +189,8 @@ a{
 	text-align: center; 
 	line-height: 70px;
 }
+
+/* 나의그룹 */
 .mainGroups{
 	float: left;
 	width: 31%;
@@ -204,9 +206,12 @@ a{
 	font-size: 17px;
 }
 
+/* 나의그룹 내용 */
 #mainGrp2{
 	text-align: center;
 }
+
+/* 나의그룹 띠색깔 */
 
 #main11 {
 	float: top;
@@ -215,6 +220,7 @@ a{
 }
 
 
+/* 그룹: 글자스타일 */ 
 #groupName{
 	color: black;
 	font-size: 22px;
@@ -223,14 +229,37 @@ a{
 	line-height: 40px;
 }
 
+/* 그룹이름: 글자스타일 */ 
 #groupName2{
 	font-family: 'Nanum Pen Script', serif;
 	font-size: 32px;
 }
-
+/* 그룹리더 글자간격 */
 #groupLd{
 	line-height: 40px;
 }
+
+/* myGroup- 로그인 안했을때 */
+#myFirstLogin1{
+	background-color: fuchsia;
+	height: 100%;
+}
+
+#myFirstLogin2 {
+	padding-top: 100px;
+	background-color: orange;	
+	height: 40%;
+}
+
+#myFirstLogin3 {
+	width: 60%;
+	height: 100%;
+	background-color: red;
+}
+
+
+/* 나의그룹end */
+
 #mainCate{
 	float: left;
 	width: 250px;
@@ -247,25 +276,31 @@ a{
 	display: inline-block;
 	width: 100%;
 	height: 50%;
+	margin-left: 10%;
+	margin-top : 2%;
+	padding-bottom: 1%;
 }
 #newGrp{
 	display: inline-block;
 	width: 100%;
 	height: 50%;
 	background-color: white;
+	margin-left: 10%;
 }
 .recomGrp{
 	float: left;
 	width: 80%;
 	height: 120px;
 	border: 1px solid #ccc;
-	box-shadow: 0 0 1px;
+	box-shadow: 0 0 0px;
 }
 #rGrp{
 	float: left;
-	width: calc(100% - 150px);
+	width: calc(98% - 150px);
 	height: 100%;
+	padding-left: 10px;
 }
+
 #rImg{
 	float: left;
 	width: 150px;
@@ -275,12 +310,36 @@ a{
 	margin-left: calc(50% - 575px);
 	margin-right: calc(50% - 575px);
 }
+
+
+/* groupMain */
+
+/* groupMain- 로그인 전 그룹 */
+#groupmNotlg{
+	display: inline-block;
+	width: 600px;
+	height: 40%;
+	text-align: center;
+	padding-top: 10px;
+	background-color: #ffffff;
+	border: 1px dotted #ccc;
+	box-shadow: 0 0 0px;
+	font-family: 'Jeju Gothic', serif;
+	line-height: 1.5em;
+	font-size: 17px;
+	
+}
+
+
+
 #grpCalendar{
 	float: left;
 	width: 250px;
 	height: 100%;
 	background-color: #dddddd;
 }
+
+
 #grpInfo{
 	width: 230px;
 	height: 150px;	

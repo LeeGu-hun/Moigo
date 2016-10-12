@@ -3,12 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="http://fonts.googleapis.com/earlyaccess/nanumpenscript.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Baloo+Da" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 <script src="//code.jquery.com/jquery-1.12.2.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/common.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/style.css" />
+	<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/joinform.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>MoiGo</title>  
 <script>
@@ -45,19 +48,88 @@
 <body>
 	<%@include file="/include/header.jsp" %>
 	<div id="content">
-		<form action="modify" method="post">
-			아이디 <input type="text" id="modiId" name="modiId" value="${authInfo.userID }" disabled="disabled" /><br>
-			<input type="hidden" id="modiId" name="modiId" value="${authInfo.userID }" />
-			변경할 비밀번호 <input type="password" id="modiPass" name="modiPass" /><br>
-			변경할 비밀번호 확인 <input type="password" id="modiConfirmPass" name="modiConfirmPass" /><br>
-			이름 <input type="text" id="modiName" name="modiName" value="${authInfo.userName }" /><br>
-			닉네임 <input type="text" id="modiNickName" name="modiNickName" value="${authInfo.userNick }" disabled="disabled" /><br>
-			<input type="hidden" id="modiNickName" name="modiNickName" value="${authInfo.userNick }" />
-			생년월일 <input type="text" id="modiBirth" name="modiBirth" value="${userInfo.getUserBirth() }" disabled="disabled" /><br>
-			주소 <input type="text" id="modiAddress" name="modiAddress" style="ime-mode:active;" value="${userInfo.getUserAddr() }"/><br>
-			휴대전화번호 <input type="text" id="modiPhoneNum" name="modiPhoneNum" value="${userInfo.getUserPhone() }" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /><br>
+		<center>
+		<form action="modify" method="post" id="my_modi_form">
+		<br>
+		<table id="modifytable">
+		<fieldset>
+		<legend><h1 id="mod1">회원수정</h1></legend>
+		<span id="mod2">나의 정보를 수정하세요 </span>
+		</fieldset>		
+		<tr>
+		<td id="mdleft" >아이디 <font color="red"><b>*</b></font></td>
+		<td> <input type="text" id="modiId" name="modiId" value="${authInfo.userID }" disabled="disabled" /></td>
+		<input type="hidden" id="modiId" name="modiId" value="${authInfo.userID }" />
+		</tr>
+		
+		<tr>
+		<td id="mdleft" >비밀번호 <font color="red"><b>*</b></font></td>
+		<td><input type="password" id="modiPass" name="modiPass" /></td>
+		</tr>
+		<tr>
+		<td id="mdleft"> 비밀번호<br>확인 <font color="red"><b>*</b></font></td>
+		<td><input type="password" id="modiConfirmPass" name="modiConfirmPass" /></td>
+		<tr><td colspan="2"><hr width="100%" /></td></tr>
+		</tr>
+		
+		
+		
+		<tr>
+		<td id="mdleft"> 이름 <font color="red"><b>*</b></font></td>
+		<td><input type="text"  id="name" name="name" style="ime-mode:active;" /></td>
+		</tr>
+		
+		<tr>
+		<td id="mdleft"> 닉네임 <font color="red"><b>*</b></font></td>
+		<td><input type="text" id="modiNickName" name="modiNickName" value="${authInfo.userNick }" disabled="disabled" />
+		<input type="hidden" id="modiNickName" name="modiNickName" value="${authInfo.userNick }" /></td>
+		</tr>
+		
+		
+		<tr>
+		<td id="mdleft"> 생년월일 <font color="red"><b>*</b></font></td>
+		<td> <input type="text" id="modiBirth" name="modiBirth" value="${userInfo.getUserBirth() }" disabled="disabled" /></td>
+		</tr>
+		
+		
+		<tr>
+		<td id="mdleft"> 주소 <font color="red"><b>*</b></font></td>
+		
+		<td> <input type="text" id="modiAddress" name="modiAddress" style="ime-mode:active;" value="${userInfo.getUserAddr() }"/></td>
+		</tr>
+		
+		
+		<tr>
+		<td id="mdleft"> 휴대폰번호 <font color="red"><b>*</b></font></td>
+		
+		<td>
+			<input type="text" id="modiPhoneNum" name="modiPhoneNum" value="${userInfo.getUserPhone() }" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" />
+		</td>
+		</tr>
+		
+		
+		
+		</table>
+		<tr><td colspan="2"><hr width="100%" /></td></tr>
+		<tr>
+			
+			
+			<td><form method="post" action="moigo">
+			
+			<br><br>
 			<input type="submit" value="수정하기" />
-		</form>					
+			<input type="reset" id="clear" value="Clear" />
+			<tr><td colspan="2"><hr width="100%" /></td></tr>
+			
+			<tr>
+			<td colspan="2" align="center">
+			<font color="red"><b>*</b></font>
+			<font align="center" color="#808080">
+			(Required) - Please fill up</font>
+			</td>
+			</tr>
+			</form>
+		</table>
 	</div>
 </body>
 </html>

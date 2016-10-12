@@ -12,7 +12,7 @@ select{
 
 ~회원가입폼 글자 스타일~
 
-#reg2 {
+#reg1 {
 	color: #c0c0c0;
 	font-family: 'Nanum Gothic', serif;
 	font-weight: bold;
@@ -163,20 +163,33 @@ select{
 
 /* 회원수정폼 */
 
-#form_modify{
-text-align:center;
-border: 1px solid #ccc;
-width: 600px;
-padding: 0px 50px 15px;
-margin-top:20px;
-box-shadow: 0 0 3px;
-border-radius: 1px;
-float:center;
-height: 600px;
+~회원가입폼 글자 스타일~
+
+#mod1 {
+	color: #c0c0c0;
+	font-family: 'Nanum Gothic', serif;
+	font-weight: bold;
+}
+
+#mod2 {
+	color: #c0c0c0;
+	font-family: 'Nanum Pen Script', serif;
+	
+	font-size: 35px;
 }
 
 
-#form_modify #modi_table{
+#my_modi_form{
+	margin-top: 10px;
+	background-color: #353535; 
+	width: 605px;
+	height: auto;
+	padding: 20px;
+	color: white;
+}
+
+
+#my_modi_form #modifytable{
 	background-color: #ffffff;
 	margin-top:10px;
 	padding: 20px;
@@ -193,37 +206,31 @@ height: 600px;
 }
 
 
-#form_modify #modiId{
+#my_modi_form #modiId{
 	width: 150px;
 }
 
-#form_modify #modiPass{
+#my_modi_form #modiPass{
 	width: 150px;
 }
 
-#form_modify #modiConfirmPass{
+#my_modi_form #modiConfirmPass{
 	width: 150px;
 }
 
-#form_modify #modiName {
+#my_modi_form #Name {
 	width: 150px;
 }
-#form_modify #modiNickName {
-	width: 150px;
-}
-#form_modify #modiAge {
-	width: 150px;
-}
-#form_modify #modiGender {
-	width: 80px;
-
-}
-
-#form_modify #modiAddress {
+#my_modi_form #modiNickName {
 	width: 150px;
 }
 
-#form_modify #modiPhoneNum{
+
+#my_modi_form #modiAddress {
+	width: 150px;
+}
+
+#my_modi_form #modiPhoneNum{
 	width: 150px;
 }
 
@@ -236,3 +243,6 @@ height: 600px;
 #grpName, #grpLeader {
 	padding: 3px;
 }
+
+
+---
