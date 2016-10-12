@@ -87,9 +87,8 @@
 	<%@include file="/include/loginBox2.jsp"%>
 	<c:if test="${empty authInfo }">
 		<div id="content">
-			<center>
 			<br><br>
-			<div id="groupmNotlg">
+				<div id="groupmNotlg">
 		
 			<img src="<%=request.getContextPath() %>/file/${grpInfo.grpThumbnail}" style="width: 100px; height: 100px; ">
 			<br>
@@ -122,8 +121,26 @@
 						<div id="Calender"></div>
 					</div>
 					<div id="board">
+					<!-- 한 줄로 줄여서 움직일 수 있게 해야함 -->
+						<c:forEach var="myGrp" items="${myGrp }">
+							<c:choose>
+								<c:when test="${myGrp.grpThumbnail eq null }">
+									<div style="float: left;">
+										<img src="images/grpNameEqualsNull.png"
+										style="width: 100px; height: 100px;" /><br>
+										<a href="<c:url value='/group/${myGrp.grpName }' />">${myGrp.grpName }</a>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div style="float: left;"> 
+										<img src="<%=request.getContextPath() %>/file/${myGrp.grpThumbnail}"
+										style="width: 100px; height: 100px;"><br>
+										<a href="<c:url value='/group/${myGrp.grpName }' />">${myGrp.grpName }</a>
+									</div>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
 						<c:forEach var="geulInfo" items="${geulInfo }"> 
-
 						<div id="geul" style="margin: 0, auto;">
 	 							<c:if test="${authInfo.userID == geulInfo.getBrdWriter() }">
 									<!-- <div style="text-align: right;"><input type="button" onclick="boardDelete();" value="삭제하기" /></div> -->
@@ -149,7 +166,7 @@
 					<div id="grpProduct">
 						<c:forEach var="grpPrds" items="${grpPrd }">
 							<div class="grpProducts">
-								<img src="<%=request.getContextPath() %>/file/${grpPrds.mktThumbNail}" style="width: 100px; height: 100px; ">
+								<img src="<%=request.getContextPath() %>/file/${grpPrds.mktThumbnail}" style="width: 100px; height: 100px; ">
 								판매물품 : ${grpPrds.mktPrName }
 							</div>
 						</c:forEach>

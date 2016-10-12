@@ -18,7 +18,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dao.DaoGroup;
 import dao.DaoMarket;
-import group.Group;
+import group.Group;	
 import group.GroupAddCommand;
 import group.GroupBoard;
 import group.GroupCate;
@@ -58,12 +58,13 @@ public class controllerGroup {
 			AuthInfo user = (AuthInfo)session.getAttribute("authInfo");
 			boolean Joined = daoGroup.getJoinedGroup(grpName, user.getUserNick());
 			List<GroupBoard> geulInfo = daoGroup.getGrpGeul(grpName);
+			List<Group> thumbnailGrp = daoGroup.myGroupThumbnail(user.getUserNick());
+			request.setAttribute("myGrp", thumbnailGrp);
 			request.setAttribute("geulInfo", geulInfo);
 			List<Market> grpPrd = daoMarket.getProduct(grpName);
 			model.addAttribute("grpPrd", grpPrd);
 			model.addAttribute("joined", Joined);
 			model.addAttribute("geulInfo", geulInfo);
-			model.addAttribute("grpInfo", grpInfo);
 		}
 		model.addAttribute("grpInfo", grpInfo);
 		return "group/groupMain";

@@ -287,6 +287,12 @@ a{
 	background-color: white;
 	margin-left: 10%;
 }
+#thumbnailGrp{
+	display: inline-block;
+ 	width: 20%;
+ 	height: 60%;
+ 	background-color: #555555;
+}
 .recomGrp{
 	float: left;
 	width: 80%;

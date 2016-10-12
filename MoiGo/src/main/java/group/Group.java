@@ -7,8 +7,12 @@ public class Group {
 	int grpNum;
 	Date grpRegDate;
 	
+	public Group(String grpName, String grpThumbnail) {
+		this.grpName = grpName;
+		this.grpThumbnail = grpThumbnail;
+	}
+	
 	public Group(String grpName, String grpLeader, String grpOpen, String grpCate, String grpIntro, Date grpRegDate, String grpThumbnail) {
-		super();
 		this.grpName = grpName;
 		this.grpLeader = grpLeader;
 		this.grpOpen = grpOpen;

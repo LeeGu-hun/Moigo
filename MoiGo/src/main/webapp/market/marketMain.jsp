@@ -89,57 +89,63 @@
 <%@include file="/include/header.jsp"%>
 <%@include file="/include/loginBox2.jsp" %>
 <div id="content">
-	<div id="mktcate">
-		카테고리임둥<br><br>
-		<c:forEach var="cate" items="${cates }">
-			${cate.CATENAME }<br>
-		</c:forEach>
-	</div>
-	<div id="product">
-		<input type="button" id="btnAddProduct" herf="#" class="openMask" value="글쓰기" />
-		<div id="mask"></div> <!-- 화면 불투명에 쓸 div -->
-		<div class="window"> <!-- writeBoard -->
-			<div id="writeBoard" style="background: white;">
-				<div class="divClose"><a href="#" class="close" >Close</a></div><br>
-				<form action="market/addProduct" method="post" enctype="multipart/form-data">
-					판매자 : ${authInfo.userNick }<br>
-					<input type="hidden" id="mktSeller" name="mktSeller" value="${authInfo.userNick }">
-					상품명 : <input type="text" id="productName" name="productName" /><br>
-					가격 : <input type="text" id="productPrice" name="productPrice" /><br>
-					내용 : <input type="text" id="productContent" name="productContent" /><br>
-					그룹명 : <select id="grpName" name="grpName" style="height: 23px;">
-								<option value="" selected>그룹을 선택하세요</option>
-									<c:forEach var="data" items="${requestScope.groupName}">
- 										<option value='<c:out value="${data.grpName}" />'>
-									<c:out value="${data.grpName}" />
-								</option>
-									</c:forEach>
-							</select><br>
-					상품이미지 : <input type="file" id="grpThumbnail" name="grpThumbnail">		
-					<input type="submit" value="상품 등록하기" />
-				</form>
-			</div>			
+	<div id="Total">
+		<div id="addMrkBtn">
+			<center>
+				<a href="#" class="openMask" style="font-size: 60px; font-weight: bold; text-align: center; line-height: 70px;">＋</a>
+			</center>
 		</div>
-		마켓임둥<br><br>
-		<c:forEach var="prd" items="${allProducts }">
-			<div class="products" style="height: 150px;">
-				<div style="float: left; width: 180px;">
-					판매번호 : ${prd.mktCode } <br>
-					판매자 : ${prd.mktSeller } <br>
-					품명 : ${prd.mktPrName } <br>
-					가격 : ${prd.mktPrice } 원<br>
-					내용 : ${prd.mktContent } <br>
-					그룹명 : ${prd.grpName } <br>
-					등록일 : ${prd.mktRegDate }
-				</div>
-				<c:if test="${empty prd.mktThumbnail }"><br></c:if>
-				<c:if test="${!empty prd.mktThumbnail }">
-				<div style="text-align: center; padding-top: 10px;">
-					<img src="<%=request.getContextPath() %>/file/${prd.mktThumbnail}" style="width: 100px; height: 100px; ">
-				</div><br>
-				</c:if>
-			</div><br><br>
-		</c:forEach>
+		<div id="mktcate">
+			카테고리임둥<br><br>
+			<c:forEach var="cate" items="${cates }">
+				${cate.CATENAME }<br>
+			</c:forEach>
+		</div>
+		<div id="product">
+			<div id="mask"></div> <!-- 화면 불투명에 쓸 div -->
+			<div class="window"> <!-- writeBoard -->
+			<div id="writeBoard" style="background: white;">
+						<div class="divClose"><a href="#" class="close" >Close</a></div><br>
+					<form action="market/addProduct" method="post" enctype="multipart/form-data">
+						판매자 : ${authInfo.userNick }<br>
+							<input type="hidden" id="mktSeller" name="mktSeller" value="${authInfo.userNick }">
+						상품명 : <input type="text" id="productName" name="productName" /><br>
+						가격 : <input type="text" id="productPrice" name="productPrice" /><br>
+						내용 : <input type="text" id="productContent" name="productContent" /><br>
+						그룹명 : <select id="grpName" name="grpName" style="height: 23px;">
+									<option value="" selected>그룹을 선택하세요</option>
+										<c:forEach var="data" items="${requestScope.groupName}">
+ 											<option value='<c:out value="${data.grpName}" />'>
+										<c:out value="${data.grpName}" />
+									</option>
+										</c:forEach>
+								</select><br>
+						상품이미지 : <input type="file" id="grpThumbnail" name="grpThumbnail">		
+						<input type="submit" value="상품 등록하기" />
+					</form>
+				</div>			
+			</div>
+			마켓임둥<br><br>
+			<c:forEach var="prd" items="${allProducts }">
+				<div class="products" style="height: 150px;">
+					<div style="float: left; width: 180px;">
+						판매번호 : ${prd.mktCode } <br>
+						판매자 : ${prd.mktSeller } <br>
+						품명 : ${prd.mktPrName } <br>
+						가격 : ${prd.mktPrice } 원<br>
+						내용 : ${prd.mktContent } <br>
+						그룹명 : ${prd.grpName } <br>
+						등록일 : ${prd.mktRegDate }
+					</div>
+					<c:if test="${empty prd.mktThumbnail }"><br></c:if>
+					<c:if test="${!empty prd.mktThumbnail }">
+					<div style="text-align: center; padding-top: 10px;">
+						<img src="<%=request.getContextPath() %>/file/${prd.mktThumbnail}" style="width: 100px; height: 100px; ">
+					</div><br>
+					</c:if>
+				</div><br><br>
+			</c:forEach>
+		</div>
 	</div>
 </div>
 </body>

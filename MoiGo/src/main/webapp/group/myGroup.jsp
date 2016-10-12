@@ -24,7 +24,6 @@
 					<center>
 						<a href="/moigo/addgroup" style="font-size: 60px; font-weight: bold; text-align: center; line-height: 70px;">＋</a>
 					</center>
-					<!-- <input type="button" onclick="addGroup();" value="모임개설" /> -->
 				</div>
 				<br>
 				<c:forEach var="jGrp" items="${joinGrp }">
@@ -46,9 +45,16 @@
 						</div>
 						<div id="mainGrp2">
 							<div style="text-align: center; padding-top: 10px;">
-								<img src="<%=request.getContextPath() %>/file/${jGrp.grpThumbnail}" style="width: 100px; height: 100px; ">
+								<c:choose>
+									<c:when test="${jGrp.grpThumbnail eq null }">
+										<img src="images/grpNameEqualsNull.png"  style="width: 100px; height: 100px; "/>
+									</c:when>
+									<c:otherwise>
+										<img src="<%=request.getContextPath() %>/file/${jGrp.grpThumbnail}" style="width: 100px; height: 100px; ">
+									</c:otherwise>
+								</c:choose>
 							</div>			
-							<br> 그룹장 : ${jGrp.grpLeader } <br> 공개여부 : ${jGrp.grpOpen }
+							<br> 그룹장 : ${jGrp.grpLeader }
 							<br> 카테고리 : ${jGrp.grpCate } <br> 그룹인원 : ${jGrp.grpNum }
 							<br> 개설일자 : ${jGrp.grpRegDate } <br> 그룹소개 :
 							${jGrp.grpIntro }<br> <br>

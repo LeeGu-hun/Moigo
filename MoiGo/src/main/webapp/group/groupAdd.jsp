@@ -17,6 +17,26 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/joinform.css" />
 <meta http-equiv="Content-Type" content="text/html; " charset=UTF-8">
+<script>
+function grpNameCheck()
+{
+ var objEv = event.srcElement;
+ var num ="{}[]()<>?_|~`@#$%^&*-+\"'\\/ ";    //입력을 막을 특수문자 기재.
+ event.returnValue = true;
+  
+ for (var i=0;i<objEv.value.length;i++)
+ {
+ if(-1 != num.indexOf(objEv.value.charAt(i)))
+ event.returnValue = false;
+ }
+  
+ if (!event.returnValue)
+ {
+  alert("특수문자는 입력하실 수 없습니다.");
+  objEv.value="";
+ }
+} 
+</script>
 <title>Moigo</title>
 </head>
 <body>
@@ -61,7 +81,7 @@
 								: 
 							</td>
 							<td class="tdRight">
-								<input type="text" id="grpName" name="grpName" />
+								<input type="text" id="grpName" name="grpName" onKeyDown="grpNameCheck();"/>
 								<input type="button" id="chkGrpName" value="중복확인" />
 							</td>							
 						</tr>
@@ -102,9 +122,9 @@
 							</td>
 						</tr>
 						<tr>
-							<td id="tdbottom" colspan="3"><input type="submit"
-								id="btnbottom" value="모임개설" /> <input type="button"
-								id="btnbottom" value="취소" onclick="location.href = '/moigo/group';" />
+							<td id="tdbottom" colspan="3">
+							<input type="submit" id="btnbottom" value="모임개설" />
+							<input type="button" id="btnbottom" value="취소" onclick="location.href = '/moigo/group';" />
 							</td>
 						</tr>
 					</table>
