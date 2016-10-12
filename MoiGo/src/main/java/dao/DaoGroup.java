@@ -16,6 +16,7 @@ import group.Group;
 import group.GroupAddCommand;
 import group.GroupBoard;
 import group.GroupCate;
+import group.GroupDeleteCommand;
 import group.GroupModifyCommand;
 import group.GroupWriteCommand;
 
@@ -227,6 +228,7 @@ public class DaoGroup {
 			}
 		});
 	}
+	
 	public List<Group> myGroupThumbnail(String userNick) { // 그룹 안에서 가입한 그룹 보기(썸네일)
 		List<Group> results = jdbcTemplate
 				.query("select gj.grpname, gi.grpthumbnail from groupJoin gj join groupInfo gi "
@@ -238,4 +240,17 @@ public class DaoGroup {
 					}, userNick);
 		return results;
 	}
+	
+	public void deleteGroupGeul(final GroupDeleteCommand grpDelCmd) {
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement pstmt = con.prepareStatement("delete from GROUPBOARD where brdseq = ? ");
+
+				pstmt.setInt(1, grpDelCmd.getBrdSeq());
+
+				return pstmt;
+			}
+		});
+	}
+	
 }
