@@ -12,7 +12,7 @@
 	</bean>
 	<bean class="controller.controllerGroup" >
 		<property name="daoGroup" ref="daoGroup" />
-		
+		<property name="daoMarket" ref="daoMarket" />		
 	</bean>
 	<bean class="controller.controllerUser" >
 		<property name="daoUser" ref="daoUser" />

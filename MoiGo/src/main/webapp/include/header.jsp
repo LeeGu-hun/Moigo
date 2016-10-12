@@ -17,21 +17,21 @@
 	<div id="menus">
 		<div class="menus">
 			<a href="<c:url value='/group' />"><img
-				src="<%=request.getContextPath()%>/images/myAccount.png"><br>나의그룹</a>
+				src="<%=request.getContextPath()%>/images/icons/myAccount.png"><br>나의그룹</a>
 		</div>
 		<div class="menus">
-			<img src="<%=request.getContextPath()%>/images/event.png"><br>나의일정
+			<img src="<%=request.getContextPath()%>/images/icons/event.png"><br>나의일정
 		</div>
 		<div class="menus">
-			<img src="<%=request.getContextPath()%>/images/chat.png"><br>채팅
+			<img src="<%=request.getContextPath()%>/images/icons/chat.png"><br>채팅
 		</div>
 		<div class="menus">
 			<a href="<c:url value='/' />"><img
-				src="<%=request.getContextPath()%>/images/group.png"><br>추천그룹</a>
+				src="<%=request.getContextPath()%>/images/icons/group.png"><br>추천그룹</a>
 		</div>
 		<div class="menus">
 			<a href="<c:url value='/market' />"><img
-				src="<%=request.getContextPath()%>/images/market.png"><br>마켓</a>
+				src="<%=request.getContextPath()%>/images/icons/market.png"><br>마켓</a>
 		</div>
 	</div>
 	<div id="loginBox">

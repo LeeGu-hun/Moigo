@@ -19,7 +19,7 @@ function joinGroup() {
 		document.grpJoin.submit();
 	} else {
 		document.write("아니오");
-		location.href='';
+		location.href='/';
 	}
 }
 function modifyGroup() {

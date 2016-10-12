@@ -36,12 +36,13 @@ public class DaoMarket {
 		return results;
 	}
 	
-	public Market getProduct(String prdName){ // 특정 그룹의 판매 상품 불러오기
-		Market result = jdbcTemplate.queryForObject("select * from market where grpName = ? " + " order by MKTREGDATE desc",
+	public List<Market> getProduct(String prdName){ //그룹이 보유한 판매목록 가져오기
+		List<Market> result = jdbcTemplate.query("select * from market where grpName = ? order by MKTREGDATE desc",
 				new RowMapper<Market>() {
 					public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Market market = new Market(rs.getString("mktCode"),rs.getString("mktSeller"), rs.getString("mktPrName"),
-								rs.getString("mktPrice"),rs.getString("mktContent"),rs.getString("grpName"), rs.getString("mktThumbnail"), rs.getDate("mktRegDate"));
+								rs.getString("mktPrice"),rs.getString("mktContent"),rs.getString("grpName"), rs.getString("mktThumbnail"), 
+								rs.getDate("mktRegDate"));
 						return market;
 					}
 				}, prdName);
@@ -70,8 +71,6 @@ public class DaoMarket {
 		});
 		return results;
 	}
-	
-	
 	
 	public void addProduct(final MarketAddProductCommand marketAddProductCommand) {  // 상품등록
 		jdbcTemplate.update(new PreparedStatementCreator() {

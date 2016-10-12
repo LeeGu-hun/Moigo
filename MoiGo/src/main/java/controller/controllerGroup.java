@@ -1,20 +1,15 @@
 package controller;
 
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-
 import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,18 +17,25 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dao.DaoGroup;
+import dao.DaoMarket;
 import group.Group;
 import group.GroupAddCommand;
+import group.GroupBoard;
 import group.GroupCate;
 import group.GroupModifyCommand;
 import group.GroupWriteCommand;
-import group.GroupBoard;
 import login.AuthInfo;
+import market.Market;
 
 @Controller
 public class controllerGroup {
 
 	private DaoGroup daoGroup;
+	private DaoMarket daoMarket;
+	
+	public void setDaoMarket(DaoMarket daoMarket) {
+		this.daoMarket = daoMarket;
+	}
 
 	public void setDaoGroup(DaoGroup daoGroup) {
 		this.daoGroup = daoGroup;
@@ -55,9 +57,12 @@ public class controllerGroup {
 		if ((AuthInfo) session.getAttribute("authInfo")!=null) {
 			AuthInfo user = (AuthInfo)session.getAttribute("authInfo");
 			boolean Joined = daoGroup.getJoinedGroup(grpName, user.getUserNick());
-			model.addAttribute("joined", Joined);
 			List<GroupBoard> geulInfo = daoGroup.getGrpGeul(grpName);
 			request.setAttribute("geulInfo", geulInfo);
+			List<Market> grpPrd = daoMarket.getProduct(grpName);
+			model.addAttribute("grpPrd", grpPrd);
+			model.addAttribute("joined", Joined);
+			model.addAttribute("geulInfo", geulInfo);
 			model.addAttribute("grpInfo", grpInfo);
 		}
 		model.addAttribute("grpInfo", grpInfo);

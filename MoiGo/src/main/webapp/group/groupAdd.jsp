@@ -104,7 +104,7 @@
 						<tr>
 							<td id="tdbottom" colspan="3"><input type="submit"
 								id="btnbottom" value="모임개설" /> <input type="button"
-								id="btnbottom" value="취소" onclick="location.href = 'main';" />
+								id="btnbottom" value="취소" onclick="location.href = '/moigo/group';" />
 							</td>
 						</tr>
 					</table>

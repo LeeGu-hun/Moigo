@@ -102,7 +102,6 @@
 			<c:if test="${joined }">
 				<div id="Total">
 					<div id="grpCalendar">
-						abc1
 						<div id="grpInfo">
 							<div id="gName">그룹명 : <c:out value="${grpInfo.grpName }" /></div>
 							<div id="gCate">카테고리 : <c:out value="${grpInfo.grpCate }" /></div>
@@ -113,6 +112,7 @@
 					</div>
 					<div id="board">
 						<c:forEach var="geulInfo" items="${geulInfo }"> 
+
 						<div id="geul" style="margin: 0, auto;">
 	 							<c:if test="${authInfo.userID == geulInfo.getBrdWriter() }">
 									<!-- <div style="text-align: right;"><input type="button" onclick="boardDelete();" value="삭제하기" /></div> -->
@@ -135,7 +135,14 @@
 						</div>
  					</c:forEach>
 					</div>
-					<div id="grpProduct">abc3</div>
+					<div id="grpProduct">
+						<c:forEach var="grpPrds" items="${grpPrd }">
+							<div class="grpProducts">
+								<img src="<%=request.getContextPath() %>/file/${grpPrds.mktThumbNail}" style="width: 100px; height: 100px; ">
+								판매물품 : ${grpPrds.mktPrName }
+							</div>
+						</c:forEach>
+					</div>
 				</div>	
 				<div id="mask"></div> <!-- 화면 불투명에 쓸 div -->
 				<div class="window"> <!-- writeBoard -->
