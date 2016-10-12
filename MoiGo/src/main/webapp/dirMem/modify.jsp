@@ -53,11 +53,11 @@
 		<br>
 		<table id="modifytable">
 		<fieldset>
-		<legend><h1 id="mod1">회원수정</h1></legend>
+		<legend><h1 id="mod1">회 원 수 정</h1></legend>
 		<span id="mod2">나의 정보를 수정하세요 </span>
 		</fieldset>		
 		<tr>
-		<td id="mdleft" >아이디 <font color="red"><b>*</b></font></td>
+		<td id="mdleft" >아이디 </td>
 		<td> <input type="text" id="modiId" name="modiId" value="${authInfo.userID }" disabled="disabled" /></td>
 		<input type="hidden" id="modiId" name="modiId" value="${authInfo.userID }" />
 		</tr>
@@ -80,14 +80,14 @@
 		</tr>
 		
 		<tr>
-		<td id="mdleft"> 닉네임 <font color="red"><b>*</b></font></td>
+		<td id="mdleft"> 닉네임 </td>
 		<td><input type="text" id="modiNickName" name="modiNickName" value="${authInfo.userNick }" disabled="disabled" />
 		<input type="hidden" id="modiNickName" name="modiNickName" value="${authInfo.userNick }" /></td>
 		</tr>
 		
 		
 		<tr>
-		<td id="mdleft"> 생년월일 <font color="red"><b>*</b></font></td>
+		<td id="mdleft"> 생년월일</td>
 		<td> <input type="text" id="modiBirth" name="modiBirth" value="${userInfo.getUserBirth() }" disabled="disabled" /></td>
 		</tr>
 		
@@ -118,7 +118,7 @@
 			
 			<br><br>
 			<input type="submit" value="수정하기" />
-			<input type="reset" id="clear" value="Clear" />
+			<input type="reset" value="지우기" />
 			<tr><td colspan="2"><hr width="100%" /></td></tr>
 			
 			<tr>

@@ -3,6 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+<link href="http://fonts.googleapis.com/earlyaccess/nanumpenscript.css"
+	rel="stylesheet">
+<link href="http://fonts.googleapis.com/earlyaccess/kopubbatang.css"
+	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Baloo+Da" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 <script src="//code.jquery.com/jquery-1.12.2.min.js"></script>
@@ -34,12 +38,11 @@
 				<c:forEach var="rGrp" items="${recomGrp }">
 					<div class="recomGrp">
 						<div id="rGrp">
+							<span class="rSpan">그룹명 :</span> <a href="<c:url value='/group/${rGrp.grpName }' />">${rGrp.grpName }</a>	
 							<br>
-							그룹명 : <a href="<c:url value='/group/${rGrp.grpName }' />">${rGrp.grpName }</a>	
-							<br>
-							그룹장 : ${rGrp.grpLeader } <br>
-							카테고리 : ${rGrp.grpCate } <br>
-							그룹소개 : ${rGrp.grpIntro }<br>
+							<span class="rSpan">그룹장 :</span> ${rGrp.grpLeader } <br>
+							<span class="rSpan">카테고리 :</span> ${rGrp.grpCate } <br>
+							<span class="rSpan">그룹소개 :</span> ${rGrp.grpIntro }<br>
 						</div>
 						<div id="rImg">
 							<img src="<%=request.getContextPath() %>/file/${rGrp.grpThumbnail}" style="width: 100px; height: 100px; padding-top: 10px; padding-left: 40px;">
@@ -54,12 +57,11 @@
 					<div class="recomGrp">
 
 						<div id="rGrp">
+							<span class="rSpan">그룹명 : </span><a href="<c:url value='/group/${nGrp.grpName }' />">${nGrp.grpName }</a>	
 								<br>
-								그룹명 : <a href="<c:url value='/group/${nGrp.grpName }' />">${nGrp.grpName }</a>	
-								<br>
-								그룹장 : ${nGrp.grpLeader } <br>
-								카테고리 : ${nGrp.grpCate } <br>
-								그룹소개 : ${nGrp.grpIntro }<br>
+							<span class="rSpan">그룹장 : </span>${nGrp.grpLeader } <br>
+							<span class="rSpan">카테고리 :</span> ${nGrp.grpCate } <br>
+							<span class="rSpan">그룹소개 :</span> ${nGrp.grpIntro }<br>
 							</div>
 						<div id="rImg">
 							<img src="<%=request.getContextPath() %>/file/${nGrp.grpThumbnail}" style="width: 100px; height: 100px; padding-top: 10px; padding-left: 40px;">

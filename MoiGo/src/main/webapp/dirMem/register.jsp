@@ -112,16 +112,7 @@ $(function() {
 		<tr><td colspan="2"><hr width="100%" /></td></tr>
 		</tr>
 		
-		<tr>
-		<td id="left"> E-Mail <font color="red"><b>*</b></font></td>
-		<td><input type="text"  id="email" name="email" />@
-		<select name=email_address">
-		<option id="naver" value="naver.com"> naver.com</option>
-		<option id="daum" value="daum.net"> daum.net</option>
-		<option id="nate" value="nate.com"> nate.com</option>
-		<option id="google" value="google.co.kr"> google.co.kr</option>
-		</select>
-		</tr>
+
 		
 		<tr>
 		<td id="left"> 이름 <font color="red"><b>*</b></font></td>
@@ -176,38 +167,15 @@ $(function() {
 		</tr>
 		
 		
-		<tr>
-		<td id="left" valign="top"> Hobby<font color="red"><b>*</b></font> </td>
-		<td id="right">
-		<table width="100%">
-		<tr>
-		<td>
-		<input type="checkbox" name="Like" value="반려동물"/> 반려동물 
-		</td>
-		<td>
-		<input type="checkbox" name="Like" value="맛집"/> 맛집 
-		</td>
-		<td>
-		<input type="checkbox" name="Like" value="운동"/> 운동 
-		</td>
-		<td>
-		<input type="checkbox" name="Like" value="영화"/> 영화 
-		</td>
-		<td>
-		<input type="checkbox" name="Like" value="여행"/> 여행 
-		</td>
-		</tr>
-		</table>
-		<tr><td colspan="2"><hr width="100%" /></td></tr>
-		<tr>
-			<td valign="top" id="left">자기소개<font color="red"><b>*<b></font>
-			</td>
+	</table>
+		
+			
 			
 			<td><form method="post" action="moigo">
-			<textarea id="comment" name="comment" rows="10" cols="50"></textarea>
+			
 			<br><br>
-			<input type="submit" id="register" value="Register"/>
-			<input type="reset" id="clear" value="Clear" />
+			<input type="submit" id="register" value="가입하기" />
+			<input type="reset" id="clear" value="지우기" />
 			<tr><td colspan="2"><hr width="100%" /></td></tr>
 			
 			<tr>
@@ -218,11 +186,6 @@ $(function() {
 			</td>
 			</tr>
 			</form>
-		</table>
-	
-		<!-- <input type="submit" value="가입하기" />	 -->
-		
-	</form>
 		
 	</div>
 </body>

@@ -103,9 +103,11 @@ select{
 	overflow: hidden;
 }
 
-#my_reg_form #register, #my_reg_form #clear{
+#my_reg_form #register, #my_reg_form #clear{ 
 	width: 110px;	
 }
+
+
 
  
  
@@ -243,6 +245,12 @@ select{
 #grpName, #grpLeader {
 	padding: 3px;
 }
+
+#my_modi_form #Rmod, #my_modi_form #clear{ 
+	width: 110px;	
+	height: 22px;
+}
+
 
 
 ---

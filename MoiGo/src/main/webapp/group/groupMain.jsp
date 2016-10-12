@@ -87,6 +87,7 @@
 	<%@include file="/include/loginBox2.jsp"%>
 	<c:if test="${empty authInfo }">
 		<div id="content">
+			<center>
 			<br><br>
 				<div id="groupmNotlg">
 		
