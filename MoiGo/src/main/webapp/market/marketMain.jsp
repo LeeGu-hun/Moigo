@@ -3,10 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<link href="https://fonts.googleapis.com/css?family=Baloo+Da"
+<link href="http://fonts.googleapis.com/earlyaccess/kopubbatang.css"
 	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Comfortaa"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Baloo+Da" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 <script src="//code.jquery.com/jquery-1.12.2.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/common.js"></script>
 <link rel="stylesheet" type="text/css"
@@ -140,46 +140,45 @@
 										<c:out value="${data.grpName}" />
 									</option>
 								</c:forEach>
-							</select><br> 상품이미지 : <input type="file" id="grpThumbnail"
-								name="grpThumbnail"> <input type="submit"
-								value="상품 등록하기" />
-						</form>
-					</div>
-				</div>
-				마켓임둥<br>
-				<br>
-				<c:forEach var="prd" items="${allProducts }">
-					<div class="products"
-						style="float: left; width: 440px; height: 150px; padding-bottom: 20px; padding-right: 5px; padding-left: 5px;">
-						<c:if test="${authInfo.userNick == prd.mktSeller }">
-							<form action="market/deleteProduct" method="post">
-								<input type="hidden" id="mktCode" name="mktCode"
-									value="${prd.mktCode }" /> <input type="submit"
-									style="float: right;" value="삭제하기" />
-							</form>
-						</c:if>
-						<div style="float: left; width: 200px;">
-							판매번호 : ${prd.mktCode } <br> 판매자 : ${prd.mktSeller } <br>
-							품명 : ${prd.mktPrName } <br> 가격 : ${prd.mktPrice } 원<br>
-							내용 : ${prd.mktContent } <br> 그룹명 : ${prd.grpName } <br>
-							등록일 : ${prd.mktRegDate }
-						</div>
-						<c:if test="${empty prd.mktThumbnail }">
-							<div style="text-align: center; padding-top: 10px;">
-								<div style="width: 100px; height: 100px;"></div>
-							</div>
-						</c:if>
-						<c:if test="${!empty prd.mktThumbnail }">
-							<div style="text-align: center; padding-top: 10px;">
-								<img
-									src="<%=request.getContextPath() %>/file/${prd.mktThumbnail}"
-									style="width: 100px; height: 100px;">
-							</div>
-						</c:if>
-					</div>
-				</c:forEach>
-				<br>
+								</select><br>
+						상품이미지 : <input type="file" id="grpThumbnail" name="grpThumbnail" style="margin-right: 20px;">		
+						<input type="submit" value="상품 등록하기" />
+					</form>
+				</div>			
 			</div>
+			<br><p><h1>마켓</h1></p><br><br>
+			<c:forEach var="prd" items="${allProducts }">
+				<div class="products" style="width:400px; height: 200px; float: left; margin-left: 20px; margin-bottom: 20px;">
+					<c:if test="${authInfo.userNick == prd.mktSeller }">
+						<form action="market/deleteProduct" method="post">
+							<input type="hidden" id="mktCode" name="mktCode"
+								value="${prd.mktCode }" /> <input type="submit"
+								style="float: right;" value="삭제하기" />
+						</form>
+					</c:if>
+					<div style="float: right; width: 240px;">
+						<br>
+						&nbsp;· 등록일 : ${prd.mktRegDate }<br>
+						&nbsp;· 판매번호 : ${prd.mktCode } <br>
+						&nbsp;· 그룹명 : ${prd.grpName } <br>
+						&nbsp;· 판매자 : ${prd.mktSeller } <br>
+						&nbsp;· 품명 : ${prd.mktPrName } <br>
+						&nbsp;· 가격 : ${prd.mktPrice } 원<br>
+						&nbsp;· 내용 : ${prd.mktContent } <br>
+					</div>
+					<c:if test="${empty prd.mktThumbnail }">
+						<div style="text-align: center; padding-top: 10px;">
+							<div style="width: 100px; height: 100px;"></div>
+						</div>
+					</c:if>
+					<c:if test="${!empty prd.mktThumbnail }">
+						<div style="text-align: center; padding-top: 10px;">
+							<img src="<%=request.getContextPath() %>/file/${prd.mktThumbnail}"
+								style="width: 100px; height: 100px;">
+						</div>
+					</c:if>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
 </body>

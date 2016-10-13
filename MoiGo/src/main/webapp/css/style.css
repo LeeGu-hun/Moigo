@@ -1,24 +1,26 @@
 @CHARSET "UTF-8";
-*{
+
+* {
 	padding: 0px;
 	margin: 0px;
 	text-decoration: none;
-	
 }
 
-a{
+a {
 	color: black;
 }
-#body{
+
+#body {
 	margin: 0px;
 }
 /* header ~ */
-#header{
+#header {
 	display: inline-block;
 	width: 100%;
 	height: 100px;
 }
-#logo{
+
+#logo {
 	float: left;
 	width: 15%;
 	height: 100%;
@@ -27,20 +29,27 @@ a{
 	font-size: 60px;
 	text-align: center;
 }
+
 #logo a {
 	text-decoration: none;
-	color: white;
+	color: #ffffff;
 }
+
 #M {
-	font-size: 60px;f
-	color: #B49173;
+	font-size: 60px;
+	color: #DF2935;
 }
 
 #G {
 	font-size: 60px;
-	color: #776d61;
+	color: #27394F;
 }
-#search{
+
+#eMark{
+	color:#27394F;
+}
+
+#search {
 	float: left;
 	width: 20%;
 	height: 100%;
@@ -48,33 +57,29 @@ a{
 	background: #B5E3D8;
 	font-family: Comfortaa;
 	line-height: 100px;
-	
 }
 
-#search #srch, #srchTxt{
+#search #srch, #srchTxt {
 	height: 41px;
 }
 
-
-#menus{
+#menus {
 	float: left;
 	width: 35%;
 	height: 100%;
 	background-color: #B5E3D8;
-	
 }
-.menus{
-	margin-top:30px;
+
+.menus {
+	margin-top: 30px;
 	margin-left: 30px;
 	float: left;
 	padding-right: 30px;
 	text-align: center;
 	font-family: 'Jeju Gothic', serif;
-	
-	
-	
 }
-#loginBox{
+
+#loginBox {
 	float: left;
 	width: 30%;
 	height: 100%;
@@ -85,78 +90,79 @@ a{
 	line-height: 100px;
 }
 
-
-.btn-style{
-	-moz-box-shadow:inset 0px 1px 0px 0px #b5e3d8;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #b5e3d8;
-	box-shadow:inset 0px 1px 0px 0px #b5e3d8;
-	background-color:#776d61;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	border:1px solid #b5e3d8;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:7px 24px;
-	text-decoration:none;
-	text-shadow:0px 2px 4px #996765;
+.btn-style {
+	-moz-box-shadow: inset 0px 1px 0px 0px #b5e3d8;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #b5e3d8;
+	box-shadow: inset 0px 1px 0px 0px #b5e3d8;
+	background-color: #776d61;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #b5e3d8;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 7px 24px;
+	text-decoration: none;
+	text-shadow: 0px 2px 4px #996765;
 }
 
-.btn-style1{
-	-moz-box-shadow:inset 0px 1px 0px 0px #b5e3d8;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #b5e3d8;
-	box-shadow:inset 0px 1px 0px 0px #b5e3d8;
-	background-color:#ffffff;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	border:1px solid #b5e3d8;
-	display:inline-block;
-	cursor:pointer;
-	color:#000000;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:7px 24px;
-	text-decoration:none;
-	
+.btn-style1 {
+	-moz-box-shadow: inset 0px 1px 0px 0px #b5e3d8;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #b5e3d8;
+	box-shadow: inset 0px 1px 0px 0px #b5e3d8;
+	background-color: #ffffff;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #b5e3d8;
+	display: inline-block;
+	cursor: pointer;
+	color: #000000;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
 }
 
 .btn-style:hover {
-	background-color:#ad9d90;
+	background-color: #ad9d90;
 }
+
 .btn-style:active {
-	position:relative;
-	top:1px;
+	position: relative;
+	top: 1px;
 }
 
 .btn-style1:hover {
-	background-color:#ad9d90;
-}
-.btn-style1:active {
-	position:relative;
-	top:1px;
+	background-color: #ad9d90;
 }
 
-#loginBox2{
+.btn-style1:active {
+	position: relative;
+	top: 1px;
+}
+
+#loginBox2 {
 	position: absolute;
 	top: 100px;
 	right: 0px;
-	width: 200px;
+	width: 330px;
 	height: 100px;
-	background-color: #AAAAAA;
+	background-color: #c0c0c0;
 	display: none;
+	font-size: 17px;
 }
-=======
 
+=======
 }
 /* ~ header */
 /* submenu ~ */
-#submenu{
+#submenu {
 	float: left;
 	width: 15%;
 	height: auto;
@@ -165,18 +171,17 @@ a{
 }
 /* ~ submenu */
 /* content ~ */
-#content{
+#content {
 	float: left;
 	width: 100%;
 	height: calc(100% - 100px);
 	min-height: 850px;
 	min-width: 1000px;
 	background-color: #fffdf4;
-        
 }
 
 /* myGroup 나의그룹 */
-#addGrpBtn, #addMrkBtn{
+#addGrpBtn, #addMrkBtn {
 	position: fixed;
 	width: 80px;
 	height: 80px;
@@ -184,14 +189,14 @@ a{
 	background-color: #B5E3D8;
 	bottom: 50px;
 	right: 50px;
-	font-size: 60px; 
-	font-weight: bold; 
-	text-align: center; 
+	font-size: 60px;
+	font-weight: bold;
+	text-align: center;
 	line-height: 70px;
 }
 
 /* 나의그룹 */
-.mainGroups{
+.mainGroups {
 	float: left;
 	width: 31%;
 	height: 41%;
@@ -207,21 +212,19 @@ a{
 }
 
 /* 나의그룹 내용 */
-#mainGrp2{
+#mainGrp2 {
 	text-align: center;
 }
 
 /* 나의그룹 띠색깔 */
-
 #main11 {
 	float: top;
 	background-color: #B5E3D8;
 	height: 45px;
 }
 
-
-/* 그룹: 글자스타일 */ 
-#groupName{
+/* 그룹: 글자스타일 */
+#groupName {
 	color: black;
 	font-size: 22px;
 	font-family: 'Jeju Gothic', serif;
@@ -229,99 +232,89 @@ a{
 	line-height: 40px;
 }
 
-/* 그룹이름: 글자스타일 */ 
-#groupName2{
+/* 그룹이름: 글자스타일 */
+#groupName2 {
 	font-family: 'Nanum Pen Script', serif;
 	font-size: 32px;
 }
 /* 그룹리더 글자간격 */
-#groupLd{
+#groupLd {
 	line-height: 40px;
 }
 
-/* myGroup- 로그인 안했을때 */
-#myFirstLogin1{
-	background-color: fuchsia;
-	height: 100%;
-}
-
-#myFirstLogin2 {
-	padding-top: 100px;
-	background-color: orange;	
-	height: 40%;
-}
-
-#myFirstLogin3 {
-	width: 60%;
-	height: 100%;
-	background-color: red;
-}
-
-
 /* 나의그룹end */
-
-#mainCate{
+#mainCate {
 	float: left;
-	width: 250px;
+	width: 234px;
 	height: 100%;
-	overflow: auto;
+/* 	border: 1px solid #ccc;
+	box-shadow: 0 0 0px;
+	background-color: white;
+	margin-top: 30px; */
 }
-#demoGrp{
+
+#demoGrp {
 	float: left;
 	display: inline-block;
 	width: 900px;
 	height: 100%;
 }
-#recomGrp{
+
+#recomGrp {
 	display: inline-block;
 	width: 100%;
-	height: 50%;
+	height: auto;
+	min-height: 130px;
 	margin-left: 10%;
-	margin-top : 2%;
+	margin-top: 2%;
 	padding-bottom: 1%;
 }
-#newGrp{
+
+#newGrp {
 	display: inline-block;
 	width: 100%;
 	height: 50%;
-	background-color: white;
 	margin-left: 10%;
 }
-#thumbnailGrp{
-	display: inline-block;
- 	width: 20%;
- 	height: 60%;
- 	background-color: #555555;
-}
-.recomGrp{
+
+.recomGrp {
 	float: left;
 	width: 80%;
-	height: 120px;
+	height: 150px;
 	border: 1px solid #ccc;
 	box-shadow: 0 0 0px;
-}
-#rGrp{
-	float: left;
-	width: calc(98% - 150px);
-	height: 100%;
-	padding-left: 10px;
+	padding-top: 10px;
 }
 
-#rImg{
+#rGrp {
+	float: left;
+	width: calc(98% - 150px);
+	height: 250px;
+	padding-left: 10px;
+	font-family: 'Nanum Pen Script', serif;
+	font-size: 26px;
+}
+
+.rSpan {
+	font-family: 'kopub batang';
+	font-size: 18px;
+}
+
+#rImg {
 	float: left;
 	width: 150px;
-	height: 100%;	
+	height: 100%;
 }
-#Total{
+
+#Total {
 	margin-left: calc(50% - 575px);
 	margin-right: calc(50% - 575px);
 }
 
-
 /* groupMain */
 
 /* groupMain- 로그인 전 그룹 */
-#groupmNotlg{
+#groupmNotlg {
 	display: inline-block;
 	width: 600px;
 	height: 40%;
@@ -333,56 +326,62 @@ a{
 	font-family: 'Jeju Gothic', serif;
 	line-height: 1.5em;
 	font-size: 17px;
-	
 }
 
-
-
-#grpCalendar{
+#grpCalendar {
 	float: left;
 	width: 250px;
 	height: 100%;
 	background-color: #dddddd;
 }
 
-
-#grpInfo{
+#grpInfo {
 	width: 230px;
-	height: 150px;	
+	height: 150px;
 }
-#btnWrite{
+
+#btnWrite {
 	float: right;
 }
-#btnOut{
+
+#btnOut {
 	float: right;
 }
-#writeBoard{
+
+#writeBoard {
 	width: 800px;
 	height: 440px;
 }
-#board{
+
+#board {
 	float: left;
 	width: 650px;
 	height: 100%;
 	background-color: #cccccc;
 }
-#geul{
+
+#geul {
 	width: 650px;
 	height: 247px;
 }
-#info{
+
+#info {
 	
 }
-#writer{
+
+#writer {
 	
 }
-#writeDate{
+
+#writeDate {
 	
 }
-#naeyong{
+
+#naeyong {
 	
 }
-#grpProduct{
+
+#grpProduct {
 	float: left;
 	width: 250px;
 	height: 100%;
@@ -391,26 +390,42 @@ a{
 
 /* ~ content */
 /* market~ */
-#mktCate{
+#mktCate {
 	float: left;
 	width: 250px;
 	height: 100%;
-	overflow: auto;
 }
 
-#product{
+#product {
 	float: left;
 	width: 900px;
 	height: 100%;
 }
+
+.products {
+	width: 450px;
+	font-family: 'kopub batang';
+	line-height: 23px;
+	border: 1px solid #dbdbdb;
+	border-radius: 5px; float : left;
+	width: 440px;
+	height: 150px;
+	padding-bottom: 20px;
+	padding-right: 5px;
+	padding-left: 5px;
+	float: left; width : 440px; height : 150px; padding-bottom : 20px;
+	padding-right : 5px; padding-left : 5px;
+	background-color: #ffffbb;
+}
 /* ~market */
 /* search~ */
-#resultGroup{
+#resultGroup {
 	float: left;
 	width: 50%;
 	height: auto;
 }
-#resultMarket{
+
+#resultMarket {
 	float: left;
 	width: 50%;
 	height: auto;

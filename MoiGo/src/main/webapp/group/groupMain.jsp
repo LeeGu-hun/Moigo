@@ -99,23 +99,24 @@
 	<%@include file="/include/loginBox2.jsp"%>
 	<c:if test="${empty authInfo }">
 		<div id="content">
-			<br> <br>
-			<div id="groupmNotlg">
-
-				<img
-					src="<%=request.getContextPath() %>/file/${grpInfo.grpThumbnail}"
-					style="width: 100px; height: 100px;"> <br> 그룹명 :
-				<c:out value="${grpInfo.grpName }" />
-				<br> 그룹장 :
-				<c:out value="${grpInfo.grpLeader }" />
-				<br> 카테고리 :
-				<c:out value="${grpInfo.grpCate }" />
-				<br> 개설일자 :
-				<c:out value="${grpInfo.grpRegDate }" />
-				<br> 그룹소개 :
-				<c:out value="${grpInfo.grpIntro }" />
-				<br> <br>
-				<h2>~ Please Login First ~</h2>
+			<center>
+			<br><br>
+				<div id="groupmNotlg">
+		
+			<img src="<%=request.getContextPath() %>/file/${grpInfo.grpThumbnail}" style="width: 100px; height: 100px; ">
+			<br>
+			
+			그룹명 : <c:out value="${grpInfo.grpName }" />
+			<br>
+			그룹장 : <c:out value="${grpInfo.grpLeader }" />
+			<br>
+			카테고리 : <c:out value="${grpInfo.grpCate }" />
+			<br>
+			개설일자 : <c:out value="${grpInfo.grpRegDate }" />
+			<br>
+			그룹소개 : <c:out value="${grpInfo.grpIntro }" />
+			<br><br>
+			<h2>~ Please Login First ~</h2>
 			</div>
 		</div>
 	</c:if>

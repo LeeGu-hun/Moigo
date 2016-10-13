@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<link href="https://fonts.googleapis.com/css?family=Baloo+Da"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa"
+	rel="stylesheet">
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css"
 	rel="stylesheet">
 <div id="header">
 	<div id="logo">
-		<a href="<c:url value='/' />"><span id="M">M</span>oi<span id="G">Go</span>!</a>
+		<a href="<c:url value='/' />"><span id="M">M</span>oi<span id="G">Go</span><span id="eMark">!</span></a>
 	</div>
 	<div id="search">
 		<form action="/moigo/search" method="post">
 			<input type="text" id="srchTxt" class="btn-style1" name="srchTxt"
-				value="Search Here" onfocus="this.value=''" /> <input type="submit"
-				class="btn-style" id="srch" name="srch" value="검색" />
+				value="Search Here" onfocus="this.value=''" /> 
+				<input type="submit"class="btn-style" id="srch" name="srch" value="검색" />
 		</form>
 	</div>
 	<div id="menus">
