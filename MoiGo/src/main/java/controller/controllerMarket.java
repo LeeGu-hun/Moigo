@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.oreilly.servlet.MultipartRequest;
@@ -22,6 +23,7 @@ import login.AuthInfo;
 import market.Market;
 import market.MarketAddProductCommand;
 import market.MarketDeleteProductCommand;
+
 
 @Controller
 public class controllerMarket {
@@ -74,7 +76,7 @@ public class controllerMarket {
 		}
 		return "redirect:/market";	
 	}
-	
+
 	@RequestMapping(value="/market/deleteProduct")
 	public String deleteProduct(MarketDeleteProductCommand mktDelProCmd, HttpSession session) {
 		System.out.println("상품삭제 진입");
@@ -83,5 +85,11 @@ public class controllerMarket {
 		System.out.println("상품삭제 성공");
 		return "redirect:/market";
 	}
-	
+
+	@RequestMapping(value="/market/Product/{mktCode}")
+	public String buyProduct(@PathVariable String mktCode, Model model){
+		Market prod = daoMarket.getMarket(mktCode);
+		model.addAttribute("prod" , prod);
+		return "market/marketBuyPage";
+	}
 }

@@ -97,7 +97,7 @@
 	<%@include file="/include/loginBox2.jsp"%>
 	<div id="content">
 		<div id="Total">
-			<div id="addMrkBtn">
+			<div id="addBtn">
 				<center>
 					<a href="#" class="openMask"
 						style="font-size: 60px; font-weight: bold; text-align: center; line-height: 70px;">＋</a>

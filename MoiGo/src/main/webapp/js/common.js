@@ -28,3 +28,6 @@ function modifyGroup() {
 function boardDelete() {
 	location.href= 'delete';
 }
+function admin(){
+	location.href='/moigo/admin';
+}

@@ -46,7 +46,6 @@
 			&nbsp;<input type="button" id="login" name="login"
 				onclick="showLogin();" value="Login" class="btn-style" />
 		</c:if>
-
 		<c:if test="${!empty authInfo }">
 			<span style="color: black">${authInfo.userNick }</span>님 반갑습니다.
 			<input type="button" class="btn-style" onclick="logout();"
@@ -54,7 +53,7 @@
 			<input type="button" class="btn-style" onclick="goModify();"
 				value="정보수정" />
 			<c:if test="${authInfo.userID=='admin' }">
-				<input type="button" class="btn-style" value="관리자페이지" />
+				<input type="button" class="btn-style" value="관리자" onclick="admin();"/>
 			</c:if>
 		</c:if>
 	</div>

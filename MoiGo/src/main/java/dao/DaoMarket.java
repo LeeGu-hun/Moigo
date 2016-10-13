@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -24,6 +25,19 @@ public class DaoMarket {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
+	public Market getMarket(String mktCode) { // 이름으로 그룹찾기
+		Market result = jdbcTemplate.queryForObject("select * from market where mktCode = ?",
+			new RowMapper<Market>() {
+				public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Market prod = new Market(rs.getString("mktCode"), rs.getString("mktSeller"), rs.getString("mktPrName"), 
+						rs.getString("mktPrice"), rs.getString("mktContent"), rs.getString("grpName"), rs.getString("mktThumbnail"),
+						rs.getDate("mktRegDate"));
+					return prod;
+				}
+			}, mktCode);
+		return result;
+	}
+	
 	public List<Market> getAllProduct(){ // 마켓의 모든 상품 불러오기
 		List<Market> results = jdbcTemplate.query("select * from market order by MKTREGDATE desc", new RowMapper<Market>() {
 			public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -35,7 +49,7 @@ public class DaoMarket {
 		return results;
 	}
 	
-	public List<Market> getProduct(String prdName){ //그룹이 보유한 판매목록 가져오기
+	public List<Market> getProduct(String grpName){ //그룹이 보유한 판매목록 가져오기
 		List<Market> result = jdbcTemplate.query("select * from market where grpName = ? order by MKTREGDATE desc",
 				new RowMapper<Market>() {
 					public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -44,7 +58,7 @@ public class DaoMarket {
 								rs.getDate("mktRegDate"));
 						return market;
 					}
-				}, prdName);
+				}, grpName);
 		return result;
 	}
 	

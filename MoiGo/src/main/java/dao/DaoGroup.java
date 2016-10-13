@@ -121,7 +121,7 @@ public class DaoGroup {
 
 	public List<Group> getJoinGrp(String userNick) { // 특정 닉네임이 가입한 그룹만 가져오기
 		List<Group> results = jdbcTemplate.query(
-				"select * from groupjoin grpj, groupInfo grpi where grpj.grpname = grpi.grpname and userNick =? order by grpregdate desc",
+				"select * from groupjoin grpj, groupInfo grpi where grpj.grpname = grpi.grpname and userNick =? order by grpjoindate desc",
 				new RowMapper<Group>() {
 					public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"),

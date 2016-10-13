@@ -17,7 +17,6 @@
 <title>Moigo</title>
 </head>
 <body>
-
 <%@include file="/include/header.jsp"%>
 <%@include file="/include/loginBox2.jsp" %>
 <div id="content">

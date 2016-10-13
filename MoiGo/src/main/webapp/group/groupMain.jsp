@@ -117,6 +117,14 @@
 			그룹소개 : <c:out value="${grpInfo.grpIntro }" />
 			<br><br>
 			<h2>~ Please Login First ~</h2>
+				<div>
+					<form action="/moigo/login" method="post">
+						로그인이 필요한 서비스 입니다. 로그인해 주세요. <br>
+						ID<input type="text" id="userID" name="userID" /> <br> 
+						PW<input type="password" id="userPw" name="userPw" /><br>
+						<input type="submit" class="btn-style" value="로그인" />
+					</form>			
+				</div>
 			</div>
 		</div>
 	</c:if>
@@ -124,23 +132,16 @@
 		<div id="content">
 			<c:if test="${joined }">
 				<div id="Total">
+					<div id="addBtn">
+						<center>
+							<a href="#" class="openMask" style="font-size: 60px; font-weight: bold; text-align: center; line-height: 70px;">＋</a>
+						</center>
+					</div>
 					<div id="grpCalendar">
 						<div id="grpInfo">
-							<div id="gName">
-								그룹명 :
-								<c:out value="${grpInfo.grpName }" />
-							</div>
-							<div id="gCate">
-								카테고리 :
-								<c:out value="${grpInfo.grpCate }" />
-							</div>
-							<div id="gCount">
-								그룹인원수 :
-								<c:out value="${grpInfo.grpNum }" />
-								명
-							</div>
-							<input type="button" id="btnWrite" herf="#" class="openMask"
-								value="글쓰기" />
+							<div id="gName">그룹명 : <c:out value="${grpInfo.grpName }" /></div>
+							<div id="gCate">카테고리 : <c:out value="${grpInfo.grpCate }" /></div>
+							<div id="gCount">그룹인원수 : <c:out value="${grpInfo.grpNum }" />명</div>
 						</div>
 						<div id="calendarView" ></div>
 					</div>
@@ -205,10 +206,13 @@
 					<div id="grpProduct">
 						<c:forEach var="grpPrds" items="${grpPrd }">
 							<div class="grpProducts">
-								<img
-									src="<%=request.getContextPath() %>/file/${grpPrds.mktThumbnail}"
-									style="width: 100px; height: 100px;"> 판매물품 :
-								${grpPrds.mktPrName }
+								<div style="float: left; width:100px; height:100px;">
+									<img src="<%=request.getContextPath() %>/file/${grpPrds.mktThumbnail}" style="width: 100px; height: 100px; ">
+								</div>
+								<div style="float: left;">
+									품명 : ${grpPrds.mktPrName }<br>
+									판매자 : ${grpPrds.mktSeller }
+								</div>
 							</div>
 						</c:forEach>
 					</div>
