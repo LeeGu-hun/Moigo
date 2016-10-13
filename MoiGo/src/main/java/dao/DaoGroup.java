@@ -232,7 +232,7 @@ public class DaoGroup {
 	public List<Group> myGroupThumbnail(String userNick) { // 그룹 안에서 가입한 그룹 보기(썸네일)
 		List<Group> results = jdbcTemplate
 				.query("select gj.grpname, gi.grpthumbnail from groupJoin gj join groupInfo gi "
-					+ "on gj.grpname=gi.grpname where gj.usernick=?", new RowMapper<Group>() {
+					+ "on gj.grpname=gi.grpname where gj.usernick=? and rownum <= 6", new RowMapper<Group>() {
 						public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
 							Group group = new Group(rs.getString("grpName"), rs.getString("grpThumbnail"));
 							return group;
