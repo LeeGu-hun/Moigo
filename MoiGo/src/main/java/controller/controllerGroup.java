@@ -18,10 +18,11 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dao.DaoGroup;
 import dao.DaoMarket;
-import group.Group;	
+import group.Group;
 import group.GroupAddCommand;
 import group.GroupBoard;
 import group.GroupCate;
+import group.GroupDeleteCommand;
 import group.GroupModifyCommand;
 import group.GroupWriteCommand;
 import login.AuthInfo;
@@ -65,6 +66,7 @@ public class controllerGroup {
 			model.addAttribute("grpPrd", grpPrd);
 			model.addAttribute("joined", Joined);
 			model.addAttribute("geulInfo", geulInfo);
+			model.addAttribute("grpInfo", grpInfo);
 		}
 		model.addAttribute("grpInfo", grpInfo);
 		return "group/groupMain";
@@ -100,10 +102,7 @@ public class controllerGroup {
 		GroupAddCommand Edit = groupAddCommand;
 		String editCate = daoGroup.getCateName(groupAddCommand.getCate());
 		Edit.setCate(editCate);
-		
-	
-		
-		
+
 		daoGroup.addGroup(Edit);
 		daoGroup.joinGroup(userInfo.getUserNick(), Edit.getGrpName());
 
@@ -155,10 +154,13 @@ public class controllerGroup {
 		return "redirect:/group/"+url;
 	}
 	
-	@RequestMapping("/group/{grpName}/delete")
-	public String groupBoardDelte(@PathVariable String grpName, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
-		String url = URLEncoder.encode(grpName, "UTF-8");
-		System.out.println("삭제 진입 성공");
+	@RequestMapping("/group/{grpName}/groupwrite/delete") // 그룹게시판 글 삭제하기
+	public String groupBoardDelte(@PathVariable String grpName, GroupDeleteCommand grpDelCmd, HttpSession session) throws UnsupportedEncodingException {
+		String url = URLEncoder.encode(grpName, "UTF-8");	
+		System.out.println("게시글 삭제 진입");
+		System.out.println("글번호 : " + grpDelCmd.getBrdSeq());
+		daoGroup.deleteGroupGeul(grpDelCmd);
+		System.out.println("게시글 삭제 성공");
 		return "redirect:/group/"+url;
 	}
 }

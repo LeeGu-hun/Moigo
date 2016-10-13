@@ -12,11 +12,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 
-import group.Group;
 import group.GroupCate;
 import market.Market;
 import market.MarketAddProductCommand;
-import user.User;
+import market.MarketDeleteProductCommand;
 
 public class DaoMarket {
 	private JdbcTemplate jdbcTemplate;
@@ -88,6 +87,18 @@ public class DaoMarket {
 				return pstmt;
 			}
 		});
+	}
+	
+	public void deleteProduct(final MarketDeleteProductCommand mktDelProCmd) { // 상품삭제
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement pstmt = con.prepareStatement("delete from MARKET where mktcode = ? ");
+
+				pstmt.setInt(1, mktDelProCmd.getMktCode());
+
+				return pstmt;
+			}
+		});		
 	}
 	
 }

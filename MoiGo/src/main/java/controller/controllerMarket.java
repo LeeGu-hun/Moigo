@@ -17,12 +17,11 @@ import dao.DaoGroup;
 import dao.DaoMarket;
 import dao.DaoUser;
 import group.Group;
-import group.GroupAddCommand;
 import group.GroupCate;
 import login.AuthInfo;
 import market.Market;
 import market.MarketAddProductCommand;
-import user.User;
+import market.MarketDeleteProductCommand;
 
 @Controller
 public class controllerMarket {
@@ -76,31 +75,13 @@ public class controllerMarket {
 		return "redirect:/market";	
 	}
 	
-/*	public String add(GroupAddCommand groupAddCommand, HttpSession session, HttpServletRequest request) {
-		String upload = "file";
-		ServletContext sc = request.getServletContext();
-		String uploadPath = sc.getRealPath("/") + upload;
-		System.out.println(uploadPath);
-		int size = 10 * 1024 * 1024;
-		try {
-			MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "UTF-8",
-				new DefaultFileRenamePolicy());
-			groupAddCommand.setCate(multi.getParameter("cate"));
-			groupAddCommand.setGrpIntro(multi.getParameter("grpIntro"));
-			groupAddCommand.setGrpLeader(multi.getParameter("grpLeader"));
-			groupAddCommand.setGrpName(multi.getParameter("grpName"));
-			groupAddCommand.setGrpOpen(multi.getParameter("grpOpen"));
-			groupAddCommand.setGrpThumbnail(multi.getFilesystemName((String)multi.getFileNames().nextElement()));			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		AuthInfo userInfo = (AuthInfo) session.getAttribute("authInfo");
-		GroupAddCommand Edit = groupAddCommand;
-		String editCate = daoGroup.getCateName(groupAddCommand.getCate());
-		Edit.setCate(editCate);	
-		daoGroup.addGroup(Edit);
-		daoGroup.joinGroup(userInfo.getUserNick(), Edit.getGrpName());
-
-		return "redirect:/";
-	}*/
+	@RequestMapping(value="/market/deleteProduct")
+	public String deleteProduct(MarketDeleteProductCommand mktDelProCmd, HttpSession session) {
+		System.out.println("상품삭제 진입");
+		System.out.println("상품코드 : " + mktDelProCmd.getMktCode());
+		daoMarket.deleteProduct(mktDelProCmd);
+		System.out.println("상품삭제 성공");
+		return "redirect:/market";
+	}
+	
 }

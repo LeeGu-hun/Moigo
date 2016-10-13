@@ -9,8 +9,10 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa"
 	rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/calendar.css" rel="stylesheet">
 <script src="//code.jquery.com/jquery-1.12.2.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/common.js"></script>
+<script src="<%=request.getContextPath()%>/js/calendar.js"></script>
 <style>
 	#mask {  
 	  	position: absolute;  
@@ -82,7 +84,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Moigo</title>
 </head>
-<body>
+<body onload="calendar()">
 	<%@include file="/include/header.jsp"%>
 	<%@include file="/include/loginBox2.jsp"%>
 	<c:if test="${empty authInfo }">
@@ -118,10 +120,11 @@
 							<div id="gCount">그룹인원수 : <c:out value="${grpInfo.grpNum }" />명</div>
 							<input type="button" id="btnWrite" herf="#" class="openMask" value="글쓰기" />
 						</div>
-						<div id="Calender"></div>
+						<div id="calendarView" ></div>
 					</div>
 					<div id="board">
 					<!-- 한 줄로 줄여서 움직일 수 있게 해야함 -->
+					<div style="width: 650px; height: 120px;">
 						<c:forEach var="myGrp" items="${myGrp }">
 							<c:choose>
 								<c:when test="${myGrp.grpThumbnail eq null }">
@@ -140,14 +143,16 @@
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
+					</div><br>	
 						<c:forEach var="geulInfo" items="${geulInfo }"> 
 						<div id="geul" style="margin: 0, auto;">
 	 							<c:if test="${authInfo.userID == geulInfo.getBrdWriter() }">
-									<!-- <div style="text-align: right;"><input type="button" onclick="boardDelete();" value="삭제하기" /></div> -->
-									<a href="/group/${grpInfo.grpName }/delete"">삭제</a>
-								</c:if>		
+	 								<form action="${grpInfo.grpName }/groupwrite/delete" method="post">
+	 									<input type="hidden" id="brdSeq" name="brdSeq" value="${geulInfo.getBrdSeq() }"/>
+	 									<input type="submit" style="float: right; " value="삭제하기"/>
+									</form>
+								</c:if><br>
 							<div id="info" style="float: left; width: 450px;">
-								${authInfo.userNick }
 								<input type="hidden" id="wGrpName" name="wGrpName" value="${grpInfo.grpName }" />
 								글쓴이 : ${geulInfo.getBrdWriter() }<br>
 								작성일 : ${geulInfo.getBrdRegDate() }<br>
@@ -177,10 +182,10 @@
 					<div id="writeBoard" style="background: white;">
 						<div class="divClose"><a href="#" class="close" >Close</a></div><br>
 						<form action="${grpInfo.grpName }/groupwrite" method="post" enctype="multipart/form-data"> 
-							<input type="hidden" id="writer" name="writer" value="${authInfo.userID }" />
+							<input type="hidden" id="writer" name="writer" value="${authInfo.userNick }" />
 							<div style="padding-left: 20px;"><input type="text" id="writeTitle" name="writeTitle" placeholder="Title" /></div><br>
 							<div style="padding-left: 20px;"><textarea cols="105" rows="20" id="writeContent" name="writeContent" placeholder="Content" style="resize: none;"></textarea></div><br>
-							<div style="padding-left: 20px;"><input type="file" id="grpThumbnail" name="grpThumbnail" /></div><br>
+							<div style="padding-left: 20px;"><input type="file" id="grpThumbnail" name="grpThumbnail" /></div>
 							<div style="padding-right: 30px; "><input type="submit" style="float: right; " value="게시하기"/></div>
 						</form>
 					</div>			
