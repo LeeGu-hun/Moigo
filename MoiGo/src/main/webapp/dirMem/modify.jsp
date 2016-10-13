@@ -117,8 +117,8 @@
 			<td><form method="post" action="moigo">
 			
 			<br><br>
-			<input type="submit" value="수정하기" />
-			<input type="reset" value="지우기" />
+			<input type="submit" value="수정하기" class="myButton"/>
+			<input type="reset" value="지우기" class="myButton"/>
 			<tr><td colspan="2"><hr width="100%" /></td></tr>
 			
 			<tr>

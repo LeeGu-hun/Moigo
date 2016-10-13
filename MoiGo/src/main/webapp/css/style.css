@@ -35,7 +35,7 @@ a {
 	color: #ffffff;
 }
 
-#M {
+/* #M {
 	font-size: 60px;
 	color: #DF2935;
 }
@@ -47,7 +47,7 @@ a {
 
 #eMark{
 	color:#27394F;
-}
+} */
 
 #search {
 	float: left;
@@ -147,6 +147,54 @@ a {
 	top: 1px;
 }
 
+.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+	background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+	background-color:#f7ffec;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:4px 4px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
+	background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background:-o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background:-ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+	background-color:#f7ffec;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
 #loginBox2 {
 	position: absolute;
 	top: 100px;
@@ -174,8 +222,8 @@ a {
 #content {
 	float: left;
 	width: 100%;
-	height: calc(100% - 100px);
-	min-height: 850px;
+	height: auto;  /* calc(100% - 100px); */
+	min-height: 1300px;
 	min-width: 1000px;
 	background-color: #fffdf4;
 }
@@ -193,6 +241,7 @@ a {
 	font-weight: bold;
 	text-align: center;
 	line-height: 70px;
+	border:1px solid #dcdcdc;
 }
 
 /* 나의그룹 */
@@ -242,15 +291,44 @@ a {
 	line-height: 40px;
 }
 
+/* 로그인x 나의그룹 눌렀을때 */
+#myFirstLogin1{
+	background-color: #FDDFDD;
+	width: 60%;
+	height:30%;
+	margin-left: 200px;
+	font-family: 'Nanum Pen Script', serif;
+	font-size: 27px;
+}
+
+/* 회원가입폼에서 정보입력 없을때 로그인 폼  */
+#registerFail1{
+position: absolute;
+ width: 500px;
+ height: 500px;
+ left: 50%;
+ top: 50%;
+ margin-left: -250px;
+ margin-top: -250px;
+ border: #000 solid 1px;
+ background-color: #FDDFDD;
+ font-family: 'Nanum Pen Script', serif;
+ font-size: 27px;
+}
+
+
+
 /* 나의그룹end */
+
 #mainCate {
 	float: left;
 	width: 234px;
 	height: 100%;
-/* 	border: 1px solid #ccc;
+/*  	border: 1px solid #ccc;
 	box-shadow: 0 0 0px;
 	background-color: white;
-	margin-top: 30px; */
+	margin-top: 30px; 
+	margin-left: 5px; */
 }
 
 #demoGrp {
@@ -298,6 +376,8 @@ a {
 .rSpan {
 	font-family: 'kopub batang';
 	font-size: 18px;
+	font-weight: bold;
+	color: graytext;
 }
 
 #rImg {
@@ -317,10 +397,11 @@ a {
 #groupmNotlg {
 	display: inline-block;
 	width: 600px;
-	height: 40%;
+	height: 45%;
 	text-align: center;
 	padding-top: 10px;
-	background-color: #ffffff;
+	/* background-color: #ffffff; */
+	background-image: url('note.PNG'); 
 	border: 1px dotted #ccc;
 	box-shadow: 0 0 0px;
 	font-family: 'Jeju Gothic', serif;
@@ -328,16 +409,51 @@ a {
 	font-size: 17px;
 }
 
-#grpCalendar {
-	float: left;
-	width: 250px;
-	height: 100%;
-	background-color: #dddddd;
+#grpInfo {
+	padding-top: 10px;
+	
+	border: 1px dotted #ccc;
+	background-color: white;
+	width: 220px;
+	height: 170px;
+	text-align: center;
+	
 }
 
-#grpInfo {
+#grpCalendar {
+	border: 1px dotted #ccc;
+	background-color: white;
+	padding-left: 10px;
+	padding-top: 10px;
+	float: left;
 	width: 230px;
-	height: 150px;
+	height: auto;
+	background-color: #ffffdd;
+}
+
+#board {
+	padding-top: 10px;
+	border: 1px dotted #ccc;
+	float: left;
+	width: 650px;
+	height: auto;
+	background-color:  #ffffdd;
+}
+
+#grpProduct {
+	border: 1px dotted #ccc;
+	background-color: white;
+	float: left;
+	width: 250px;
+	height: auto;
+	background-color: #ffffdd;
+}
+.grpProducts{
+	padding-top: 10px;
+	padding-left: 10px;
+	float: left;
+	width: 100%;
+	height: 100px;	
 }
 
 #btnWrite {
@@ -353,20 +469,39 @@ a {
 	height: 440px;
 }
 
-#board {
-	float: left;
-	width: 650px;
-	height: 100%;
-	background-color: #cccccc;
-}
 
 #geul {
-	width: 650px;
-	height: 247px;
+	margin-top: 70px;
+	margin-left: 10px;
+	background-color: blue;
+	width: 630px;
+	height: 220px;
 }
 
 #info {
-	
+	height: 130px;
+	margin-top: 30px;
+	padding-top: 20px;
+	background-color: white;
+	float: left; 
+	width: 450px;
+}
+
+#brdPic {
+	float: right; 
+	width: 180px;
+	height: 247px;
+}
+
+#btnDel {
+	width: 180px; 
+	padding-top: 5px; 
+	padding-left: 145px;
+}
+
+#proImage {
+	text-align: center; 
+	padding-top: 20px;
 }
 
 #writer {
@@ -381,23 +516,17 @@ a {
 	
 }
 
-#grpProduct {
-	float: left;
-	width: 250px;
-	height: 100%;
-	background-color: #bbbbbb;
-}
-.grpProducts{
-	float: left;
-	width: 100%;
-	height: 100px;	
-}
+
 /* ~ content */
 /* market~ */
 #mktCate {
 	float: left;
 	width: 250px;
 	height: 100%;
+	border: 1px solid #ccc;
+	box-shadow: 0 0 0px;
+	background-color: white;
+	margin-top: 30px; 
 }
 
 #product {
@@ -419,7 +548,7 @@ a {
 	padding-left: 5px;
 	float: left; width : 440px; height : 150px; padding-bottom : 20px;
 	padding-right : 5px; padding-left : 5px;
-	background-color: #ffffbb;
+	background-color: #ffffe8;
 }
 /* ~market */
 /* search~ */

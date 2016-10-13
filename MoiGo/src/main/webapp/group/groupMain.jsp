@@ -116,13 +116,14 @@
 			<br>
 			그룹소개 : <c:out value="${grpInfo.grpIntro }" />
 			<br><br>
-			<h2>~ Please Login First ~</h2>
+			<h2><font color="#710000">※ Please Login First  ※</font></h2>
 				<div>
 					<form action="/moigo/login" method="post">
-						로그인이 필요한 서비스 입니다. 로그인해 주세요. <br>
-						ID<input type="text" id="userID" name="userID" /> <br> 
-						PW<input type="password" id="userPw" name="userPw" /><br>
-						<input type="submit" class="btn-style" value="로그인" />
+						로그인이 필요한 서비스 입니다.<br> 
+						로그인해 주세요. <br>
+						&nbsp;ID&nbsp;<input type="text" id="userID" name="userID" class="btn-style1"/> <br> 
+						PW<input type="password" id="userPw" name="userPw" class="btn-style1"/><br>
+						<input type="submit" class="btn-style" value="로그인" "/>
 					</form>			
 				</div>
 			</div>
@@ -131,7 +132,7 @@
 	<c:if test="${!empty authInfo }">
 		<div id="content">
 			<c:if test="${joined }">
-				<div id="Total">
+				<div id="Total" style="padding-top: 15px;">
 					<div id="addBtn">
 						<center>
 							<a href="#" class="openMask" style="font-size: 60px; font-weight: bold; text-align: center; line-height: 70px;">＋</a>
@@ -139,9 +140,14 @@
 					</div>
 					<div id="grpCalendar">
 						<div id="grpInfo">
-							<div id="gName">그룹명 : <c:out value="${grpInfo.grpName }" /></div>
-							<div id="gCate">카테고리 : <c:out value="${grpInfo.grpCate }" /></div>
-							<div id="gCount">그룹인원수 : <c:out value="${grpInfo.grpNum }" />명</div>
+							<div>
+								<img src="<%=request.getContextPath() %>/file/${grpInfo.grpThumbnail}" style="width: 100px; height: 100px; ">
+							</div>
+							<div>
+								그룹명 : <c:out value="${grpInfo.grpName }" /><br>
+								카테고리 : <c:out value="${grpInfo.grpCate }" /><br>
+								그룹인원수 : <c:out value="${grpInfo.grpNum }" />명
+							</div>
 						</div>
 						<div id="calendarView" ></div>
 					</div>
@@ -149,7 +155,7 @@
 						<!-- 한 줄로 줄여서 움직일 수 있게 해야함 -->
 						<div style="width: 650px; height: 121px;">
 							<div style="width: 25px; height: 100%; float: left;">
-								<button id="left-button" style="width: 25px; height: 121px;"><<</button>
+								<button id="left-button" style="width: 25px; height: 30px;"><<</button>
 							</div>
 							<div style="width: 600px; height: 121px; float: left;">
 								<c:forEach var="myGrp" items="${myGrp }">
@@ -173,32 +179,42 @@
 								</c:forEach>
 							</div>
 							<div style="width: 25px; height: 100%; float: left;">
-								<button id="right-button" style="width: 25px; height: 121px;">>></button>
+								<button id="right-button" style="width: 25px; height: 30px;" value="">>></button>
 							</div>
 						</div>
 						<!--  -->
 						<c:forEach var="geulInfo" items="${geulInfo }">
-							<div id="geul" style="margin: 0, auto;">
-								<c:if test="${authInfo.userID == geulInfo.getBrdWriter() }">
-									<!-- <div style="text-align: right;"><input type="button" onclick="boardDelete();" value="삭제하기" /></div> -->
-									<a href="/group/${grpInfo.grpName }/delete">삭제</a>
-								</c:if>
-								<div id="info" style="float: left; width: 450px;">
-									<input type="hidden" id="wGrpName" name="wGrpName"
-										value="${grpInfo.grpName }" /> 글쓴이 :
-									${geulInfo.getBrdWriter() }<br> 작성일 :
-									${geulInfo.getBrdRegDate() }<br> 제목 :
-									${geulInfo.getBrdTitle() }<br> 내용 :
-									${geulInfo.getBrdContent() }
+							<div id="geul" style="margin: 0, auto">
+								<div id="info">
+									<input type="hidden" id="wGrpName" name="wGrpName" value="${grpInfo.grpName }" /> 
+									<div style="padding-left: 10px;">
+									글쓴이 : ${geulInfo.getBrdWriter() }<br> 
+									작성일 : ${geulInfo.getBrdRegDate() }<br> 
+									제목 : ${geulInfo.getBrdTitle() }<br> 
+									내용 : ${geulInfo.getBrdContent() }
+									</div>
 								</div>
-								<div style="float: left; width: 200px;">
-									<c:if test="${empty geulInfo.brdThumbnail }"></c:if>
-									<c:if test="${!empty geulInfo.brdThumbnail }">
-										<img
-											src="<%=request.getContextPath() %>/file/${geulInfo.brdThumbnail}"
-											style="width: 100px; height: 100px;">
-										<br>
-									</c:if>
+								<div id="brdPic">
+									<div id="btnDel">
+										<c:if test="${authInfo.userNick == geulInfo.getBrdWriter() }">
+											<a href="/group/${grpInfo.grpName }/delete"><button>삭제</button></a>
+										</c:if>
+										<c:if test="${authInfo.userNick != geulInfo.getBrdWriter() }">
+											<div style="width: 30.67px; height: 22px;"></div>
+										</c:if>
+									</div>
+									<div id="proImage">
+										<c:if test="${empty geulInfo.brdThumbnail }">										<img
+												src="<%=request.getContextPath() %>/images/noImage.png"
+												style="width: 120px; height: 120px;">
+											<br></c:if>
+										<c:if test="${!empty geulInfo.brdThumbnail }">
+											<img
+												src="<%=request.getContextPath() %>/file/${geulInfo.brdThumbnail}"
+												style="width: 120px; height: 120px;">
+											<br>
+										</c:if>
+									</div>
 								</div>
 							</div>
 						</c:forEach>
@@ -251,6 +267,11 @@
 					</div>
 				</div>
 			</c:if>
+			
+			<!-- 가입했을때 -->
+			
+			
+			<!-- 가입x -->
 			<c:if test="${!joined }">
 				<div>
 					그룹명 :

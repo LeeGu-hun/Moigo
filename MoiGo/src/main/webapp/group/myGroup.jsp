@@ -33,7 +33,7 @@
 				<c:forEach var="jGrp" items="${joinGrp }">
 					<div class="mainGroups">
 						<div id="main11">
-							<span id="groupName"> 그룹명 : <a
+							<span id="groupName"> &nbsp;그룹명 : <a
 								href="<c:url value='/group/${jGrp.grpName }' />" id="groupName2">${jGrp.grpName }</a>
 							</span>
 							<c:if test="${authInfo.userNick==jGrp.grpLeader }">
@@ -47,7 +47,7 @@
 										name="grpOpen" value="${jGrp.grpOpen }" /> <input
 										type="submit"
 										style="float: right; margin-right: 15px; margin-top: 10px;"
-										value="수정하기" />
+										value="수정하기" class="myButton"/>
 								</form>
 							</c:if>
 						</div>
@@ -68,16 +68,18 @@
 			<c:if test="${empty authInfo }">
 				<div id="myFirstLogin1">
 					<center>
-						<div id="myFirstLogin2">
-							<div id="myFirstLogin3">
-								<form action="/moigo/login" method="post">
-									로그인이 필요한 서비스 입니다. 로그인해 주세요. <br>
-									ID<input type="text" id="userID" name="userID" /> <br> 
-									PW<input type="password" id="userPw" name="userPw" /><br>
-									<input type="submit" class="btn-style" value="로그인" />
+					
+								<form action="/moigo/login" method="post" style="margin-top: 100px;">
+									<br>
+									로그인이 필요한 서비스 입니다. <br>
+									로그인해 주세요. <br><br>
+									
+									&nbsp;ID&nbsp;<input type="text" id="userID" name="userID" class="btn-style1"/> <br> 
+									PW<input type="password" id="userPw" name="userPw" class="btn-style1"/><br>
+									<br>
+									<input type="submit" class="btn-style" value="로그인" height="25" />
 								</form>
-							</div>					
-						</div>
+					
 					</center>
 				</div>
 			</c:if>

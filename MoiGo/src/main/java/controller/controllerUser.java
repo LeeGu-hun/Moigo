@@ -55,7 +55,6 @@ public class controllerUser {
 	
 	@RequestMapping(value = "/join", method = RequestMethod.POST) /* 회원가입 */
 	public String join(RegisterCommand registerCommand, Errors errors, HttpSession session) {
-		System.out.println("날짜는 : " + registerCommand.getBirthDate());
 		new RegisterCommandValidator().validate(registerCommand, errors);
 		if(errors.hasErrors())
 			return "dirMem/registerFail";

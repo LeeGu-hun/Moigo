@@ -148,6 +148,7 @@ public class controllerGroup {
 			groupWriteCommand.setWriteContent(multi.getParameter("writeContent"));
 			groupWriteCommand.setWriteThumbnail(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
 			daoGroup.writeGroupBoard(groupWriteCommand, grpName);
+			System.out.println("게시글 등록완료");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
