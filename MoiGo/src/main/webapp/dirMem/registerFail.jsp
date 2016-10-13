@@ -20,7 +20,13 @@
 <body>
 	<%@include file="/include/header.jsp" %>
 	<div id="content">
-	회원가입 실패!!!
+		회원가입에 실패하였습니다.
+		<form action="/moigo/login" method="post">
+			로그인이 필요한 서비스 입니다. 로그인해 주세요. <br>
+			ID<input type="text" id="userID" name="userID" /> <br> 
+			PW<input type="password" id="userPw" name="userPw" /><br>
+			<input type="submit" class="btn-style" value="로그인" />
+		</form>
 	</div>
 </body>
 </html>

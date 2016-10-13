@@ -97,12 +97,14 @@
 	<%@include file="/include/loginBox2.jsp"%>
 	<div id="content">
 		<div id="Total">
-			<div id="addBtn">
-				<center>
-					<a href="#" class="openMask"
-						style="font-size: 60px; font-weight: bold; text-align: center; line-height: 70px;">＋</a>
-				</center>
-			</div>
+			<c:if test="${!empty authInfo }">
+				<div id="addBtn">
+					<center>
+						<a href="#" class="openMask"
+							style="font-size: 60px; font-weight: bold; text-align: center; line-height: 70px;">＋</a>
+					</center>
+				</div>
+			</c:if>
 			<div id="cateBox"
 				style="height: 100%; width: 223px; overflow: hidden; padding: 10px; float: left;">
 				<div id="mainCate"
