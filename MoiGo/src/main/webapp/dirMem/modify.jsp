@@ -76,7 +76,7 @@
 		
 		<tr>
 		<td id="mdleft"> 이름 <font color="red"><b>*</b></font></td>
-		<td><input type="text"  id="name" name="name" style="ime-mode:active;" /></td>
+		<td><input type="text"  id="modiName" name="modiName" value="${userInfo.userName }" style="ime-mode:active;" /></td>
 		</tr>
 		
 		<tr>

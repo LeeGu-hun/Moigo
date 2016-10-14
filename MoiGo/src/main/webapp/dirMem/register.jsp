@@ -112,8 +112,6 @@ $(function() {
 		<tr><td colspan="2"><hr width="100%" /></td></tr>
 		</tr>
 		
-
-		
 		<tr>
 		<td id="left"> 이름 <font color="red"><b>*</b></font></td>
 		<td><input type="text"  id="name" name="name" style="ime-mode:active;" /></td>
@@ -123,7 +121,6 @@ $(function() {
 		<td id="left"> 닉네임 <font color="red"><b>*</b></font></td>
 		<td><input type="text" id="nickName" name="nickName" style="ime-mode:active;" /></td>
 		</tr>
-		
 		
 		<tr>
 		<td id="left"> 생년월일 <font color="red"><b>*</b></font></td>
@@ -138,14 +135,12 @@ $(function() {
 		</tr>
 		<tr><td colspan="2"><hr width="100%" /></td></tr>
 		
-		
 		<tr>
 		<td id="left"> 주소 <font color="red"><b>*</b></font></td>
 		
 		<td><input type="text" class="regForm" id="address" name="address" style="ime-mode:active;" /><br>
 		</td>
 		</tr>
-		
 		
 		<tr>
 		<td id="left"> 휴대폰번호 <font color="red"><b>*</b></font></td>
@@ -165,12 +160,9 @@ $(function() {
 				onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" size="5" maxlength="4" />	 	
 		</td><br>
 		</tr>
-		
-		
+			
 	</table>
-		
-			
-			
+	
 			<td><form method="post" action="moigo">
 			
 			<br><br>

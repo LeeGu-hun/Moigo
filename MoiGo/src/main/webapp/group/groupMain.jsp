@@ -195,19 +195,19 @@
 									</div>
 								</div>
 								<div id="brdPic">
-									<div id="btnDel">
 										<c:if test="${authInfo.userNick == geulInfo.getBrdWriter() }">
-											<a href="/group/${grpInfo.grpName }/delete"><button>삭제</button></a>
+											<form action="${grpInfo.grpName }/delete" method="post" style="padding-left: 120px; padding-top: 2px;">
+	 											<input type="hidden" id="brdSeq" name="brdSeq" value="${geulInfo.getBrdSeq() }"/>
+	 											<input type="submit" value="삭제하기"/>
+											</form>
 										</c:if>
 										<c:if test="${authInfo.userNick != geulInfo.getBrdWriter() }">
 											<div style="width: 30.67px; height: 22px;"></div>
 										</c:if>
-									</div>
 									<div id="proImage">
-										<c:if test="${empty geulInfo.brdThumbnail }">										<img
-												src="<%=request.getContextPath() %>/images/noImage.png"
-												style="width: 120px; height: 120px;">
-											<br></c:if>
+										<c:if test="${empty geulInfo.brdThumbnail }">
+											<img src="<%=request.getContextPath() %>/images/noImage.png" style="width: 120px; height: 120px;"><br>
+										</c:if>
 										<c:if test="${!empty geulInfo.brdThumbnail }">
 											<img
 												src="<%=request.getContextPath() %>/file/${geulInfo.brdThumbnail}"
@@ -222,10 +222,11 @@
 					<div id="grpProduct">
 						<c:forEach var="grpPrds" items="${grpPrd }">
 							<div class="grpProducts">
-								<div style="float: left; width:100px; height:100px;">
+								<div style="float: left; width:100px; height:100px; ">
 									<img src="<%=request.getContextPath() %>/file/${grpPrds.mktThumbnail}" style="width: 100px; height: 100px; ">
 								</div>
-								<div style="float: left;">
+								<div style="float: left; padding-top: 15px; padding-left: 10px;">
+									판매번호 : ${grpPrds.mktCode }<br>
 									품명 : ${grpPrds.mktPrName }<br>
 									판매자 : ${grpPrds.mktSeller }
 								</div>

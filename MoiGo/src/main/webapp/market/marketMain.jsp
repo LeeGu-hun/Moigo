@@ -87,6 +87,25 @@
 			$(this).unbind('click');
 		});
 	});
+	
+ 	function onlyNumber(event){
+		event = event || window.event;
+		var keyID = (event.which) ? event.which : event.keyCode;
+		if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 || keyID == 9 ) 
+			return;
+		else
+			return false;
+	}
+ 	
+	function removeChar(event) {
+		event = event || window.event;
+		var keyID = (event.which) ? event.which : event.keyCode;
+		if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+			return;
+		else
+			event.target.value = event.target.value.replace(/[^0-9]/g, "");
+	}
+	
 </script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -106,9 +125,9 @@
 				</div>
 			</c:if>
 			<div id="cateBox"
-				style="height: 100%; width: 223px; overflow: hidden; padding: 10px; float: left;">
+				style="height: 780px;; width: 223px; overflow: hidden; padding: 10px; float: left;">
 				<div id="mainCate"
-					style="height: 100%; width: 250px; overflow: auto;">
+					style="height: 780px; width: 250px; overflow: auto;">
 					<c:forEach var="cates" items="${cates }">
 						<div style="float: left; margin: 15px;">
 							<a href="<c:url value='/search/${cates.CATENAME }' />"> <img
@@ -133,7 +152,8 @@
 							판매자 : ${authInfo.userNick }<br> <input type="hidden"
 								id="mktSeller" name="mktSeller" value="${authInfo.userNick }">
 							상품명 : <input type="text" id="productName" name="productName" /><br>
-							가격 : <input type="text" id="productPrice" name="productPrice" /><br>
+							가격 : <input type="text" id="productPrice" name="productPrice" 
+								onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /><br>
 							내용 : <input type="text" id="productContent" name="productContent" /><br>
 							그룹명 : <select id="grpName" name="grpName" style="height: 23px;">
 								<option value="" selected>그룹을 선택하세요</option>
@@ -152,7 +172,14 @@
 			<c:forEach var="prd" items="${allProducts }">
 				<div class="products" style="width:400px; height: 200px; float: left; margin-left: 20px; margin-bottom: 20px;">
 					<div style="float: right; width: 240px;">
-						<br>
+						<div style="padding-top: 5px;">
+							<c:if test="${authInfo.userNick == prd.mktSeller }">
+								<form action="market/deleteProduct" method="post">
+									<input type="hidden" id="mktCode" name="mktCode" value="${prd.mktCode }" />
+									<input type="submit" style="float: right;" value="삭제하기" />
+								</form>
+							</c:if><br>
+						</div>	
 						&nbsp;· 등록일 : ${prd.mktRegDate }<br>
 						&nbsp;· 판매번호 : <a href="<c:url value='/market/Product/${prd.mktCode }' />">${prd.mktCode }</a><br>
 						&nbsp;· 그룹명 : ${prd.grpName } <br>

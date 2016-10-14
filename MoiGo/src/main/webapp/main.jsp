@@ -21,8 +21,8 @@
 <%@include file="/include/loginBox2.jsp" %>
 <div id="content">
 	<div id="total">
-		<div id="cateBox" style="height:100%; width:223px; overflow:hidden; padding: 10px; float: left;">
-			<div id="mainCate" style="height:100%; width:250px; overflow:auto; ">
+		<div id="cateBox" style="height:780px; width:223px; overflow:hidden; padding: 10px; float: left;">
+			<div id="mainCate" style="height:780px; width:250px; overflow:auto; ">
 				<c:forEach var="cates" items="${cate }">
 					<div style="float: left; margin: 15px;">
 						<a href="<c:url value='/search/${cates.CATENAME }' />" >

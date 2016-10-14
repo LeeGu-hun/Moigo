@@ -155,7 +155,7 @@ public class controllerGroup {
 		return "redirect:/group/"+url;
 	}
 	
-	@RequestMapping("/group/{grpName}/groupwrite/delete") // 그룹게시판 글 삭제하기
+	@RequestMapping("/group/{grpName}/delete") // 그룹게시판 글 삭제하기
 	public String groupBoardDelte(@PathVariable String grpName, GroupDeleteCommand grpDelCmd, HttpSession session) throws UnsupportedEncodingException {
 		String url = URLEncoder.encode(grpName, "UTF-8");	
 		System.out.println("게시글 삭제 진입");
