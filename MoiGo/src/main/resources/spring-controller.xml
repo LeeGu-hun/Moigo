@@ -30,5 +30,10 @@
 		<property name="daoGroup" ref="daoGroup" />
 		<property name="daoMarket" ref="daoMarket" />
 	</bean>
+	<bean class="controller.controllerXml">
+		<property name="daoGroup" ref="daoGroup" />
+		<property name="daoMarket" ref="daoMarket" />
+	</bean>
+	
 </beans>
 	
