@@ -6,12 +6,14 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -78,6 +80,19 @@ public class controllerGroup {
 		model.addAttribute("CATE", CATE);
 		return "group/groupAdd";
 	}
+	
+	@RequestMapping("/grpNameConfirm") /* 그룹명 중복확인 */
+	public String addGroup(HttpServletRequest request, Model model) {
+		
+		String str = request.getParameter("grpNameConfirm");
+		System.out.println("컨트롤러:"+str);
+		int result = daoGroup.getGrpNameConfirm(str);
+		System.out.println("컨트롤러result:"+result);
+		model.addAttribute("result", result);
+		return "group/groupAddResult";
+	}
+	
+	
 
 	@RequestMapping("/add") /* 그룹개설 */
 	public String add(GroupAddCommand groupAddCommand, HttpSession session, HttpServletRequest request) {
