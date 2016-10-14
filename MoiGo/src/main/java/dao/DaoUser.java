@@ -20,7 +20,25 @@ public class DaoUser {
 	public DaoUser(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-
+	
+	public List<User> findUser(String txt){
+		List<User> results = jdbcTemplate.query(
+				"select * from userinfo where userID like '%" + txt + "%'", 
+				new RowMapper<User>() {
+			public User mapRow(ResultSet rs, int rowNum) 
+					throws SQLException {
+				User user = new User(
+						rs.getString("userName"), rs.getString("userNick"),
+						rs.getString("userPw"), rs.getString("userGender"),
+						rs.getString("userAddr"), rs.getString("userPhone"),
+						rs.getTimestamp("userRegdate"), rs.getString("userBirth"));
+				user.setUserID(rs.getString("userID"));
+				return user;
+			}
+		});
+		return results;
+	}
+	
 	public User selectById(String userID) {
 		List<User> results = jdbcTemplate.query(
 				"select * from userinfo where userID = ?", 

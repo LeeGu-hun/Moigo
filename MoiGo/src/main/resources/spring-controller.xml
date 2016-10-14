@@ -24,6 +24,7 @@
 	<bean class="controller.controllerMarket">
 		<property name="daoMarket" ref="daoMarket" />
 		<property name="daoGroup" ref="daoGroup" />
+		<property name="daoUser" ref="daoUser" />
 	</bean>
 	<bean class="controller.controllerSearch">
 		<property name="daoGroup" ref="daoGroup" />

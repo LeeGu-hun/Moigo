@@ -23,6 +23,7 @@ import login.AuthInfo;
 import market.Market;
 import market.MarketAddProductCommand;
 import market.MarketDeleteProductCommand;
+import user.User;
 
 
 @Controller
@@ -37,6 +38,10 @@ public class controllerMarket {
 	
 	public void setDaoGroup(DaoGroup daoGroup) {
 		this.daoGroup = daoGroup;
+	}
+	
+	public void setDaoUser(DaoUser daoUser) {
+		this.daoUser = daoUser;
 	}
 
 	@RequestMapping(value="/market")
@@ -91,5 +96,25 @@ public class controllerMarket {
 		Market prod = daoMarket.getMarket(mktCode);
 		model.addAttribute("prod" , prod);
 		return "market/marketBuyPage";
+	}
+	
+	@RequestMapping("/admin") /* 관리자 페이지 */
+	public String admin(HttpServletRequest request, Model model){
+		String searchTxt = request.getParameter("txt");
+		String type = request.getParameter("type");
+		if (type!=null) {
+			List<?> results = null;
+			if (type.equals("userInfo")) {
+				results = daoUser.findUser(searchTxt);
+			} else if(type.equals("group")){
+				results = daoGroup.srchGroup(searchTxt);
+			} else if(type.equals("market")){
+				results = daoMarket.srchMarket(searchTxt);
+			}
+			model.addAttribute("results", results);
+			model.addAttribute("txt", searchTxt);
+			model.addAttribute("type", type);
+		}
+		return "admin";
 	}
 }

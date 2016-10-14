@@ -148,32 +148,30 @@
 					</form>
 				</div>			
 			</div>
-<br><p><h1>마켓</h1></p><br><br>
-<c:forEach var="prd" items="${allProducts }">
-<div class="products" style="width:400px; height: 200px; float: left; margin-left: 20px; margin-bottom: 20px;">
-
-<div style="float: right; width: 240px;">
-<br>
-&nbsp;· 등록일 : ${prd.mktRegDate }<br>
-&nbsp;· 판매번호 : ${prd.mktCode } <br>
-&nbsp;· 그룹명 : ${prd.grpName } <br>
-&nbsp;· 판매자 : ${prd.mktSeller } <br>
-&nbsp;· 품명 : ${prd.mktPrName } <br>
-&nbsp;· 가격 : ${prd.mktPrice } 원<br>
-&nbsp;· 내용 : ${prd.mktContent } <br>
-
-</div>
-<c:if test="${empty prd.mktThumbnail }"><br></c:if>
-<c:if test="${!empty prd.mktThumbnail }">
-<div style="text-align: right; padding-top: 7px; padding-right: 30px;">
-<br>
-<img src="<%=request.getContextPath() %>/file/${prd.mktThumbnail}" style="width: 100px; height: 100px; float: left; padding-left: 25px; padding-top: 10px;">
-</div><br>
-</c:if>
-</div>
-</c:forEach>
-</div>
-</div>
+			<br><p><h1>마켓</h1></p><br><br>
+			<c:forEach var="prd" items="${allProducts }">
+				<div class="products" style="width:400px; height: 200px; float: left; margin-left: 20px; margin-bottom: 20px;">
+					<div style="float: right; width: 240px;">
+						<br>
+						&nbsp;· 등록일 : ${prd.mktRegDate }<br>
+						&nbsp;· 판매번호 : <a href="<c:url value='/market/Product/${prd.mktCode }' />">${prd.mktCode }</a><br>
+						&nbsp;· 그룹명 : ${prd.grpName } <br>
+						&nbsp;· 판매자 : ${prd.mktSeller } <br>
+						&nbsp;· 품명 : ${prd.mktPrName } <br>
+						&nbsp;· 가격 : ${prd.mktPrice } 원<br>
+						&nbsp;· 내용 : ${prd.mktContent } <br>
+					</div>
+					<c:if test="${empty prd.mktThumbnail }"><br></c:if>
+					<c:if test="${!empty prd.mktThumbnail }">
+						<div style="text-align: right; padding-top: 7px; padding-right: 30px;">
+							<br>
+							<img src="<%=request.getContextPath() %>/file/${prd.mktThumbnail}" style="width: 100px; height: 100px; float: left; padding-left: 25px; padding-top: 10px;">
+						</div><br>
+					</c:if>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
 </div>
 </body>
 </html>

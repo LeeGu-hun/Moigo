@@ -9,6 +9,8 @@
 <script src="<%=request.getContextPath()%>/js/common.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/style.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/search.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Moigo</title>
 </head>
@@ -18,35 +20,49 @@
 <div id="content">
 	<div id="resultGroup">
 		그룹 검색결과 <br><br>
-		<c:if test="${!empty srchGroup }">
-			<c:forEach var="srchGrp" items="${srchGroup }">
-				그룹명 : <a href="<c:url value='/group/${srchGrp.grpName }' />">${srchGrp.grpName }</a> <br>
-				그룹장 : ${srchGrp.grpLeader }<br>
-				카테고리 : ${srchGrp.grpCate }<br>
-				그룹소개 : ${srchGrp.grpIntro }<br>
-				그룹생성일 : ${srchGrp.grpRegDate }<br><br>
-			</c:forEach>
-		</c:if>
-		<c:if test="${empty srchGroup }">
-			검색 결과가 없습니다.<br><br>
-		</c:if>
+		<div id="grp">
+			<c:if test="${!empty srchGroup }">
+				<c:forEach var="srchGrp" items="${srchGroup }">
+					<div id="grpInf">
+						그룹명 : <a href="<c:url value='/group/${srchGrp.grpName }' />">${srchGrp.grpName }</a> <br>
+						그룹장 : ${srchGrp.grpLeader }<br>
+						카테고리 : ${srchGrp.grpCate }<br>
+						그룹소개 : ${srchGrp.grpIntro }<br>
+						그룹생성일 : ${srchGrp.grpRegDate }<br><br>
+					</div>
+					<div id="grpImg">
+						<img src="<%=request.getContextPath() %>/file/${srchGrp.grpThumbnail}" style="width: 100px; height: 100px;">					
+					</div>
+				</c:forEach>
+			</c:if>
+			<c:if test="${empty srchGroup }">
+				검색 결과가 없습니다.<br><br>
+			</c:if>
+		</div>
 	</div>
 	<div id="resultMarket">
 		장터 검색결과<br><br>
-		<c:if test="${!empty srchMarket}">
-			<c:forEach var="srchMkt" items="${srchMarket }">
-				판매번호 : ${srchMkt.mktCode } <br>
-				판매자 : ${srchMkt.mktSeller } <br>
-				품명 : ${srchMkt.mktPrName } <br>
-				가격 : ${srchMkt.mktPrice } <br>
-				내용 : ${srchMkt.mktContent } <br>
-				그룹 : ${srchMkt.grpName } <br>
-				등록일 : ${srchMkt.mktRegDate } <br>
-			</c:forEach>
-		</c:if>
-		<c:if test="${empty srchMarket }">
-			검색 결과가 없습니다.
-		</c:if>
+		<div id="mkt">
+			<c:if test="${!empty srchMarket}">
+				<c:forEach var="srchMkt" items="${srchMarket }">
+					<div id="mktInf">
+						판매번호 : <a href="<c:url value='/market/Product/${srchMkt.mktCode }' />">${srchMkt.mktCode }</a> <br>
+						판매자 : ${srchMkt.mktSeller } <br>
+						품명 : ${srchMkt.mktPrName } <br>
+						가격 : ${srchMkt.mktPrice } <br>
+						내용 : ${srchMkt.mktContent } <br>
+						그룹 : ${srchMkt.grpName } <br>
+						등록일 : ${srchMkt.mktRegDate } <br><br>
+					</div>
+					<div id="mktImg">
+						<img src="<%=request.getContextPath() %>/file/${srchMkt.mktThumbnail}" style="width: 100px; height: 100px;">	
+					</div>
+				</c:forEach>
+			</c:if>
+			<c:if test="${empty srchMarket }">
+				검색 결과가 없습니다.<br><br>
+			</c:if>
+		</div>
 	</div>
 </div>
 </body>

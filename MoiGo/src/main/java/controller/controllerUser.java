@@ -88,8 +88,4 @@ public class controllerUser {
 			return "dirMem/modifyFail";
 		}
 	}
-	@RequestMapping("/admin") /* 관리자 페이지 */
-	public String admin(){
-		return "admin";
-	}
 }

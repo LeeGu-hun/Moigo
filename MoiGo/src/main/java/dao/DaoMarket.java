@@ -73,7 +73,8 @@ public class DaoMarket {
 	}
 	
 	public List<Market> srchMarket(String srchTxt){ //검색하기
-		List<Market> results = jdbcTemplate.query("select * from market where mktSeller like '%" + srchTxt + "%' or mktPrName like '%" + srchTxt + "%' "
+		List<Market> results = jdbcTemplate.query("select * from market where mktCode like '%" + srchTxt + 
+				"%' or mktSeller like '%" + srchTxt + "%' or mktPrName like '%" + srchTxt + "%' "
 				+ "or mktContent like '%" + srchTxt + "%' or grpName like '%" + srchTxt + "%'", new RowMapper<Market>() {
 			public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Market market = new Market(rs.getString("mktCode"), rs.getString("mktSeller"),
