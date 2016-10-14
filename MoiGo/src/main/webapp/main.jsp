@@ -62,7 +62,7 @@
 								<br>
 							<span class="rSpan">그룹장 : </span>${nGrp.grpLeader } <br>
 							<span class="rSpan">카테고리 :</span> ${nGrp.grpCate } <br>
-							<span class="rSpan">그룹소개 :</span> ${nGrp.grpIntro }<br>
+							<p id="mainCut"><span class="rSpan">그룹소개 :</span> ${nGrp.grpIntro }</p><br>
 							</div>
 						<div id="rImg">
 							<img src="<%=request.getContextPath() %>/file/${nGrp.grpThumbnail}" style="width: 100px; height: 100px; padding-top: 10px; padding-left: 40px;">

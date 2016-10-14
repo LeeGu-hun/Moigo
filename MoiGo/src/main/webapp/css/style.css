@@ -316,7 +316,15 @@ position: absolute;
  font-size: 27px;
 }
 
-
+#myCut{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: normal;
+	display: -webkit-box;
+	-webkit-line-clamp: 2; /* 라인수 */
+	-webkit-box-orient: vertical;
+	word-wrap: break-word; 
+}
 
 /* 나의그룹end */
 
@@ -380,6 +388,16 @@ position: absolute;
 	color: graytext;
 }
 
+#mainCut {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: normal;
+	display: -webkit-box;
+	-webkit-line-clamp: 2; /* 라인수 */
+	-webkit-box-orient: vertical;
+	word-wrap: break-word; 
+}
+
 #rImg {
 	float: left;
 	width: 150px;
@@ -436,16 +454,18 @@ position: absolute;
 	border: 1px dotted #ccc;
 	float: left;
 	width: 650px;
+	min-height: 800px;
 	height: auto;
 	background-color:  #ffffdd;
 }
 
 #grpProduct {
 	border: 1px dotted #ccc;
-	background-color: white;
+	background-color: #fefff4;;
 	float: left;
 	width: 250px;
 	height: auto;
+	min-height: 800px;
 	background-color: #ffffdd;
 }
 .grpProducts{
@@ -473,16 +493,19 @@ position: absolute;
 #geul {
 	margin-top: 70px;
 	margin-left: 10px;
-	background-color: blue;
+	background-color: #fefff4;
 	width: 630px;
 	height: 220px;
+	border-width:1px;	
+    border-style:solid;
+    border-color: #ccc;
 }
 
 #info {
 	height: 130px;
 	margin-top: 30px;
 	padding-top: 20px;
-	background-color: white;
+	background-color:#fefff4;
 	float: left; 
 	width: 450px;
 }
@@ -527,6 +550,18 @@ position: absolute;
 	box-shadow: 0 0 0px;
 	background-color: white;
 	margin-top: 30px; 
+	line-height: 20px;
+}
+
+/* 글자수제한 */
+#mktCut {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: normal;
+	display: -webkit-box;
+	-webkit-line-clamp: 2; /* 라인수 */
+	-webkit-box-orient: vertical;
+	word-wrap: break-word; 
 }
 
 #product {
@@ -542,7 +577,8 @@ position: absolute;
 	border: 1px solid #dbdbdb;
 	border-radius: 5px; float : left;
 	width: 440px;
-	height: 150px;
+	height: auto;
+	min-height: 160px;
 	padding-bottom: 20px;
 	padding-right: 5px;
 	padding-left: 5px;
@@ -550,6 +586,26 @@ position: absolute;
 	padding-right : 5px; padding-left : 5px;
 	background-color: #ffffe8;
 }
+
+/* 마켓- 구매페이지  */
+#marketBuy{
+position: absolute;
+ width: 500px;
+ height: 530px;
+ left: 50%;
+ top: 50%;
+ margin-left: -250px;
+ margin-top: -250px;
+ border-width:5px;	
+ border-color: #ccc;
+ border-style:dotted solid;
+ background-color: #ffffe8;
+ font-family: 'kopub batang';
+ font-size: 20px;
+
+}
+
+
 /* ~market */
 /* search~ */
 #resultGroup {

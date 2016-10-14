@@ -8,7 +8,8 @@
 	rel="stylesheet">
 <div id="header">
 	<div id="logo">
-		<a href="<c:url value='/' />"><span id="M">M</span>oi<span id="G">Go</span><span id="eMark">!</span></a>
+		<a href="<c:url value='/' />"><img src="<%=request.getContextPath()%>/images/logo4.png" style="height: 90px; padding-top: 5px;" ></a>
+		<!-- <span id="M">M</span>oi<span id="G">Go</span><span id="eMark">!</span> -->
 	</div>
 	<div id="search">
 		<form action="/moigo/search" method="post">

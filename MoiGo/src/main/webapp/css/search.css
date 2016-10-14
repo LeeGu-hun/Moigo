@@ -1,33 +1,73 @@
 @CHARSET "UTF-8";
 /* 그룹 검색 결과 */
 #grp{
-	width: 100%;
-	height: 150px;
+	margin-left: 50px;
+	padding-top:10px;
+	width: 65%;
+	height: 180px;
+	border-style:dashed;
+	border-color: #ccc;
+	box-shadow: 0 0 1px;
 }
 
 #grpInf{
+	margin-left:30px;
 	float: left;
-	width: 70%;	
+	width: 60%;	
 	height: 150px;
+	font-family: 'kopub batang';
+	line-height: 25px;
+	font-size: 18px;
+	
 }
 
 #grpImg{
 	float: left;
 	width: 30%;
 	height: 150px;
+	
+	padding-right: 10px;
 }
+
+
+#srchResult{
+	padding-left: 30px;
+}
+
 /* 마켓 검색 결과 */
 #mkt{
-	width: 100%;
-	height: 150px;
+	margin-left: 50px;
+	padding-top:10px;
+	width: 70%;
+	height: auto;
+	min-height: 180px;
+	border-style:dashed;	
+	border-color: #ccc;
+	box-shadow: 0 0 1px;
 }
 #mktInf{
+	margin-left:30px;
 	float: left;
-	width: 70%;
+	width: 60%;
 	height: 150px;
+	font-family: 'kopub batang';
+	line-height: 25px;
+	font-size: 18px;
 }
 #mktImg{
 	float: left;
 	width: 30%;
 	height: 150px;
+	
 } 
+
+
+#mktCut1 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: normal;
+	display: -webkit-box;
+	-webkit-line-clamp: 1; /* 라인수 */
+	-webkit-box-orient: vertical;
+	word-wrap: break-word; 
+}

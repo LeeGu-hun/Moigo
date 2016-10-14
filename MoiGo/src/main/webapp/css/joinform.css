@@ -254,3 +254,36 @@ select{
 
 
 ---
+
+
+#modifyGroup_form{
+	margin-top: 10px;
+	background-color: #353535; 
+	width: 610px;
+	height: auto;
+	padding: 20px;
+	color: white;
+}
+
+#groupTable{
+	 border-width:5px;	
+    border-style:ridge;
+	background-color: #c0c0c0;
+	margin-top:10px;
+	padding: 20px;
+	border: 0px;
+	width: 600px;
+	height: 400px;
+	color: black;
+	
+}
+
+#moleft{
+	text-align: left;
+ 	width: 120px;
+}
+
+#tdbottom{
+	padding-left: 140px;
+}
+

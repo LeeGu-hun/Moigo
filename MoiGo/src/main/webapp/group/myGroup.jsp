@@ -60,7 +60,7 @@
 							<br> 그룹장 : ${jGrp.grpLeader } <br> 공개여부 :
 							${jGrp.grpOpen } <br> 카테고리 : ${jGrp.grpCate } <br> 그룹인원
 							: ${jGrp.grpNum } <br> 개설일자 : ${jGrp.grpRegDate } <br>
-							그룹소개 : ${jGrp.grpIntro }<br> <br>
+							<p id="myCut">그룹소개 : ${jGrp.grpIntro }</p><br> <br>
 						</div>
 					</div>
 				</c:forEach>

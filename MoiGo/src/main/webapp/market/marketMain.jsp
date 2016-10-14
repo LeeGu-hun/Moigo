@@ -3,8 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<link href="http://fonts.googleapis.com/earlyaccess/kopubbatang.css"
-	rel="stylesheet">
+<link href="http://fonts.googleapis.com/earlyaccess/kopubbatang.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Baloo+Da" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 <script src="//code.jquery.com/jquery-1.12.2.min.js"></script>
@@ -180,13 +179,13 @@
 								</form>
 							</c:if><br>
 						</div>	
-						&nbsp;· 등록일 : ${prd.mktRegDate }<br>
-						&nbsp;· 판매번호 : <a href="<c:url value='/market/Product/${prd.mktCode }' />">${prd.mktCode }</a><br>
-						&nbsp;· 그룹명 : ${prd.grpName } <br>
-						&nbsp;· 판매자 : ${prd.mktSeller } <br>
-						&nbsp;· 품명 : ${prd.mktPrName } <br>
-						&nbsp;· 가격 : ${prd.mktPrice } 원<br>
-						&nbsp;· 내용 : ${prd.mktContent } <br>
+						· 등록일 : ${prd.mktRegDate }<br>
+						· 판매번호 : <a href="<c:url value='/market/Product/${prd.mktCode }' />">${prd.mktCode }</a><br>
+						· 그룹명 : ${prd.grpName } <br>
+						· 판매자 : ${prd.mktSeller } <br>
+						· 품명 : ${prd.mktPrName } <br>
+						· 가격 : ${prd.mktPrice } 원
+						&nbsp;<p id="mktCut">· 내용 : ${prd.mktContent } </p><br>
 					</div>
 					<c:if test="${empty prd.mktThumbnail }"><br></c:if>
 					<c:if test="${!empty prd.mktThumbnail }">
