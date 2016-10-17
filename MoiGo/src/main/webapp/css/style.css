@@ -437,6 +437,7 @@ position: absolute;
 	float: left;
 	width: 650px;
 	height: auto;
+	min-height: 800px;
 	background-color:  #ffffdd;
 }
 
@@ -446,6 +447,7 @@ position: absolute;
 	float: left;
 	width: 250px;
 	height: auto;
+	min-height: 800px;
 	background-color: #ffffdd;
 }
 .grpProducts{
