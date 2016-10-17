@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+<link href="http://fonts.googleapis.com/earlyaccess/kopubbatang.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Baloo+Da" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 <script src="//code.jquery.com/jquery-1.12.2.min.js"></script>
@@ -17,16 +18,24 @@
 <%@include file="/include/loginBox2.jsp" %>
 <div id="content">
 	<div id="Total">
+		<div id="marketBuy">
+		<center>
+		<br>
 		<img src="<%=request.getContextPath() %>/file/${prod.mktThumbnail}"><br>
-		${prod.mktCode }<br>
-		${prod.mktSeller }<br>
-		${prod.mktPrName }<br>
-		${prod.mktPrice }<br>
-		${prod.mktContent }<br>
-		${prod.grpName }<br>
-		${prod.mktRegDate }<br>
-		<input type="button" id="buyPrd" name="buyPrd" value="구입하기">
-		<input type="button" id="cancle" name="cancle" value="취소">		
+		<br>
+		등록일: ${prod.mktRegDate }<br>
+		판매번호: ${prod.mktCode }<br>
+		그룹: ${prod.grpName }<br>
+		판매자: ${prod.mktSeller }<br>
+		품명: ${prod.mktPrName }<br>
+		가격: ${prod.mktPrice }<br>
+		내용: <br>${prod.mktContent }<br>
+		
+		
+		<br><br>
+		<input type="button" id="buyPrd" name="buyPrd" value="구입하기" class="myButton">
+		<input type="button" id="cancle" name="cancle" value="취소" class="myButton">
+		</div>		
 	</div>
 </div>
 </body>
