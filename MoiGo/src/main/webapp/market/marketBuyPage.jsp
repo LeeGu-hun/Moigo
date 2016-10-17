@@ -33,8 +33,8 @@
 		
 		
 		<br><br>
-		<input type="button" id="buyPrd" name="buyPrd" value="구입하기" class="myButton">
-		<input type="button" id="cancle" name="cancle" value="취소" class="myButton">
+		<input type="button" id="buyPrd" name="buyPrd" value="구입하기" class="myButton" onclick="alert('구입');">
+		<input type="button" id="cancle" name="cancle" value="취소" class="myButton" onclick="history.back();">
 		</div>		
 	</div>
 </div>

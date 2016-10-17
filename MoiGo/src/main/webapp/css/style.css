@@ -223,7 +223,7 @@ a {
 	float: left;
 	width: 100%;
 	height: auto;  /* calc(100% - 100px); */
-	min-height: 1300px;
+	min-height: 800px;
 	min-width: 1000px;
 	background-color: #fffdf4;
 }
@@ -415,7 +415,8 @@ position: absolute;
 #groupmNotlg {
 	display: inline-block;
 	width: 600px;
-	height: 45%;
+	height: 60%;
+	max-height: 600px;
 	text-align: center;
 	padding-top: 10px;
 	/* background-color: #ffffff; */

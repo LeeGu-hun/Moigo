@@ -101,29 +101,27 @@
 		<div id="content">
 			<center>
 			<br><br>
-				<div id="groupmNotlg">
-		
-			<img src="<%=request.getContextPath() %>/file/${grpInfo.grpThumbnail}" style="width: 100px; height: 100px; ">
-			<br>
-			
-			그룹명 : <c:out value="${grpInfo.grpName }" />
-			<br>
-			그룹장 : <c:out value="${grpInfo.grpLeader }" />
-			<br>
-			카테고리 : <c:out value="${grpInfo.grpCate }" />
-			<br>
-			개설일자 : <c:out value="${grpInfo.grpRegDate }" />
-			<br>
-			그룹소개 : <c:out value="${grpInfo.grpIntro }" />
-			<br><br>
-			<h2><font color="#710000">※ Please Login First  ※</font></h2>
+			<div id="groupmNotlg">
+				<img src="<%=request.getContextPath() %>/file/${grpInfo.grpThumbnail}" style="max-height: 192px; max-width: 256px;">
+				<br>		
+				그룹명 : <c:out value="${grpInfo.grpName }" />
+				<br>
+				그룹장 : <c:out value="${grpInfo.grpLeader }" />
+				<br>
+				카테고리 : <c:out value="${grpInfo.grpCate }" />
+				<br>
+				개설일자 : <c:out value="${grpInfo.grpRegDate }" />
+				<br>
+				그룹소개 : <c:out value="${grpInfo.grpIntro }" />
+				<br><br>
+				<h2><font color="#710000">※ Please Login First  ※</font></h2>
 				<div>
 					<form action="/moigo/login" method="post">
 						로그인이 필요한 서비스 입니다.<br> 
 						로그인해 주세요. <br>
 						&nbsp;ID&nbsp;<input type="text" id="userID" name="userID" class="btn-style1"/> <br> 
 						PW<input type="password" id="userPw" name="userPw" class="btn-style1"/><br>
-						<input type="submit" class="btn-style" value="로그인" "/>
+						<input type="submit" class="btn-style" value="로그인"/>
 					</form>			
 				</div>
 			</div>
@@ -226,7 +224,7 @@
 									<img src="<%=request.getContextPath() %>/file/${grpPrds.mktThumbnail}" style="width: 100px; height: 100px; ">
 								</div>
 								<div style="float: left; padding-top: 15px; padding-left: 10px;">
-									판매번호 : ${grpPrds.mktCode }<br>
+									판매번호 : <a href="<c:url value='/market/Product/${grpPrds.mktCode }' />">${grpPrds.mktCode }</a><br>
 									품명 : ${grpPrds.mktPrName }<br>
 									판매자 : ${grpPrds.mktSeller }
 								</div>
@@ -260,7 +258,6 @@
 							<div style="padding-left: 20px;">
 								<input type="file" id="grpThumbnail" name="grpThumbnail" />
 							</div>
-							<br>
 							<div style="padding-right: 30px;">
 								<input type="submit" style="float: right;" value="게시하기" />
 							</div>
@@ -274,24 +271,29 @@
 			
 			<!-- 가입x -->
 			<c:if test="${!joined }">
-				<div>
-					그룹명 :
-					<c:out value="${grpInfo.grpName }" />
-					<br> 그룹장 :
-					<c:out value="${grpInfo.grpLeader }" />
-					<br> 카테고리 :
-					<c:out value="${grpInfo.grpCate }" />
-					<br> 개설일자 :
-					<c:out value="${grpInfo.grpRegDate }" />
-					<br> 그룹 소개 :
-					<c:out value="${grpInfo.grpIntro }" />
+				<div id="content">
+				<center>
+					<br><br>
+					<div id="groupmNotlg">
+						<img src="<%=request.getContextPath() %>/file/${grpInfo.grpThumbnail}" style="max-height: 192px; max-width: 256px;"><br>
+						그룹명 :
+						<c:out value="${grpInfo.grpName }" />
+						<br> 그룹장 :
+						<c:out value="${grpInfo.grpLeader }" />
+						<br> 카테고리 :
+						<c:out value="${grpInfo.grpCate }" />
+						<br> 개설일자 :
+						<c:out value="${grpInfo.grpRegDate }" />
+						<br> 그룹 소개 :
+						<c:out value="${grpInfo.grpIntro }" />
+						<form id="grpJoin" action="/moigo/group/${grpName }/joingroup"
+							method="post">
+							<input type="hidden" id="grpName" name="grpName"
+								value="${grpName }"> <input type="submit"
+								onclick="joinGroup(); return false;" value="모임 가입하기" class="MyButton"/>
+						</form>
+					</div>
 				</div>
-				<form id="grpJoin" action="/moigo/group/${grpName }/joingroup"
-					method="post">
-					<input type="hidden" id="grpName" name="grpName"
-						value="${grpName }"> <input type="submit"
-						onclick="joinGroup(); return false;" value="모임 가입하기" />
-				</form>
 			</c:if>
 		</div>
 	</c:if>

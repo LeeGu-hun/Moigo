@@ -175,7 +175,7 @@
 							<c:if test="${authInfo.userNick == prd.mktSeller }">
 								<form action="market/deleteProduct" method="post">
 									<input type="hidden" id="mktCode" name="mktCode" value="${prd.mktCode }" />
-									<input type="submit" style="float: right;" value="삭제하기" />
+									<input type="submit" style="float: right;" value="삭제하기" class="MyButton" />
 								</form>
 							</c:if><br>
 						</div>	

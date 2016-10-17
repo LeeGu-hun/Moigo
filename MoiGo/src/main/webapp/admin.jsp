@@ -26,6 +26,8 @@
 			관리자가 아닙니다.
 		</c:if>
 		<c:if test="${authInfo.userID=='admin' }">
+		<center>
+		<br>
 			<form action="admin" method="POST">
 				<input type="text" id="txt" name="txt" <%if(request.getAttribute("txt")!=null){ %>value="${txt }"<%} %>>
 				<select id="type" name="type">
@@ -41,6 +43,7 @@
 					</c:if>
 				</select>
 				<input type="submit" value="검색"><br>
+				<br>
 			</form>
 			<table border="1">
 				<c:if test="${'userInfo' eq type }">
@@ -104,6 +107,7 @@
 					</c:forEach>
 				</c:if>
 			</table>
+		</center>
 		</c:if>
 	</c:if>
 </div>

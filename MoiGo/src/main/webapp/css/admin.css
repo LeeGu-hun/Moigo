@@ -1,5 +1,13 @@
 @CHARSET "UTF-8";
 
 .tableHead td{
-	font-weight: bold;
+   font-weight: bold;
+   background-color: #ad9d90;
+   font-size: 20px;
 } 
+
+#adminTable{
+border-collapse:collapse;
+border:1px gray solid;
+text-align: center;
+}
