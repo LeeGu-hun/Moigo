@@ -142,11 +142,11 @@ public class DaoGroup {
 
 	public int getGrpNameConfirm(String grpNameConfirm) { /* 모임명 중복확인 */
 		int check_count = 0;
-		System.out.println("다오,넘어왔니?"+grpNameConfirm);
+	
 		check_count = jdbcTemplate.queryForObject("select count(*) grpName from groupInfo where grpName=?",
 				Integer.class, grpNameConfirm);
 		
-		System.out.println("다오,중복확인결과:"+check_count);
+	
 		
 			return check_count;
 	}
@@ -154,8 +154,7 @@ public class DaoGroup {
 	public void addGroup(final GroupAddCommand groupAddCommand) { // 그룹추가
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement pstmt = con
-						.prepareStatement("insert into groupinfo values(?, ?, ?, ?, sysdate, ?, ?)");
+				PreparedStatement pstmt = con.prepareStatement("insert into groupinfo values(?, ?, ?, ?, sysdate, ?, ?)");
 
 				pstmt.setString(1, groupAddCommand.getGrpName());
 				pstmt.setString(2, groupAddCommand.getGrpLeader());

@@ -26,7 +26,8 @@
 			<c:if test="${!empty authInfo }">
 				<div id="addBtn">
 					<center>
-						<a href="/moigo/addgroup" style="font-size: 60px; font-weight: bold; text-align: center; line-height: 70px;">＋</a>
+						<a href="/moigo/addgroup"
+							style="font-size: 60px; font-weight: bold; text-align: center; line-height: 70px;">＋</a>
 					</center>
 				</div>
 				<br>
@@ -43,19 +44,28 @@
 										value="${jGrp.grpCate }" /> <input type="hidden" id="grpName"
 										name="grpName" value="${jGrp.grpName }" /> <input
 										type="hidden" id="grpIntro" name="grpIntro"
-										value="${jGrp.grpIntro }" /> <input type="hidden" id="grpOpen"
-										name="grpOpen" value="${jGrp.grpOpen }" /> <input
+										value="${jGrp.grpIntro }" /> <input type="hidden"
+										id="grpOpen" name="grpOpen" value="${jGrp.grpOpen }" /> <input
 										type="submit"
 										style="float: right; margin-right: 15px; margin-top: 10px;"
-										value="수정하기" class="myButton"/>
+										value="수정하기" class="myButton" />
 								</form>
 							</c:if>
 						</div>
 						<div id="mainGrp2">
 							<div style="text-align: center; padding-top: 10px;">
-								<img
-									src="<%=request.getContextPath() %>/file/${jGrp.grpThumbnail}"
-									style="width: 100px; height: 100px;">
+								<c:choose>
+									<c:when test="${jGrp.grpThumbnail eq null }">
+										<img
+											src="images/grpThumbnailEqualsNull.png"
+											style="width: 100px; height: 100px;">
+									</c:when>
+									<c:otherwise>
+										<img
+											src="<%=request.getContextPath() %>/file/${jGrp.grpThumbnail}"
+											style="width: 100px; height: 100px;">
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<br> 그룹장 : ${jGrp.grpLeader } <br> 공개여부 :
 							${jGrp.grpOpen } <br> 카테고리 : ${jGrp.grpCate } <br> 그룹인원
@@ -68,18 +78,16 @@
 			<c:if test="${empty authInfo }">
 				<div id="myFirstLogin1">
 					<center>
-					
-								<form action="/moigo/login" method="post" style="margin-top: 100px;">
-									<br>
-									로그인이 필요한 서비스 입니다. <br>
-									로그인해 주세요. <br><br>
-									
-									&nbsp;ID&nbsp;<input type="text" id="userID" name="userID" class="btn-style1"/> <br> 
-									PW<input type="password" id="userPw" name="userPw" class="btn-style1"/><br>
-									<br>
-									<input type="submit" class="btn-style" value="로그인" height="25" />
-								</form>
-					
+
+						<form action="/moigo/login" method="post"
+							style="margin-top: 100px;">
+							<br> 로그인이 필요한 서비스 입니다. <br> 로그인해 주세요. <br> <br>
+							&nbsp;ID&nbsp;<input type="text" id="userID" name="userID"
+								class="btn-style1" /> <br> PW<input type="password"
+								id="userPw" name="userPw" class="btn-style1" /><br> <br>
+							<input type="submit" class="btn-style" value="로그인" height="25" />
+						</form>
+
 					</center>
 				</div>
 			</c:if>

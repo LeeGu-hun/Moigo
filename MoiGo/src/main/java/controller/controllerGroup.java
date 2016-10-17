@@ -35,7 +35,7 @@ public class controllerGroup {
 
 	private DaoGroup daoGroup;
 	private DaoMarket daoMarket;
-	
+
 	public void setDaoMarket(DaoMarket daoMarket) {
 		this.daoMarket = daoMarket;
 	}
@@ -55,10 +55,11 @@ public class controllerGroup {
 	}
 
 	@RequestMapping("/group/{grpName}") /* 해당 그룹 페이지(가입여부/가입버튼 등) */
-	public String groupEach(@PathVariable String grpName, Model model, HttpSession session, HttpServletRequest request) {
+	public String groupEach(@PathVariable String grpName, Model model, HttpSession session,
+			HttpServletRequest request) {
 		Group grpInfo = daoGroup.getGroup(grpName);
-		if ((AuthInfo) session.getAttribute("authInfo")!=null) {
-			AuthInfo user = (AuthInfo)session.getAttribute("authInfo");
+		if ((AuthInfo) session.getAttribute("authInfo") != null) {
+			AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
 			boolean Joined = daoGroup.getJoinedGroup(grpName, user.getUserNick());
 			List<GroupBoard> geulInfo = daoGroup.getGrpGeul(grpName);
 			List<Group> thumbnailGrp = daoGroup.myGroupThumbnail(user.getUserNick());
@@ -80,19 +81,14 @@ public class controllerGroup {
 		model.addAttribute("CATE", CATE);
 		return "group/groupAdd";
 	}
-	
+
 	@RequestMapping("/grpNameConfirm") /* 그룹명 중복확인 */
-	public String addGroup(HttpServletRequest request, Model model) {
-		
+	public String addGroupNameConfirm(HttpServletRequest request, Model model) {
 		String str = request.getParameter("grpNameConfirm");
-		System.out.println("컨트롤러:"+str);
 		int result = daoGroup.getGrpNameConfirm(str);
-		System.out.println("컨트롤러result:"+result);
 		model.addAttribute("result", result);
 		return "group/groupAddResult";
 	}
-	
-	
 
 	@RequestMapping("/add") /* 그룹개설 */
 	public String add(GroupAddCommand groupAddCommand, HttpSession session, HttpServletRequest request) {
@@ -103,14 +99,14 @@ public class controllerGroup {
 		int size = 10 * 1024 * 1024;
 		try {
 			MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "UTF-8",
-				new DefaultFileRenamePolicy());
+					new DefaultFileRenamePolicy());
 			groupAddCommand.setCate(multi.getParameter("cate"));
 			groupAddCommand.setGrpIntro(multi.getParameter("grpIntro"));
 			groupAddCommand.setGrpLeader(multi.getParameter("grpLeader"));
 			groupAddCommand.setGrpName(multi.getParameter("grpName"));
 			groupAddCommand.setGrpOpen(multi.getParameter("grpOpen"));
-			groupAddCommand.setGrpThumbnail(multi.getFilesystemName((String)multi.getFileNames().nextElement()));			
-		} catch(Exception e) {
+			groupAddCommand.setGrpThumbnail(multi.getFilesystemName((String) multi.getFileNames().nextElement()));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		AuthInfo userInfo = (AuthInfo) session.getAttribute("authInfo");
@@ -143,12 +139,13 @@ public class controllerGroup {
 	@RequestMapping("/modifyGroup") /* 그룹정보수정 */
 	public String modifyGroup(GroupModifyCommand groupModifyCommand) {
 		daoGroup.modifyGroup(groupModifyCommand);
-		
+
 		return "redirect:/group";
 	}
-	
+
 	@RequestMapping("/group/{grpName}/groupwrite") // 그룹게시판 글등록
-	public String groupWrite(@PathVariable String grpName, GroupWriteCommand groupWriteCommand, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+	public String groupWrite(@PathVariable String grpName, GroupWriteCommand groupWriteCommand, HttpSession session,
+			HttpServletRequest request) throws UnsupportedEncodingException {
 		String url = URLEncoder.encode(grpName, "UTF-8");
 		String upload = "file";
 		ServletContext sc = request.getServletContext();
@@ -161,22 +158,23 @@ public class controllerGroup {
 			groupWriteCommand.setWriter(multi.getParameter("writer"));
 			groupWriteCommand.setWriteTitle(multi.getParameter("writeTitle"));
 			groupWriteCommand.setWriteContent(multi.getParameter("writeContent"));
-			groupWriteCommand.setWriteThumbnail(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
+			groupWriteCommand.setWriteThumbnail(multi.getFilesystemName((String) multi.getFileNames().nextElement()));
 			daoGroup.writeGroupBoard(groupWriteCommand, grpName);
 			System.out.println("게시글 등록완료");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/group/"+url;
+		return "redirect:/group/" + url;
 	}
-	
+
 	@RequestMapping("/group/{grpName}/delete") // 그룹게시판 글 삭제하기
-	public String groupBoardDelte(@PathVariable String grpName, GroupDeleteCommand grpDelCmd, HttpSession session) throws UnsupportedEncodingException {
-		String url = URLEncoder.encode(grpName, "UTF-8");	
+	public String groupBoardDelte(@PathVariable String grpName, GroupDeleteCommand grpDelCmd, HttpSession session)
+			throws UnsupportedEncodingException {
+		String url = URLEncoder.encode(grpName, "UTF-8");
 		System.out.println("게시글 삭제 진입");
 		System.out.println("글번호 : " + grpDelCmd.getBrdSeq());
 		daoGroup.deleteGroupGeul(grpDelCmd);
 		System.out.println("게시글 삭제 성공");
-		return "redirect:/group/"+url;
+		return "redirect:/group/" + url;
 	}
 }

@@ -19,6 +19,7 @@
 <meta http-equiv="Content-Type" content="text/html; " charset=UTF-8">
 <script>
 	function grpNameCheck() {
+		$("#confirmBtn").val("0");
 		var objEv = event.srcElement;
 		var num = "{}[]()<>?_|~`@#$%^&*-+\"'\\/ "; //입력을 막을 특수문자 기재.
 		event.returnValue = true;
@@ -35,8 +36,9 @@
 	}
 
 	function grpNameConfirm() {
+		$("#confirmBtn").val("1");
 		var grpNameConfirm = $("#grpName").val();
-
+	
 		if (grpNameConfirm == "") {
 			alert("모임명을 입력해주세요.");
 		} else {
@@ -53,11 +55,35 @@
 
 	function result(msg) {
 		if (msg.trim() == "1") {
-			$("#grpNameConfirmResult").html('이미 사용중입니다.');
+			$("#grpNameConfirmResult").html('사용중');
 		} else {
-			$("#grpNameConfirmResult").html('사용가능합니다.');
+			$("#grpNameConfirmResult").html('사용가능');
+			$("#confirmBtn").val("2");
 		}
 	}
+
+	function grpAddSubmit() {
+		var grpNameConfirm = $("#grpName").val();
+		var grpIntro = $("#grpIntro").val();
+		var cate = $("#cate").val();
+		var confirmBtn = $("#confirmBtn").val();
+
+	
+		
+		if (grpNameConfirm == "") {
+			alert("모임명을 입력해주세요.");
+		} else if (confirmBtn == "0") {
+			alert("중복확인을 해주세요.");
+		} else if (cate == "") {
+			alert("카테고리를 선택해주세요.");
+		} else if (grpIntro == "") {
+			alert("그룹 소개를 입력해주세요.");
+		} else if(confirmBtn=="2") {
+			  document.groupAdd_form.submit();
+		}
+
+	}
+	
 </script>
 <title>Moigo</title>
 </head>
@@ -70,7 +96,7 @@
 				<!-- 추가, 수정 페이지 -->
 				<!-- 추가 -->
 				<form action="<%=request.getContextPath()%>/add" method="post"
-					id="groupAdd_form" enctype="multipart/form-data">
+					id="groupAdd_form" name="groupAdd_form" enctype="multipart/form-data">
 					<%-- 	<p>
 				<img id="UploadedImg" width="85" height="111"
 				src="<%=request.getContextPath()%>/images/basic.png"> <br> 
@@ -97,10 +123,13 @@
 						<tr>
 							<td class="tdLeft"><input type="hidden" id="grpNameChk"
 								value="N" /> 모임명 <font color="red"><b>*</b></font> :</td>
-							<td class="tdRight"><input type="text" id="grpName"
-								name="grpName" onKeyDown="grpNameCheck();" /> <input
-								type="button" onclick="grpNameConfirm();" value="중복확인" /> <span
-								id="grpNameConfirmResult"></span></td>
+							<td class="tdRight">
+							<input type="text" id="grpName" name="grpName" onKeyDown="grpNameCheck();" /> 
+							<input type="button" onclick="grpNameConfirm();" value="중복확인" /> 
+								<span id="grpNameConfirmResult">
+								</span><input type="hidden" id="confirmBtn" value="0"/>
+								</td>
+								
 						</tr>
 						<tr>
 							<td class="tdLeft">모임소개 <font color="red"><b>*</b></font>:
@@ -119,8 +148,8 @@
 						<tr>
 							<td class="tdLeft">모임 공개 여부 :</td>
 							<td class="tdRight"><input type="radio" id="grpOpen"
-								name="grpOpen" value="Y" />공개 <input type="radio" id="grpOpen"
-								name="grpOpen" value="N" />비공개</td>
+								name="grpOpen" value="Y" checked="checked" />공개 <input
+								type="radio" id="grpOpen" name="grpOpen" value="N" />비공개</td>
 						</tr>
 						<tr>
 							<td>모임이미지 : <input type="file" id="grpThumbnail"
@@ -128,9 +157,9 @@
 							</td>
 						</tr>
 						<tr>
-							<td id="tdbottom" colspan="3"><input type="submit"
-								id="btnbottom" value="모임개설" /> <input type="button"
-								id="btnbottom" value="취소"
+							<td id="tdbottom" colspan="3"><input type="button"
+								id="btnbottom" onclick="grpAddSubmit();" value="모임개설" /> <input
+								type="button" id="btnbottom2" value="취소"
 								onclick="location.href = '/moigo/group';" /></td>
 						</tr>
 					</table>

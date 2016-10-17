@@ -9,7 +9,8 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/calendar.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/calendar.css"
+	rel="stylesheet">
 <script src="//code.jquery.com/jquery-1.12.2.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/common.js"></script>
 <script src="<%=request.getContextPath()%>/js/calendar.js"></script>
@@ -85,7 +86,7 @@
 	});
 
 	$(document).ready(function() {
-		
+
 		// z-index
 	});
 </script>
@@ -100,33 +101,45 @@
 	<c:if test="${empty authInfo }">
 		<div id="content">
 			<center>
-			<br><br>
+				<br>
+				<br>
 				<div id="groupmNotlg">
-		
-			<img src="<%=request.getContextPath() %>/file/${grpInfo.grpThumbnail}" style="width: 100px; height: 100px; ">
-			<br>
-			
-			그룹명 : <c:out value="${grpInfo.grpName }" />
-			<br>
-			그룹장 : <c:out value="${grpInfo.grpLeader }" />
-			<br>
-			카테고리 : <c:out value="${grpInfo.grpCate }" />
-			<br>
-			개설일자 : <c:out value="${grpInfo.grpRegDate }" />
-			<br>
-			그룹소개 : <c:out value="${grpInfo.grpIntro }" />
-			<br><br>
-			<h2><font color="#710000">※ Please Login First  ※</font></h2>
-				<div>
-					<form action="/moigo/login" method="post">
-						로그인이 필요한 서비스 입니다.<br> 
-						로그인해 주세요. <br>
-						&nbsp;ID&nbsp;<input type="text" id="userID" name="userID" class="btn-style1"/> <br> 
-						PW<input type="password" id="userPw" name="userPw" class="btn-style1"/><br>
-						<input type="submit" class="btn-style" value="로그인" "/>
-					</form>			
+					<c:choose>
+						<c:when test="${grpInfo.grpThumbnail eq null }">
+							<img src="images/grpThumbnailEqualsNull.png"
+								style="width: 100px; height: 100px;">
+						</c:when>
+						<c:otherwise>
+							<img
+								src="<%=request.getContextPath() %>/file/${grpInfo.grpThumbnail}"
+								style="width: 100px; height: 100px;">
+						</c:otherwise>
+					</c:choose>
+					<br> 그룹명 :
+					<c:out value="${grpInfo.grpName }" />
+					<br> 그룹장 :
+					<c:out value="${grpInfo.grpLeader }" />
+					<br> 카테고리 :
+					<c:out value="${grpInfo.grpCate }" />
+					<br> 개설일자 :
+					<c:out value="${grpInfo.grpRegDate }" />
+					<br> 그룹소개 :
+					<c:out value="${grpInfo.grpIntro }" />
+					<br>
+					<br>
+					<h2>
+						<font color="#710000">※ Please Login First ※</font>
+					</h2>
+					<div>
+						<form action="/moigo/login" method="post">
+							로그인이 필요한 서비스 입니다.<br> 로그인해 주세요. <br> &nbsp;ID&nbsp;<input
+								type="text" id="userID" name="userID" class="btn-style1" /> <br>
+							PW<input type="password" id="userPw" name="userPw"
+								class="btn-style1" /><br> <input type="submit"
+								class="btn-style" value="로그인" "/>
+						</form>
+					</div>
 				</div>
-			</div>
 		</div>
 	</c:if>
 	<c:if test="${!empty authInfo }">
@@ -135,21 +148,36 @@
 				<div id="Total" style="padding-top: 15px;">
 					<div id="addBtn">
 						<center>
-							<a href="#" class="openMask" style="font-size: 60px; font-weight: bold; text-align: center; line-height: 70px;">＋</a>
+							<a href="#" class="openMask"
+								style="font-size: 60px; font-weight: bold; text-align: center; line-height: 70px;">＋</a>
 						</center>
 					</div>
 					<div id="grpCalendar">
 						<div id="grpInfo">
 							<div>
-								<img src="<%=request.getContextPath() %>/file/${grpInfo.grpThumbnail}" style="width: 100px; height: 100px; ">
+								<c:choose>
+									<c:when test="${grpInfo.grpThumbnail eq null}">
+										<img src="../images/grpThumbnailEqualsNull.png"
+											style="width: 100px; height: 100px;">
+									</c:when>
+									<c:otherwise>
+										<img
+											src="<%=request.getContextPath() %>/file/${grpInfo.grpThumbnail}"
+											style="width: 100px; height: 100px;">
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<div>
-								그룹명 : <c:out value="${grpInfo.grpName }" /><br>
-								카테고리 : <c:out value="${grpInfo.grpCate }" /><br>
-								그룹인원수 : <c:out value="${grpInfo.grpNum }" />명
+								그룹명 :
+								<c:out value="${grpInfo.grpName }" />
+								<br> 카테고리 :
+								<c:out value="${grpInfo.grpCate }" />
+								<br> 그룹인원수 :
+								<c:out value="${grpInfo.grpNum }" />
+								명
 							</div>
 						</div>
-						<div id="calendarView" ></div>
+						<div id="calendarView"></div>
 					</div>
 					<div id="board">
 						<!-- 한 줄로 줄여서 움직일 수 있게 해야함 -->
@@ -161,14 +189,16 @@
 								<c:forEach var="myGrp" items="${myGrp }">
 									<c:choose>
 										<c:when test="${myGrp.grpThumbnail eq null }">
-											<div class="item" style="display: block; width: 100px; height: 100%; float: left;">
-												<img src="images/grpNameEqualsNull.png"
+											<div class="item"
+												style="display: block; width: 100px; height: 100%; float: left;">
+												<img src="../images/grpThumbnailEqualsNull.png"
 													style="width: 100px; height: 100px;" /><br> <a
 													href="<c:url value='/group/${myGrp.grpName }' />">${myGrp.grpName }</a>
 											</div>
 										</c:when>
 										<c:otherwise>
-											<div class="item" style="display: block; width: 100px; height: 100%; float: left;">
+											<div class="item"
+												style="display: block; width: 100px; height: 100%; float: left;">
 												<img
 													src="<%=request.getContextPath() %>/file/${myGrp.grpThumbnail}"
 													style="width: 100px; height: 100px;"><br> <a
@@ -179,34 +209,40 @@
 								</c:forEach>
 							</div>
 							<div style="width: 25px; height: 100%; float: left;">
-								<button id="right-button" style="width: 25px; height: 30px;" value="">>></button>
+								<button id="right-button" style="width: 25px; height: 30px;"
+									value="">>></button>
 							</div>
 						</div>
 						<!--  -->
 						<c:forEach var="geulInfo" items="${geulInfo }">
 							<div id="geul" style="margin: 0, auto">
 								<div id="info">
-									<input type="hidden" id="wGrpName" name="wGrpName" value="${grpInfo.grpName }" /> 
+									<input type="hidden" id="wGrpName" name="wGrpName"
+										value="${grpInfo.grpName }" />
 									<div style="padding-left: 10px;">
-									글쓴이 : ${geulInfo.getBrdWriter() }<br> 
-									작성일 : ${geulInfo.getBrdRegDate() }<br> 
-									제목 : ${geulInfo.getBrdTitle() }<br> 
-									내용 : ${geulInfo.getBrdContent() }
+										글쓴이 : ${geulInfo.getBrdWriter() }<br> 작성일 :
+										${geulInfo.getBrdRegDate() }<br> 제목 :
+										${geulInfo.getBrdTitle() }<br> 내용 :
+										${geulInfo.getBrdContent() }
 									</div>
 								</div>
 								<div id="brdPic">
-										<c:if test="${authInfo.userNick == geulInfo.getBrdWriter() }">
-											<form action="${grpInfo.grpName }/delete" method="post" style="padding-left: 120px; padding-top: 2px;">
-	 											<input type="hidden" id="brdSeq" name="brdSeq" value="${geulInfo.getBrdSeq() }"/>
-	 											<input type="submit" value="삭제하기"/>
-											</form>
-										</c:if>
-										<c:if test="${authInfo.userNick != geulInfo.getBrdWriter() }">
-											<div style="width: 30.67px; height: 22px;"></div>
-										</c:if>
+									<c:if test="${authInfo.userNick == geulInfo.getBrdWriter() }">
+										<form action="${grpInfo.grpName }/delete" method="post"
+											style="padding-left: 120px; padding-top: 2px;">
+											<input type="hidden" id="brdSeq" name="brdSeq"
+												value="${geulInfo.getBrdSeq() }" /> <input type="submit"
+												value="삭제하기" />
+										</form>
+									</c:if>
+									<c:if test="${authInfo.userNick != geulInfo.getBrdWriter() }">
+										<div style="width: 30.67px; height: 22px;"></div>
+									</c:if>
 									<div id="proImage">
 										<c:if test="${empty geulInfo.brdThumbnail }">
-											<img src="<%=request.getContextPath() %>/images/noImage.png" style="width: 120px; height: 120px;"><br>
+											<img src="<%=request.getContextPath()%>/images/noImage.png"
+												style="width: 120px; height: 120px;">
+											<br>
 										</c:if>
 										<c:if test="${!empty geulInfo.brdThumbnail }">
 											<img
@@ -222,12 +258,13 @@
 					<div id="grpProduct">
 						<c:forEach var="grpPrds" items="${grpPrd }">
 							<div class="grpProducts">
-								<div style="float: left; width:100px; height:100px; ">
-									<img src="<%=request.getContextPath() %>/file/${grpPrds.mktThumbnail}" style="width: 100px; height: 100px; ">
+								<div style="float: left; width: 100px; height: 100px;">
+									<img
+										src="<%=request.getContextPath() %>/file/${grpPrds.mktThumbnail}"
+										style="width: 100px; height: 100px;">
 								</div>
 								<div style="float: left; padding-top: 15px; padding-left: 10px;">
-									판매번호 : ${grpPrds.mktCode }<br>
-									품명 : ${grpPrds.mktPrName }<br>
+									판매번호 : ${grpPrds.mktCode }<br> 품명 : ${grpPrds.mktPrName }<br>
 									판매자 : ${grpPrds.mktSeller }
 								</div>
 							</div>
@@ -268,10 +305,10 @@
 					</div>
 				</div>
 			</c:if>
-			
+
 			<!-- 가입했을때 -->
-			
-			
+
+
 			<!-- 가입x -->
 			<c:if test="${!joined }">
 				<div>
