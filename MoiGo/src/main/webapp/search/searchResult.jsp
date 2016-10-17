@@ -56,7 +56,7 @@
 						<div id="mktInf">
 							등록일 : ${srchMkt.mktRegDate } <br>
 							판매번호 : <a href="<c:url value='/market/Product/${srchMkt.mktCode }' />">${srchMkt.mktCode }</a> <br>
-							그룹 : ${srchMkt.grpName } <br>
+							그룹 : <a href="<c:url value='/group/${srchMkt.grpName }' />">${srchMkt.grpName } </a> <br>
 							판매자 : ${srchMkt.mktSeller } <br>
 							품명 : ${srchMkt.mktPrName } <br>
 							가격 : ${srchMkt.mktPrice } <br>

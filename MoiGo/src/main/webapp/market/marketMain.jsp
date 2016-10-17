@@ -172,20 +172,20 @@
 				<div class="products" style="width:400px; height: 210px; float: left; margin-left: 20px; margin-bottom: 20px;">
 						<div style="width: 400px; height: 30px; padding-top: 5px;">
 							<c:if test="${authInfo.userNick == prd.mktSeller }">
-								<form action="market/modify" method="post" style="width: 66px; float: right;">
-									<input type="hidden" id="mktCode" name="mktCode" value="${prd.mktCode }"/>
-									<input type="submit" value="수정하기" class="MyButton"/>
-								</form>
 								<form action="market/deleteProduct" method="post" style="float: right;">
-									<input type="hidden" id="mktCode" name="mktCode" value="${prd.mktCode }" />
+									<input type="hidden" id="mktCode" name="mktCode" value="${prd.mktCode }"/>
 									<input type="submit" style="float: right;" value="삭제하기" class="MyButton" />
+								</form>
+								<form action="market/modify" method="post" style="width: 66px; float: right;">
+									<input type="hidden" id="mktCode" name="mktCode" value="${prd.mktCode }" />
+									<input type="submit" value="수정하기" class="MyButton"/>
 								</form>	
 							</c:if><br>
 						</div>
 					<div style="float: right; padding-top: 10px; width: 240px;">
 						· 등록일 : ${prd.mktRegDate }<br>
 						· 판매번호 : <a href="<c:url value='/market/Product/${prd.mktCode }' />">${prd.mktCode }</a><br>
-						· 그룹명 : ${prd.grpName } <br>
+						· 그룹명 : <a href="<c:url value='/group/${prd.grpName }' />">${prd.grpName }</a> <br>
 						· 판매자 : ${prd.mktSeller } <br>
 						· 품명 : ${prd.mktPrName } <br>
 						· 가격 : ${prd.mktPrice } 원

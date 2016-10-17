@@ -99,8 +99,8 @@
 								value="N" /> 모임명 <font color="red"><b>*</b></font> :</td>
 							<td class="tdRight"><input type="text" id="grpName"
 								name="grpName" onKeyDown="grpNameCheck();" /> <input
-								type="button" onclick="grpNameConfirm();" value="중복확인" /> <span
-								id="grpNameConfirmResult"></span></td>
+								type="button" onclick="grpNameConfirm();" value="중복확인" /><br> <span
+								id="grpNameConfirmResult" style="color: red;"></span></td>
 						</tr>
 						<tr>
 							<td class="tdLeft">모임소개 <font color="red"><b>*</b></font>:

@@ -257,7 +257,7 @@
 				<!-- 게시글 등록 div -->
 				<div class="window">
 					<!-- writeBoard -->
-					<div id="writeBoard" style="background: white;">
+					<div id="writeBoard2" style="background: white;">
 						<div class="divClose">
 							<a href="#" class="close">Close</a>
 						</div>
@@ -268,7 +268,7 @@
 								value="${authInfo.userNick }" />
 							<div style="padding-left: 20px;">
 								<input type="text" id="writeTitle" name="writeTitle"
-									placeholder="Title" />
+									placeholder="Title" style="width: 280px;"//>
 							</div>
 							<br>
 							<div style="padding-left: 20px;">

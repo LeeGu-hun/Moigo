@@ -607,6 +607,14 @@ position: absolute;
 
 }
 
+/* 마켓글쓰기 */
+#writeBoard {
+   width: 600px;
+   height: 400px;
+   padding-left: 10px;
+   text-align: center;
+   font-size: 20px;
+}
 
 /* ~market */
 /* search~ */
@@ -622,3 +630,12 @@ position: absolute;
 	height: auto;
 }
 /* ~search */
+
+/* 그룹메인글쓰기 */
+#writeBoard2 {
+   width: 860px;
+   height: 490px;
+   padding-left: 10px;
+   text-align: center;
+   font-size: 20px;
+}
