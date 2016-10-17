@@ -22,80 +22,73 @@
 <body>
 	<%@include file="/include/header.jsp"%>
 	<%@include file="/include/loginBox2.jsp"%>
-<center>
-		<form action="<%=request.getContextPath()%>/modifyGroup" method="post" id="modifyGroup_form">
-			<p>
-				<br>
-			<h1>모임 수정하기</h1>
-			<br>
-			<table id="groupTable">
-				<tr>
-					<td id="moleft"><label> 카테고리 <font color="red"><b>*</b></font>:
-					</td>
-					<td><input type="text" id="grpCate" name="grpCate"
-						value="${groupModifyCommand.grpCate} " disabled="disabled" /></td>
-					</label>
-				</tr>
-				</p>
-				<br>
+	<center>
+		<div id="content">
+			<form action="<%=request.getContextPath()%>/modifyGroup"
+				method="post" id="modifyGroup_form">
+				<h1 style="padding-top: 25px;">모임 수정하기</h1>
 
+				<table id="groupTable2" style="margin-top: -20px;">
+					<tr>
+						<td class="tdleft" style="width: 130px;" height="42px;">카테고리
+						</td>
+						<td class="tdRight" style="width: 420px;"><input type="text"
+							id="grpCate" name="grpCate"
+							value="${groupModifyCommand.grpCate} " disabled="disabled"
+							style="padding: 3px;" /></td>
+					</tr>
 
-				<p>
-				<tr>
-					<td id="moleft"><label> 모임명 : </td>
-					<td><input type="text" id="grpName" name="grpName"
-						value="${groupModifyCommand.grpName}" disabled="disabled" /></td>
-					<td><input type="hidden" id="grpName" name="grpName"
-						value="${groupModifyCommand.grpName}" /></td>
-					</label>
-					</p>
-
-				</tr>
-
-				<p>
-				<td id="moleft"><label> 모임소개 <font color="red"><b>*</b></font>:
-				</td>
-				<td><textarea cols="30" rows="5" id="grpIntro" name="grpIntro"
-						style="ime-mode: disabled; resize: none;">${groupModifyCommand.grpIntro}</textarea>
-				</td>
-				</label>
-				</tr>
-				</p>
-
-				<p>
-				<tr>
-					<td id="moleft"><label> 모임장 : </td>
-					<td><input type="text" disabled="disabled"
-						value="${authInfo.userNick }" /></td>
-
+					<tr>
+						<td class="tdLeft">모임명</td>
+						<td class="tdRight"><input type="text" id="grpName"
+							name="grpName" value="${groupModifyCommand.grpName}"
+							disabled="disabled" style="padding: 3px;" /></td>
+						<td><input type="hidden" id="grpName" name="grpName"
+							value="${groupModifyCommand.grpName}" /></td>
+					</tr>
 					<br>
-					</label>
-				</tr>
-				</p>
 
-				<p>
-				<td id="moleft"><label> 모임 공개 여부 : <c:choose>
-							<c:when test="${groupModifyCommand.grpOpen=='Y'}">
-								<td id="tdopen"><input type="radio" id="grpOpen"
-									name="grpOpen" value="Y" checked="checked" />공개 <input
-									type="radio" id="grpOpen" name="grpOpen" value="N" />비공개</td>
-							</c:when>
-							<c:when test="${groupModifyCommand.grpOpen=='N'}">
-								<td id="tdopen"><input type="radio" id="grpOpen"
-									name="grpOpen" value="Y" />공개 <input type="radio" id="grpOpen"
-									name="grpOpen" value="N" checked="checked" />비공개</td>
-							</c:when>
-						</c:choose>
-				</label></td>
-				</tr>
-				</p>
+					<tr>
+						<td class="tdLeft">모임소개 <font color="red"><b>*</b></font>
+						</td>
+						<td><textarea cols="30" rows="5" id="grpIntro"
+								name="grpIntro" style="ime-mode: disabled; resize: none;">${groupModifyCommand.grpIntro}</textarea>
+						</td>
+					</tr>
+					<br>
 
-				<tr>
-				
-					<td id="tdbottom" colspan="3">
-					<input type="submit" id="btnbottom" value="수정하기" /> 
-					<input type="button" id="btnbottom" value="취소" onclick="location.href = 'group';" /></td>
-				</tr>
-			</table>
-		</form></body>
+					<tr>
+						<td class="tdLeft">모임장</td>
+						<td><input type="text" disabled="disabled"
+							value="${authInfo.userNick }" style="padding: 3px;" /></td>
+					</tr>
+					<br>
+
+					<tr>
+						<td class="tdLeft">모임 공개 여부 <c:choose>
+								<c:when test="${groupModifyCommand.grpOpen=='Y'}">
+									<td id="tdopen"><input type="radio" id="grpOpen"
+										name="grpOpen" value="Y" checked="checked" />공개 <input
+										type="radio" id="grpOpen" name="grpOpen" value="N" />비공개</td>
+								</c:when>
+								<c:when test="${groupModifyCommand.grpOpen=='N'}">
+									<td id="tdopen"><input type="radio" id="grpOpen"
+										name="grpOpen" value="Y" />공개 <input type="radio"
+										id="grpOpen" name="grpOpen" value="N" checked="checked" />비공개</td>
+								</c:when>
+							</c:choose>
+						</td>
+					</tr>
+					<br>
+
+					<tr>
+
+						<td id="tdbottom" colspan="3"><input type="submit"
+							id="btnbottom" value="수정하기" /> <input type="button"
+							id="btnbottom" value="취소" onclick="location.href = 'group';" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+</body>
 </html>

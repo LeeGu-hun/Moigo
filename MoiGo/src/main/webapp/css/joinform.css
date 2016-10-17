@@ -115,20 +115,20 @@ select{
  
  #groupAdd_form{
 	margin-top: 10px;
-	background-color: #ffffff; 
 	width: 605px;
 	height: auto;
 	padding: 20px;
 	color: fafafa;
 }
  
- #groupAdd_form #groupTable{
+#groupTable{
  	background-color: #c0c0c0;
  	padding: 20px;
  	border: 0px;
  	width: 600px;
  	color: black;
  	table-layout: fixed;
+ 	height: 400px;
  }
  
  #grpOpen {
@@ -136,15 +136,15 @@ select{
  }
 
 #groupTable tr{
-	width: 650px;
+	width: 700px;
 }
  
 .tdLeft{
 	text-align: left;
-	width: 120px;	
+	width: 200px;	
 }
  
-#groupTable .tdRight{
+.tdRight{
  	width: 300px;	
 }
  
@@ -197,7 +197,7 @@ select{
 	padding: 20px;
 	border: 0px;
 	width: 600px;
-	height: 400px;
+	height: 350px;
 	color: black;
 	
 }
@@ -254,28 +254,30 @@ select{
 
 
 ---
+/* 그룹 수정하기 */
+
 
 
 #modifyGroup_form{
 	margin-top: 10px;
-	background-color: #353535; 
-	width: 610px;
+	background-color: #ffffff; 
+	width: 605px;
 	height: auto;
 	padding: 20px;
-	color: white;
+	color: #fafafa;
 }
 
-#groupTable{
-	 border-width:5px;	
-    border-style:ridge;
+#groupTable2{
 	background-color: #c0c0c0;
-	margin-top:10px;
-	padding: 20px;
-	border: 0px;
-	width: 600px;
-	height: 400px;
-	color: black;
-	
+ 	padding: 20px;
+ 	border: 0px;
+ 	width: 600px;
+ 	color: black;
+ 	table-layout: fixed;
+ 	height: 315px;
+ 	margin-top:10px;
+ 	border-style:ridge;
+
 }
 
 #moleft{

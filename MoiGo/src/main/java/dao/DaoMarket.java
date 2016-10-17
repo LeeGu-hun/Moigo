@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -17,6 +16,7 @@ import group.GroupCate;
 import market.Market;
 import market.MarketAddProductCommand;
 import market.MarketDeleteProductCommand;
+import market.MarketModifyProductCommand;
 
 public class DaoMarket {
 	private JdbcTemplate jdbcTemplate;
@@ -25,7 +25,7 @@ public class DaoMarket {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public Market getMarket(String mktCode) { // 이름으로 그룹찾기
+	public Market getMarket(String mktCode) { // 상품코드로 정보찾기
 		Market result = jdbcTemplate.queryForObject("select * from market where mktCode = ?",
 			new RowMapper<Market>() {
 				public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -35,6 +35,19 @@ public class DaoMarket {
 					return prod;
 				}
 			}, mktCode);
+		return result;
+	}
+	
+	public Market getProInfo(MarketDeleteProductCommand mktDelProCmd) { // 상품코드로 정보찾기
+		Market result = jdbcTemplate.queryForObject("select * from market where mktCode = ?",
+			new RowMapper<Market>() {
+				public Market mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Market prod = new Market(rs.getString("mktCode"), rs.getString("mktSeller"), rs.getString("mktPrName"), 
+						rs.getString("mktPrice"), rs.getString("mktContent"), rs.getString("grpName"), rs.getString("mktThumbnail"),
+						rs.getDate("mktRegDate"));
+					return prod;
+				}
+			}, mktDelProCmd.getMktCode());
 		return result;
 	}
 	
@@ -114,6 +127,24 @@ public class DaoMarket {
 				return pstmt;
 			}
 		});		
+	}
+	
+	public void modifyProduct(final MarketModifyProductCommand mktModiProCmd) { // 게시글번호로 게시글 수정
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement pstmt = con
+						.prepareStatement("update MARKET set mktprname = ? , mktprice = ?, mktcontent = ?, grpname = ?, mktthumbnail = ?  where mktcode = ?");
+
+				pstmt.setString(1, mktModiProCmd.getModiProName());
+				pstmt.setString(2, mktModiProCmd.getModiProPrice());
+				pstmt.setString(3, mktModiProCmd.getModiProContent());
+				pstmt.setString(4, mktModiProCmd.getGrpName());
+				pstmt.setString(5, mktModiProCmd.getModiProThumbnail());
+				pstmt.setInt(6, mktModiProCmd.getMktCode());
+
+				return pstmt;
+			}
+		});
 	}
 	
 }

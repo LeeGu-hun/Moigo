@@ -71,20 +71,12 @@
 				<!-- 추가 -->
 				<form action="<%=request.getContextPath()%>/add" method="post"
 					id="groupAdd_form" enctype="multipart/form-data">
-					<%-- 	<p>
-				<img id="UploadedImg" width="85" height="111"
-				src="<%=request.getContextPath()%>/images/basic.png"> <br> 
-					<input type="file" id="imgFile" name="imgFile"/> <br> 모임 대표 이미지</label>
-			</p> --%>
-					<br>
-					<p>
-					<h1>새 모임 개설하기</h1>
-					<br>
-					<table id="groupTable">
+					<h1 style="line-height: 23px;" >새 모임 개설하기</h1>
+					<table id="groupTable" style="margin-top:-20px;">
 						<tr>
-							<td class="tdleft">카테고리 <font color="red"><b>*</b></font>:
+							<td class="tdleft" style="width: 130px;">카테고리 <font color="red"><b>*</b></font>
 							</td>
-							<td class="tdRight"><select id="cate" name="cate"
+							<td class="tdRight" style="width: 420px;"><select id="cate" name="cate"
 								style="height: 23px;">
 									<option value="" selected>카테고리를 선택하세요</option>
 									<c:forEach var="data" items="${requestScope.CATE}">
@@ -94,39 +86,45 @@
 									</c:forEach>
 							</select></td>
 						</tr>
+						
 						<tr>
 							<td class="tdLeft"><input type="hidden" id="grpNameChk"
-								value="N" /> 모임명 <font color="red"><b>*</b></font> :</td>
+								value="N" /> 모임명 <font color="red"><b>*</b></font> </td>
 							<td class="tdRight"><input type="text" id="grpName"
 								name="grpName" onKeyDown="grpNameCheck();" /> <input
 								type="button" onclick="grpNameConfirm();" value="중복확인" /> <span
 								id="grpNameConfirmResult"></span></td>
 						</tr>
+						<br>
 						<tr>
-							<td class="tdLeft">모임소개 <font color="red"><b>*</b></font>:
+							<td class="tdLeft">모임소개 <font color="red"><b>*</b></font>
 							</td>
 							<td><textarea cols="30" rows="5" id="grpIntro"
 									name="grpIntro" style="resize: none;"></textarea><br>(30자이내)
 							</td>
 						</tr>
+						<br>
 						<tr>
-							<td class="tdLeft">모임장 :</td>
+							<td class="tdLeft">모임장 </td>
 							<td><input type="text" disabled="disabled"
-								value="${authInfo.userNick }" /></td>
+								value="${authInfo.userNick }" style="padding: 3px;"/></td>
 							<td><input type="hidden" id="grpLeader" name="grpLeader"
-								value="${authInfo.userNick }" /></td>
+								value="${authInfo.userNick }" style="padding: 3px;"/></td>
 						</tr>
+						<br>
 						<tr>
-							<td class="tdLeft">모임 공개 여부 :</td>
+							<td class="tdLeft">모임 공개 여부 </td>
 							<td class="tdRight"><input type="radio" id="grpOpen"
 								name="grpOpen" value="Y" />공개 <input type="radio" id="grpOpen"
 								name="grpOpen" value="N" />비공개</td>
 						</tr>
+						<br>
 						<tr>
-							<td>모임이미지 : <input type="file" id="grpThumbnail"
+							<td>모임이미지  <input type="file" id="grpThumbnail"
 								name="grpThumbnail">
 							</td>
 						</tr>
+						<br>
 						<tr>
 							<td id="tdbottom" colspan="3"><input type="submit"
 								id="btnbottom" value="모임개설" /> <input type="button"

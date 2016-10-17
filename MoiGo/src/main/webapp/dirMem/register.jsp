@@ -168,7 +168,9 @@ $(function() {
 			<br><br>
 			<input type="submit" id="register" value="가입하기" class="myButton"/>
 			<input type="reset" id="clear" value="지우기" class="myButton" />
-			<tr><td colspan="2"><hr width="100%" /></td></tr>
+			<br>
+			<tr><td colspan="2"><br><hr width="100%" /><br></td></tr>
+			
 			
 			<tr>
 			<td colspan="2" align="center">

@@ -6,14 +6,12 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -179,4 +177,41 @@ public class controllerGroup {
 		System.out.println("게시글 삭제 성공");
 		return "redirect:/group/"+url;
 	}
+
+	@RequestMapping("/group/{grpName}/modify") // 그룹게시판 글 수정폼으로 이동하기
+	public String groupBoardModfiy(@PathVariable String grpName, GroupDeleteCommand grpDelAndModiCmd, Model model, HttpSession session) throws UnsupportedEncodingException {
+		System.out.println("글번호 : " + grpDelAndModiCmd.getBrdSeq());
+		GroupBoard geulInfo = daoGroup.getGeulInfo(grpDelAndModiCmd);
+		System.out.println(geulInfo.getBrdTitle());
+		System.out.println(geulInfo.getBrdContent());
+		System.out.println(geulInfo.getBrdThumbnail());
+		System.out.println(geulInfo.getGrpName());
+		model.addAttribute("geulInfo", geulInfo);
+		return "group/groupWriteModify";
+	}
+	
+	@RequestMapping("/group/{grpName}/groupWriteModify") // 그룹게시판 글 수정하기
+	public String groupBoardWrtieModfiy(@PathVariable String grpName, GroupBoard grpBoard, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+		String url = URLEncoder.encode(grpName, "UTF-8");
+		String upload = "file";
+		ServletContext sc = request.getServletContext();
+		String uploadPath = sc.getRealPath("/") + upload;
+		System.out.println(uploadPath);
+		int size = 10 * 1024 * 1024;
+		try {
+			MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "UTF-8",
+					new DefaultFileRenamePolicy());
+			grpBoard.setBrdTitle(multi.getParameter("brdTitle"));
+			grpBoard.setBrdContent(multi.getParameter("brdContent"));
+			grpBoard.setBrdThumbnail(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
+			grpBoard.setBrdSeq(Integer.parseInt(multi.getParameter("brdSeq")));
+			daoGroup.writeModify(grpBoard);
+			System.out.println("게시글 수정 완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/group/"+url;
+	}
+	
 }
