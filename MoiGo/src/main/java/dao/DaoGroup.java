@@ -204,6 +204,11 @@ public class DaoGroup {
 				grpName);
 		return count;
 	}
+	public int myGroupCount(String userNick) { //내가 가입한 그룹 수(유저닉네임)
+		Integer count = jdbcTemplate.queryForObject("select count(*) from groupjoin where userNick=?", Integer.class,
+				userNick);
+		return count;
+	}
 
 	public void modifyGroup(final GroupModifyCommand groupModifyCommand) { // 그룹수정
 		jdbcTemplate.update(new PreparedStatementCreator() {

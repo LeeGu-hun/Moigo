@@ -82,45 +82,56 @@
 					<br>
 					<table id="groupTable">
 						<tr>
-							<td class="tdleft">카테고리 <font color="red"><b>*</b></font>:
+							<td class="tdleft">
+								카테고리 <font color="red"><b>*</b></font>:
 							</td>
-							<td class="tdRight"><select id="cate" name="cate"
-								style="height: 23px;">
-									<option value="" selected>카테고리를 선택하세요</option>
+							<td class="tdRight">
+								<select id="cate" name="cate" style="height: 23px;">
+									<option value="0" selected>카테고리를 선택하세요</option>
 									<c:forEach var="data" items="${requestScope.CATE}">
 										<option value='<c:out value="${data.CATEID}" />'>
 											<c:out value="${data.CATENAME}" />
 										</option>
 									</c:forEach>
-							</select></td>
+								</select>
+							</td>
 						</tr>
 						<tr>
-							<td class="tdLeft"><input type="hidden" id="grpNameChk"
-								value="N" /> 모임명 <font color="red"><b>*</b></font> :</td>
-							<td class="tdRight"><input type="text" id="grpName"
-								name="grpName" onKeyDown="grpNameCheck();" /> <input
-								type="button" onclick="grpNameConfirm();" value="중복확인" /> <span
-								id="grpNameConfirmResult"></span></td>
+							<td class="tdLeft">
+								<input type="hidden" id="grpNameChk"	value="N" /> 모임명 <font color="red"><b>*</b></font> :
+							</td>
+							<td class="tdRight">
+								<input type="text" id="grpName"	name="grpName" onKeyDown="grpNameCheck();" />
+								<input type="button" onclick="grpNameConfirm();" value="중복확인" /><br>
+								<span id="grpNameConfirmResult" style="color: red;"></span>
+							</td>
 						</tr>
 						<tr>
 							<td class="tdLeft">모임소개 <font color="red"><b>*</b></font>:
 							</td>
-							<td><textarea cols="30" rows="5" id="grpIntro"
-									name="grpIntro" style="resize: none;"></textarea><br>(30자이내)
+							<td>
+								<textarea cols="30" rows="5" id="grpIntro" name="grpIntro" style="resize: none;"></textarea><br>(30자이내)
 							</td>
 						</tr>
 						<tr>
-							<td class="tdLeft">모임장 :</td>
-							<td><input type="text" disabled="disabled"
-								value="${authInfo.userNick }" /></td>
-							<td><input type="hidden" id="grpLeader" name="grpLeader"
-								value="${authInfo.userNick }" /></td>
+							<td class="tdLeft">
+								모임장 :
+							</td>
+							<td>
+								<input type="text" disabled="disabled" value="${authInfo.userNick }" />
+							</td>
+							<td>
+								<input type="hidden" id="grpLeader" name="grpLeader" value="${authInfo.userNick }" />
+							</td>
 						</tr>
 						<tr>
-							<td class="tdLeft">모임 공개 여부 :</td>
-							<td class="tdRight"><input type="radio" id="grpOpen"
-								name="grpOpen" value="Y" />공개 <input type="radio" id="grpOpen"
-								name="grpOpen" value="N" />비공개</td>
+							<td class="tdLeft">
+								모임 공개 여부 :
+							</td>
+							<td class="tdRight">
+								<input type="radio" id="grpOpen" name="grpOpen" value="Y" />공개 
+								<input type="radio" id="grpOpen" name="grpOpen" value="N" />비공개
+							</td>
 						</tr>
 						<tr>
 							<td>모임이미지 : <input type="file" id="grpThumbnail"
@@ -128,10 +139,10 @@
 							</td>
 						</tr>
 						<tr>
-							<td id="tdbottom" colspan="3"><input type="submit"
-								id="btnbottom" value="모임개설" /> <input type="button"
-								id="btnbottom" value="취소"
-								onclick="location.href = '/moigo/group';" /></td>
+							<td id="tdbottom" colspan="3">
+								<input type="submit" id="btnbottom" value="모임개설" /> 
+								<input type="button" id="btnbottom" value="취소" onclick="location.href = '/moigo/group';" />
+							</td>
 						</tr>
 					</table>
 				</form>

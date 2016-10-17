@@ -225,8 +225,8 @@
 								</div>
 								<div style="float: left; padding-top: 15px; padding-left: 10px;">
 									판매번호 : <a href="<c:url value='/market/Product/${grpPrds.mktCode }' />">${grpPrds.mktCode }</a><br>
-									품명 : ${grpPrds.mktPrName }<br>
-									판매자 : ${grpPrds.mktSeller }
+									<span id="Cut1">품명 : ${grpPrds.mktPrName }</span>
+									<p id="Cut1">판매자 : ${grpPrds.mktSeller }</p>
 								</div>
 							</div>
 						</c:forEach>
@@ -236,7 +236,7 @@
 				<!-- 화면 불투명에 쓸 div -->
 				<div class="window">
 					<!-- writeBoard -->
-					<div id="writeBoard" style="background: white;">
+					<div id="writeBoard2" style="background: white;">
 						<div class="divClose">
 							<a href="#" class="close">Close</a>
 						</div>
@@ -246,12 +246,11 @@
 							<input type="hidden" id="writer" name="writer"
 								value="${authInfo.userNick }" />
 							<div style="padding-left: 20px;">
-								<input type="text" id="writeTitle" name="writeTitle"
-									placeholder="Title" />
+								<input type="text" id="writeTitle" name="writeTitle" placeholder="Title"  style="width: 280px;"/>
 							</div>
 							<br>
 							<div style="padding-left: 20px;">
-								<textarea cols="105" rows="20" id="writeContent"
+								<textarea cols="70" rows="20" id="writeContent"
 									name="writeContent" placeholder="Content" style="resize: none;"></textarea>
 							</div>
 							<br>
@@ -259,7 +258,7 @@
 								<input type="file" id="grpThumbnail" name="grpThumbnail" />
 							</div>
 							<div style="padding-right: 30px;">
-								<input type="submit" style="float: right;" value="게시하기" />
+								<input type="submit" style="float: right;" value="게시하기" class="MyButton" />
 							</div>
 						</form>
 					</div>
@@ -267,8 +266,6 @@
 			</c:if>
 			
 			<!-- 가입했을때 -->
-			
-			
 			<!-- 가입x -->
 			<c:if test="${!joined }">
 				<div id="content">

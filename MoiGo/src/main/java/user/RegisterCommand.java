@@ -11,6 +11,9 @@ public class RegisterCommand {
 	private String address;
 	private String phoneNumber, phoneNumber1, phoneNumber2, phoneNumber3;
 	
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 	public String getId() {
 		return id;
 	}

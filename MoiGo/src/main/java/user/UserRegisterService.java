@@ -1,7 +1,5 @@
 package user;
 
-import java.util.Date;
-
 import org.springframework.transaction.annotation.Transactional;
 
 import dao.DaoUser;
@@ -15,6 +13,7 @@ public class UserRegisterService {
 	}
 	public UserRegisterService(){}
 	
+	@Transactional
 	public void regist(RegisterCommand registerCommand) {
 		System.out.println("regist 메서드진입");
 		User user = daoUser.selectById(registerCommand.getId());

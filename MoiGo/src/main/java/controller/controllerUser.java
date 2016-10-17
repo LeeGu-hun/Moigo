@@ -1,5 +1,8 @@
 package controller;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -27,7 +30,7 @@ public class controllerUser {
 	private UserModifyService userModifyService;
 	private ChangePasswordService changePasswordService;
 	private AuthService authService;
-	
+
 	public void setDaoUser(DaoUser daoUser) {
 		this.daoUser = daoUser;
 	}
@@ -49,7 +52,7 @@ public class controllerUser {
 	}
 
 	@RequestMapping(value = "/register") /* 회원가입 */
-	public String register(){
+	public String register(RegisterCommand registerCommand){
 		return "dirMem/register";
 	}
 	
@@ -57,13 +60,14 @@ public class controllerUser {
 	public String join(RegisterCommand registerCommand, Errors errors, HttpSession session) {
 		new RegisterCommandValidator().validate(registerCommand, errors);
 		if(errors.hasErrors())
-			return "dirMem/registerFail";
+			return "dirMem/register";
 		try {
 			System.out.println("try문 진입");
 			userRegisterService.regist(registerCommand);
 			return "redirect:/";
-		} catch (AlreadyExistingUserException ex) {
+		} catch (AlreadyExistingUserException e) {
 			System.out.println("catch문 진입");
+			errors.rejectValue("id", "duplicate");
 			return "dirMem/register";
 		}
 	}

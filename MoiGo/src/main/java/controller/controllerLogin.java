@@ -18,6 +18,7 @@ import login.AuthInfo;
 import login.AuthService;
 import login.LoginCommand;
 import login.LoginCommandValidator;
+import user.RegisterCommand;
 
 @Controller
 public class controllerLogin {
@@ -31,7 +32,7 @@ public class controllerLogin {
 		this.daoGroup = daoGroup;
 	}
 	@RequestMapping("/") /* 시작화면 */
-	public String main(HttpServletRequest request){
+	public String main(RegisterCommand registerCommand, HttpServletRequest request){
 		List<Group> recomGrp = daoGroup.getRecomGrp();
 		List<Group> newGrp = daoGroup.getNewGrp();
 		List<GroupCate> cate = daoGroup.groupCate();	

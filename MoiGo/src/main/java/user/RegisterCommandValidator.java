@@ -1,14 +1,13 @@
 package user;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-public class RegisterCommandValidator implements Validator {
+import dao.DaoUser;
 
+public class RegisterCommandValidator implements Validator {
+	
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return RegisterCommand.class.isAssignableFrom(clazz);
@@ -17,7 +16,7 @@ public class RegisterCommandValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		RegisterCommand rc = (RegisterCommand) target;
-		if (rc.getId() == null) {
+		if (rc.getId() == null || rc.getId().equals("")) {
 			errors.rejectValue("id", "required");
 		} 
 		ValidationUtils.rejectIfEmpty(errors, "password", "required");

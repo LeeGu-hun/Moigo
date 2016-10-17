@@ -17,7 +17,7 @@
 <!-- jQuery 기본 js파일 -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <!-- jQuery UI 라이브러리 js파일 -->
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
 <script>
 $(function() {
 		$("#birthDate").datepicker(
@@ -86,10 +86,9 @@ $(function() {
 <body>
 <%@ include file="/include/header.jsp"%>
 <%@ include file="/include/loginBox2.jsp" %>
-<center>
-	<div id="content">
-	
-		<form action="join" method="post" id="my_reg_form"> 
+<div id="content">
+	<center>
+		<form:form commandName="registerCommand" action="join" method="post" id="my_reg_form"> 
 		<br>
 		<table id="mytable">
 		<fieldset>
@@ -98,73 +97,110 @@ $(function() {
 		어떤 모임에 흥미가 있으신가요?</span>
 		</fieldset>		
 		<tr>
-		<td id="left" >아이디 <font color="red"><b>*</b></font></td>
-		<td><input type="text" id="id" name="id" /></td>
+			<td id="left" >
+				아이디 <font color="red"><b>*</b></font>
+			</td>
+			<td>
+				<form:input path="id"/>
+				<form:errors path="id" class="errMsg" />
+			</td>
 		</tr>
-		
 		<tr>
-		<td id="left" >비밀번호 <font color="red"><b>*</b></font></td>
-		<td><input type="password"  id="password" name="password" /></td>
+			<td id="left" >
+				비밀번호 <font color="red"><b>*</b></font>
+			</td>
+			<td>
+				<form:password path="password" />
+				<form:errors path="password" class="errMsg" />
+			</td>
 		</tr>
 		<tr>
-		<td id="left"> 비밀번호<br>확인 <font color="red"><b>*</b></font></td>
-		<td><input type="password"  id="confirmPassword" name="confirmPassword" /></td>
-		<tr><td colspan="2"><hr width="100%" /></td></tr>
-		</tr>
-		
+			<td id="left"> 
+				비밀번호<br>확인 <font color="red"><b>*</b></font>
+			</td>
+			<td>
+				<form:password path="confirmPassword" />
+				<form:errors path="confirmPassword" class="errMsg" />
+			</td>
 		<tr>
-		<td id="left"> 이름 <font color="red"><b>*</b></font></td>
-		<td><input type="text"  id="name" name="name" style="ime-mode:active;" /></td>
+			<td colspan="2">
+				<hr width="100%" />
+			</td>
 		</tr>
-		
 		<tr>
-		<td id="left"> 닉네임 <font color="red"><b>*</b></font></td>
-		<td><input type="text" id="nickName" name="nickName" style="ime-mode:active;" /></td>
+			<td id="left">
+				 이름 <font color="red"><b>*</b></font>
+			</td>
+			<td>
+				<form:input path="name" style="ime-mode:active;" />
+				<form:errors path="name" class="errMsg" />
+			</td>
 		</tr>
-		
 		<tr>
-		<td id="left"> 생년월일 <font color="red"><b>*</b></font></td>
-		<td><input type="text"  id="birthDate" name="birthDate" /></td>
+			<td id="left">
+				 닉네임 <font color="red"><b>*</b></font>
+			</td>
+			<td>
+				<form:input path="nickName" name="nickName" style="ime-mode:active;" />
+				<form:errors path="nickName" class="errMsg" />
+			</td>
 		</tr>
-		
 		<tr>
-		<td id="left"> 성별 <font color="red"><b>*</b></font></td>
-		<td>
-		<input type="radio" id="gender" name="gender" value="남">Male
-		<input type="radio" id="gender" name="gender" value="여">Female</td>
+			<td id="left">
+				 생년월일 <font color="red"><b>*</b></font>
+			</td>
+			<td>
+				<form:input path="birthDate" name="birthDate" />
+				<form:errors path="birthDate" class="errMsg" />
+			</td>
 		</tr>
-		<tr><td colspan="2"><hr width="100%" /></td></tr>
-		
 		<tr>
-		<td id="left"> 주소 <font color="red"><b>*</b></font></td>
-		
-		<td><input type="text" class="regForm" id="address" name="address" style="ime-mode:active;" /><br>
-		</td>
+			<td id="left">
+				 성별 <font color="red"><b>*</b></font>
+			</td>
+			<td>
+				<form:radiobutton path="gender" name="gender" value="남" />Male
+				<form:radiobutton path="gender" name="gender" value="여" />Female
+				<form:errors path="gender" class="errMsg" />
+			</td>
 		</tr>
-		
 		<tr>
-		<td id="left"> 휴대폰번호 <font color="red"><b>*</b></font></td>
-		
-		<td>
-			 <select id="phoneNumber1" name="phoneNumber1" style="width:70;">
-			 	<option value="010">010</option>
-			    <option value="011">011</option>
-			    <option value="016">016</option>
-			    <option value="017">017</option>
-			    <option value="018">018</option>
-			    <option value="019">019</option>
-		   	</select>
-			<input type="text" id="phoneNumber2" name="phoneNumber2" 
-				onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" size="5" maxlength="4" /> -
-			<input type="text" id="phoneNumber3" name="phoneNumber3" 
-				onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" size="5" maxlength="4" />	 	
-		</td><br>
+			<td colspan="2">
+				<hr width="100%" />
+			</td>
+		</tr>
+		<tr>
+			<td id="left">
+				 주소 <font color="red"><b>*</b></font>
+			</td>
+			<td>
+				<form:input path="address" class="regForm" name="address" style="ime-mode:active;" /><br>
+				<form:errors path="address" class="errMsg" />
+			</td>
+		</tr>	
+		<tr>
+			<td id="left">
+			 휴대폰번호 <font color="red"><b>*</b></font>
+			</td>
+			<td>
+				<form:select path="phoneNumber1" name="phoneNumber1" style="width:70;">
+			 		<form:option value="010" />010
+			    	<form:option value="011" />011
+				    <form:option value="016" />016
+				    <form:option value="017" />017
+				    <form:option value="018" />018
+				    <form:option value="019" />019
+			   	</form:select>
+				<form:input path="phoneNumber2" name="phoneNumber2" 
+					onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" size="5" maxlength="4" /> -
+				<form:input path="phoneNumber3" name="phoneNumber3" 
+					onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" size="5" maxlength="4" /> 	
+			</td>
 		</tr>
 			
 	</table>
 	
-			<td><form method="post" action="moigo">
-			
+			<td>
 			<br><br>
 			<input type="submit" id="register" value="가입하기" class="myButton"/>
 			<input type="reset" id="clear" value="지우기" class="myButton" />
@@ -177,7 +213,7 @@ $(function() {
 			(Required) - Please fill up</font>
 			</td>
 			</tr>
-			</form>
+			</form:form>
 		
 	</div>
 </body>
