@@ -31,35 +31,38 @@ public class DaoGroup {
 		List<Group> results = jdbcTemplate.query("select * from groupInfo where grpOpen='Y'", new RowMapper<Group>() {
 			public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"),
-						rs.getString("grpCate"), rs.getString("grpIntro"), rs.getTimestamp("grpRegDate"), rs.getString("grpThumbnail"));
+						rs.getString("grpCate"), rs.getString("grpIntro"), rs.getTimestamp("grpRegDate"),
+						rs.getString("grpThumbnail"));
 				group.setGrpNum(groupUserCount(rs.getString("grpName")));
 				return group;
 			}
 		});
 		return results;
 	}
-	
+
 	public List<Group> getRecomGrp() { // 추천그룹
-		List<Group> results = jdbcTemplate.query("select * from (select i.grpname , i.grpLeader, i.grpOpen, i.grpcate, i.grpregdate, "
-				+ "i.grpintro, i.GRPTHUMBNAIL, count(i.grpname) as grpnum from groupinfo i, groupjoin j where i.grpname = j.grpname "
-				+ "and i.grpopen='Y' group by i.grpname , i.grpLeader, i.grpOpen, i.grpcate, i.grpregdate, i.grpintro, i.GRPTHUMBNAIL "
-				+ "order by grpnum desc) where rownum<=3", 
-			new RowMapper<Group>() {
-			public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"),
-						rs.getString("grpCate"), rs.getString("grpIntro"), rs.getTimestamp("grpRegDate"), rs.getString("grpThumbnail"));
-				group.setGrpNum(groupUserCount(rs.getString("grpName")));
-				return group;
-			}
-		});
-		return results;	
+		List<Group> results = jdbcTemplate
+				.query("select * from (select i.grpname , i.grpLeader, i.grpOpen, i.grpcate, i.grpregdate, "
+						+ "i.grpintro, i.GRPTHUMBNAIL, count(i.grpname) as grpnum from groupinfo i, groupjoin j where i.grpname = j.grpname "
+						+ "and i.grpopen='Y' group by i.grpname , i.grpLeader, i.grpOpen, i.grpcate, i.grpregdate, i.grpintro, i.GRPTHUMBNAIL "
+						+ "order by grpnum desc) where rownum<=3", new RowMapper<Group>() {
+							public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
+								Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"),
+										rs.getString("grpOpen"), rs.getString("grpCate"), rs.getString("grpIntro"),
+										rs.getTimestamp("grpRegDate"), rs.getString("grpThumbnail"));
+								group.setGrpNum(groupUserCount(rs.getString("grpName")));
+								return group;
+							}
+						});
+		return results;
 	}
-	
+
 	public List<Group> getAll() { // 공개여부 상관없이 모두 찾기
 		List<Group> results = jdbcTemplate.query("select * from groupInfo", new RowMapper<Group>() {
 			public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"), rs.getString("grpOpen"),
-						rs.getString("grpCate"), rs.getString("grpIntro"), rs.getTimestamp("grpRegDate"), rs.getString("grpThumbnail"));
+						rs.getString("grpCate"), rs.getString("grpIntro"), rs.getTimestamp("grpRegDate"),
+						rs.getString("grpThumbnail"));
 				group.setGrpNum(groupUserCount(rs.getString("grpName")));
 				return group;
 			}
@@ -90,23 +93,26 @@ public class DaoGroup {
 		});
 		return results;
 	}
-	
-	public List<Group> srchGroup(String srchTxt){ //검색하기
-		List<Group> results = jdbcTemplate.query("select * from groupInfo where grpName like '%" + srchTxt + "%' or grpCate like '%" + srchTxt + "%' "
-				+ "or grpLeader like '%" + srchTxt + "%' or grpIntro like '%" + srchTxt + "%'", new RowMapper<Group>() {
-			public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"),
-						rs.getString("grpOpen"), rs.getString("grpCate"), rs.getString("grpIntro"),
-						rs.getTimestamp("grpRegDate"), rs.getString("grpThumbnail"));
-				group.setGrpNum(groupUserCount(rs.getString("grpName")));
-				return group;
-			}
-		});
+
+	public List<Group> srchGroup(String srchTxt) { // 검색하기
+		List<Group> results = jdbcTemplate.query(
+				"select * from groupInfo where grpName like '%" + srchTxt + "%' or grpCate like '%" + srchTxt + "%' "
+						+ "or grpLeader like '%" + srchTxt + "%' or grpIntro like '%" + srchTxt + "%'",
+				new RowMapper<Group>() {
+					public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
+						Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"),
+								rs.getString("grpOpen"), rs.getString("grpCate"), rs.getString("grpIntro"),
+								rs.getTimestamp("grpRegDate"), rs.getString("grpThumbnail"));
+						group.setGrpNum(groupUserCount(rs.getString("grpName")));
+						return group;
+					}
+				});
 		return results;
 	}
 
 	public List<Group> getNewGrp() { // 개설된지 1주일 안의 그룹만 가져오기(신규그룹)
-		List<Group> results = jdbcTemplate.query("select * from groupInfo where grpOpen='Y' and grpregdate>=sysdate-7 and rownum <= 3 order by grpregdate desc",
+		List<Group> results = jdbcTemplate.query(
+				"select * from groupInfo where grpOpen='Y' and grpregdate>=sysdate-7 and rownum <= 3 order by grpregdate desc",
 				new RowMapper<Group>() {
 					public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Group group = new Group(rs.getString("grpName"), rs.getString("grpLeader"),
@@ -134,10 +140,22 @@ public class DaoGroup {
 		return results;
 	}
 
+	public int getGrpNameConfirm(String grpNameConfirm) { /* 모임명 중복확인 */
+		int check_count = 0;
+		System.out.println("다오,넘어왔니?"+grpNameConfirm);
+		check_count = jdbcTemplate.queryForObject("select count(*) grpName from groupInfo where grpName=?",
+				Integer.class, grpNameConfirm);
+		
+		System.out.println("다오,중복확인결과:"+check_count);
+		
+			return check_count;
+	}
+
 	public void addGroup(final GroupAddCommand groupAddCommand) { // 그룹추가
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement pstmt = con.prepareStatement("insert into groupinfo values(?, ?, ?, ?, sysdate, ?, ?)");
+				PreparedStatement pstmt = con
+						.prepareStatement("insert into groupinfo values(?, ?, ?, ?, sysdate, ?, ?)");
 
 				pstmt.setString(1, groupAddCommand.getGrpName());
 				pstmt.setString(2, groupAddCommand.getGrpLeader());
@@ -150,18 +168,17 @@ public class DaoGroup {
 			}
 		});
 	}
-	
-	public String getCateName(String cateID){ /* 카테고리 불러오기 */
-		String cate = jdbcTemplate.queryForObject("select cateName from cate where cateId=?", String.class,
-				cateID);
+
+	public String getCateName(String cateID) { /* 카테고리 불러오기 */
+		String cate = jdbcTemplate.queryForObject("select cateName from cate where cateId=?", String.class, cateID);
 		return cate;
 	}
 
 	public List getGrpBoard(String grpName) {
 		return null;
 	}
-	
-	public void joinGroup(final String userNick, final String grpName){ /* 그룹가입 */
+
+	public void joinGroup(final String userNick, final String grpName) { /* 그룹가입 */
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement pstmt = con.prepareStatement("insert into groupjoin values(?, ?, sysdate)");
@@ -171,8 +188,9 @@ public class DaoGroup {
 			}
 		});
 	}
-	
-	public boolean getJoinedGroup(String grpName, String userNick) { // 가입한 그룹인지 판별
+
+	public boolean getJoinedGroup(String grpName, String userNick) { // 가입한 그룹인지
+																		// 판별
 		int grpJoined = jdbcTemplate.queryForObject("select count(*) from groupJoin where grpName = ? and userNick = ?",
 				Integer.class, grpName, userNick);
 		if (grpJoined == 0)
@@ -186,12 +204,12 @@ public class DaoGroup {
 				grpName);
 		return count;
 	}
-	
-	public void modifyGroup(final GroupModifyCommand groupModifyCommand) { //그룹수정
+
+	public void modifyGroup(final GroupModifyCommand groupModifyCommand) { // 그룹수정
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement pstmt = con.prepareStatement(
-						"update GROUPINFO set grpintro=?, grpopen=? " + "where grpname=?" );
+				PreparedStatement pstmt = con
+						.prepareStatement("update GROUPINFO set grpintro=?, grpopen=? " + "where grpname=?");
 				pstmt.setString(1, groupModifyCommand.getGrpIntro());
 				pstmt.setString(2, groupModifyCommand.getGrpOpen());
 				pstmt.setString(3, groupModifyCommand.getGrpName());
@@ -199,24 +217,29 @@ public class DaoGroup {
 			}
 		});
 	}
-	
+
 	public List<GroupBoard> getGrpGeul(String grpName) { // 그룹명으로 게시글정보 가져오기
-		List<GroupBoard> grpGeul = jdbcTemplate.query("select * from groupBoard where grpName = ? " +" order by brdRegDate desc",
+		List<GroupBoard> grpGeul = jdbcTemplate.query(
+				"select * from groupBoard where grpName = ? " + " order by brdRegDate desc",
 				new RowMapper<GroupBoard>() {
 					public GroupBoard mapRow(ResultSet rs, int rowNum) throws SQLException {
-						GroupBoard groupBoard = new GroupBoard(rs.getString("brdWriter"),
-								rs.getString("brdTitle"), rs.getString("brdContent"), rs.getString("brdThumbnail"), rs.getTimestamp("brdRegDate"));
+						GroupBoard groupBoard = new GroupBoard(rs.getString("brdWriter"), rs.getString("brdTitle"),
+								rs.getString("brdContent"), rs.getString("brdThumbnail"),
+								rs.getTimestamp("brdRegDate"));
 						groupBoard.setBrdSeq(rs.getInt("brdSeq"));
 						return groupBoard;
 					}
 				}, grpName);
 		return grpGeul;
 	}
-	
-	public void writeGroupBoard(final GroupWriteCommand groupWriteCommand, final String groupName) { // 그룹 게시글 추가
+
+	public void writeGroupBoard(final GroupWriteCommand groupWriteCommand, final String groupName) { // 그룹
+																										// 게시글
+																										// 추가
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement pstmt = con.prepareStatement("insert into GROUPBOARD values(seq_board.nextval, ?, ?, ?, sysdate, ?, ?)");
+				PreparedStatement pstmt = con
+						.prepareStatement("insert into GROUPBOARD values(seq_board.nextval, ?, ?, ?, sysdate, ?, ?)");
 
 				pstmt.setString(1, groupWriteCommand.getWriter());
 				pstmt.setString(2, groupWriteCommand.getWriteTitle());
@@ -228,19 +251,20 @@ public class DaoGroup {
 			}
 		});
 	}
-	
-	public List<Group> myGroupThumbnail(String userNick) { // 그룹 안에서 가입한 그룹 보기(썸네일)
+
+	public List<Group> myGroupThumbnail(String userNick) { // 그룹 안에서 가입한 그룹
+															// 보기(썸네일)
 		List<Group> results = jdbcTemplate
 				.query("select gj.grpname, gi.grpthumbnail from groupJoin gj join groupInfo gi "
-					+ "on gj.grpname=gi.grpname where gj.usernick=? and rownum <= 6", new RowMapper<Group>() {
-						public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
-							Group group = new Group(rs.getString("grpName"), rs.getString("grpThumbnail"));
-							return group;
-						}
-					}, userNick);
+						+ "on gj.grpname=gi.grpname where gj.usernick=? and rownum <= 6", new RowMapper<Group>() {
+							public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
+								Group group = new Group(rs.getString("grpName"), rs.getString("grpThumbnail"));
+								return group;
+							}
+						}, userNick);
 		return results;
 	}
-	
+
 	public void deleteGroupGeul(final GroupDeleteCommand grpDelCmd) {
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
@@ -252,5 +276,5 @@ public class DaoGroup {
 			}
 		});
 	}
-	
+
 }

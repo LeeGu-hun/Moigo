@@ -14,3 +14,6 @@ select * from groupjoin grpj, groupInfo grpi where grpj.grpname = grpi.grpname a
 select * from market order by MKTREGDATE desc
 
 select gj.grpname, gi.grpthumbnail from groupJoin gj join groupInfo gi on gj.grpname=gi.grpname where gj.usernick='닉네임' and rownum <= 6;
+
+
+select count(*) grpName from groupInfo where grpName='소고기타다끼';

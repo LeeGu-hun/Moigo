@@ -18,24 +18,46 @@
 	href="<%=request.getContextPath()%>/css/joinform.css" />
 <meta http-equiv="Content-Type" content="text/html; " charset=UTF-8">
 <script>
-function grpNameCheck()
-{
- var objEv = event.srcElement;
- var num ="{}[]()<>?_|~`@#$%^&*-+\"'\\/ ";    //입력을 막을 특수문자 기재.
- event.returnValue = true;
-  
- for (var i=0;i<objEv.value.length;i++)
- {
- if(-1 != num.indexOf(objEv.value.charAt(i)))
- event.returnValue = false;
- }
-  
- if (!event.returnValue)
- {
-  alert("특수문자는 입력하실 수 없습니다.");
-  objEv.value="";
- }
-} 
+	function grpNameCheck() {
+		var objEv = event.srcElement;
+		var num = "{}[]()<>?_|~`@#$%^&*-+\"'\\/ "; //입력을 막을 특수문자 기재.
+		event.returnValue = true;
+
+		for (var i = 0; i < objEv.value.length; i++) {
+			if (-1 != num.indexOf(objEv.value.charAt(i)))
+				event.returnValue = false;
+		}
+
+		if (!event.returnValue) {
+			alert("특수문자는 입력하실 수 없습니다.");
+			objEv.value = "";
+		}
+	}
+
+	function grpNameConfirm() {
+		var grpNameConfirm = $("#grpName").val();
+
+		if (grpNameConfirm == "") {
+			alert("모임명을 입력해주세요.");
+		} else {
+
+			$.ajax({
+				type : "POST",
+				url : 'grpNameConfirm',
+				data : "grpNameConfirm=" + grpNameConfirm,
+				success : result
+			});
+		}
+
+	}
+
+	function result(msg) {
+		if (msg.trim() == "1") {
+			$("#grpNameConfirmResult").html('이미 사용중입니다.');
+		} else {
+			$("#grpNameConfirmResult").html('사용가능합니다.');
+		}
+	}
 </script>
 <title>Moigo</title>
 </head>
@@ -60,61 +82,45 @@ function grpNameCheck()
 					<br>
 					<table id="groupTable">
 						<tr>
-							<td class="tdleft">
-								카테고리 <font color="red"><b>*</b></font>:
+							<td class="tdleft">카테고리 <font color="red"><b>*</b></font>:
 							</td>
-							<td class="tdRight">
-								<select id="cate" name="cate" style="height: 23px;">
+							<td class="tdRight"><select id="cate" name="cate"
+								style="height: 23px;">
 									<option value="" selected>카테고리를 선택하세요</option>
 									<c:forEach var="data" items="${requestScope.CATE}">
 										<option value='<c:out value="${data.CATEID}" />'>
 											<c:out value="${data.CATENAME}" />
 										</option>
 									</c:forEach>
-								</select>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdLeft"><input type="hidden" id="grpNameChk"
+								value="N" /> 모임명 <font color="red"><b>*</b></font> :</td>
+							<td class="tdRight"><input type="text" id="grpName"
+								name="grpName" onKeyDown="grpNameCheck();" /> <input
+								type="button" onclick="grpNameConfirm();" value="중복확인" /> <span
+								id="grpNameConfirmResult"></span></td>
+						</tr>
+						<tr>
+							<td class="tdLeft">모임소개 <font color="red"><b>*</b></font>:
+							</td>
+							<td><textarea cols="30" rows="5" id="grpIntro"
+									name="grpIntro" style="resize: none;"></textarea><br>(30자이내)
 							</td>
 						</tr>
 						<tr>
-							<td class="tdLeft">
-								<input type="hidden" id="grpNameChk" value="N" />
-								모임명 <font color="red"><b>*</b></font>
-								: 
-							</td>
-							<td class="tdRight">
-								<input type="text" id="grpName" name="grpName" onKeyDown="grpNameCheck();"/>
-								<input type="button" id="chkGrpName" value="중복확인" />
-							</td>							
+							<td class="tdLeft">모임장 :</td>
+							<td><input type="text" disabled="disabled"
+								value="${authInfo.userNick }" /></td>
+							<td><input type="hidden" id="grpLeader" name="grpLeader"
+								value="${authInfo.userNick }" /></td>
 						</tr>
 						<tr>
-							<td class="tdLeft">
-								모임소개 <font color="red"><b>*</b></font>:
-							</td>
-							<td>
-								<textarea cols="30" rows="5" id="grpIntro"
-								name="grpIntro" style="resize: none;"></textarea><br>(30자이내)
-							</td> 
-						</tr>
-						<tr>
-							<td class="tdLeft">
-								모임장 : 
-							</td>
-							<td>
-								<input type="text" disabled="disabled"
-								value="${authInfo.userNick }" />
-							</td>
-							<td>
-								<input type="hidden" id="grpLeader" name="grpLeader"
-								value="${authInfo.userNick }" />
-							</td>							
-						</tr>
-						<tr>
-							<td class="tdLeft">
-								모임 공개 여부 :
-							</td>
-							<td class="tdRight">
-								<input type="radio" id="grpOpen" name="grpOpen" value="Y" />공개 
-								<input type="radio" id="grpOpen" name="grpOpen" value="N" />비공개
-							</td>
+							<td class="tdLeft">모임 공개 여부 :</td>
+							<td class="tdRight"><input type="radio" id="grpOpen"
+								name="grpOpen" value="Y" />공개 <input type="radio" id="grpOpen"
+								name="grpOpen" value="N" />비공개</td>
 						</tr>
 						<tr>
 							<td>모임이미지 : <input type="file" id="grpThumbnail"
@@ -122,10 +128,10 @@ function grpNameCheck()
 							</td>
 						</tr>
 						<tr>
-							<td id="tdbottom" colspan="3">
-							<input type="submit" id="btnbottom" value="모임개설" />
-							<input type="button" id="btnbottom" value="취소" onclick="location.href = '/moigo/group';" />
-							</td>
+							<td id="tdbottom" colspan="3"><input type="submit"
+								id="btnbottom" value="모임개설" /> <input type="button"
+								id="btnbottom" value="취소"
+								onclick="location.href = '/moigo/group';" /></td>
 						</tr>
 					</table>
 				</form>
