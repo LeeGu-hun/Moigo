@@ -17,3 +17,6 @@ select gj.grpname, gi.grpthumbnail from groupJoin gj join groupInfo gi on gj.grp
 
 
 select count(*) grpName from groupInfo where grpName='소고기타다끼';
+
+
+select gj.grpname, gi.grpthumbnail from groupJoin gj join groupInfo gi on gj.grpname=gi.grpname where gj.usernick='닉네임';
