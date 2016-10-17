@@ -81,17 +81,12 @@ public class controllerGroup {
 	
 	@RequestMapping("/grpNameConfirm") /* 그룹명 중복확인 */
 	public String addGroup(HttpServletRequest request, Model model) {
-		
 		String str = request.getParameter("grpNameConfirm");
-		System.out.println("컨트롤러:"+str);
 		int result = daoGroup.getGrpNameConfirm(str);
-		System.out.println("컨트롤러result:"+result);
 		model.addAttribute("result", result);
 		return "group/groupAddResult";
 	}
 	
-	
-
 	@RequestMapping("/add") /* 그룹개설 */
 	public String add(GroupAddCommand groupAddCommand, HttpSession session, HttpServletRequest request) {
 		String upload = "file";

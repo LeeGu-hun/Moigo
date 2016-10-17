@@ -142,13 +142,9 @@ public class DaoGroup {
 
 	public int getGrpNameConfirm(String grpNameConfirm) { /* 모임명 중복확인 */
 		int check_count = 0;
-		System.out.println("다오,넘어왔니?"+grpNameConfirm);
 		check_count = jdbcTemplate.queryForObject("select count(*) grpName from groupInfo where grpName=?",
 				Integer.class, grpNameConfirm);
-		
-		System.out.println("다오,중복확인결과:"+check_count);
-		
-			return check_count;
+		return check_count;
 	}
 
 	public void addGroup(final GroupAddCommand groupAddCommand) { // 그룹추가
@@ -256,7 +252,7 @@ public class DaoGroup {
 															// 보기(썸네일)
 		List<Group> results = jdbcTemplate
 				.query("select gj.grpname, gi.grpthumbnail from groupJoin gj join groupInfo gi "
-						+ "on gj.grpname=gi.grpname where gj.usernick=? and rownum <= 6", new RowMapper<Group>() {
+						+ "on gj.grpname=gi.grpname where gj.usernick=?", new RowMapper<Group>() {
 							public Group mapRow(ResultSet rs, int rowNum) throws SQLException {
 								Group group = new Group(rs.getString("grpName"), rs.getString("grpThumbnail"));
 								return group;

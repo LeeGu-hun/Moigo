@@ -19,6 +19,7 @@
 <meta http-equiv="Content-Type" content="text/html; " charset=UTF-8">
 <script>
 	function grpNameCheck() {
+		$("#confirmBtn").val("0");
 		var objEv = event.srcElement;
 		var num = "{}[]()<>?_|~`@#$%^&*-+\"'\\/ "; //입력을 막을 특수문자 기재.
 		event.returnValue = true;
@@ -35,6 +36,7 @@
 	}
 
 	function grpNameConfirm() {
+		$("#confirmBtn").val("1");
 		var grpNameConfirm = $("#grpName").val();
 
 		if (grpNameConfirm == "") {
@@ -56,8 +58,26 @@
 			$("#grpNameConfirmResult").html('이미 사용중입니다.');
 		} else {
 			$("#grpNameConfirmResult").html('사용가능합니다.');
+			$("#confirmBtn").val("2");
 		}
 	}
+function grpAddSubmit() {
+	var grpNameConfirm = $("#grpName").val();
+	var grpIntro = $("#grpIntro").val();
+	var cate = $("#cate").val();
+	var confirmBtn = $("#confirmBtn").val();
+	if (grpNameConfirm == "") {
+		alert("모임명을 입력해주세요.");
+	} else if (confirmBtn == "0") {
+		alert("중복확인을 해주세요.");
+	} else if (cate == "") {
+		alert("카테고리를 선택해주세요.");
+	} else if (grpIntro == "") {
+		alert("그룹 소개를 입력해주세요.");
+	} else if (confirmBtn == "2") {
+		document.groupAdd_form.submit();
+	}
+}
 </script>
 <title>Moigo</title>
 </head>
@@ -84,8 +104,8 @@
 						<tr>
 							<td class="tdleft">카테고리 <font color="red"><b>*</b></font>:
 							</td>
-							<td class="tdRight"><select id="cate" name="cate"
-								style="height: 23px;">
+							<td class="tdRight" style="width: 420px;"><select id="cate"
+ +								name="cate" style="height: 23px;">
 									<option value="" selected>카테고리를 선택하세요</option>
 									<c:forEach var="data" items="${requestScope.CATE}">
 										<option value='<c:out value="${data.CATEID}" />'>
@@ -96,42 +116,42 @@
 						</tr>
 						<tr>
 							<td class="tdLeft"><input type="hidden" id="grpNameChk"
-								value="N" /> 모임명 <font color="red"><b>*</b></font> :</td>
+								value="N" /> 모임명 <font color="red"><b>*</b></font> </td>
 							<td class="tdRight"><input type="text" id="grpName"
 								name="grpName" onKeyDown="grpNameCheck();" /> <input
 								type="button" onclick="grpNameConfirm();" value="중복확인" /><br> <span
 								id="grpNameConfirmResult" style="color: red;"></span></td>
 						</tr>
 						<tr>
-							<td class="tdLeft">모임소개 <font color="red"><b>*</b></font>:
+							<td class="tdLeft">모임소개 <font color="red"><b>*</b></font>
 							</td>
 							<td><textarea cols="30" rows="5" id="grpIntro"
 									name="grpIntro" style="resize: none;"></textarea><br>(30자이내)
 							</td>
 						</tr>
 						<tr>
-							<td class="tdLeft">모임장 :</td>
+							<td class="tdLeft">모임장 </td>
 							<td><input type="text" disabled="disabled"
 								value="${authInfo.userNick }" /></td>
 							<td><input type="hidden" id="grpLeader" name="grpLeader"
 								value="${authInfo.userNick }" /></td>
 						</tr>
 						<tr>
-							<td class="tdLeft">모임 공개 여부 :</td>
-							<td class="tdRight"><input type="radio" id="grpOpen"
-								name="grpOpen" value="Y" />공개 <input type="radio" id="grpOpen"
-								name="grpOpen" value="N" />비공개</td>
+							<td class="tdLeft">모임 공개 여부 </td>
+							<td class="tdRight">
+								<input type="radio" id="grpOpen" name="grpOpen" value="Y" checked="checked"/>공개 
+								<input type="radio" id="grpOpen" name="grpOpen" value="N" />비공개
+							</td>
 						</tr>
 						<tr>
-							<td>모임이미지 : <input type="file" id="grpThumbnail"
+							<td>모임이미지 <input type="file" id="grpThumbnail"
 								name="grpThumbnail">
 							</td>
 						</tr>
 						<tr>
-							<td id="tdbottom" colspan="3"><input type="submit"
-								id="btnbottom" value="모임개설" /> <input type="button"
-								id="btnbottom" value="취소"
-								onclick="location.href = '/moigo/group';" /></td>
+							<td id="tdbottom" colspan="3">
+								<input type="button" id="btnbottom" value="모임개설" onclick="grpAddsubmit();" /> 
+								<input type="button" id="btnbottom" value="취소"	onclick="location.href = '/moigo/group';" /></td>
 						</tr>
 					</table>
 				</form>
