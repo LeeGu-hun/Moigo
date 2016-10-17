@@ -276,5 +276,31 @@ public class DaoGroup {
 			}
 		});
 	}
+	
+	public GroupBoard getGeulInfo(GroupDeleteCommand grpDelAndModiCmd) { // 게시글 번호로 게시글정보찾기
+		GroupBoard geulInfo = jdbcTemplate.queryForObject("select * from groupboard where brdseq = ? ",
+				new RowMapper<GroupBoard>() {
+					public GroupBoard mapRow(ResultSet rs, int rowNum) throws SQLException {
+						GroupBoard groupBoard = new GroupBoard(rs.getString("brdTitle"), rs.getString("brdContent"), rs.getString("brdThumbnail"), rs.getString("grpName"), rs.getInt("brdseq"));	
+						return groupBoard;
+					}
+				}, grpDelAndModiCmd.getBrdSeq());
+		return geulInfo;
+	}
+	
+	public void writeModify(final GroupBoard groupBoard) { // 게시글번호로 게시글 수정
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement pstmt = con
+						.prepareStatement("update GROUPBOARD set brdtitle = ? , brdcontent = ?, brdthumbnail = ? where brdseq = ?");
 
+				pstmt.setString(1, groupBoard.getBrdTitle());
+				pstmt.setString(2, groupBoard.getBrdContent());
+				pstmt.setString(3, groupBoard.getBrdThumbnail());
+				pstmt.setInt(4, groupBoard.getBrdSeq());
+
+				return pstmt;
+			}
+		});
+	}
 }

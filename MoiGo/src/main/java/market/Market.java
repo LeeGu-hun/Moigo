@@ -6,6 +6,10 @@ public class Market {
 
 	String mktCode, mktSeller, mktPrName, mktPrice, mktContent, grpName, mktThumbnail;
 	Date mktRegDate;
+	
+	public Market() {
+		super();
+	}
 
 	public Market(String mktCode, String mktSeller, String mktPrName, String mktPrice, String mktContent,
 			String grpName, String mktThumbnail, Date mktRegDate) {
@@ -19,7 +23,7 @@ public class Market {
 		this.mktRegDate = mktRegDate;
 
 	}
-
+	
 	public String getMktCode() {
 		return mktCode;
 	}

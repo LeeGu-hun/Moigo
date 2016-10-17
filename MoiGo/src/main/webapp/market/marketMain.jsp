@@ -169,16 +169,20 @@
 			</div>
 			<br><p><h1>마켓</h1></p><br><br>
 			<c:forEach var="prd" items="${allProducts }">
-				<div class="products" style="width:400px; height: 200px; float: left; margin-left: 20px; margin-bottom: 20px;">
-					<div style="float: right; width: 240px;">
-						<div style="padding-top: 5px;">
+				<div class="products" style="width:400px; height: 210px; float: left; margin-left: 20px; margin-bottom: 20px;">
+						<div style="width: 400px; height: 30px; padding-top: 5px;">
 							<c:if test="${authInfo.userNick == prd.mktSeller }">
-								<form action="market/deleteProduct" method="post">
+								<form action="market/modify" method="post" style="width: 66px; float: right;">
+									<input type="hidden" id="mktCode" name="mktCode" value="${prd.mktCode }"/>
+									<input type="submit" value="수정하기" class="MyButton"/>
+								</form>
+								<form action="market/deleteProduct" method="post" style="float: right;">
 									<input type="hidden" id="mktCode" name="mktCode" value="${prd.mktCode }" />
 									<input type="submit" style="float: right;" value="삭제하기" class="MyButton" />
-								</form>
+								</form>	
 							</c:if><br>
-						</div>	
+						</div>
+					<div style="float: right; padding-top: 10px; width: 240px;">
 						· 등록일 : ${prd.mktRegDate }<br>
 						· 판매번호 : <a href="<c:url value='/market/Product/${prd.mktCode }' />">${prd.mktCode }</a><br>
 						· 그룹명 : ${prd.grpName } <br>
@@ -189,10 +193,11 @@
 					</div>
 					<c:if test="${empty prd.mktThumbnail }"><br></c:if>
 					<c:if test="${!empty prd.mktThumbnail }">
-						<div style="text-align: right; padding-top: 7px; padding-right: 30px;">
-							<br>
-							<img src="<%=request.getContextPath() %>/file/${prd.mktThumbnail}" style="width: 100px; height: 100px; float: left; padding-left: 25px; padding-top: 10px;">
-						</div><br>
+					<div style="float: left; height: 200px;">
+							
+							<img src="<%=request.getContextPath() %>/file/${prd.mktThumbnail}" style="width: 100px; height: 100px; float: left; padding-left: 25px; padding-top: 30px;">
+					</div>	
+						<br>
 					</c:if>
 				</div>
 			</c:forEach>

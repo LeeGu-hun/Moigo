@@ -17,3 +17,8 @@ select gj.grpname, gi.grpthumbnail from groupJoin gj join groupInfo gi on gj.grp
 
 
 select count(*) grpName from groupInfo where grpName='소고기타다끼';
+
+update GROUPBOARD set brdtitle='1번 글입니다 ㅇㅇ', brdcontent='1번 내용입니다 ㅇㅇ', brdthumbnail='messi.jpg' where brdseq = 136; 
+
+update MARKET set mktprname = ? , mktprice = ?, mktcontent = ?, grpname = ?, mktthumbnail = ?  where mktcode = ? ;
+ 

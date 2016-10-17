@@ -23,7 +23,24 @@
 	top: 0;
 }
 
+#maskModi {
+	position: absolute;
+	z-index: 9000;
+	background-color: #000;
+	display: none;
+	left: 0;
+	top: 0;
+}
+
 .window {
+	display: none;
+	position: absolute;
+	left: 550px;
+	top: 200px;
+	z-index: 10000;
+}
+
+.windowModi {
 	display: none;
 	position: absolute;
 	left: 550px;
@@ -45,7 +62,7 @@
 </style>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
-	function wrapWindowByMask() {
+ 	function wrapWindowByMask() {  // 게시글 등록창
 		// 화면의 높이와 너비를 구하기
 		var maskHeight = $(document).height();
 		var maskWidth = $(window).width();
@@ -58,10 +75,12 @@
 		//		$('#mask').fadeIn(1000);      
 		$('#mask').fadeTo("fast", 0.7);
 		// 글쓰기 div 띄우기
-		$('.window').show();
-	}
+		$('.window').show(); 
+	
+	}	
+
 	$(document).ready(function() {
-		// 어두운 화면 띄우기
+ 		// 어두운 화면 띄우기
 		$('.openMask').click(function(e) {
 			e.preventDefault();
 			wrapWindowByMask();
@@ -81,12 +100,7 @@
 		// 어두운 화면 클릭시 아무 반응 없음.		
 		$('#mask').one('touchstart', function() {
 			$(this).unbind('click');
-		});
-	});
-
-	$(document).ready(function() {
-		
-		// z-index
+		}); 
 	});
 </script>
 <link rel="stylesheet" type="text/css"
@@ -194,10 +208,17 @@
 								</div>
 								<div id="brdPic">
 										<c:if test="${authInfo.userNick == geulInfo.getBrdWriter() }">
-											<form action="${grpInfo.grpName }/delete" method="post" style="padding-left: 100px; padding-top: 2px;">
-	 											<input type="hidden" id="brdSeq" name="brdSeq" value="${geulInfo.getBrdSeq() }"/>
-	 											<input type="submit" value="삭제하기" class="MyButton"/>
-											</form>
+											<div style="float: right; padding-top: 5px; padding-bottom: 15px; padding-right: 5px;">
+												<form action="${grpInfo.grpName }/modify" method="post" style="width: 66px; float: left;">
+		 											<input type="hidden" id="brdSeq" name="brdSeq" value="${geulInfo.getBrdSeq() }"/>
+		 											<input type="submit" value="수정하기" class="MyButton"/>
+
+												</form>
+												<form action="${grpInfo.grpName }/delete" method="post" style="width: 66px; float: left;">
+		 											<input type="hidden" id="brdSeq" name="brdSeq" value="${geulInfo.getBrdSeq() }"/>
+		 											<input type="submit" value="삭제하기" class="MyButton"/>
+												</form>
+											</div>
 										</c:if>
 										<c:if test="${authInfo.userNick != geulInfo.getBrdWriter() }">
 											<div style="width: 30.67px; height: 22px;"></div>
@@ -232,8 +253,8 @@
 						</c:forEach>
 					</div>
 				</div>
-				<div id="mask"></div>
-				<!-- 화면 불투명에 쓸 div -->
+				<div id="mask"></div>	<!-- 화면 불투명에 쓸 div -->
+				<!-- 게시글 등록 div -->
 				<div class="window">
 					<!-- writeBoard -->
 					<div id="writeBoard" style="background: white;">
@@ -264,6 +285,7 @@
 						</form>
 					</div>
 				</div>
+				
 			</c:if>
 			
 			<!-- 가입했을때 -->
