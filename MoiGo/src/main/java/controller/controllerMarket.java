@@ -23,7 +23,7 @@ import login.AuthInfo;
 import market.Market;
 import market.MarketAddProductCommand;
 import market.MarketDeleteProductCommand;
-import user.User;
+import market.MarketModifyProductCommand;
 
 
 @Controller
@@ -99,7 +99,7 @@ public class controllerMarket {
 	}
 	
 	@RequestMapping("/admin") /* 관리자 페이지 */
-	public String admin(HttpServletRequest request, Model model){
+	public String admin(HttpServletRequest request, Model model, HttpSession session){
 		String searchTxt = request.getParameter("txt");
 		String type = request.getParameter("type");
 		if (type!=null) {
@@ -117,4 +117,41 @@ public class controllerMarket {
 		}
 		return "admin";
 	}
+	
+	@RequestMapping(value="/market/modify")
+	public String modiProductForm(MarketDeleteProductCommand mktDelProCmd, Model model, HttpSession session){
+		Market Proinfo = daoMarket.getProInfo(mktDelProCmd);
+		model.addAttribute("Proinfo" , Proinfo);
+		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
+		if (user!=null) {
+			List<Group> groupName = daoGroup.getJoinGrp(user.getUserNick());
+			model.addAttribute("groupName", groupName);			
+		}
+		return "market/marketProductModify";
+	}
+	
+	@RequestMapping(value="/market/modiProduct")
+	public String modifyProduct(MarketModifyProductCommand mktModiProCmd, HttpServletRequest request){
+		String upload = "file";
+		ServletContext sc = request.getServletContext();
+		String uploadPath = sc.getRealPath("/") + upload;
+		System.out.println(uploadPath);
+		int size = 10 * 1024 * 1024;
+		try {
+			MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "UTF-8",
+					new DefaultFileRenamePolicy());
+			mktModiProCmd.setModiProName(multi.getParameter("modiProName"));
+			mktModiProCmd.setModiProPrice(multi.getParameter("modiProPrice"));
+			mktModiProCmd.setModiProContent(multi.getParameter("modiProContent"));
+			mktModiProCmd.setGrpName(multi.getParameter("grpName"));
+			mktModiProCmd.setModiProThumbnail(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
+			mktModiProCmd.setMktcode(Integer.parseInt(multi.getParameter("mktCode")));
+			daoMarket.modifyProduct(mktModiProCmd);
+			System.out.println("게시글 수정 완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/market";
+	}
+	
 }
