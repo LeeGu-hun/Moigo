@@ -21,7 +21,7 @@
 		<div id="marketBuy">
 		<center>
 		<br>
-		<img src="<%=request.getContextPath() %>/file/${prod.mktThumbnail}"><br>
+		<img src="<%=request.getContextPath() %>/file/${prod.mktThumbnail}" style="max-height: 192px; max-width: 256px;"><br>
 		<br>
 		등록일: ${prod.mktRegDate }<br>
 		판매번호: ${prod.mktCode }<br>

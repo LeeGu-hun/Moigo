@@ -639,3 +639,6 @@ position: absolute;
    text-align: center;
    font-size: 20px;
 }
+.errMsg{
+	color: red;
+}

@@ -17,9 +17,8 @@ public class RegisterCommandValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		RegisterCommand rc = (RegisterCommand) target;
-		if (rc.getId() == null) {
+		if (rc.getId() == null || rc.getId().equals("")) {
 			errors.rejectValue("id", "required");
-//			ValidationUtils.rejectIfEmpty(errors, "id", "required");
 		} 
 		ValidationUtils.rejectIfEmpty(errors, "password", "required");
 		ValidationUtils.rejectIfEmpty(errors, "confirmPassword", "required");
