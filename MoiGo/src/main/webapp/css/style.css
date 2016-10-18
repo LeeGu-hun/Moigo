@@ -223,7 +223,7 @@ a {
 	float: left;
 	width: 100%;
 	height: auto;  /* calc(100% - 100px); */
-	min-height: 800px;
+	min-height: 1500px;
 	min-width: 1000px;
 	background-color: #fffdf4;
 }
@@ -405,7 +405,7 @@ position: absolute;
 }
 
 #Total {
-	margin-left: calc(50% - 575px);
+	margin-left: calc(50% - 625px);
 	margin-right: calc(50% - 575px);
 }
 
@@ -487,15 +487,18 @@ position: absolute;
 }
 
 #writeBoard {
-	width: 800px;
-	height: 440px;
+	width: 600px;
+	height: 600px;
+	padding-left: 10px;
+	text-align: center;
+	font-size: 20px;
 }
 
 
 #geul {
 	margin-top: 70px;
 	margin-left: 10px;
-	background-color: #fefff4;
+	background-color: #ffffff;
 	width: 630px;
 	height: 220px;
 	border-width:1px;	
@@ -570,6 +573,7 @@ position: absolute;
 	float: left;
 	width: 900px;
 	height: 100%;
+	margin-left: 50px;
 }
 
 .products {
@@ -638,6 +642,31 @@ position: absolute;
    padding-left: 10px;
    text-align: center;
    font-size: 20px;
+}
+#writeBoard3 {
+	width: 800px;
+	height: 440px;
+	height: 540px;
+	padding-left: 10px;
+	text-align: center;
+	font-size: 20px;
+	border: 1px solid #ccc;
+	box-shadow: 1px;
+}
+
+/* 마켓상품수정하기 */
+
+#writeBoard4 {
+	padding-top: 15px;
+	width: 600px;
+	height: 570px;
+	margin-left: 70px;
+	padding-left: 10px;
+	text-align: center;
+	font-size: 20px;
+	border-style:outset;
+    border-color: #ccc;
+    box-shadow: 1px;
 }
 .errMsg{
 	color: red;

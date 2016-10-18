@@ -125,7 +125,7 @@ public class controllerMarket {
 		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
 		if (user!=null) {
 			List<Group> groupName = daoGroup.getJoinGrp(user.getUserNick());
-			model.addAttribute("groupName", groupName);			
+			model.addAttribute("groupName", groupName);
 		}
 		return "market/marketProductModify";
 	}

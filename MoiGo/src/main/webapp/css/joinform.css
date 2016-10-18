@@ -115,33 +115,33 @@ select{
  
  #groupAdd_form{
 	margin-top: 10px;
-	background-color: #ffffff; 
 	width: 605px;
 	height: auto;
 	padding: 20px;
 	color: fafafa;
 }
+
+#groupTable{
+	background-color: #c0c0c0;
+	padding: 20px;
+	border: 0px;
+	width: 600px;
+	color: black;
+	table-layout: fixed;
+	height: 400px;
+}
  
- #groupAdd_form #groupTable{
- 	background-color: #c0c0c0;
- 	padding: 20px;
- 	border: 0px;
- 	width: 600px;
- 	color: black;
- 	table-layout: fixed;
- }
- 
- #grpOpen {
- 	text-align: center;
- }
+#grpOpen {
+	text-align: center;
+}
 
 #groupTable tr{
-	width: 650px;
+	width: 700px;
 }
  
 .tdLeft{
 	text-align: left;
-	width: 120px;	
+	width: 200px;	
 }
  
 #groupTable .tdRight{
@@ -197,9 +197,8 @@ select{
 	padding: 20px;
 	border: 0px;
 	width: 600px;
-	height: 400px;
+	height: 350px;
 	color: black;
-	
 }
 
 #mdleft{
@@ -254,28 +253,27 @@ select{
 
 
 ---
-
+/* 그룹 수정하기 */
 
 #modifyGroup_form{
 	margin-top: 10px;
-	background-color: #353535; 
-	width: 610px;
+	background-color: #ffffff; 
+	width: 605px;
 	height: auto;
 	padding: 20px;
-	color: white;
+	color: #fafafa;
 }
 
 #groupTable{
-	 border-width:5px;	
-    border-style:ridge;
 	background-color: #c0c0c0;
 	margin-top:10px;
-	padding: 20px;
 	border: 0px;
+	padding: 20px;
 	width: 600px;
-	height: 400px;
+	height: 315px;
 	color: black;
-	
+	border-style: ridge;
+	table-layout: fixed;
 }
 
 #moleft{

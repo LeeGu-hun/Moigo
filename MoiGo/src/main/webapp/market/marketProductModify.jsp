@@ -22,16 +22,17 @@
 	<%@include file="/include/header.jsp"%>
 	<%@include file="/include/loginBox2.jsp"%>
 	<div id="content">
-		<div id="writeBoard" style="background: grey; position: absolute; left: 550px; top: 200px;">	
+		<div id="writeBoard4" style="background: white; position: absolute; left: 550px; top: 150px;">	
 			<form action="/moigo/market/modiProduct" method="post" enctype="multipart/form-data">
-			
+				<h1>상품 수정하기</h1>
+				<br><br>
 				판매자 : ${authInfo.userNick }<br> 
 				<input type="hidden" id="mktSeller" name="mktSeller" value="${authInfo.userNick }">
 				<input type="hidden" id="mktCode" name="mktCode" value="${Proinfo.mktCode }"/>
-				상품명 : <input type="text" id="modiProName" name="modiProName" value="${Proinfo.mktPrName }" /><br>
+				상품명 : <input type="text" id="modiProName" name="modiProName" value="${Proinfo.mktPrName }" style="padding: 3px;" /><br>
 				가격 : <input type="text" id="modiProPrice" name="modiProPrice" 
-						onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" value="${Proinfo.mktPrice }" style="ime-mode:disabled;" /><br>
-				내용 : <input type="text" id="modiProContent" name="modiProContent" value="${Proinfo.mktContent }"/><br>
+						onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" value="${Proinfo.mktPrice }" style="ime-mode:disabled; padding: 3px; " /><br>
+				내용 : <input type="text" id="modiProContent" name="modiProContent" value="${Proinfo.mktContent }" style="padding: 4px;"/><br>
 				그룹명 : <select id="grpName" name="grpName" style="height: 23px;">
 					<option value="" selected>그룹을 선택하세요</option>
 						<c:forEach var="data" items="${requestScope.groupName}">
@@ -40,8 +41,8 @@
 							</option>
 						</c:forEach>
 						</select><br>
-				상품이미지 : <input type="file" id="modiProThumbnail" name="modiProThumbnail" style="margin-right: 20px;">		
-							 <input type="submit" value="상품 등록하기" />
+				상품이미지 : <input type="file" id="modiProThumbnail" name="modiProThumbnail" style="margin-right: 20px;" class="MyButton">		
+							 <input type="submit" value="상품 등록하기" class="MyButton" />
 			</form>
 		</div>	
 	</div>

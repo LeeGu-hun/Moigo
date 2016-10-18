@@ -22,7 +22,7 @@
 	<%@include file="/include/header.jsp"%>
 	<%@include file="/include/loginBox2.jsp"%>
 	<div id="content">
-		<div id="writeBoard" style="background: grey; position: absolute; left: 550px; top: 200px;">	
+		<div id="writeBoard3" style="background: #ffffff; position: absolute; left: 550px; top: 200px;">	
 			<form action="/moigo/group/${geulInfo.grpName }/groupWriteModify" method="post" enctype="multipart/form-data">
 				<input type="hidden" id="grpName" name="grpName" value="${geulInfo.grpName }"/>
 				<input type="hidden" id="brdSeq" name="brdSeq" value="${geulInfo.brdSeq }"/>
@@ -30,14 +30,14 @@
 					<input type="text" id="brdTitle" name="brdTitle" value="${geulInfo.brdTitle }" />
 				</div><br>	
 				<div style="padding-left: 20px;">
-					<textarea cols="105" rows="20" id="brdContent"
+					<textarea cols="80" rows="20" id="brdContent"
 						name="brdContent" style="resize: none;">${geulInfo.brdContent }</textarea>
 				</div><br>
 				<div style="padding-left: 20px;">
-					<input type="file" id="brdThumbnail" name="brdThumbnail" value="<%=request.getContextPath() %>/file/${geulIfno.brdThumbnail }"></input>
+					<input type="file" id="brdThumbnail" name="brdThumbnail" class="MyButton" value="<%=request.getContextPath() %>/file/${geulIfno.brdThumbnail }"></input>
 				</div>
 				<div style="padding-right: 30px;">
-					<input type="submit" style="float: right;" value="게시하기" />
+					<input type="submit" style="float: right;" value="게시하기" class="MyButton"/>
 				</div>				
 			</form>
 		</div>	

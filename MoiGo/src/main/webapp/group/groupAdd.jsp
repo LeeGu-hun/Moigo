@@ -102,7 +102,7 @@ function grpAddSubmit() {
 					<br>
 					<table id="groupTable">
 						<tr>
-							<td class="tdleft">카테고리 <font color="red"><b>*</b></font>:
+							<td class="tdleft">카테고리 <font color="red"><b>*</b></font>
 							</td>
 							<td class="tdRight" style="width: 420px;"><select id="cate"
  +								name="cate" style="height: 23px;">
@@ -132,9 +132,9 @@ function grpAddSubmit() {
 						<tr>
 							<td class="tdLeft">모임장 </td>
 							<td><input type="text" disabled="disabled"
-								value="${authInfo.userNick }" /></td>
+								value="${authInfo.userNick }" style="padding: 3px;" /></td>
 							<td><input type="hidden" id="grpLeader" name="grpLeader"
-								value="${authInfo.userNick }" /></td>
+								value="${authInfo.userNick }" style="padding: 3px;" /></td>
 						</tr>
 						<tr>
 							<td class="tdLeft">모임 공개 여부 </td>

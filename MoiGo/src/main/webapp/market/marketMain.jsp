@@ -139,7 +139,7 @@
 			<div id="product" style="width: 900px;">
 				<div id="mask"></div>
 				<!-- 화면 불투명에 쓸 div -->
-				<div class="window">
+				<div class="window" style="padding-left: 150px; ">
 					<!-- writeBoard -->
 					<div id="writeBoard" style="background: white;">
 						<div class="divClose">
@@ -148,12 +148,17 @@
 						<br>
 						<form action="market/addProduct" method="post"
 							enctype="multipart/form-data">
+							<h2 style="padding-left: 50px;">상품 등록하기</h2><br>
 							판매자 : ${authInfo.userNick }<br> <input type="hidden"
 								id="mktSeller" name="mktSeller" value="${authInfo.userNick }">
-							상품명 : <input type="text" id="productName" name="productName" /><br>
-							가격 : <input type="text" id="productPrice" name="productPrice" 
-								onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled;" /><br>
-							내용 : <input type="text" id="productContent" name="productContent" /><br>
+							상품명 : <input type="text" id="productName" name="productName" style="padding: 4px;"/><br>
+							&nbsp;&nbsp;가격 : <input type="text" id="productPrice" name="productPrice" 
+								onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled; padding: 4px;" /><br>
+							&nbsp;&nbsp;
+							<table style="width: 600px; padding-left: 180px;"> 
+								<tr><td style="margin-left: 60px; font-size: 20px; width: 60px;">내용 : 
+								 	<td><textarea cols="30" rows="5" style="resize: none; padding: 5px;" id="productContent" name="productContent">
+							 	</textarea></td></tr></table><br>
 							그룹명 : <select id="grpName" name="grpName" style="height: 23px;">
 								<option value="" selected>그룹을 선택하세요</option>
 								<c:forEach var="data" items="${requestScope.groupName}">
@@ -170,7 +175,7 @@
 			<br><p><h1>마켓</h1></p><br><br>
 			<c:forEach var="prd" items="${allProducts }">
 				<div class="products" style="width:400px; height: 210px; float: left; margin-left: 20px; margin-bottom: 20px;">
-						<div style="width: 400px; height: 30px; padding-top: 5px;">
+						<div style="float: right; padding-top: 10px; width: 240px;">
 							<c:if test="${authInfo.userNick == prd.mktSeller }">
 								<form action="market/deleteProduct" method="post" style="float: right;">
 									<input type="hidden" id="mktCode" name="mktCode" value="${prd.mktCode }"/>
@@ -191,12 +196,26 @@
 						· 가격 : ${prd.mktPrice } 원
 						&nbsp;<p id="mktCut">· 내용 : ${prd.mktContent } </p><br>
 					</div>
-					<c:if test="${empty prd.mktThumbnail }"><br></c:if>
+					<c:if test="${empty prd.mktThumbnail }"></c:if>
 					<c:if test="${!empty prd.mktThumbnail }">
-					<div style="float: left; height: 200px;">
-							
-							<img src="<%=request.getContextPath() %>/file/${prd.mktThumbnail}" style="width: 100px; height: 100px; float: left; padding-left: 25px; padding-top: 30px;">
-					</div>	
+					<div style="text-align: right; padding-top: 7px; padding-right: 30px;">
+							<br>
+							<img src="<%=request.getContextPath() %>/file/${prd.mktThumbnail}" style="width: 100px; height: 100px; float: left; padding-left: 25px; padding-top: 10px;">
+						</div>
+						<div style="padding-top: 25px;">
+							<c:if test="${authInfo.userNick == prd.mktSeller }">
+							<div style="padding-top: 25px;">
+								<form action="market/modify" method="post" style="width: 66px; float: left;">
+									<input type="hidden" id="mktCode" name="mktCode" value="${prd.mktCode }"/>
+									<input type="submit" value="수정하기" class="MyButton"/>
+								</form>
+								<form action="market/deleteProduct" method="post" style="float: right;">
+									<input type="hidden" id="mktCode" name="mktCode" value="${prd.mktCode }" />
+									<input type="submit" style="float: right;" value="삭제하기" class="MyButton" />
+								</form>
+							</div>		
+							</c:if><br>
+						</div>
 						<br>
 					</c:if>
 				</div>

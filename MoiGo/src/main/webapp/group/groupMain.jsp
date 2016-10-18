@@ -76,8 +76,7 @@
 		$('#mask').fadeTo("fast", 0.7);
 		// 글쓰기 div 띄우기
 		$('.window').show(); 
-	
-	}	
+	}
 
  	$('.openMask').click(function(e) {
 		e.preventDefault();
@@ -224,8 +223,7 @@
 				<div id="Total" style="padding-top: 15px;">
 					<div id="addBtn">
 						<center>
-							<a href="#" class="openMask"
-								style="font-size: 60px; font-weight: bold; text-align: center; line-height: 70px;">＋</a>
+							<a href="#" class="openMask" style="font-size: 60px; font-weight: bold; text-align: center; line-height: 70px;">＋</a>
 						</center>
 					</div>
 					<div id="grpCalendar">
@@ -361,7 +359,7 @@
 				<!-- 화면 불투명에 쓸 div -->
 				<div class="window">
 					<!-- writeBoard -->
-					<div id="writeBoard" style="background: white;">
+					<div id="writeBoard2" style="background: white;">
 						<div class="divClose">
 							<a href="#" class="close">Close</a>
 						</div>
@@ -372,7 +370,7 @@
 								value="${authInfo.userNick }" />
 							<div style="padding-left: 20px;">
 								<input type="text" id="writeTitle" name="writeTitle"
-									placeholder="Title" />
+									placeholder="Title" style="width: 280px;"/>
 							</div>
 							<br>
 							<div style="padding-left: 20px;">
@@ -381,10 +379,10 @@
 							</div>
 							<br>
 							<div style="padding-left: 20px;">
-								<input type="file" id="grpThumbnail" name="grpThumbnail" />
+								<input type="file" id="grpThumbnail" name="grpThumbnail" class="MyButton" />
 							</div>
 							<div style="padding-right: 30px;">
-								<input type="submit" style="float: right;" value="게시하기" />
+								<input type="submit" style="float: right;" value="게시하기" class="MyButton" />
 							</div>
 						</form>
 					</div>

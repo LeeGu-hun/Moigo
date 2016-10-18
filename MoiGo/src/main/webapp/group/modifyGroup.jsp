@@ -30,10 +30,10 @@
 			<br>
 			<table id="groupTable">
 				<tr>
-					<td id="moleft"><label> 카테고리 <font color="red"><b>*</b></font>:
+					<td class="tdleft"><label> 카테고리 <font color="red"><b>*</b></font>:
 					</td>
 					<td><input type="text" id="grpCate" name="grpCate"
-						value="${groupModifyCommand.grpCate} " disabled="disabled" /></td>
+						value="${groupModifyCommand.grpCate} " disabled="disabled" style="padding: 3px;"/></td>
 					</label>
 				</tr>
 				</p>
@@ -42,9 +42,9 @@
 
 				<p>
 				<tr>
-					<td id="moleft"><label> 모임명 : </td>
+					<td class="tdleft"><label> 모임명 : </td>
 					<td><input type="text" id="grpName" name="grpName"
-						value="${groupModifyCommand.grpName}" disabled="disabled" /></td>
+						value="${groupModifyCommand.grpName}" disabled="disabled" style="padding: 3px;"/></td>
 					<td><input type="hidden" id="grpName" name="grpName"
 						value="${groupModifyCommand.grpName}" /></td>
 					</label>
@@ -53,7 +53,7 @@
 				</tr>
 
 				<p>
-				<td id="moleft"><label> 모임소개 <font color="red"><b>*</b></font>:
+				<td class="tdleft"><label> 모임소개 <font color="red"><b>*</b></font>:
 				</td>
 				<td><textarea cols="30" rows="5" id="grpIntro" name="grpIntro"
 						style="ime-mode: disabled; resize: none;">${groupModifyCommand.grpIntro}</textarea>
@@ -64,9 +64,9 @@
 
 				<p>
 				<tr>
-					<td id="moleft"><label> 모임장 : </td>
+					<td class="tdleft"><label> 모임장 : </td>
 					<td><input type="text" disabled="disabled"
-						value="${authInfo.userNick }" /></td>
+						value="${authInfo.userNick }" style="padding: 3px;"/></td>
 
 					<br>
 					</label>
@@ -74,7 +74,7 @@
 				</p>
 
 				<p>
-				<td id="moleft"><label> 모임 공개 여부 : <c:choose>
+				<td class="tdleft"><label> 모임 공개 여부 : <c:choose>
 							<c:when test="${groupModifyCommand.grpOpen=='Y'}">
 								<td id="tdopen"><input type="radio" id="grpOpen"
 									name="grpOpen" value="Y" checked="checked" />공개 <input
