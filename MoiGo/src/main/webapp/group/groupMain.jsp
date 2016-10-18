@@ -308,13 +308,18 @@
 								</div>
 								<div id="brdPic">
 									<c:if test="${authInfo.userNick == geulInfo.getBrdWriter() }">
-										<form action="${grpInfo.grpName }/delete" method="post"
-											style="padding-left: 100px; padding-top: 2px;">
-											<input type="hidden" id="brdSeq" name="brdSeq"
-												value="${geulInfo.getBrdSeq() }" /> <input type="submit"
-												value="삭제하기" class="MyButton" />
-										</form>
-									</c:if>
+											<div style="float: right; padding-top: 5px; padding-bottom: 15px; padding-right: 5px;">
+												<form action="${grpInfo.grpName }/modify" method="post" style="width: 66px; float: left;">
+		 											<input type="hidden" id="brdSeq" name="brdSeq" value="${geulInfo.getBrdSeq() }"/>
+		 											<input type="submit" value="수정하기" class="MyButton"/>
+
+												</form>
+												<form action="${grpInfo.grpName }/delete" method="post" style="width: 66px; float: left;">
+		 											<input type="hidden" id="brdSeq" name="brdSeq" value="${geulInfo.getBrdSeq() }"/>
+		 											<input type="submit" value="삭제하기" class="MyButton"/>
+												</form>
+											</div>
+										</c:if>
 									<c:if test="${authInfo.userNick != geulInfo.getBrdWriter() }">
 										<div style="width: 30.67px; height: 22px;"></div>
 									</c:if>
