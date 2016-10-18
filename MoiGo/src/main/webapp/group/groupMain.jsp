@@ -78,6 +78,7 @@
 		$('.window').show(); 
 	}
 
+$(document).ready(function() {
  	$('.openMask').click(function(e) {
 		e.preventDefault();
 		wrapWindowByMask();
@@ -98,7 +99,6 @@
 		$(this).unbind('click');
 	});
 
-	$(document).ready(function() {
 		var width = $("#thumbnailList").width();
 		var height = $("#thumbnailList").height();
 		var count = $(".item").length;
