@@ -25,18 +25,16 @@ public class controllerXml {
 	public void setDaoMarket(DaoMarket daoMarket) {
 		this.daoMarket = daoMarket;
 	}
-	@RequestMapping("/xml/{keyword}")
+	@RequestMapping("/xml/{keyWord}")
 	public String xmlResult(@PathVariable String keyWord, HttpServletRequest request, Model model){
-//		String SrchTxt = request.getParameter("srchTxt");
-		List<Group> srchGroup = daoGroup.srchGroup("");
-		List<Market> srchMarket = daoMarket.srchMarket("");
+		List<Group> srchGroup = daoGroup.srchGroup(keyWord);
+		List<Market> srchMarket = daoMarket.srchMarket(keyWord);
 		model.addAttribute("srchGroup", srchGroup);
 		model.addAttribute("srchMarket", srchMarket);
 		return "xml/xml";
 	}
 	@RequestMapping("/xml")
 	public String xmlResult(HttpServletRequest request, Model model){
-//		String SrchTxt = request.getParameter("srchTxt");
 		List<Group> srchGroup = daoGroup.srchGroup("");
 		List<Market> srchMarket = daoMarket.srchMarket("");
 		model.addAttribute("srchGroup", srchGroup);

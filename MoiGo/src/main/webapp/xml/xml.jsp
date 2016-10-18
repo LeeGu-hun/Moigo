@@ -4,9 +4,6 @@
 
 <html>
 <body>
-<%
-	String test="abc";
-%>
 	<c:forEach var="srchGrp" items="${srchGroup }">
 		<grp>
 			<grpName>

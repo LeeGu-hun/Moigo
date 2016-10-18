@@ -363,7 +363,7 @@ $(document).ready(function() {
 						<div class="divClose">
 							<a href="#" class="close">Close</a>
 						</div>
-						<h3 style="padding-left: 70px;">글 등록하기</h3>
+						<h3 style="padding-left: 70px; padding-top: 25px;" >글 등록하기</h3>
 						<br>
 						<form action="${grpInfo.grpName }/groupwrite" method="post"
 							enctype="multipart/form-data">

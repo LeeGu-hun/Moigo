@@ -623,15 +623,15 @@ position: absolute;
 	height: auto;
 }
 /* ~search */
-
 /* 그룹메인글쓰기 */
 #writeBoard2 {
    width: 860px;
-   height: 500px;
+   height: 560px;
    padding-left: 10px;
    text-align: center;
    font-size: 20px;
 }
+
 #writeBoard3 { /* 글 수정하기 */
 	width: 800px;
 	height: 570px;
