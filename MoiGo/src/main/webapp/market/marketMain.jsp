@@ -147,29 +147,29 @@
 						</div>
 						<br>
 						<form action="market/addProduct" method="post"
-							enctype="multipart/form-data">
-							<h2 style="padding-left: 50px;">상품 등록하기</h2><br>
-							판매자 : ${authInfo.userNick }<br> <input type="hidden"
-								id="mktSeller" name="mktSeller" value="${authInfo.userNick }">
-							상품명 : <input type="text" id="productName" name="productName" style="padding: 4px;"/><br>
-							&nbsp;&nbsp;가격 : <input type="text" id="productPrice" name="productPrice" 
-								onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled; padding: 4px;" /><br>
-							&nbsp;&nbsp;
-							<table style="width: 600px; padding-left: 180px;"> 
-								<tr><td style="margin-left: 60px; font-size: 20px; width: 60px;">내용 : 
-								 	<td><textarea cols="30" rows="5" style="resize: none; padding: 5px;" id="productContent" name="productContent">
-							 	</textarea></td></tr></table><br>
-							그룹명 : <select id="grpName" name="grpName" style="height: 23px;">
-								<option value="" selected>그룹을 선택하세요</option>
-								<c:forEach var="data" items="${requestScope.groupName}">
-									<option value='<c:out value="${data.grpName}" />'>
-										<c:out value="${data.grpName}" />
-									</option>
-								</c:forEach>
-								</select><br>
-						상품이미지 : <input type="file" id="grpThumbnail" name="grpThumbnail" style="margin-right: 20px;">		
-						<input type="submit" value="상품 등록하기" />
-					</form>
+		                     enctype="multipart/form-data">
+		                     <h2 style="padding-left: 50px;">상품 등록하기</h2><br>
+		                     판매자 : ${authInfo.userNick }<br> <input type="hidden"
+		                        id="mktSeller" name="mktSeller" value="${authInfo.userNick }"><br>
+		                     상품명 : <input type="text" id="productName" name="productName" style="padding: 4px;" /><br><br>
+		                     &nbsp;&nbsp;가격 : <input type="text" id="productPrice" name="productPrice" 
+        		                onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" style="ime-mode:disabled; padding: 4px;" /><br>
+            		        &nbsp;&nbsp;
+		                   <table style="width: 600px; padding-left: 180px;"> 
+		                    	<tr><td style="margin-left: 60px; font-size: 20px; width: 60px;">내용 : 
+		                    <td><textarea cols="30" rows="5" style="resize: none; padding: 5px;" id="productContent" name="productContent">
+		                    </textarea></td></tr></table><br>
+		                    그룹명 : <select id="grpName" name="grpName" style="height: 23px;">
+                       		<option value="" selected>그룹을 선택하세요</option>
+		                       <c:forEach var="data" items="${requestScope.groupName}">
+		                          <option value='<c:out value="${data.grpName}" />'>
+		                             <c:out value="${data.grpName}" />
+		                          </option>
+		                       </c:forEach>
+		                       </select><br><br>
+                  		상품이미지 : <input type="file" id="grpThumbnail" name="grpThumbnail" style="margin-right: 20px;" class="MyButton">   <br><br>   
+		                  <br><input type="submit" value="상품 등록하기" class="MyButton"/>
+		              </form>
 				</div>			
 			</div>
 			<br><p><h1>마켓</h1></p><br><br>

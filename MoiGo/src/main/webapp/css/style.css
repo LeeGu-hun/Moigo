@@ -484,15 +484,6 @@ position: absolute;
 	float: right;
 }
 
-#writeBoard {
-	width: 600px;
-	height: 600px;
-	padding-left: 10px;
-	text-align: center;
-	font-size: 20px;
-}
-
-
 #geul {
 	margin-top: 70px;
 	margin-left: 10px;
@@ -611,11 +602,11 @@ position: absolute;
 
 /* 마켓글쓰기 */
 #writeBoard {
-   width: 600px;
-   height: 400px;
-   padding-left: 10px;
-   text-align: center;
-   font-size: 20px;
+	width: 600px;
+	height: 600px;
+	padding-left: 10px;
+	text-align: center;
+	font-size: 20px;
 }
 
 /* ~market */
