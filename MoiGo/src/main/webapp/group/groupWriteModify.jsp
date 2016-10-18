@@ -22,12 +22,14 @@
 	<%@include file="/include/header.jsp"%>
 	<%@include file="/include/loginBox2.jsp"%>
 	<div id="content">
-		<div id="writeBoard3" style="background: #ffffff; position: absolute; left: 550px; top: 200px;">	
+		<div id="writeBoard3" style="background: #ffffff; position: absolute; left: 550px; top: 200px;">
+			<h3 style="padding-top: 20px;">글 수정하기</h3>	
+			<br>
 			<form action="/moigo/group/${geulInfo.grpName }/groupWriteModify" method="post" enctype="multipart/form-data">
 				<input type="hidden" id="grpName" name="grpName" value="${geulInfo.grpName }"/>
 				<input type="hidden" id="brdSeq" name="brdSeq" value="${geulInfo.brdSeq }"/>
 				<div style="padding-left: 20px; padding-top: 20px;">
-					<input type="text" id="brdTitle" name="brdTitle" value="${geulInfo.brdTitle }" />
+					<span style="font-size: 17px;">제목&nbsp;</span><input type="text" id="brdTitle" name="brdTitle" value="${geulInfo.brdTitle }" style="padding: 4px;"/>
 				</div><br>	
 				<div style="padding-left: 20px;">
 					<textarea cols="80" rows="20" id="brdContent"

@@ -641,10 +641,9 @@ position: absolute;
    text-align: center;
    font-size: 20px;
 }
-#writeBoard3 {
+#writeBoard3 { /* 글 수정하기 */
 	width: 800px;
-	height: 440px;
-	height: 540px;
+	height: 570px;
 	padding-left: 10px;
 	text-align: center;
 	font-size: 20px;

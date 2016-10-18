@@ -34,12 +34,14 @@ public class controllerXml {
 		model.addAttribute("srchMarket", srchMarket);
 		return "xml/xml";
 	}
-/*	@RequestMapping("/xml/{searchTxt}")
-	public String xmlResult2(@PathVariable String searchTxt, Model model){
-		List<Group> srchGroup = daoGroup.srchGroup(searchTxt);
-		List<Market> srchMarket = daoMarket.srchMarket(searchTxt);
+	@RequestMapping("/xml")
+	public String xmlResult(HttpServletRequest request, Model model){
+//		String SrchTxt = request.getParameter("srchTxt");
+		List<Group> srchGroup = daoGroup.srchGroup("");
+		List<Market> srchMarket = daoMarket.srchMarket("");
 		model.addAttribute("srchGroup", srchGroup);
 		model.addAttribute("srchMarket", srchMarket);
-		return "xml";
-	}*/
+		return "xml/xml";
+	}
+
 }
