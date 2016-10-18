@@ -202,20 +202,6 @@
 							<br>
 							<img src="<%=request.getContextPath() %>/file/${prd.mktThumbnail}" style="width: 100px; height: 100px; float: left; padding-left: 25px; padding-top: 10px;">
 						</div>
-						<div style="padding-top: 25px;">
-							<c:if test="${authInfo.userNick == prd.mktSeller }">
-							<div style="padding-top: 25px;">
-								<form action="market/modify" method="post" style="width: 66px; float: left;">
-									<input type="hidden" id="mktCode" name="mktCode" value="${prd.mktCode }"/>
-									<input type="submit" value="수정하기" class="MyButton"/>
-								</form>
-								<form action="market/deleteProduct" method="post" style="float: right;">
-									<input type="hidden" id="mktCode" name="mktCode" value="${prd.mktCode }" />
-									<input type="submit" style="float: right;" value="삭제하기" class="MyButton" />
-								</form>
-							</div>		
-							</c:if><br>
-						</div>
 						<br>
 					</c:if>
 				</div>

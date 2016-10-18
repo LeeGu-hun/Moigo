@@ -96,13 +96,11 @@ function grpAddSubmit() {
 				src="<%=request.getContextPath()%>/images/basic.png"> <br> 
 					<input type="file" id="imgFile" name="imgFile"/> <br> 모임 대표 이미지</label>
 			</p> --%>
-					<br>
-					<p>
-					<h1>새 모임 개설하기</h1>
+					<h1 style="line-height: 23px;" >새 모임 개설하기</h1>
 					<br>
 					<table id="groupTable">
 						<tr>
-							<td class="tdleft">카테고리 <font color="red"><b>*</b></font>
+							<td class="tdleft" style="width: 130px;">카테고리 <font color="red"><b>*</b></font>
 							</td>
 							<td class="tdRight" style="width: 420px;"><select id="cate"
  +								name="cate" style="height: 23px;">

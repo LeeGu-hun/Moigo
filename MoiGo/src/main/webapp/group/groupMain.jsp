@@ -297,7 +297,7 @@ $(document).ready(function() {
 								<div id="info">
 									<input type="hidden" id="wGrpName" name="wGrpName"
 										value="${grpInfo.grpName }" />
-									<div style="padding-left: 10px;">
+									<div style="padding-left: 10px; b">
 										글쓴이 : ${geulInfo.getBrdWriter() }<br> 작성일 :
 										${geulInfo.getBrdRegDate() }<br> 제목 :
 										${geulInfo.getBrdTitle() }<br> 내용 :
@@ -363,6 +363,7 @@ $(document).ready(function() {
 						<div class="divClose">
 							<a href="#" class="close">Close</a>
 						</div>
+						<h3 style="padding-left: 70px;">글 등록하기</h3>
 						<br>
 						<form action="${grpInfo.grpName }/groupwrite" method="post"
 							enctype="multipart/form-data">

@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import dao.DaoGroup;
 import dao.DaoMarket;
@@ -25,8 +25,8 @@ public class controllerXml {
 	public void setDaoMarket(DaoMarket daoMarket) {
 		this.daoMarket = daoMarket;
 	}
-	@RequestMapping("/xml")
-	public String xmlResult(HttpServletRequest request, Model model){
+	@RequestMapping("/xml/{keyword}")
+	public String xmlResult(@PathVariable String keyWord, HttpServletRequest request, Model model){
 //		String SrchTxt = request.getParameter("srchTxt");
 		List<Group> srchGroup = daoGroup.srchGroup("");
 		List<Market> srchMarket = daoMarket.srchMarket("");
