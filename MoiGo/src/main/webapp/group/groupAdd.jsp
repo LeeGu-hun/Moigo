@@ -70,12 +70,15 @@ function grpAddSubmit() {
 		alert("모임명을 입력해주세요.");
 	} else if (confirmBtn == "0") {
 		alert("중복확인을 해주세요.");
+		$("#grpNameConfirmResult").html('중복확인을 다시 해주세요.');
+	} else if (confirmBtn == "1") {
+		$("#grpNameConfirmResult").html('그룹명을 수정해주세요.');
 	} else if (cate == "") {
 		alert("카테고리를 선택해주세요.");
 	} else if (grpIntro == "") {
 		alert("그룹 소개를 입력해주세요.");
 	} else if (confirmBtn == "2") {
-		document.groupAdd_form.submit();
+		document.getElementById('groupAdd_form').submit();
 	}
 }
 </script>
@@ -113,12 +116,14 @@ function grpAddSubmit() {
 							</select></td>
 						</tr>
 						<tr>
-							<td class="tdLeft"><input type="hidden" id="grpNameChk"
-								value="N" /> 모임명 <font color="red"><b>*</b></font> </td>
-							<td class="tdRight"><input type="text" id="grpName"
-								name="grpName" onKeyDown="grpNameCheck();" /> <input
-								type="button" onclick="grpNameConfirm();" value="중복확인" /><br> <span
-								id="grpNameConfirmResult" style="color: red;"></span></td>
+							<td class="tdLeft">
+								<input type="hidden" id="grpNameChk" value="N" /> 모임명 <font color="red"><b>*</b></font>
+								<input type="hidden" id="confirmBtn" value="0" />
+							</td>
+							<td class="tdRight">
+							<input type="text" id="grpName" name="grpName" onKeyDown="grpNameCheck();" /> 
+							<input type="button" onclick="grpNameConfirm();" value="중복확인" /><br> 
+							<span id="grpNameConfirmResult" style="color: red;"></span></td>
 						</tr>
 						<tr>
 							<td class="tdLeft">모임소개 <font color="red"><b>*</b></font>
@@ -148,7 +153,7 @@ function grpAddSubmit() {
 						</tr>
 						<tr>
 							<td id="tdbottom" colspan="3">
-								<input type="button" id="btnbottom" value="모임개설" onclick="grpAddsubmit();" /> 
+								<input type="button" id="btnbottom" value="모임개설" onclick="grpAddSubmit();" /> 
 								<input type="button" id="btnbottom" value="취소"	onclick="location.href = '/moigo/group';" /></td>
 						</tr>
 					</table>
