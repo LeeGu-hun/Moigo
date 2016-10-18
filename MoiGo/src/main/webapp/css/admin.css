@@ -7,7 +7,7 @@
 } 
 
 #adminTable{
-border-collapse:collapse;
-border:1px gray solid;
-text-align: center;
+	border-collapse: collapse;
+	border:1px gray solid;
+	text-align: center;
 }

@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/style.css" />
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/admin	.css" />	
+	href="<%=request.getContextPath()%>/css/admin.css" />	
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Admin</title>
 </head>
@@ -45,7 +45,7 @@
 				<input type="submit" value="검색"><br>
 				<br>
 			</form>
-			<table border="1">
+			<table id="adminTable" border="1">
 				<c:if test="${'userInfo' eq type }">
 					<tr class="tableHead">
 						<td>사용자ID</td>
